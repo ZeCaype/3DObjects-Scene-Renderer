@@ -3,16 +3,25 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 	ofSetWindowTitle("The Project");
+
+	ofSetFrameRate(30);
+	ofSetCircleResolution(1000);
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
 
+	red = ofRandom(0, 255);
+	green = ofRandom(0, 255);
+	blue = ofRandom(0, 255);
+	size = ofRandom(20, 300);
+
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-
+	ofSetColor(red, green, blue);
+	ofDrawCircle(ofGetWindowWidth() / 2, ofGetWindowHeight() / 2, size);
 }
 
 //--------------------------------------------------------------
