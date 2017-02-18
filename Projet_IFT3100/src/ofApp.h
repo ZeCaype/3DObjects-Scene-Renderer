@@ -5,6 +5,17 @@
 class ofApp : public ofBaseApp{
 
 	public:
+
+		int red;
+		int green;
+		int blue;
+		int size;
+
+
+
+
+
+
 		void setup();
 		void update();
 		void draw();
