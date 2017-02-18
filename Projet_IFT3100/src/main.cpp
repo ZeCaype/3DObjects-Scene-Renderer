@@ -1,13 +1,18 @@
 #include "ofMain.h"
-#include "ofApp.h"
+#include "ofAppGLFWWindow.h"
+#include "Application.h"
 
-//========================================================================
-int main( ){
-	ofSetupOpenGL(1024,768,OF_WINDOW);			// <-------- setup the GL context
+// Point d'entrée de l'application
+int main() {
+	// Initialisation d'une instance ofAppGLFWWindow (GLFW renderer)
+	ofAppGLFWWindow window;
 
-	// this kicks off the running of my app
-	// can be OF_WINDOW or OF_FULLSCREEN
-	// pass in width and height too:
-	ofRunApp(new ofApp());
+	// Configuration du multisample antialiasing (MSAA)
+	window.setNumSamples(16);
 
+	// Configuration de la fenêtre principale
+	ofSetupOpenGL(&window, 768, 768, OF_WINDOW);
+
+	// Instancier et lancer l'application
+	ofRunApp(new Application());
 }
