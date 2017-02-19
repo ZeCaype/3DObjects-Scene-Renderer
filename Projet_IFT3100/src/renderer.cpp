@@ -10,17 +10,11 @@ void Renderer::setup()
 {
 	ofSetWindowTitle("Rendue de l'image");
 
+	// Application d'un fond en blanc
+	ofBackground(255);
+
 	ofSetFrameRate(60);
 	ofEnableDepthTest();
-
-	// Initialisation de la scène
-	reset();
-}
-
-// Fonction qui réinitialise la scène
-void Renderer::reset()
-{
-	ofLog() << "<reset>";
 }
 
 void Renderer::update()
@@ -30,8 +24,26 @@ void Renderer::update()
 // Fonction invoquée pour ajouter des éléments dans le framebuffer
 void Renderer::draw()
 {
-	// Application d'un fond en blanc
-	ofBackground(255);
+}
+
+// Fonction permettant d'activer une commande en pressant une touche
+void Renderer::keyPressed(int key)
+{
+	switch (key)
+	{
+	}
+}
+
+// Fonction permettant d'activer une commande en relâchant une touche
+void Renderer::keyReleased(int key)
+{
+	switch (key)
+	{
+	case 32: // key Space
+		imageExport("render", "png");
+		ofLog() << "<image is in file /bin/data/" << ">";
+		break;
+	}
 }
 
 // Fonction qui exporte une image à partir de son nom et de son extension, à partir du répertoire ./bin/data ou d'un chemin absolue

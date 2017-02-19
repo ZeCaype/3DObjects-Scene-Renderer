@@ -1,20 +1,28 @@
 #include "ofMain.h"
 #include "ofAppGLFWWindow.h"
-#include "ofxAssimpModelLoader.h"
-#include "ofxGui.h"
-#include "Application.h"
+#include "renderer.h"
+#include "gui.h"
 
 // Point d'entrée de l'application
 int main() {
-	// Initialisation d'une instance ofAppGLFWWindow (GLFW renderer)
-	ofAppGLFWWindow window;
+	ofGLFWWindowSettings settings;
+	
+	settings.width = 768;
+	settings.height = 768;
+	settings.resizable = true;
+	settings.numSamples = 16;
+	shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);
+	
+	settings.width = 256;
+	settings.height = 256;
+	settings.resizable = false;
+	shared_ptr<ofAppBaseWindow> guiWindow = ofCreateWindow(settings);
 
-	// Configuration du multisample antialiasing (MSAA)
-	window.setNumSamples(16);
+	shared_ptr<Renderer> mainApp(new Renderer());
+	shared_ptr<Gui> guiApp(new Gui());
+	mainApp->gui = guiApp;
 
-	// Configuration de la fenêtre principale
-	ofSetupOpenGL(&window, 768, 768, OF_WINDOW);
-
-	// Instancier et lancer l'application
-	ofRunApp(new Application());
+	ofRunApp(guiWindow, guiApp);
+	ofRunApp(mainWindow, mainApp);
+	ofRunMainLoop();
 }
