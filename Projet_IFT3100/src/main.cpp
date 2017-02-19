@@ -1,7 +1,6 @@
 #include "ofMain.h"
 #include "ofAppGLFWWindow.h"
-#include "renderer.h"
-#include "gui.h"
+#include "application.h"
 
 // Point d'entrée de l'application
 int main() 
