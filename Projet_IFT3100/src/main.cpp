@@ -4,17 +4,20 @@
 #include "gui.h"
 
 // Point d'entrée de l'application
-int main() {
+int main() 
+{
 	ofGLFWWindowSettings settings;
 	
 	settings.width = 768;
 	settings.height = 768;
+	settings.setPosition(ofVec2f(600, 200));
 	settings.resizable = true;
 	settings.numSamples = 16;
 	shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);
 	
 	settings.width = 256;
-	settings.height = 256;
+	settings.height = 768;
+	settings.setPosition(ofVec2f(326, 200));
 	settings.resizable = false;
 	shared_ptr<ofAppBaseWindow> guiWindow = ofCreateWindow(settings);
 

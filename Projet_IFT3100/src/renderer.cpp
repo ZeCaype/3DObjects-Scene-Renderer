@@ -12,6 +12,7 @@ void Renderer::setup()
 
 	// Application d'un fond en blanc
 	ofBackground(255);
+	ofSetCircleResolution(200);
 
 	ofSetFrameRate(60);
 	ofEnableDepthTest();
