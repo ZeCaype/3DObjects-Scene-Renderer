@@ -6,6 +6,7 @@
 // Point d'entrée de l'application
 int main() 
 {
+	// Déclaration des configurations des fenêtres
 	ofGLFWWindowSettings settings;
 	
 	settings.width = 768;
