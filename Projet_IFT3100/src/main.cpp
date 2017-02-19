@@ -8,7 +8,7 @@ int main()
 {
 	// Déclaration des configurations des fenêtres
 	ofGLFWWindowSettings settings;
-	
+
 	settings.width = 768;
 	settings.height = 768;
 	settings.setPosition(ofVec2f(600, 200));

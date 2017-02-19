@@ -9,7 +9,7 @@ Gui::Gui()
 void Gui::setup()
 {
 	ofSetWindowTitle("Gui");
-
+	
 	gui.setup("Panneau");
 	gui.add(exportButton.setup("Exportation")); exportCheck = false;
 }
