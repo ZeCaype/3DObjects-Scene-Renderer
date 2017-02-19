@@ -1,5 +1,7 @@
 #include "ofMain.h"
 #include "ofAppGLFWWindow.h"
+#include "ofxAssimpModelLoader.h"
+#include "ofxGui.h"
 #include "Application.h"
 
 // Point d'entrée de l'application

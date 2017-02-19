@@ -9,8 +9,6 @@ Application::Application()
 // Fonction invoquée à l'initialisation de l'application
 void Application::setup()
 {
-	ofSetWindowTitle("Rendue de l'image");
-
 	ofLog() << "<app::setup>";
 
 	renderer = new Renderer();

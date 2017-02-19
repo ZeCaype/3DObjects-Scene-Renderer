@@ -8,6 +8,8 @@ Renderer::Renderer()
 // Fonction invoquée pour configurer les éléments du framebuffer
 void Renderer::setup()
 {
+	ofSetWindowTitle("Rendue de l'image");
+
 	ofSetFrameRate(60);
 	ofEnableDepthTest();
 
