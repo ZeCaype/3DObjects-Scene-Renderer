@@ -30,7 +30,6 @@ void Gui::draw()
 	}
 	else if(!exportButton) exportCheck = false;
 
-	gui.draw();
 }
 
 // Destructeur de la classe

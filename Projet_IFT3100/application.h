@@ -8,6 +8,9 @@
 class application : public ofBaseApp {
 
 public:
+	Renderer * renderer;
+	Gui * gui;
+
 	void setup();
 	void update();
 	void draw();
