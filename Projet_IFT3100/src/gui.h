@@ -12,6 +12,7 @@ public:
 	void draw();
 
 	ofxPanel gui;
+	ofxButton exportButton; bool exportCheck;
 
 	~Gui();
 };
