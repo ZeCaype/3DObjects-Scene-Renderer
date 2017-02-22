@@ -3,18 +3,22 @@
 #include "ofMain.h"
 #include "renderer.h"
 #include "gui.h"
+#include "ofAppGLFWWindow.h"
 
 
-class application : public ofBaseApp {
+class Application : public ofBaseApp {
 
 public:
+	
 	Renderer * renderer;
 	Gui * gui;
 
+	Application();
 	void setup();
 	void update();
 	void draw();
 
 	void keyReleased(int key);
+	~Application();
 
 };

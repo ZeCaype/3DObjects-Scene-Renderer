@@ -7,11 +7,14 @@
 class Renderer : public ofBaseApp
 {
 public:
+	int circleRadius;
+
 	Renderer();
 
 	void setup();
 	void update();
 	void draw();
+	void setRadius(int radius);
 
 	void keyPressed(int key);
 	void keyReleased(int key);

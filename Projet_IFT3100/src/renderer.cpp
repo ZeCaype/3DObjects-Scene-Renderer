@@ -16,6 +16,8 @@ void Renderer::setup()
 
 	ofSetFrameRate(60);
 	ofEnableDepthTest();
+
+	circleRadius = 0;
 }
 
 void Renderer::update()
@@ -25,6 +27,12 @@ void Renderer::update()
 // Fonction invoquée pour ajouter des éléments dans le framebuffer
 void Renderer::draw()
 {
+	ofSetColor(0, 255, 0);
+	ofDrawCircle(ofGetWindowWidth() / 2, ofGetWindowHeight() / 2, circleRadius);
+}
+
+void Renderer::setRadius(int radius) {
+	circleRadius = radius;
 }
 
 // Fonction permettant d'activer une commande en pressant une touche

@@ -1,28 +1,57 @@
-#include "application.h"
+#include "Application.h"
+
+
+Application::Application() {
+
+}
+
 
 //--------------------------------------------------------------
-void application::setup() {
-
+void Application::setup() {
+	
 	renderer = new Renderer();
-	renderer->setup();
-
 	gui = new Gui();
-	gui->setup();
+
+
+	ofGLFWWindowSettings settings;
+
+	settings.width = 768;
+	settings.height = 768;
+	settings.setPosition(ofVec2f(600, 200));
+	settings.resizable = true;
+	settings.numSamples = 16;
+	shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);
+
+	settings.width = 256;
+	settings.height = 768;
+	settings.setPosition(ofVec2f(326, 200));
+	settings.resizable = false;
+	shared_ptr<ofAppBaseWindow> guiWindow = ofCreateWindow(settings);
+
+	shared_ptr<Renderer> mainApp(renderer);
+	shared_ptr<Gui> guiApp(gui);
+	mainApp->gui = guiApp;
+
+	ofRunApp(guiWindow, guiApp);
+	ofRunApp(mainWindow, mainApp);
+
 }
 
 //--------------------------------------------------------------
-void application::update() {
-
+void Application::update() {
+	renderer->setRadius(gui->getRadius());
 }
 
 //--------------------------------------------------------------
-void application::draw() {
-	gui->draw();
-	renderer->draw();
+void Application::draw() {
 }
 
 //--------------------------------------------------------------
-void application::keyReleased(int key) {
+void Application::keyReleased(int key) {
+
+}
+
+Application::~Application(){
 
 }
 
