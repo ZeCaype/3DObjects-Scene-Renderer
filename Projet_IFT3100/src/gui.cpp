@@ -27,13 +27,6 @@ void Gui::update()
 // Fonction
 void Gui::draw()
 {
-	if (exportButton && exportCheck == false)
-	{
-		//imageExport("render", "png"); ----> À corriger!
-		ofLog() << "<image is in file /bin/data/" << ">";
-		exportCheck = true;
-	}
-	else if (!exportButton) exportCheck = false;
 	gui.draw();
 	guiCircle.draw();
 }

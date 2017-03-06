@@ -5,7 +5,6 @@
 #include "gui.h"
 #include "ofAppGLFWWindow.h"
 
-
 class Application : public ofBaseApp {
 
 public:
