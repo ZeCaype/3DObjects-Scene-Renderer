@@ -40,11 +40,8 @@ void Application::update() {
 	// Exportation du rendue de l'image
 	if (gui->exportButton && gui->exportCheck == false)
 	{
-		HWND hWnd = ::FindWindow(NULL, L"Rendue de l'image");
-		if (hWnd) {
-			// move to foreground
-			::SetForegroundWindow(hWnd);
-		}
+		HWND hWnd = FindWindow(NULL, L"Rendue de l'image");
+		if (hWnd) SetForegroundWindow(hWnd);
 		renderer->imageExport("render", "png");
 		ofLog() << "<image is in file /bin/data/" << ">";
 		gui->exportCheck = true;
