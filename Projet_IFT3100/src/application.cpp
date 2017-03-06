@@ -1,16 +1,13 @@
 #include "Application.h"
 
-
-Application::Application() {
-
+Application::Application() 
+{
 }
-
 
 //--------------------------------------------------------------
 void Application::setup() {
 	renderer = new Renderer();
 	gui = new Gui();
-
 
 	ofGLFWWindowSettings settings;
 
@@ -33,7 +30,6 @@ void Application::setup() {
 
 	ofRunApp(guiWindow, guiApp);
 	ofRunApp(mainWindow, mainApp);
-
 }
 
 //--------------------------------------------------------------
