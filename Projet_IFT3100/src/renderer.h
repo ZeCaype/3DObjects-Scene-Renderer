@@ -4,14 +4,107 @@
 #include "ofxAssimpModelLoader.h"
 #include "gui.h"
 
+enum class Camera { FRONT, BACK, LEFT, RIGHT, TOP, DOWN, FREE, ORBIT };
+
 class Renderer : public ofBaseApp
 {
 public:
+
+	//Camera
+	Camera cameraActive;
+
+	ofCamera cameraFront;
+	ofCamera cameraBack;
+	ofCamera cameraLeft;
+	ofCamera cameraRight;
+	ofCamera cameraTop;
+	ofCamera cameraDown;
+
+	ofCamera * camera;
+
+	ofQuaternion cameraOrientation;
+
+	ofVec3f cameraPosition;
+	ofVec3f cameraTarget;
+
+	string cameraName;
+
+	float cameraFov;
+	float cameraNear;
+	float cameraFar;
+
+	float fovDelta;
+
+	float timeCurrent;
+	float timeLast;
+	float timeElapsed;
+
+	float speedDelta;
+	float speedTranslation;
+	float speedRotation;
+
+	float sceneOffset;
+
+	float cubeOffset;
+
+	float colorOffset;
+
+	float cameraOffset;
+
+	int cubeCount;
+
+	int xIndex;
+	int yIndex;
+	int zIndex;
+
+	bool isVisibleCamera;
+
+	bool isCameraMoveLeft;
+	bool isCameraMoveRight;
+	bool isCameraMoveUp;
+	bool isCameraMoveDown;
+	bool isCameraMoveForward;
+	bool isCameraMoveBackward;
+
+	bool isCameraTiltUp;
+	bool isCameraTiltDown;
+	bool isCameraPanLeft;
+	bool isCameraPanRight;
+	bool isCameraRollLeft;
+	bool isCameraRollRight;
+
+	bool isCameraFovNarrow;
+	bool isCameraFovWide;
+
+	bool isCameraPerspective;
+
+	bool isKeyPressUp;
+	bool isKeyPressDown;
+	bool isKeyPressLeft;
+	bool isKeyPressRight;
+
+	bool isKeyPressA;
+	bool isKeyPressD;
+	bool isKeyPressE;
+	bool isKeyPressH;
+	bool isKeyPressI;
+	bool isKeyPressJ;
+	bool isKeyPressK;
+	bool isKeyPressQ;
+	bool isKeyPressS;
+	bool isKeyPressU;
+	bool isKeyPressW;
+	bool isKeyPressX;
+	bool isKeyPressY;
+	bool isKeyPressZ;
+
+	///
 	int circleRadius;
 
 	Renderer();
 
 	void setup();
+	void reset();
 	void update();
 	void draw();
 	void setRadius(int radius);
@@ -24,4 +117,9 @@ public:
 	shared_ptr<Gui> gui;
 
 	~Renderer();
+
+	void cameraSetupParameters();
+	void setupCamera();
+	void updateCamera();
+	void cameraDraw();
 };

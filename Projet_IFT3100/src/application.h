@@ -7,14 +7,34 @@
 
 class Application : public ofBaseApp {
 
-public:
-	Renderer * renderer;
+private:
+	
 	Gui * gui;
+public:
 
-	Application();
+	bool isKeyPressA;
+	bool isKeyPressD;
+	bool isKeyPressE;
+	bool isKeyPressH;
+	bool isKeyPressI;
+	bool isKeyPressJ;
+	bool isKeyPressK;
+	bool isKeyPressQ;
+	bool isKeyPressS;
+	bool isKeyPressU;
+	bool isKeyPressW;
+	bool isKeyPressX;
+	bool isKeyPressY;
+	bool isKeyPressZ;
+
+	Renderer * renderer;
+
+	Application(Gui *guipam);
 	
 	void setup();
 	void update();
-
+	void draw();
+	void keyPressed(int key);
+	void keyReleased(int key);
 	~Application();
 };

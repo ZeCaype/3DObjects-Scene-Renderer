@@ -1,45 +1,275 @@
-#include "Application.h"
+﻿#include "Application.h"
 
-Application::Application() 
+Application::Application(Gui *guipam) 
 {
+	gui = guipam;
+
+	isKeyPressA = false;
+	isKeyPressD = false;
+	isKeyPressE = false;
+	isKeyPressH = false;
+	isKeyPressI = false;
+	isKeyPressJ = false;
+	isKeyPressK = false;
+	isKeyPressQ = false;
+	isKeyPressS = false;
+	isKeyPressU = false;
+	isKeyPressW = false;
+	isKeyPressX = false;
+	isKeyPressY = false;
+	isKeyPressZ = false;
+
+	renderer = nullptr;
+
+	ofGLFWWindowSettings settings;
+
+	settings.width = 300;
+	settings.height = 300;
+	settings.setPosition(ofVec2f(700, 50));
+	settings.resizable = false;
+	shared_ptr<ofAppBaseWindow> guiWindow = ofCreateWindow(settings);
+	guiWindow->setVerticalSync(false);
+	shared_ptr<Gui> guiApp(gui);
+	ofRunApp(guiWindow, guiApp);
 }
 
 //--------------------------------------------------------------
 void Application::setup() 
 {
+	ofLog() << "<application::setup>";
+
 	renderer = new Renderer();
-	gui = new Gui();
-
-	ofGLFWWindowSettings settings;
-
-	settings.width = 768;
-	settings.height = 768;
-	settings.setPosition(ofVec2f(600, 200));
-	settings.resizable = true;
-	settings.numSamples = 16;
-	shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);
-
-	settings.width = 256;
-	settings.height = 768;
-	settings.setPosition(ofVec2f(326, 200));
-	settings.resizable = false;
-	shared_ptr<ofAppBaseWindow> guiWindow = ofCreateWindow(settings);
-
-	shared_ptr<Renderer> mainApp(renderer);
-	shared_ptr<Gui> guiApp(gui);
-	mainApp->gui = guiApp;
-
-	ofRunApp(guiWindow, guiApp);
-	ofRunApp(mainWindow, mainApp);
-	ofRunMainLoop();
+	renderer->setup();
 }
 
 //--------------------------------------------------------------
 void Application::update() 
 {
+	//Camera/////////////////////////////////////////////////////////////
+	if (renderer->isCameraPerspective)
+		ofSetWindowTitle("camera " + renderer->cameraName + " perpective (1-6 wasdqe uhjkyi zx fgcvb)");
+	else
+		ofSetWindowTitle("camera " + renderer->cameraName + " orthographic");
+
+	renderer->isCameraMoveForward =  isKeyPressW;
+	renderer->isCameraMoveBackward = isKeyPressS;
+
+	renderer->isCameraMoveLeft = isKeyPressA;
+	renderer->isCameraMoveRight = isKeyPressD;
+
+	renderer->isCameraMoveUp = isKeyPressQ;
+	renderer->isCameraMoveDown = isKeyPressE;
+
+	renderer->isCameraTiltUp = isKeyPressJ;
+	renderer->isCameraTiltDown = isKeyPressU;
+
+	renderer->isCameraPanLeft = isKeyPressH;
+	renderer->isCameraPanRight = isKeyPressK;
+
+	renderer->isCameraRollLeft = isKeyPressY;
+	renderer->isCameraRollRight = isKeyPressI;
+
+	renderer->isCameraFovNarrow = isKeyPressS;
+	renderer->isCameraFovWide = isKeyPressW;
+
+	///////////////////////////////////////////////////////////////////////////
+
+	renderer->setRadius(gui->getRadius());
+
+	if (gui->exportButton && gui->exportCheck == false)
+	{
+		int test = ofGetWidth();
+		renderer->imageExport("render", "png");
+		ofLog() << "<image is in file /bin/data/" << ">";
+		gui->exportCheck = true;
+	}
+	else if (!gui->exportButton) gui->exportCheck = false; 
+
+	renderer->update();
+}
+
+void Application::draw() {
+	renderer->draw();
 }
 
 Application::~Application()
 {
+	if (nullptr != renderer)
+		delete renderer;
 }
 
+void Application::keyPressed(int key) {
+	switch (key) {
+		case 97:  // key A
+			isKeyPressA = true;
+			break;
+
+		case 100: // key D
+			isKeyPressD = true;
+			break;
+
+		case 101: // key E
+			isKeyPressE = true;
+			break;
+
+		case 104: // key H
+			isKeyPressH = true;
+			break;
+
+		case 105: // key I
+			isKeyPressI = true;
+			break;
+
+		case 106: // key J
+			isKeyPressJ = true;
+			break;
+
+		case 107: // key K
+			isKeyPressK = true;
+			break;
+
+		case 113: // key Q
+			isKeyPressQ = true;
+			break;
+
+		case 115: // key S
+			isKeyPressS = true;
+			break;
+
+		case 117: // key U
+			isKeyPressU = true;
+			break;
+
+		case 119: // key W
+			isKeyPressW = true;
+			break;
+
+		case 120: // key X
+			isKeyPressX = true;
+			break;
+
+		case 121: // key Y
+			isKeyPressY = true;
+			break;
+
+		case 122: // key Z
+			isKeyPressZ = true;
+			break;
+
+		default:
+			break;
+	}
+}
+
+
+void Application::keyReleased(int key) {
+	
+	switch (key) {
+		case 49:  // key 1
+			renderer->cameraActive = Camera::FRONT;
+			renderer->setupCamera();
+			break;
+
+		case 50:  // key 2
+			renderer->cameraActive = Camera::BACK;
+			renderer->setupCamera();
+			break;
+
+		case 51:  // key 3
+			renderer->cameraActive = Camera::LEFT;
+			renderer->setupCamera();
+			break;
+
+		case 52:  // key 4
+			renderer->cameraActive = Camera::RIGHT;
+			renderer->setupCamera();
+			break;
+
+		case 53:  // key 5
+			renderer->cameraActive = Camera::TOP;
+			renderer->setupCamera();
+			break;
+
+		case 54:  // key 6
+			renderer->cameraActive = Camera::DOWN;
+			renderer->setupCamera();
+			break;
+
+		case 97:  // key A
+			isKeyPressA = false;
+			break;
+
+		case 100: // key D
+			isKeyPressD = false;
+			break;
+
+		case 101: // key E
+			isKeyPressE = false;
+			break;
+
+		case 104: // key H
+			isKeyPressH = false;
+			break;
+
+		case 105: // key I
+			isKeyPressI = false;
+			break;
+
+		case 106: // key J
+			isKeyPressJ = false;
+			break;
+
+		case 107: // key K
+			isKeyPressK = false;
+			break;
+
+		case 111: // key O
+			renderer->isCameraPerspective = false;
+			renderer->setupCamera();
+			ofLog() << "<orthographic projection>";
+			break;
+
+		case 112: // key P
+			renderer->isCameraPerspective = true;
+			renderer->setupCamera();
+			ofLog() << "<perpective projection>";
+			break;
+
+		case 113: // key Q
+			isKeyPressQ = false;
+			break;
+
+		case 114: // key R
+			renderer->reset();
+			break;
+
+		case 115: // key S
+			isKeyPressS = false;
+			break;
+
+		case 117: // key U
+			isKeyPressU = false;
+			break;
+
+		case 119: // key W
+			isKeyPressW = false;
+			break;
+
+		case 120: // key X
+			isKeyPressX = false;
+			ofLog() << "<fov:" << renderer->cameraFov << ">";
+			break;
+
+		case 121: // key Y
+			isKeyPressY = false;
+			break;
+
+		case 122: // key Z
+			ofLog() << "<fov:" << renderer->cameraFov << ">";
+			isKeyPressZ = false;
+			break;
+
+		default:
+			break;
+	}
+}
