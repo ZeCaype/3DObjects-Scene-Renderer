@@ -20,6 +20,7 @@ void Renderer::setup()
 	circleRadius = 0;
 }
 
+// Ajouter les fonctions des boutons du Gui ici
 void Renderer::update()
 {
 	// Configuration du rayon du cercle
@@ -43,7 +44,8 @@ void Renderer::draw()
 	ofDrawCircle(ofGetWindowWidth() / 2, ofGetWindowHeight() / 2, circleRadius);
 }
 
-void Renderer::setRadius(int radius) {
+void Renderer::setRadius(int radius) 
+{
 	circleRadius = radius;
 }
 

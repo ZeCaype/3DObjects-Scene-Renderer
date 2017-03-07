@@ -1,9 +1,9 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofAppGLFWWindow.h"
 #include "renderer.h"
 #include "gui.h"
-#include "ofAppGLFWWindow.h"
 
 class Application : public ofBaseApp {
 
@@ -15,8 +15,6 @@ public:
 	
 	void setup();
 	void update();
-	void draw();
 
 	~Application();
-
 };

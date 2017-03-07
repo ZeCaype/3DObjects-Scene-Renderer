@@ -30,7 +30,8 @@ void Gui::draw()
 	guiCircle.draw();
 }
 
-int Gui::getRadius() {
+int Gui::getRadius() 
+{
 	return circleRadius;
 }
 

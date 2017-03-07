@@ -39,11 +39,6 @@ void Application::update()
 {
 }
 
-//--------------------------------------------------------------
-void Application::draw() 
-{
-}
-
 Application::~Application()
 {
 }
