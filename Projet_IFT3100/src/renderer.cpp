@@ -18,6 +18,7 @@ void Renderer::setup()
 	ofEnableDepthTest();
 
 	circleRadius = 0;
+
 }
 
 // Ajouter les fonctions des boutons du Gui ici
@@ -40,8 +41,9 @@ void Renderer::update()
 // Fonction invoquée pour ajouter des éléments dans le framebuffer
 void Renderer::draw()
 {
+	ofTranslate(ofGetWindowWidth() / 2, ofGetWindowHeight() / 2);
 	ofSetColor(0, 255, 0);
-	ofDrawCircle(ofGetWindowWidth() / 2, ofGetWindowHeight() / 2, circleRadius);
+	ofDrawCircle(0, 0, circleRadius);
 }
 
 void Renderer::setRadius(int radius) 
