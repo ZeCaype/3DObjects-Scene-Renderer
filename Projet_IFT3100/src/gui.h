@@ -15,8 +15,6 @@ public:
 
 	ofxPanel gui;
 	ofxButton exportButton; bool exportCheck;
-	ofxButton testButton; 
-	ofxLabel testLabel; 
 
 	ofxPanel guiCircle;
 	ofxIntSlider circleRadius;

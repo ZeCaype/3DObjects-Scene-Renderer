@@ -8,16 +8,15 @@
 class Application : public ofBaseApp {
 
 public:
-	
 	Renderer * renderer;
 	Gui * gui;
 
 	Application();
+	
 	void setup();
 	void update();
 	void draw();
 
-	void keyReleased(int key);
 	~Application();
 
 };

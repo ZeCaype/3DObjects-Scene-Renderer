@@ -5,7 +5,8 @@ Application::Application()
 }
 
 //--------------------------------------------------------------
-void Application::setup() {
+void Application::setup() 
+{
 	renderer = new Renderer();
 	gui = new Gui();
 
@@ -30,35 +31,20 @@ void Application::setup() {
 
 	ofRunApp(guiWindow, guiApp);
 	ofRunApp(mainWindow, mainApp);
+	ofRunMainLoop();
 }
 
 //--------------------------------------------------------------
-void Application::update() {
-	// Configuration du rayon du cercle
-	renderer->setRadius(gui->getRadius());
-	
-	// Exportation du rendue de l'image
-	if (gui->exportButton && gui->exportCheck == false)
-	{
-		HWND hWnd = FindWindow(NULL, L"Rendue de l'image");
-		if (hWnd) SetForegroundWindow(hWnd);
-		renderer->imageExport("render", "png");
-		ofLog() << "<image is in file /bin/data/" << ">";
-		gui->exportCheck = true;
-	}
-	else if (!gui->exportButton) gui->exportCheck = false;
+void Application::update() 
+{
 }
 
 //--------------------------------------------------------------
-void Application::draw() {
+void Application::draw() 
+{
 }
 
-//--------------------------------------------------------------
-void Application::keyReleased(int key) {
-
-}
-
-Application::~Application(){
-
+Application::~Application()
+{
 }
 

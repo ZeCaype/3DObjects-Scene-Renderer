@@ -8,7 +8,7 @@ Renderer::Renderer()
 // Fonction invoquée pour configurer les éléments du framebuffer
 void Renderer::setup()
 {
-	ofSetWindowTitle("Rendue de l'image");
+	ofSetWindowTitle("Rendue");
 
 	// Application d'un fond en blanc
 	ofBackground(255);
@@ -22,6 +22,18 @@ void Renderer::setup()
 
 void Renderer::update()
 {
+	// Configuration du rayon du cercle
+	setRadius(gui->getRadius());
+
+	// Exportation du rendue de l'image
+	if (gui->exportButton && gui->exportCheck == false)
+	{
+		int test = ofGetWidth();
+		imageExport("render", "png");
+		ofLog() << "<image is in file /bin/data/" << ">";
+		gui->exportCheck = true;
+	}
+	else if (!gui->exportButton) gui->exportCheck = false;
 }
 
 // Fonction invoquée pour ajouter des éléments dans le framebuffer
@@ -48,10 +60,6 @@ void Renderer::keyReleased(int key)
 {
 	switch (key)
 	{
-	case 32: // key Space
-		imageExport("render", "png");
-		ofLog() << "<image is in file /bin/data/" << ">";
-		break;
 	}
 }
 

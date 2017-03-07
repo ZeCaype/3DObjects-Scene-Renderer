@@ -12,7 +12,6 @@ void Gui::setup()
 	
 	gui.setup("Panneau");
 	gui.add(exportButton.setup("Exportation")); exportCheck = false;
-	gui.add(testButton.setup("bouton test"));  
 
 	//Cercle UI
 	guiCircle.setup("Circle", "",  0, ofGetWindowHeight()/2);
