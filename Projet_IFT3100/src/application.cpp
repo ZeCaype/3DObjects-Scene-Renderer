@@ -89,6 +89,10 @@ void Application::update()
 	renderer->setPosImageY(gui->getPosImageY());
 	renderer->setSizeImageWidth(gui->getSizeImageWidth());
 	renderer->setSizeImageHeight(gui->getSizeImageHeight());
+	renderer->setHueImage(gui->getHueImage());
+	renderer->setSaturationImage(gui->getSaturationImage());
+	renderer->setBrightnessImage(gui->getBrightnessImage());
+	renderer->setAlphaImage(gui->getAlphaImage());
 
 	renderer->update();
 }
