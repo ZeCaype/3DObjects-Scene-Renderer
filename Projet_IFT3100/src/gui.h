@@ -8,6 +8,9 @@ public:
 
 	int offsetX;
 
+	int defaultPosX;
+	int defaultPosY;
+
 	int defaultCircleRadius;
 	float defaultFov;
 
@@ -17,11 +20,17 @@ public:
 	void reset();
 	void update();
 	void draw();
+
+	int getPosImageX();
+	int getPosImageY();
+
 	int getRadius();
 	float getFov();
 
-	ofxPanel gui;
+	ofxPanel guiImage;
 	ofxButton exportButton; bool exportCheck;
+	ofxIntSlider posImageX;
+	ofxIntSlider posImageY;
 
 	ofxPanel guiCircle;
 	ofxIntSlider circleRadius;

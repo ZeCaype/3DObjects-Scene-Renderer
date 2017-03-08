@@ -94,7 +94,15 @@ public:
 	bool isKeyPressY;
 	bool isKeyPressZ;
 
+	// Image importée
+	ofImage fond;
+
+	bool isFondLoaded;
+
 	///
+	int posImageX;
+	int posImageY;
+
 	int circleRadius;
 
 	Renderer();
@@ -103,6 +111,10 @@ public:
 	void reset();
 	void update();
 	void draw();
+
+	void setPosImageX(int posX);
+	void setPosImageY(int posY);
+
 	void setRadius(int radius);
 	void setFieldOfView(float fov);
 

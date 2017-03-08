@@ -29,11 +29,14 @@ public:
 	Renderer * renderer;
 
 	Application(Gui *guipam);
-	
+
 	void setup();
 	void update();
 	void draw();
 	void keyPressed(int key);
 	void keyReleased(int key);
+
+	void dragEvent(ofDragInfo dragInfo);
+
 	~Application();
 };
