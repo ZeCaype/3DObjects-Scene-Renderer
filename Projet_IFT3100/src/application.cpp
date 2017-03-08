@@ -76,6 +76,7 @@ void Application::update()
 	renderer->setRadius(gui->getRadius());
 	renderer->setFieldOfView(gui->getFov());
 
+	// Image
 	if (gui->exportButton && gui->exportCheck == false)
 	{
 		int test = ofGetWidth();
@@ -84,6 +85,10 @@ void Application::update()
 		gui->exportCheck = true;
 	}
 	else if (!gui->exportButton) gui->exportCheck = false; 
+	renderer->setPosImageX(gui->getPosImageX());
+	renderer->setPosImageY(gui->getPosImageY());
+	renderer->setSizeImageWidth(gui->getSizeImageWidth());
+	renderer->setSizeImageHeight(gui->getSizeImageHeight());
 
 	renderer->update();
 }
@@ -255,4 +260,21 @@ void Application::keyReleased(int key) {
 		default:
 			break;
 	}
+}
+
+// Fonction invoquée quand une sélection de fichiers est déposée sur la fenêtre de l'application
+void Application::dragEvent(ofDragInfo dragInfo)
+{
+	ofLog() << "<app::ofDragInfo file[0]: " << dragInfo.files.at(0)
+		<< " at : " << dragInfo.position << ">";
+
+	// Importer le premier fichier déposé sur la fenêtre si c'est une image (attention : aucune validation du type de fichier !)
+	renderer->fond.load(dragInfo.files.at(0));
+
+	// Activer le chargement de l'image dans le rendue
+	renderer->isFondLoaded = true;
+
+	/*// Redimensionner la fenêtre aux dimensions de l'image
+	if (renderer->fond.getWidth() > 0 && renderer->fond.getHeight() > 0)
+	ofSetWindowShape(renderer->fond.getWidth(), renderer->fond.getHeight());*/
 }

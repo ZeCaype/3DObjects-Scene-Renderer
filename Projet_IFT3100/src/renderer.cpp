@@ -18,6 +18,10 @@ void Renderer::setup()
 	ofSetFrameRate(60);
 	ofEnableDepthTest();
 
+	posImageX = 0;
+	posImageY = 0;
+	sizeImageWidth = 150;
+	sizeImageHeight = 150;
 	circleRadius = 0;
 	cameraSetupParameters();
 }
@@ -61,6 +65,11 @@ void Renderer::draw()
 {
 	ofTranslate(ofGetWindowWidth() / 2, ofGetWindowHeight() / 2);
 
+	// Afficher l'image de fond sur toute la surface de la fenêtre seulement si isFondLoaded est true
+	ofSetColor(255, 255, 255, 255);
+	if (isFondLoaded == true)
+		fond.draw(posImageX - ofGetWindowWidth() / 2, posImageY - ofGetWindowHeight() / 2, sizeImageWidth, sizeImageHeight);
+
 	camera->begin();
 
 	if (isVisibleCamera)
@@ -89,6 +98,26 @@ void Renderer::draw()
 	}
 
 	camera->end();
+}
+
+void Renderer::setPosImageX(int posX)
+{
+	posImageX = posX;
+}
+
+void Renderer::setPosImageY(int posY)
+{
+	posImageY = posY;
+}
+
+void Renderer::setSizeImageWidth(int sizeW)
+{
+	sizeImageWidth = sizeW;
+}
+
+void Renderer::setSizeImageHeight(int sizeH)
+{
+	sizeImageHeight = sizeH;
 }
 
 void Renderer::setRadius(int radius) 
@@ -167,6 +196,8 @@ void Renderer::cameraSetupParameters() {
 	isCameraFovWide = false;
 
 	isCameraPerspective = true;
+
+	isFondLoaded = false;
 
 	reset();
 
