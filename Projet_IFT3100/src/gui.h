@@ -12,6 +12,10 @@ public:
 	int defaultPosY;
 	int defaultSizeImageWidth;
 	int defaultSizeImageHeight;
+	int defaultHueImage;
+	int defaultSaturationImage;
+	int defaultBrightnessImage;
+	int defaultAlphaImage;
 
 	int defaultCircleRadius;
 	float defaultFov;
@@ -27,6 +31,10 @@ public:
 	int getPosImageY();
 	int getSizeImageWidth();
 	int getSizeImageHeight();
+	int getHueImage();
+	int getSaturationImage();
+	int getBrightnessImage();
+	int getAlphaImage();
 
 	int getRadius();
 	float getFov();
@@ -45,6 +53,10 @@ public:
 	ofxIntSlider posImageY;
 	ofxIntSlider sizeImageWidth;
 	ofxIntSlider sizeImageHeight;
+	ofxIntSlider hueImage;
+	ofxIntSlider saturationImage;
+	ofxIntSlider brightnessImage;
+	ofxIntSlider alphaImage;
 
 	ofxPanel guiCircle;
 	ofxIntSlider circleRadius;

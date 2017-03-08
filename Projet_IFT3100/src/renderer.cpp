@@ -22,6 +22,11 @@ void Renderer::setup()
 	posImageY = 0;
 	sizeImageWidth = 150;
 	sizeImageHeight = 150;
+	hueImage = 0;
+	saturationImage = 0;
+	brightnessImage = 255;
+	alphaImage = 255;
+
 	circleRadius = 0;
 	cameraSetupParameters();
 }
@@ -66,7 +71,8 @@ void Renderer::draw()
 	ofTranslate(ofGetWindowWidth() / 2, ofGetWindowHeight() / 2);
 
 	// Afficher l'image de fond sur toute la surface de la fenêtre seulement si isFondLoaded est true
-	ofSetColor(255, 255, 255, 255);
+	//ofSetColor(255, 255, 255, 255)
+	ofSetColor(ofColor::fromHsb(hueImage, saturationImage, brightnessImage, alphaImage));
 	if (isFondLoaded == true)
 		fond.draw(posImageX - ofGetWindowWidth() / 2, posImageY - ofGetWindowHeight() / 2, sizeImageWidth, sizeImageHeight);
 
@@ -118,6 +124,26 @@ void Renderer::setSizeImageWidth(int sizeW)
 void Renderer::setSizeImageHeight(int sizeH)
 {
 	sizeImageHeight = sizeH;
+}
+
+void Renderer::setHueImage(int hue)
+{
+	hueImage = hue;
+}
+
+void Renderer::setSaturationImage(int sat)
+{
+	saturationImage = sat;
+}
+
+void Renderer::setBrightnessImage(int bright)
+{
+	brightnessImage = bright;
+}
+
+void Renderer::setAlphaImage(int alpha)
+{
+	alphaImage = alpha;
 }
 
 void Renderer::setRadius(int radius) 

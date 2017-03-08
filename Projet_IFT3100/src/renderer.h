@@ -97,13 +97,18 @@ public:
 	// Image importée
 	ofImage fond;
 
+	ofColor couleur;
+
 	bool isFondLoaded;
 
-	///
 	int posImageX;
 	int posImageY;
 	int sizeImageWidth;
 	int sizeImageHeight;
+	int hueImage;
+	int saturationImage;
+	int brightnessImage;
+	int alphaImage;
 
 	int circleRadius;
 
@@ -118,6 +123,10 @@ public:
 	void setPosImageY(int posY);
 	void setSizeImageWidth(int sizeW);
 	void setSizeImageHeight(int sizeH);
+	void setHueImage(int hue);
+	void setSaturationImage(int sat);
+	void setBrightnessImage(int bright);
+	void setAlphaImage(int alpha);
 
 	void setRadius(int radius);
 	void setFieldOfView(float fov);
