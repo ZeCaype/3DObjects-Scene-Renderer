@@ -1,11 +1,11 @@
-#include "renderer.h"
+ï»¿#include "renderer.h"
 
 // Constructeur de la classe Renderer
 Renderer::Renderer()
 {
 }
 
-// Fonction invoquée pour configurer les éléments du framebuffer
+// Fonction invoquï¿½e pour configurer les ï¿½lï¿½ments du framebuffer
 void Renderer::setup()
 {
 	ofSetWindowTitle("Rendue");
@@ -49,7 +49,7 @@ void Renderer::update()
 	else if (!gui->carreButton) gui->carreCheck == false; 
 }
 
-// Fonction invoquée pour ajouter des éléments dans le framebuffer
+// Fonction invoquï¿½e pour ajouter des ï¿½lï¿½ments dans le framebuffer
 void Renderer::draw()
 {
 	ofSetColor(0, 255, 0);
@@ -70,7 +70,7 @@ void Renderer::keyPressed(int key)
 	}
 }
 
-// Fonction permettant d'activer une commande en relâchant une touche
+// Fonction permettant d'activer une commande en relï¿½chant une touche
 void Renderer::keyReleased(int key)
 {
 	switch (key)
@@ -78,15 +78,15 @@ void Renderer::keyReleased(int key)
 	}
 }
 
-// Fonction qui exporte une image à partir de son nom et de son extension, à partir du répertoire ./bin/data ou d'un chemin absolue
+// Fonction qui exporte une image ï¿½ partir de son nom et de son extension, ï¿½ partir du rï¿½pertoire ./bin/data ou d'un chemin absolue
 void Renderer::imageExport(const string name, const string extension) const
 {
 	ofImage imageTemp;
 
-	// Extraire des données temporelles formatées
+	// Extraire des donnï¿½es temporelles formatï¿½es
 	string timestamp = ofGetTimestampString("-%y%m%d-%H%M%S-%i");
 
-	// Générer un nom de fichier unique et ordonné
+	// Gï¿½nï¿½rer un nom de fichier unique et ordonnï¿½
 	string fileName = name + timestamp + "." + extension;
 
 	// Capturer le contenu du framebuffer actif
