@@ -12,19 +12,18 @@ Application::Application(Gui *guipam)
 	isKeyPressJ = false;
 	isKeyPressK = false;
 	isKeyPressQ = false;
+	isKeyPressR = false;
 	isKeyPressS = false;
 	isKeyPressU = false;
 	isKeyPressW = false;
-	isKeyPressX = false;
 	isKeyPressY = false;
-	isKeyPressZ = false;
 
 	renderer = nullptr;
 
 	ofGLFWWindowSettings settings;
 
 	settings.width = 300;
-	settings.height = 300;
+	settings.height = 800;
 	settings.setPosition(ofVec2f(700, 50));
 	settings.resizable = false;
 	shared_ptr<ofAppBaseWindow> guiWindow = ofCreateWindow(settings);
@@ -47,7 +46,7 @@ void Application::update()
 {
 	//Camera/////////////////////////////////////////////////////////////
 	if (renderer->isCameraPerspective)
-		ofSetWindowTitle("camera " + renderer->cameraName + " perpective (1-6 wasdqe uhjkyi zx fgcvb)");
+		ofSetWindowTitle("camera " + renderer->cameraName + " perpective (1-6 wasdqe uhjkyi r)");
 	else
 		ofSetWindowTitle("camera " + renderer->cameraName + " orthographic");
 
@@ -69,13 +68,15 @@ void Application::update()
 	renderer->isCameraRollLeft = isKeyPressY;
 	renderer->isCameraRollRight = isKeyPressI;
 
-	renderer->isCameraFovNarrow = isKeyPressS;
-	renderer->isCameraFovWide = isKeyPressW;
+	//renderer->isCameraFovNarrow = isKeyPressZ;
+	//renderer->isCameraFovWide = isKeyPressX;
 
 	///////////////////////////////////////////////////////////////////////////
 
 	renderer->setRadius(gui->getRadius());
+	renderer->setFieldOfView(gui->getFov());
 
+	// Image
 	if (gui->exportButton && gui->exportCheck == false)
 	{
 		int test = ofGetWidth();
@@ -84,6 +85,10 @@ void Application::update()
 		gui->exportCheck = true;
 	}
 	else if (!gui->exportButton) gui->exportCheck = false; 
+	renderer->setPosImageX(gui->getPosImageX());
+	renderer->setPosImageY(gui->getPosImageY());
+	renderer->setSizeImageWidth(gui->getSizeImageWidth());
+	renderer->setSizeImageHeight(gui->getSizeImageHeight());
 
 	renderer->update();
 }
@@ -100,6 +105,7 @@ Application::~Application()
 }
 
 void Application::keyPressed(int key) {
+
 	switch (key) {
 		case 97:  // key A
 			isKeyPressA = true;
@@ -145,16 +151,8 @@ void Application::keyPressed(int key) {
 			isKeyPressW = true;
 			break;
 
-		case 120: // key X
-			isKeyPressX = true;
-			break;
-
 		case 121: // key Y
 			isKeyPressY = true;
-			break;
-
-		case 122: // key Z
-			isKeyPressZ = true;
 			break;
 
 		default:
@@ -164,7 +162,6 @@ void Application::keyPressed(int key) {
 
 
 void Application::keyReleased(int key) {
-	
 	switch (key) {
 		case 49:  // key 1
 			renderer->cameraActive = Camera::FRONT;
@@ -242,6 +239,7 @@ void Application::keyReleased(int key) {
 
 		case 114: // key R
 			renderer->reset();
+			gui->reset();
 			break;
 
 		case 115: // key S
@@ -256,21 +254,28 @@ void Application::keyReleased(int key) {
 			isKeyPressW = false;
 			break;
 
-		case 120: // key X
-			isKeyPressX = false;
-			ofLog() << "<fov:" << renderer->cameraFov << ">";
-			break;
-
 		case 121: // key Y
 			isKeyPressY = false;
-			break;
-
-		case 122: // key Z
-			ofLog() << "<fov:" << renderer->cameraFov << ">";
-			isKeyPressZ = false;
 			break;
 
 		default:
 			break;
 	}
+}
+
+// Fonction invoquée quand une sélection de fichiers est déposée sur la fenêtre de l'application
+void Application::dragEvent(ofDragInfo dragInfo)
+{
+	ofLog() << "<app::ofDragInfo file[0]: " << dragInfo.files.at(0)
+		<< " at : " << dragInfo.position << ">";
+
+	// Importer le premier fichier déposé sur la fenêtre si c'est une image (attention : aucune validation du type de fichier !)
+	renderer->fond.load(dragInfo.files.at(0));
+
+	// Activer le chargement de l'image dans le rendue
+	renderer->isFondLoaded = true;
+
+	/*// Redimensionner la fenêtre aux dimensions de l'image
+	if (renderer->fond.getWidth() > 0 && renderer->fond.getHeight() > 0)
+	ofSetWindowShape(renderer->fond.getWidth(), renderer->fond.getHeight());*/
 }

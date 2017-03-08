@@ -6,23 +6,43 @@
 class Gui : public ofBaseApp {
 public:
 
+	int offsetX;
+
+	int defaultPosX;
+	int defaultPosY;
+	int defaultSizeImageWidth;
+	int defaultSizeImageHeight;
+
+	int defaultCircleRadius;
+	float defaultFov;
+
 	Gui();
 
 	void setup();
+	void reset();
 	void update();
 	void draw();
-	void dessinerCarre(); 
-	void dessinerCercle();
-	void dessinerTriangle(); 
-	int getRadius();
 
-	ofxPanel gui;
+	int getPosImageX();
+	int getPosImageY();
+	int getSizeImageWidth();
+	int getSizeImageHeight();
+
+	int getRadius();
+	float getFov();
+
+	ofxPanel guiImage;
 	ofxButton exportButton; bool exportCheck;
-	ofxButton carreButton; bool carreCheck;
-	ofxButton cercleButton; bool cercleCheck; 
-	ofxButton triangleButton;  bool triangleCheck; 
+	ofxIntSlider posImageX;
+	ofxIntSlider posImageY;
+	ofxIntSlider sizeImageWidth;
+	ofxIntSlider sizeImageHeight;
+
 	ofxPanel guiCircle;
 	ofxIntSlider circleRadius;
+
+	ofxPanel guiCamera;
+	ofxFloatSlider fovSlider;
 
 	~Gui();
 };

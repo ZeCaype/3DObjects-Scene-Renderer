@@ -18,6 +18,10 @@ void Renderer::setup()
 	ofSetFrameRate(60);
 	ofEnableDepthTest();
 
+	posImageX = 0;
+	posImageY = 0;
+	sizeImageWidth = 150;
+	sizeImageHeight = 150;
 	circleRadius = 0;
 	cameraSetupParameters();
 }
@@ -25,7 +29,7 @@ void Renderer::setup()
 void Renderer::reset()
 {
 	// initialisation des variables
-	sceneOffset = cubeCount * cubeOffset / 2.0f * -1.0f;
+	sceneOffset = 1000 / 2.0f * -1.0f;
 	cameraOffset = sceneOffset * 3.5f * -1.0f;
 
 	// position initiale de chaque caméra
@@ -45,7 +49,7 @@ void Renderer::reset()
 	cameraDown.lookAt(cameraTarget, ofVec3f(1, 0, 0));
 
 	// caméra par défault
-	cameraActive = Camera::BACK;
+	cameraActive = Camera::FRONT;
 
 	ofLog() << "<reset>";
 }
@@ -60,6 +64,11 @@ void Renderer::update()
 void Renderer::draw()
 {
 	ofTranslate(ofGetWindowWidth() / 2, ofGetWindowHeight() / 2);
+
+	// Afficher l'image de fond sur toute la surface de la fenêtre seulement si isFondLoaded est true
+	ofSetColor(255, 255, 255, 255);
+	if (isFondLoaded == true)
+		fond.draw(posImageX - ofGetWindowWidth() / 2, posImageY - ofGetWindowHeight() / 2, sizeImageWidth, sizeImageHeight);
 
 	camera->begin();
 
@@ -79,15 +88,45 @@ void Renderer::draw()
 			cameraDown.draw();
 	}
 
-	ofSetColor(0, 255, 0);
-	ofDrawSphere(0, 0, circleRadius);
+	for (int i = 0; i < 3; i++) {
+		ofSetColor(i * 70, 100 - i*25, 120);
+		ofDrawSphere(i * 300, 0, circleRadius);
+		ofDrawSphere(i * -300, 0, circleRadius);
+		ofSetColor(150, 0, 50 + i * 75);
+		ofDrawSphere(i * 300, 300, circleRadius);
+		ofDrawSphere(i * -300, 300, circleRadius);
+	}
 
 	camera->end();
+}
+
+void Renderer::setPosImageX(int posX)
+{
+	posImageX = posX;
+}
+
+void Renderer::setPosImageY(int posY)
+{
+	posImageY = posY;
+}
+
+void Renderer::setSizeImageWidth(int sizeW)
+{
+	sizeImageWidth = sizeW;
+}
+
+void Renderer::setSizeImageHeight(int sizeH)
+{
+	sizeImageHeight = sizeH;
 }
 
 void Renderer::setRadius(int radius) 
 {
 	circleRadius = radius;
+}
+
+void Renderer::setFieldOfView(float fov) {
+	cameraFov = fov;
 }
 
 // Fonction permettant d'activer une commande en pressant une touche
@@ -137,9 +176,6 @@ void Renderer::cameraSetupParameters() {
 
 	speedDelta = 250.0f;
 
-	cubeCount = 7;
-	cubeOffset = 64.0f;
-
 	isVisibleCamera = false;
 
 	isCameraMoveLeft = false;
@@ -160,6 +196,8 @@ void Renderer::cameraSetupParameters() {
 	isCameraFovWide = false;
 
 	isCameraPerspective = true;
+
+	isFondLoaded = false;
 
 	reset();
 
@@ -265,17 +303,7 @@ void Renderer::updateCamera() {
 
 	if (isCameraPerspective)
 	{
-		if (isCameraFovNarrow)
-		{
-			cameraFov = std::max(cameraFov -= fovDelta * timeElapsed, 0.0f);
-			camera->setFov(cameraFov);
-		}
-
-		if (isCameraFovWide)
-		{
-			cameraFov = std::min(cameraFov += fovDelta * timeElapsed, 180.0f);
-			camera->setFov(cameraFov);
-		}
+		camera->setFov(cameraFov);
 	}
 }
 

@@ -4,7 +4,7 @@
 #include "ofxAssimpModelLoader.h"
 #include "gui.h"
 
-enum class Camera { FRONT, BACK, LEFT, RIGHT, TOP, DOWN, FREE, ORBIT };
+enum class Camera { FRONT, BACK, LEFT, RIGHT, TOP, DOWN};
 
 class Renderer : public ofBaseApp
 {
@@ -45,13 +45,9 @@ public:
 
 	float sceneOffset;
 
-	float cubeOffset;
-
 	float colorOffset;
 
 	float cameraOffset;
-
-	int cubeCount;
 
 	int xIndex;
 	int yIndex;
@@ -98,7 +94,17 @@ public:
 	bool isKeyPressY;
 	bool isKeyPressZ;
 
+	// Image importée
+	ofImage fond;
+
+	bool isFondLoaded;
+
 	///
+	int posImageX;
+	int posImageY;
+	int sizeImageWidth;
+	int sizeImageHeight;
+
 	int circleRadius;
 
 	Renderer();
@@ -107,7 +113,14 @@ public:
 	void reset();
 	void update();
 	void draw();
+
+	void setPosImageX(int posX);
+	void setPosImageY(int posY);
+	void setSizeImageWidth(int sizeW);
+	void setSizeImageHeight(int sizeH);
+
 	void setRadius(int radius);
+	void setFieldOfView(float fov);
 
 	void keyPressed(int key);
 	void keyReleased(int key);
