@@ -5,9 +5,10 @@ Renderer::Renderer()
 {
 }
 
-// Fonction invoqu�e pour configurer les �l�ments du framebuffer
+// Fonction invoquée pour configurer les éléments du framebuffer
 void Renderer::setup()
 {
+	ofLog() << "<renderer::setup>";
 	ofSetWindowTitle("Rendue");
 
 	// Application d'un fond en blanc
@@ -18,43 +19,70 @@ void Renderer::setup()
 	ofEnableDepthTest();
 
 	circleRadius = 0;
+	cameraSetupParameters();
+}
+
+void Renderer::reset()
+{
+	// initialisation des variables
+	sceneOffset = cubeCount * cubeOffset / 2.0f * -1.0f;
+	cameraOffset = sceneOffset * 3.5f * -1.0f;
+
+	// position initiale de chaque caméra
+	cameraFront.setPosition(0, 0, -cameraOffset);
+	cameraBack.setPosition(0, 0, cameraOffset);
+	cameraLeft.setPosition(-cameraOffset, 0, 0);
+	cameraRight.setPosition(cameraOffset, 0, 0);
+	cameraTop.setPosition(0, cameraOffset, 0);
+	cameraDown.setPosition(0, -cameraOffset, 0);
+
+	// orientation de chaque caméra
+	cameraFront.lookAt(cameraTarget);
+	cameraBack.lookAt(cameraTarget);
+	cameraLeft.lookAt(cameraTarget);
+	cameraRight.lookAt(cameraTarget);
+	cameraTop.lookAt(cameraTarget, ofVec3f(1, 0, 0));
+	cameraDown.lookAt(cameraTarget, ofVec3f(1, 0, 0));
+
+	// caméra par défault
+	cameraActive = Camera::BACK;
+
+	ofLog() << "<reset>";
 }
 
 // Ajouter les fonctions des boutons du Gui ici
 void Renderer::update()
 {
-	// Configuration du rayon du cercle
-	setRadius(gui->getRadius());
-
-	// Exportation du rendue de l'image
-
-
-	if (gui->exportButton && gui->exportCheck == false)
-	{
-		int test = ofGetWidth();
-		imageExport("render", "png");
-		ofLog() << "<image is in file /bin/data/" << ">";
-		gui->exportCheck = true;
-	}
-	else if (!gui->exportButton) gui->exportCheck = false;
-
-
-	if (gui->carreButton && gui->carreCheck == false) {
-
-		carredessin(); 
-		gui->carreCheck = true; 
-		ofLog() << "Carre"  ;
-			
-	}
-	else if (!gui->carreButton) gui->carreCheck == false; 
+	updateCamera();
 }
 
-// Fonction invoqu�e pour ajouter des �l�ments dans le framebuffer
+// Fonction invoquée pour ajouter des éléments dans le framebuffer
 void Renderer::draw()
 {
+	ofTranslate(ofGetWindowWidth() / 2, ofGetWindowHeight() / 2);
+
+	camera->begin();
+
+	if (isVisibleCamera)
+	{
+		if (cameraActive != Camera::FRONT)
+			cameraFront.draw();
+		if (cameraActive != Camera::BACK)
+			cameraBack.draw();
+		if (cameraActive != Camera::LEFT)
+			cameraLeft.draw();
+		if (cameraActive != Camera::RIGHT)
+			cameraRight.draw();
+		if (cameraActive != Camera::TOP)
+			cameraTop.draw();
+		if (cameraActive != Camera::DOWN)
+			cameraDown.draw();
+	}
+
 	ofSetColor(0, 255, 0);
-	ofDrawCircle(ofGetWindowWidth() / 2, ofGetWindowHeight() / 2, circleRadius);
-	ofDrawRectangle(10, 10, 10, 10); 
+	ofDrawSphere(0, 0, circleRadius);
+
+	camera->end();
 }
 
 void Renderer::setRadius(int radius) 
@@ -65,28 +93,22 @@ void Renderer::setRadius(int radius)
 // Fonction permettant d'activer une commande en pressant une touche
 void Renderer::keyPressed(int key)
 {
-	switch (key)
-	{
-	}
 }
 
-// Fonction permettant d'activer une commande en rel�chant une touche
+// Fonction permettant d'activer une commande en relâchant une touche
 void Renderer::keyReleased(int key)
 {
-	switch (key)
-	{
-	}
 }
 
-// Fonction qui exporte une image � partir de son nom et de son extension, � partir du r�pertoire ./bin/data ou d'un chemin absolue
+// Fonction qui exporte une image à partir de son nom et de son extension, à partir du répertoire ./bin/data ou d'un chemin absolue
 void Renderer::imageExport(const string name, const string extension) const
 {
 	ofImage imageTemp;
 
-	// Extraire des donn�es temporelles format�es
+	// Extraire des données temporelles formatées
 	string timestamp = ofGetTimestampString("-%y%m%d-%H%M%S-%i");
 
-	// G�n�rer un nom de fichier unique et ordonn�
+	// Générer un nom de fichier unique et ordonné
 	string fileName = name + timestamp + "." + extension;
 
 	// Capturer le contenu du framebuffer actif
@@ -98,13 +120,162 @@ void Renderer::imageExport(const string name, const string extension) const
 	ofLog() << "<export image: " << fileName << ">";
 }
 
-void Renderer::carredessin() const {
-	ofSetColor(0, 255, 0);
-	ofDrawCircle(50, 50, 20);
-	ofLog() << "carre dessin"; 
-}
-
 // Destructeur de la classe Renderer
 Renderer::~Renderer()
 {
 }
+
+void Renderer::cameraSetupParameters() {
+	// paramètres
+	cameraFov = 60.0f;
+	cameraNear = 50.0f;
+	cameraFar = 1750.0f;
+
+	cameraTarget = { 0.0f, 0.0f, 0.0f };
+
+	fovDelta = 16.0f;
+
+	speedDelta = 250.0f;
+
+	cubeCount = 7;
+	cubeOffset = 64.0f;
+
+	isVisibleCamera = false;
+
+	isCameraMoveLeft = false;
+	isCameraMoveRight = false;
+	isCameraMoveUp = false;
+	isCameraMoveDown = false;
+	isCameraMoveForward = false;
+	isCameraMoveBackward = false;
+
+	isCameraTiltUp = false;
+	isCameraTiltDown = false;
+	isCameraPanLeft = false;
+	isCameraPanRight = false;
+	isCameraRollLeft = false;
+	isCameraRollRight = false;
+
+	isCameraFovNarrow = false;
+	isCameraFovWide = false;
+
+	isCameraPerspective = true;
+
+	reset();
+
+	setupCamera();
+}
+
+// fonction de configuration de la caméra active
+void Renderer::setupCamera()
+{
+	switch (cameraActive)
+	{
+	case Camera::FRONT:
+		camera = &cameraFront;
+		cameraName = "front";
+		break;
+
+	case Camera::BACK:
+		camera = &cameraBack;
+		cameraName = "back";
+		break;
+
+	case Camera::LEFT:
+		camera = &cameraLeft;
+		cameraName = "left";
+		break;
+
+	case Camera::RIGHT:
+		camera = &cameraRight;
+		cameraName = "right";
+		break;
+
+	case Camera::TOP:
+		camera = &cameraTop;
+		cameraName = "top";
+		break;
+
+	case Camera::DOWN:
+		camera = &cameraDown;
+		cameraName = "down";
+		break;
+
+	default:
+		break;
+	}
+
+	cameraPosition = camera->getPosition();
+
+	cameraOrientation = camera->getOrientationQuat();
+
+	if (isCameraPerspective)
+	{
+		camera->disableOrtho();
+		camera->setupPerspective(false, cameraFov, cameraNear, cameraFar, ofVec2f(0, 0));
+	}
+	else
+	{
+		camera->enableOrtho();
+	}
+
+	camera->setPosition(cameraPosition);
+	camera->setOrientation(cameraOrientation);
+
+	ofLog() << "<setup camera: " << cameraName << ">";
+}
+
+void Renderer::updateCamera() {
+	timeCurrent = ofGetElapsedTimef();
+	timeElapsed = timeCurrent - timeLast;
+	timeLast = timeCurrent;
+
+	speedTranslation = speedDelta * timeElapsed;
+	speedRotation = speedTranslation / 8.0f;
+
+	if (isCameraMoveLeft)
+		camera->truck(-speedTranslation);
+	if (isCameraMoveRight)
+		camera->truck(speedTranslation);
+
+	if (isCameraMoveUp)
+		camera->boom(speedTranslation);
+	if (isCameraMoveDown)
+		camera->boom(-speedTranslation);
+
+	if (isCameraMoveForward)
+		camera->dolly(-speedTranslation);
+	if (isCameraMoveBackward)
+		camera->dolly(speedTranslation);
+
+	if (isCameraTiltUp)
+		camera->tilt(-speedRotation);
+	if (isCameraTiltDown)
+		camera->tilt(speedRotation);
+
+	if (isCameraPanLeft)
+		camera->pan(speedRotation);
+	if (isCameraPanRight)
+		camera->pan(-speedRotation);
+
+	if (isCameraRollLeft)
+		camera->roll(-speedRotation);
+	if (isCameraRollRight)
+		camera->roll(speedRotation);
+
+	if (isCameraPerspective)
+	{
+		if (isCameraFovNarrow)
+		{
+			cameraFov = std::max(cameraFov -= fovDelta * timeElapsed, 0.0f);
+			camera->setFov(cameraFov);
+		}
+
+		if (isCameraFovWide)
+		{
+			cameraFov = std::min(cameraFov += fovDelta * timeElapsed, 180.0f);
+			camera->setFov(cameraFov);
+		}
+	}
+}
+
