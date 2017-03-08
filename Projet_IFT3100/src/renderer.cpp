@@ -25,7 +25,7 @@ void Renderer::setup()
 void Renderer::reset()
 {
 	// initialisation des variables
-	sceneOffset = cubeCount * cubeOffset / 2.0f * -1.0f;
+	sceneOffset = 1000 / 2.0f * -1.0f;
 	cameraOffset = sceneOffset * 3.5f * -1.0f;
 
 	// position initiale de chaque caméra
@@ -45,7 +45,7 @@ void Renderer::reset()
 	cameraDown.lookAt(cameraTarget, ofVec3f(1, 0, 0));
 
 	// caméra par défault
-	cameraActive = Camera::BACK;
+	cameraActive = Camera::FRONT;
 
 	ofLog() << "<reset>";
 }
@@ -79,8 +79,14 @@ void Renderer::draw()
 			cameraDown.draw();
 	}
 
-	ofSetColor(0, 255, 0);
-	ofDrawSphere(0, 0, circleRadius);
+	for (int i = 0; i < 3; i++) {
+		ofSetColor(i * 70, 100 - i*25, 120);
+		ofDrawSphere(i * 300, 0, circleRadius);
+		ofDrawSphere(i * -300, 0, circleRadius);
+		ofSetColor(150, 0, 50 + i * 75);
+		ofDrawSphere(i * 300, 300, circleRadius);
+		ofDrawSphere(i * -300, 300, circleRadius);
+	}
 
 	camera->end();
 }

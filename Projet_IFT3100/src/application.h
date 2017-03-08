@@ -20,6 +20,7 @@ public:
 	bool isKeyPressJ;
 	bool isKeyPressK;
 	bool isKeyPressQ;
+	bool isKeyPressR;
 	bool isKeyPressS;
 	bool isKeyPressU;
 	bool isKeyPressW;

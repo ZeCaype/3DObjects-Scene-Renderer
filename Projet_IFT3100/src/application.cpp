@@ -12,6 +12,7 @@ Application::Application(Gui *guipam)
 	isKeyPressJ = false;
 	isKeyPressK = false;
 	isKeyPressQ = false;
+	isKeyPressR = false;
 	isKeyPressS = false;
 	isKeyPressU = false;
 	isKeyPressW = false;
@@ -69,8 +70,8 @@ void Application::update()
 	renderer->isCameraRollLeft = isKeyPressY;
 	renderer->isCameraRollRight = isKeyPressI;
 
-	renderer->isCameraFovNarrow = isKeyPressS;
-	renderer->isCameraFovWide = isKeyPressW;
+	renderer->isCameraFovNarrow = isKeyPressZ;
+	renderer->isCameraFovWide = isKeyPressX;
 
 	///////////////////////////////////////////////////////////////////////////
 
@@ -99,6 +100,7 @@ Application::~Application()
 }
 
 void Application::keyPressed(int key) {
+
 	switch (key) {
 		case 97:  // key A
 			isKeyPressA = true;
@@ -163,7 +165,6 @@ void Application::keyPressed(int key) {
 
 
 void Application::keyReleased(int key) {
-	
 	switch (key) {
 		case 49:  // key 1
 			renderer->cameraActive = Camera::FRONT;
