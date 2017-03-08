@@ -11,17 +11,24 @@ void Gui::setup()
 	ofSetWindowTitle("Gui");
 	
 	offsetX = 30;
+	defaultCircleRadius = 205 / 2;
+	defaultFov = 60;
 
 	gui.setup("Panneau", "", offsetX, 30);
 	gui.add(exportButton.setup("Exportation")); exportCheck = false;
 
 	//Cercle UI
 	guiCircle.setup("Sphere", "", offsetX, 90);
-	guiCircle.add(circleRadius.setup("circle radius", 205/2, 5, 200));
+	guiCircle.add(circleRadius.setup("circle radius", defaultCircleRadius, 5, 200));
 
 	//Camera
 	guiCamera.setup("Camera", "", offsetX, 150);
-	guiCamera.add(fovSlider.setup("Field of view", 60, 0, 120));
+	guiCamera.add(fovSlider.setup("Field of view", defaultFov, 0, 120));
+}
+
+void Gui::reset() {
+	defaultCircleRadius = 205/2;
+	defaultFov = 60;
 }
 
 // Fonction

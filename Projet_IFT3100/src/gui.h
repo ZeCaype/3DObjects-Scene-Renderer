@@ -8,12 +8,13 @@ public:
 
 	int offsetX;
 
-
-
+	int defaultCircleRadius;
+	float defaultFov;
 
 	Gui();
 
 	void setup();
+	void reset();
 	void update();
 	void draw();
 	int getRadius();

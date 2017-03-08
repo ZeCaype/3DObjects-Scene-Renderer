@@ -4,7 +4,7 @@
 #include "ofxAssimpModelLoader.h"
 #include "gui.h"
 
-enum class Camera { FRONT, BACK, LEFT, RIGHT, TOP, DOWN, FREE, ORBIT };
+enum class Camera { FRONT, BACK, LEFT, RIGHT, TOP, DOWN};
 
 class Renderer : public ofBaseApp
 {

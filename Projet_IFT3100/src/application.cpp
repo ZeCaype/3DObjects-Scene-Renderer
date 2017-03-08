@@ -46,7 +46,7 @@ void Application::update()
 {
 	//Camera/////////////////////////////////////////////////////////////
 	if (renderer->isCameraPerspective)
-		ofSetWindowTitle("camera " + renderer->cameraName + " perpective (1-6 wasdqe uhjkyi zx fgcvb)");
+		ofSetWindowTitle("camera " + renderer->cameraName + " perpective (1-6 wasdqe uhjkyi r)");
 	else
 		ofSetWindowTitle("camera " + renderer->cameraName + " orthographic");
 
@@ -233,6 +233,7 @@ void Application::keyReleased(int key) {
 
 		case 114: // key R
 			renderer->reset();
+			gui->reset();
 			break;
 
 		case 115: // key S
