@@ -16,16 +16,14 @@ Application::Application(Gui *guipam)
 	isKeyPressS = false;
 	isKeyPressU = false;
 	isKeyPressW = false;
-	isKeyPressX = false;
 	isKeyPressY = false;
-	isKeyPressZ = false;
 
 	renderer = nullptr;
 
 	ofGLFWWindowSettings settings;
 
 	settings.width = 300;
-	settings.height = 300;
+	settings.height = 800;
 	settings.setPosition(ofVec2f(700, 50));
 	settings.resizable = false;
 	shared_ptr<ofAppBaseWindow> guiWindow = ofCreateWindow(settings);
@@ -70,12 +68,13 @@ void Application::update()
 	renderer->isCameraRollLeft = isKeyPressY;
 	renderer->isCameraRollRight = isKeyPressI;
 
-	renderer->isCameraFovNarrow = isKeyPressZ;
-	renderer->isCameraFovWide = isKeyPressX;
+	//renderer->isCameraFovNarrow = isKeyPressZ;
+	//renderer->isCameraFovWide = isKeyPressX;
 
 	///////////////////////////////////////////////////////////////////////////
 
 	renderer->setRadius(gui->getRadius());
+	renderer->setFieldOfView(gui->getFov());
 
 	if (gui->exportButton && gui->exportCheck == false)
 	{
@@ -146,16 +145,8 @@ void Application::keyPressed(int key) {
 			isKeyPressW = true;
 			break;
 
-		case 120: // key X
-			isKeyPressX = true;
-			break;
-
 		case 121: // key Y
 			isKeyPressY = true;
-			break;
-
-		case 122: // key Z
-			isKeyPressZ = true;
 			break;
 
 		default:
@@ -256,18 +247,8 @@ void Application::keyReleased(int key) {
 			isKeyPressW = false;
 			break;
 
-		case 120: // key X
-			isKeyPressX = false;
-			ofLog() << "<fov:" << renderer->cameraFov << ">";
-			break;
-
 		case 121: // key Y
 			isKeyPressY = false;
-			break;
-
-		case 122: // key Z
-			ofLog() << "<fov:" << renderer->cameraFov << ">";
-			isKeyPressZ = false;
 			break;
 
 		default:

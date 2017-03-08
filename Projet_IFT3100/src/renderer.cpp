@@ -96,6 +96,10 @@ void Renderer::setRadius(int radius)
 	circleRadius = radius;
 }
 
+void Renderer::setFieldOfView(float fov) {
+	cameraFov = fov;
+}
+
 // Fonction permettant d'activer une commande en pressant une touche
 void Renderer::keyPressed(int key)
 {
@@ -142,9 +146,6 @@ void Renderer::cameraSetupParameters() {
 	fovDelta = 16.0f;
 
 	speedDelta = 250.0f;
-
-	cubeCount = 7;
-	cubeOffset = 64.0f;
 
 	isVisibleCamera = false;
 
@@ -271,17 +272,7 @@ void Renderer::updateCamera() {
 
 	if (isCameraPerspective)
 	{
-		if (isCameraFovNarrow)
-		{
-			cameraFov = std::max(cameraFov -= fovDelta * timeElapsed, 0.0f);
-			camera->setFov(cameraFov);
-		}
-
-		if (isCameraFovWide)
-		{
-			cameraFov = std::min(cameraFov += fovDelta * timeElapsed, 180.0f);
-			camera->setFov(cameraFov);
-		}
+		camera->setFov(cameraFov);
 	}
 }
 

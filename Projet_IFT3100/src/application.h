@@ -24,9 +24,7 @@ public:
 	bool isKeyPressS;
 	bool isKeyPressU;
 	bool isKeyPressW;
-	bool isKeyPressX;
 	bool isKeyPressY;
-	bool isKeyPressZ;
 
 	Renderer * renderer;
 

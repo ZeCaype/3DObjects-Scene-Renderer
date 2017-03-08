@@ -45,13 +45,9 @@ public:
 
 	float sceneOffset;
 
-	float cubeOffset;
-
 	float colorOffset;
 
 	float cameraOffset;
-
-	int cubeCount;
 
 	int xIndex;
 	int yIndex;
@@ -108,6 +104,7 @@ public:
 	void update();
 	void draw();
 	void setRadius(int radius);
+	void setFieldOfView(float fov);
 
 	void keyPressed(int key);
 	void keyReleased(int key);
