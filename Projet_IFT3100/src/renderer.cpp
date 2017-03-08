@@ -20,6 +20,8 @@ void Renderer::setup()
 
 	posImageX = 0;
 	posImageY = 0;
+	sizeImageWidth = 150;
+	sizeImageHeight = 150;
 	circleRadius = 0;
 	cameraSetupParameters();
 }
@@ -66,7 +68,7 @@ void Renderer::draw()
 	// Afficher l'image de fond sur toute la surface de la fenêtre seulement si isFondLoaded est true
 	ofSetColor(255, 255, 255, 255);
 	if (isFondLoaded == true)
-		fond.draw(posImageX - ofGetWindowWidth() / 2, posImageY - ofGetWindowHeight() / 2, ofGetWindowWidth(), ofGetWindowHeight());
+		fond.draw(posImageX - ofGetWindowWidth() / 2, posImageY - ofGetWindowHeight() / 2, sizeImageWidth, sizeImageHeight);
 
 	camera->begin();
 
@@ -106,6 +108,16 @@ void Renderer::setPosImageX(int posX)
 void Renderer::setPosImageY(int posY)
 {
 	posImageY = posY;
+}
+
+void Renderer::setSizeImageWidth(int sizeW)
+{
+	sizeImageWidth = sizeW;
+}
+
+void Renderer::setSizeImageHeight(int sizeH)
+{
+	sizeImageHeight = sizeH;
 }
 
 void Renderer::setRadius(int radius) 

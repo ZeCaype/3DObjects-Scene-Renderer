@@ -10,6 +10,8 @@ public:
 
 	int defaultPosX;
 	int defaultPosY;
+	int defaultSizeImageWidth;
+	int defaultSizeImageHeight;
 
 	int defaultCircleRadius;
 	float defaultFov;
@@ -23,6 +25,8 @@ public:
 
 	int getPosImageX();
 	int getPosImageY();
+	int getSizeImageWidth();
+	int getSizeImageHeight();
 
 	int getRadius();
 	float getFov();
@@ -31,6 +35,8 @@ public:
 	ofxButton exportButton; bool exportCheck;
 	ofxIntSlider posImageX;
 	ofxIntSlider posImageY;
+	ofxIntSlider sizeImageWidth;
+	ofxIntSlider sizeImageHeight;
 
 	ofxPanel guiCircle;
 	ofxIntSlider circleRadius;

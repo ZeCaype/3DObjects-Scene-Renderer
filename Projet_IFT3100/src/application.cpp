@@ -87,6 +87,8 @@ void Application::update()
 	else if (!gui->exportButton) gui->exportCheck = false; 
 	renderer->setPosImageX(gui->getPosImageX());
 	renderer->setPosImageY(gui->getPosImageY());
+	renderer->setSizeImageWidth(gui->getSizeImageWidth());
+	renderer->setSizeImageHeight(gui->getSizeImageHeight());
 
 	renderer->update();
 }

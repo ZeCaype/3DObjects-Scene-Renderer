@@ -102,6 +102,8 @@ public:
 	///
 	int posImageX;
 	int posImageY;
+	int sizeImageWidth;
+	int sizeImageHeight;
 
 	int circleRadius;
 
@@ -114,6 +116,8 @@ public:
 
 	void setPosImageX(int posX);
 	void setPosImageY(int posY);
+	void setSizeImageWidth(int sizeW);
+	void setSizeImageHeight(int sizeH);
 
 	void setRadius(int radius);
 	void setFieldOfView(float fov);
