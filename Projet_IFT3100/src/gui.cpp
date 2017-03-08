@@ -27,6 +27,7 @@ void Gui::setup()
 }
 
 void Gui::reset() {
+	ofLog() << "<reset gui>";
 	defaultCircleRadius = 205/2;
 	defaultFov = 60;
 }
