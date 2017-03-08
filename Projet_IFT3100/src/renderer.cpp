@@ -27,6 +27,8 @@ void Renderer::update()
 	setRadius(gui->getRadius());
 
 	// Exportation du rendue de l'image
+
+
 	if (gui->exportButton && gui->exportCheck == false)
 	{
 		int test = ofGetWidth();
@@ -35,6 +37,16 @@ void Renderer::update()
 		gui->exportCheck = true;
 	}
 	else if (!gui->exportButton) gui->exportCheck = false;
+
+
+	if (gui->carreButton && gui->carreCheck == false) {
+
+		carredessin(); 
+		gui->carreCheck = true; 
+		ofLog() << "Carre"  ;
+			
+	}
+	else if (!gui->carreButton) gui->carreCheck == false; 
 }
 
 // Fonction invoquée pour ajouter des éléments dans le framebuffer
@@ -42,6 +54,7 @@ void Renderer::draw()
 {
 	ofSetColor(0, 255, 0);
 	ofDrawCircle(ofGetWindowWidth() / 2, ofGetWindowHeight() / 2, circleRadius);
+	ofDrawRectangle(10, 10, 10, 10); 
 }
 
 void Renderer::setRadius(int radius) 
@@ -83,6 +96,12 @@ void Renderer::imageExport(const string name, const string extension) const
 	imageTemp.save(fileName);
 
 	ofLog() << "<export image: " << fileName << ">";
+}
+
+void Renderer::carredessin() const {
+	ofSetColor(0, 255, 0);
+	ofDrawCircle(50, 50, 20);
+	ofLog() << "carre dessin"; 
 }
 
 // Destructeur de la classe Renderer

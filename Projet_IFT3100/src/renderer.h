@@ -20,7 +20,7 @@ public:
 	void keyReleased(int key);
 
 	void imageExport(const string name, const string extension) const;
-
+	void carredessin() const; 
 	shared_ptr<Gui> gui;
 
 	~Renderer();
