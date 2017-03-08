@@ -26,6 +26,10 @@ void Gui::setup()
 	guiImage.add(sizeImageWidth.setup("Longueur de l'image", defaultSizeImageWidth, 25, 600));
 	guiImage.add(sizeImageHeight.setup("Largeur de l'image", defaultSizeImageHeight, 25, 600));
 
+
+	guiImage.add(primitiveCarre.setup("Rectangle")); primitiveCarreCheck = false; 
+	//guiImage.add(primitiveEllipse.setup("Ellipse")); primitiveEllipseCheck = false;
+	//guiImage.add(primitiveTriangle.setup("Triangle")); primitiveTriangleCheck = false;
 	//Cercle UI
 	guiCircle.setup("Sphere", "", offsetX, 160);
 	guiCircle.add(circleRadius.setup("circle radius", defaultCircleRadius, 5, 200));

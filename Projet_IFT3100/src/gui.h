@@ -32,7 +32,15 @@ public:
 	float getFov();
 
 	ofxPanel guiImage;
+
 	ofxButton exportButton; bool exportCheck;
+
+	ofxButton primitiveCarre; bool primitiveCarreCheck; 
+	ofxButton primitiveEllipse; bool primitiveEllipseCheck; 
+	ofxButton primitiveTriangle; bool primitiveTriangleCheck; 
+	
+
+
 	ofxIntSlider posImageX;
 	ofxIntSlider posImageY;
 	ofxIntSlider sizeImageWidth;
