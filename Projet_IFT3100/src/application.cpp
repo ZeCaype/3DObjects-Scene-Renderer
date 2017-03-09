@@ -102,7 +102,6 @@ void Application::update()
 	// Appel de la fonction du triangle
 	if (gui->primitiveTriangle && gui->primitiveTriangleCheck == false)
 	{
-		primitiveTriangle
 		renderer->primitiveTriangle(10, 10);
 		gui->primitiveTriangleCheck = true;
 	}
