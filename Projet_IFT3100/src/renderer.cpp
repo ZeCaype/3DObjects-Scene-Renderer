@@ -3,6 +3,7 @@
 // Constructeur de la classe Renderer
 Renderer::Renderer()
 {
+	light = nullptr;
 }
 
 // Fonction invoquée pour configurer les éléments du framebuffer
@@ -15,9 +16,16 @@ void Renderer::setup()
 	ofBackground(255);
 	ofSetCircleResolution(200);
 
-	// Paramétrisation de l'image
+	// Application des effets
 	ofSetFrameRate(60);
 	ofEnableDepthTest();
+	ofEnableLighting();
+
+	// Paramétrisation de la lumière (enfin de voir les modèles correctement)
+	ofSetSmoothLighting(true);
+	light = new ofLight();
+
+	// Paramétrisation de l'image
 	posRectangleX = 0;
 	posImageX = 0;
 	posImageY = 0;
@@ -34,6 +42,11 @@ void Renderer::setup()
 
 void Renderer::reset()
 {
+	// Initialisation de la lumière
+	light->setAmbientColor(ofColor(255, 255, 255));
+	light->setDiffuseColor(ofColor(255, 255, 255));
+	light->enable();
+
 	// initialisation des variables
 	sceneOffset = 1000 / 2.0f * -1.0f;
 	cameraOffset = sceneOffset * 3.5f * -1.0f;
@@ -72,12 +85,14 @@ void Renderer::draw()
 	ofTranslate(ofGetWindowWidth() / 2, ofGetWindowHeight() / 2);
 
 	// Afficher l'image de fond sur toute la surface de la fenêtre seulement si isFondLoaded est true
-	//ofSetColor(255, 255, 255, 255)
 	ofSetColor(ofColor::fromHsb(hueImage, saturationImage, brightnessImage, alphaImage));
 	if (isFondLoaded == true)
 		fond.draw(posImageX - ofGetWindowWidth() / 2, posImageY - ofGetWindowHeight() / 2, sizeImageWidth, sizeImageHeight);
 
 	camera->begin();
+	
+	// Activation de la lumière
+	light->setPosition(0, 0, -1000);
 
 	// Activation des différentes caméras
 	if (isVisibleCamera)
@@ -277,11 +292,6 @@ void Renderer::primitiveEllispe(int x, int y)
 
 }
 
-// Destructeur de la classe Renderer
-Renderer::~Renderer()
-{
-}
-
 void Renderer::cameraSetupParameters() {
 	// paramètres
 	cameraFov = 60.0f;
@@ -425,3 +435,8 @@ void Renderer::updateCamera() {
 	}
 }
 
+// Destructeur de la classe Renderer
+Renderer::~Renderer()
+{
+	if (light != nullptr) delete light;
+}
