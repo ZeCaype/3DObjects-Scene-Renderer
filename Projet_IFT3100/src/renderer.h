@@ -13,6 +13,9 @@ public:
 	float timeLast;
 	float timeElapsed;
 
+	// Lumière
+	ofLight * light;
+
 	// Caméra
 	Camera cameraActive;
 
@@ -176,15 +179,13 @@ public:
 	void imageExport(const string name, const string extension) const;
 
 
-	
-
 	void carredessin() const; 
 	shared_ptr<Gui> gui;
-
-	~Renderer();
 
 	void cameraSetupParameters();
 	void setupCamera();
 	void updateCamera();
 	void cameraDraw();
+
+	~Renderer();
 };
