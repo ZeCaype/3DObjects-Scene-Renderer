@@ -198,10 +198,10 @@ void Renderer::draw()
 	
 	if (createFormeVectorielle == true)
 	{
-		//int x = posformeVectorielleX;
-		//int y = posformeVectorielleY;
-		int x =-600;
-		int y = -600;
+		int x = posformeVectorielleX;
+		int y = posformeVectorielleY;
+		//int x =-600;
+		//int y = -600;
 		ofSetColor(0, 0, 0);
 		ofDrawEllipse(x - 35, y, 30, 75);
 
@@ -246,10 +246,7 @@ void Renderer::setformeVectorielYSlider(int posX)
 {
 	posformeVectorielleY = posX;
 }
-void Renderer::setPosXSlider(int posX)
-{
-	posRectangleX = posX;
-}
+
 void Renderer::setPosXSlider(int posX)
 {
 	posRectangleX = posX;

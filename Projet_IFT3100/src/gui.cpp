@@ -68,8 +68,8 @@ void Gui::reset() {
 
 	// Forme Vectorielle 
 	guiPrimitive.add(formeVectorielleButton.setup("Forme Vectorielle")); formeVectorielleCheck = false; 
-	guiPrimitive.add(formeVectorielleXSlider.setup("Pos X Ellipse", 450, -1500, 1500));
-	guiPrimitive.add(formeVectorielleYSlider.setup("Pos Y Ellipse", 600, -1500, 1500));
+	guiPrimitive.add(formeVectorielleXSlider.setup("Pos X Vecteur", 450, -1500, 1500));
+	guiPrimitive.add(formeVectorielleYSlider.setup("Pos Y Vecteur", 600, -1500, 1500));
 	//Autres (Couleur slider)
 	guiOptions.setup("Couleur : Primitives", "", offsetX, 665);
 	guiOptions.add(test.setup("Toggle", 0, 0, 30));
