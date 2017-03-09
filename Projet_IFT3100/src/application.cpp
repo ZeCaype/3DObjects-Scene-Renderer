@@ -75,6 +75,7 @@ void Application::update()
 
 	renderer->setRadius(gui->getRadius());
 	renderer->setFieldOfView(gui->getFov());
+	renderer->setPosXSlider(gui->getPosXSlider());
 
 	// Image
 	if (gui->exportButton && gui->exportCheck == false)

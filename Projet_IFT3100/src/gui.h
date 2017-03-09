@@ -62,6 +62,7 @@ public:
 
 	ofxPanel guiPrimitive;
 	ofxFloatSlider posXSlider;
+	ofxFloatSlider posYSlider;
 	ofxButton primitiveCarreButton; bool primitiveCarreCheck;
 	ofxButton primitiveEllipse; bool primitiveEllipseCheck;
 	ofxButton primitiveTriangle; bool primitiveTriangleCheck;

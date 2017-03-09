@@ -28,6 +28,7 @@ public:
 	ofVec3f cameraTarget;
 
 	string cameraName;
+	float posRectangleX;
 
 	float cameraFov;
 	float cameraNear;
@@ -138,7 +139,11 @@ public:
 	void keyReleased(int key);
 
 	void imageExport(const string name, const string extension) const;
+
+
 	void primitiveRectangle(int x, int y);
+	void setPosXSlider(int posX);
+
 	void carredessin() const; 
 	shared_ptr<Gui> gui;
 

@@ -106,10 +106,14 @@ void Renderer::draw()
 	if (createRectangle == true) 
 	{
 		ofSetColor(0, 255, 0);
-		ofDrawRectangle(100, 100, 100, 100);
+		ofDrawRectangle(posRectangleX,50, 100, 100);
 	}
 
 	camera->end();
+}
+void Renderer::setPosXSlider(int posX)
+{
+	posRectangleX = posX;
 }
 
 void Renderer::setPosImageX(int posX)
