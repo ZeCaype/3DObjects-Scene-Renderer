@@ -68,17 +68,21 @@ void Gui::reset() {
 	guiPrimitive.add(tx3.setup("Sommet #3 - Coord 'x'", -156, -600, 600));
 	guiPrimitive.add(ty3.setup("Sommet #3 - Coord 'y'", -174, -600, 600));
 	
-	
+	// Optiosn
+	guiOption.setup("Options", "", offsetX, 750);
+	guiOption.add(exitButton.setup("Quitter l'application"));
 }
 
 // Fonction de mise à jour du gui
 void Gui::update()
 {
+	if (exitButton) std::exit(0);
 }
 
 // Fonction de dessin du gui
 void Gui::draw()
 {
+	guiOption.draw();
 	guiImage.draw();
 	guiCircle.draw();
 	guiCamera.draw();
