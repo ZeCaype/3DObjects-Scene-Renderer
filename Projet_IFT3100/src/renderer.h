@@ -148,9 +148,11 @@ public:
 	float recStroke = 50;
 	float triStroke = 50;
 
-	bool stateToggle;
-	void setToggle(bool state);
-	void Reaction();
+	ofxToggle stateToggle;
+	void setToggle(ofxToggle bouton);
+	void ReactionRec();
+	void ReactionEll();
+	void ReactionLig();
 
 	//------------------------------------------------------------
 	// Initialisation de l'image

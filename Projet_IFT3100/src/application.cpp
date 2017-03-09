@@ -85,6 +85,9 @@ void Application::update()
 	renderer->setToggle(gui->getToggle());
 	renderer->setformeVectorielXSlider(gui->getformeVectorielleXSlider());
 	renderer->setformeVectorielYSlider(gui->getformeVectorielleYSlider());
+	renderer->setToggle(gui->getToggleRectangle());
+	renderer->setToggle(gui->getToggleEllipse());
+	renderer->setToggle(gui->getToggleLigne());
 
 
 	// Appel de la fonction du rectangle
@@ -137,10 +140,18 @@ void Application::update()
 	}
 	else if (!gui->exportButton) gui->exportCheck = false;
 
-	// Appel du Toggle
-	if (gui->test == true)
+	// Appels du Toggle
+	if (gui->rec == true && gui->ell == false && gui->lig == false)
 	{
-		renderer->Reaction();
+		renderer->ReactionRec();
+	}
+	else if (gui->rec == false && gui->ell == true && gui->lig == false)
+	{
+		renderer->ReactionEll();
+	}
+	else if (gui->rec == false && gui->ell == false && gui->lig == true)
+	{
+		renderer->ReactionLig();
 	}
 
 	renderer->update();

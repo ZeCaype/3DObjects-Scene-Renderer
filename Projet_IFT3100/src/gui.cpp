@@ -74,16 +74,29 @@ void Gui::reset() {
 	guiOptions.setup("Couleur : Primitives", "", offsetX, 665);
 	guiOptions.add(test.setup("Toggle", 0, 0, 30));
 	
+	
+
+	guiOptions.setup("Option", "", offsetX, 565);
+	guiOptions.add(rec.setup("Focus Rectangle", 0, 0, 22));
+	guiOptions.add(ell.setup("Focus Ellipse", 0, 0, 22));
+	guiOptions.add(lig.setup("Focus Ligne", 0, 0, 22));
+
+
+	// Optiosn
+	guiOption.setup("Options", "", offsetX, 750);
+	guiOption.add(exitButton.setup("Quitter l'application"));
 }
 
 // Fonction de mise à jour du gui
 void Gui::update()
 {
+	if (exitButton) std::exit(0);
 }
 
 // Fonction de dessin du gui
 void Gui::draw()
 {
+	guiOption.draw();
 	guiImage.draw();
 	guiCircle.draw();
 	guiCamera.draw();
@@ -172,9 +185,19 @@ float Gui::getTY2()
 	return ty2;
 }
 
-bool Gui::getToggle()
+ofxToggle Gui::getToggleRectangle()
 {
-	return test;
+	return rec;
+}
+
+ofxToggle Gui::getToggleEllipse()
+{
+	return ell;
+}
+
+ofxToggle Gui::getToggleLigne()
+{
+	return lig;
 }
 
 float Gui::getposXEllipseSlider() {

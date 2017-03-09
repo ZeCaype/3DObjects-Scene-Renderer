@@ -44,7 +44,9 @@ public:
 	float getformeVectorielleXSlider(); 
 	float getformeVectorielleYSlider(); 
 	
-	bool getToggle();
+	ofxToggle getToggleRectangle();
+	ofxToggle getToggleEllipse();
+	ofxToggle getToggleLigne();
 
 	int getPosImageX();
 	int getPosImageY();
@@ -58,13 +60,14 @@ public:
 
 	int getRadius();
 	float getFov();
-
-	ofxPanel guiImage;
-
-	ofxButton exportButton; bool exportCheck;
 	
+	// Initialisation des fonctions de l'application
+	ofxPanel guiOption;
+	ofxButton exitButton;
 
 	// Initialisation des sliders des paramètres de l'image
+	ofxPanel guiImage;
+	ofxButton exportButton; bool exportCheck;
 	ofxIntSlider posImageX;
 	ofxIntSlider posImageY;
 	ofxIntSlider sizeImageWidth;
@@ -74,9 +77,11 @@ public:
 	ofxIntSlider brightnessImage;
 	ofxIntSlider alphaImage;
 
+	// Initialisation des paramètres du cercle
 	ofxPanel guiCircle;
 	ofxIntSlider circleRadius;
 
+	// Initialisation des paramètres de la caméra
 	ofxPanel guiCamera;
 	ofxFloatSlider fovSlider;
 
@@ -103,7 +108,9 @@ public:
 
 	//Éléments Autres
 	ofxPanel guiOptions;
-	ofxToggle test;
+	ofxToggle rec;
+	ofxToggle ell;
+	ofxToggle lig;
 
 	~Gui();
 };
