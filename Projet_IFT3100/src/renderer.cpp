@@ -15,6 +15,7 @@ void Renderer::setup()
 	ofBackground(255);
 	ofSetCircleResolution(200);
 
+	// Paramétrisation de l'image
 	ofSetFrameRate(60);
 	ofEnableDepthTest();
 	posRectangleX = 0;
@@ -78,6 +79,7 @@ void Renderer::draw()
 
 	camera->begin();
 
+	// Activation des différentes caméras
 	if (isVisibleCamera)
 	{
 		if (cameraActive != Camera::FRONT)
@@ -157,46 +159,48 @@ void Renderer::setposYEllipseSlider(int posY)
 }
 
 
-
+// Fonction de paramétrisation de l'image
+// Update la position en X de l'image
 void Renderer::setPosImageX(int posX)
 {
 	posImageX = posX;
 }
-
+// Update la position en Y de l'image
 void Renderer::setPosImageY(int posY)
 {
 	posImageY = posY;
 }
-
+// Update la longueur de l'image
 void Renderer::setSizeImageWidth(int sizeW)
 {
 	sizeImageWidth = sizeW;
 }
-
+// Update la largeur de l'image
 void Renderer::setSizeImageHeight(int sizeH)
 {
 	sizeImageHeight = sizeH;
 }
-
+// Update Hue du HSB de l'image
 void Renderer::setHueImage(int hue)
 {
 	hueImage = hue;
 }
-
+// Update Saturation du HSB de l'image
 void Renderer::setSaturationImage(int sat)
 {
 	saturationImage = sat;
 }
-
+// Update Brightness du HSB de l'image
 void Renderer::setBrightnessImage(int bright)
 {
 	brightnessImage = bright;
 }
-
+// Update Alpha de l'image
 void Renderer::setAlphaImage(int alpha)
 {
 	alphaImage = alpha;
 }
+
 
 void Renderer::setRadius(int radius) 
 {

@@ -5,9 +5,9 @@
 
 class Gui : public ofBaseApp {
 public:
-
 	int offsetX;
 
+	// Initialisation des paramètres par défaut de l'image
 	int defaultPosX;
 	int defaultPosY;
 	int defaultSizeImageWidth;
@@ -53,8 +53,6 @@ public:
 	int getAlphaImage();
 	
 
-
-
 	int getRadius();
 	float getFov();
 
@@ -63,7 +61,7 @@ public:
 	ofxButton exportButton; bool exportCheck;
 	
 
-
+	// Initialisation des sliders des paramètres de l'image
 	ofxIntSlider posImageX;
 	ofxIntSlider posImageY;
 	ofxIntSlider sizeImageWidth;

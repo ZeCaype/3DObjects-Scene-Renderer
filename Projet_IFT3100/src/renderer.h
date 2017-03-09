@@ -6,11 +6,14 @@
 
 enum class Camera { FRONT, BACK, LEFT, RIGHT, TOP, DOWN};
 
-class Renderer : public ofBaseApp
-{
+class Renderer : public ofBaseApp {
 public:
+	// Paramétrisation du temps
+	float timeCurrent;
+	float timeLast;
+	float timeElapsed;
 
-	//Camera
+	// Caméra
 	Camera cameraActive;
 
 	ofCamera cameraFront;
@@ -29,16 +32,12 @@ public:
 
 	string cameraName;
 	
-
+	// Initialisation de la caméra
 	float cameraFov;
 	float cameraNear;
 	float cameraFar;
 
 	float fovDelta;
-
-	float timeCurrent;
-	float timeLast;
-	float timeElapsed;
 
 	float speedDelta;
 	float speedTranslation;
@@ -54,6 +53,7 @@ public:
 	int yIndex;
 	int zIndex;
 
+	// Initialisation des constantes booléennes
 	bool isVisibleCamera;
 
 	bool isCameraMoveLeft;
@@ -102,7 +102,7 @@ public:
 
 	bool isFondLoaded;
 
-	//Primitives vectorielles
+	// Initialisation des primitives vectorielles
 	float posRectangleX;
 	float posRectangleY;
 
@@ -130,9 +130,7 @@ public:
 	void setposXEllipseSlider(int posX);
 	void setposYEllipseSlider(int posY);
 
-
-
-
+	// Initialisation de l'image
 	int posImageX;
 	int posImageY;
 	int sizeImageWidth;
@@ -151,6 +149,7 @@ public:
 	void update();
 	void draw();
 
+	// Fonctions de la paramétrisation de l'image
 	void setPosImageX(int posX);
 	void setPosImageY(int posY);
 	void setSizeImageWidth(int sizeW);
