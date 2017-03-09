@@ -14,8 +14,8 @@ void Gui::setup()
 	defaultCircleRadius = 205 / 2;
 	defaultFov = 60;
 
-	defaultPosX = 0;
-	defaultPosY = 0;
+	defaultPosX = 50;
+	defaultPosY = 50;
 	defaultSizeImageWidth = 150;
 	defaultSizeImageHeight = 150;
 	defaultHueImage = 0;
@@ -23,6 +23,10 @@ void Gui::setup()
 	defaultBrightnessImage = 255;
 	defaultAlphaImage = 255;
 
+	reset();
+}
+
+void Gui::reset() {
 	//Image
 	guiImage.setup("Image", "", offsetX, 20);
 	guiImage.add(exportButton.setup("Exportation")); exportCheck = false;
@@ -59,21 +63,6 @@ void Gui::setup()
 	guiPrimitive.add(posXTriangleSlider.setup("Pos X Triangle", defaultPosX, -600, 600));
 	guiPrimitive.add(posYTriangleSlider.setup("Pos Y Triangle", defaultPosX, -600, 600));
 	
-}
-
-void Gui::reset() {
-	//Image
-	defaultPosX = 0;
-	defaultPosY = 0;
-	defaultSizeImageWidth = 150;
-	defaultSizeImageHeight = 150;
-	defaultHueImage = 0;
-	defaultSaturationImage = 0;
-	defaultBrightnessImage = 255;
-	defaultAlphaImage = 255;
-	
-	defaultCircleRadius = 205/2;
-	defaultFov = 60;
 }
 
 // Fonction

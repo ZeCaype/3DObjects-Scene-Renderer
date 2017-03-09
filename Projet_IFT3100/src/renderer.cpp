@@ -266,7 +266,7 @@ void Renderer::cameraSetupParameters() {
 	// paramètres
 	cameraFov = 60.0f;
 	cameraNear = 50.0f;
-	cameraFar = 1750.0f;
+	cameraFar = 2500.0f;
 
 	cameraTarget = { 0.0f, 0.0f, 0.0f };
 

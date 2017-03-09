@@ -68,9 +68,6 @@ void Application::update()
 	renderer->isCameraRollLeft = isKeyPressY;
 	renderer->isCameraRollRight = isKeyPressI;
 
-	//renderer->isCameraFovNarrow = isKeyPressZ;
-	//renderer->isCameraFovWide = isKeyPressX;
-
 	///////////////////////////////////////////////////////////////////////////
 
 	renderer->setRadius(gui->getRadius());
