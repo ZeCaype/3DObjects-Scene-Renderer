@@ -42,6 +42,8 @@ public:
 	int getBrightnessImage();
 	int getAlphaImage();
 
+
+
 	int getRadius();
 	float getFov();
 

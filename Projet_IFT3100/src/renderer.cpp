@@ -94,7 +94,7 @@ void Renderer::draw()
 			cameraDown.draw();
 	}
 
-	for (int i = 0; i < 3; i++) {
+	for (int i = 0; i < 2; i++) {
 		ofSetColor(i * 70, 100 - i * 25, 120);
 		ofDrawSphere(i * 300, 0, circleRadius);
 		ofDrawSphere(i * -300, 0, circleRadius);
