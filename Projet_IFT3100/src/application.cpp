@@ -85,6 +85,15 @@ void Application::update()
 		gui->exportCheck = true;
 	}
 	else if (!gui->exportButton) gui->exportCheck = false; 
+
+	// Rectangle
+	if (gui->primitiveCarreButton && gui->primitiveCarreCheck == false)
+	{
+		renderer->primitiveRectangle(10, 10);
+		gui->primitiveCarreCheck = true;
+	}
+	else if (!gui->primitiveCarreButton) gui->primitiveCarreCheck = false;
+
 	renderer->setPosImageX(gui->getPosImageX());
 	renderer->setPosImageY(gui->getPosImageY());
 	renderer->setSizeImageWidth(gui->getSizeImageWidth());

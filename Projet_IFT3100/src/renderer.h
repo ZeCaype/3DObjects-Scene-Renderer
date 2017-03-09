@@ -101,6 +101,9 @@ public:
 
 	bool isFondLoaded;
 
+	//Primitives vectorielles
+	bool createRectangle = false;
+
 	int posImageX;
 	int posImageY;
 	int sizeImageWidth;
@@ -135,6 +138,7 @@ public:
 	void keyReleased(int key);
 
 	void imageExport(const string name, const string extension) const;
+	void primitiveRectangle(int x, int y);
 	void carredessin() const; 
 	shared_ptr<Gui> gui;
 

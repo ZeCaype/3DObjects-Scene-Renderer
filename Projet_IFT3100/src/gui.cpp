@@ -35,10 +35,6 @@ void Gui::setup()
 	guiImage.add(brightnessImage.setup("Brightness", defaultBrightnessImage, 0, 255));
 	guiImage.add(alphaImage.setup("Alpha", defaultAlphaImage, 0, 255));
 
-
-	guiImage.add(primitiveCarre.setup("Rectangle")); primitiveCarreCheck = false; 
-	//guiImage.add(primitiveEllipse.setup("Ellipse")); primitiveEllipseCheck = false;
-	//guiImage.add(primitiveTriangle.setup("Triangle")); primitiveTriangleCheck = false;
 	//Cercle UI
 	guiCircle.setup("Sphere", "", offsetX, 250);
 	guiCircle.add(circleRadius.setup("circle radius", defaultCircleRadius, 5, 200));
@@ -46,6 +42,12 @@ void Gui::setup()
 	//Camera
 	guiCamera.setup("Camera", "", offsetX, 320);
 	guiCamera.add(fovSlider.setup("Field of view", defaultFov, 0, 120));
+
+	//Primitive
+	guiPrimitive.setup("Primitives Vectorielles", "", offsetX, 400);
+	guiPrimitive.add(primitiveCarreButton.setup("Rectangle")); primitiveCarreCheck = false;
+	guiPrimitive.add(primitiveEllipse.setup("Ellipse")); primitiveEllipseCheck = false;
+	guiPrimitive.add(primitiveTriangle.setup("Triangle")); primitiveTriangleCheck = false;
 }
 
 void Gui::reset() {
@@ -74,6 +76,7 @@ void Gui::draw()
 	guiImage.draw();
 	guiCircle.draw();
 	guiCamera.draw();
+	guiPrimitive.draw();
 }
 
 int Gui::getPosImageX()

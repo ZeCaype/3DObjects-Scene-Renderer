@@ -95,12 +95,18 @@ void Renderer::draw()
 	}
 
 	for (int i = 0; i < 3; i++) {
-		ofSetColor(i * 70, 100 - i*25, 120);
+		ofSetColor(i * 70, 100 - i * 25, 120);
 		ofDrawSphere(i * 300, 0, circleRadius);
 		ofDrawSphere(i * -300, 0, circleRadius);
 		ofSetColor(150, 0, 50 + i * 75);
 		ofDrawSphere(i * 300, 300, circleRadius);
 		ofDrawSphere(i * -300, 300, circleRadius);
+	}
+
+	if (createRectangle == true) 
+	{
+		ofSetColor(0, 255, 0);
+		ofDrawRectangle(100, 100, 100, 100);
 	}
 
 	camera->end();
@@ -183,6 +189,12 @@ void Renderer::imageExport(const string name, const string extension) const
 	imageTemp.save(fileName);
 
 	ofLog() << "<export image: " << fileName << ">";
+}
+
+void Renderer::primitiveRectangle(int x, int y)
+{
+	createRectangle = true;
+	ofLog() << "<Test Rectangle:>";
 }
 
 // Destructeur de la classe Renderer

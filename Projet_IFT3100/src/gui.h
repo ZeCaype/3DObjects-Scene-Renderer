@@ -42,10 +42,6 @@ public:
 	ofxPanel guiImage;
 
 	ofxButton exportButton; bool exportCheck;
-
-	ofxButton primitiveCarre; bool primitiveCarreCheck; 
-	ofxButton primitiveEllipse; bool primitiveEllipseCheck; 
-	ofxButton primitiveTriangle; bool primitiveTriangleCheck; 
 	
 
 
@@ -63,6 +59,12 @@ public:
 
 	ofxPanel guiCamera;
 	ofxFloatSlider fovSlider;
+
+	ofxPanel guiPrimitive;
+	ofxFloatSlider posXSlider;
+	ofxButton primitiveCarreButton; bool primitiveCarreCheck;
+	ofxButton primitiveEllipse; bool primitiveEllipseCheck;
+	ofxButton primitiveTriangle; bool primitiveTriangleCheck;
 
 	~Gui();
 };
