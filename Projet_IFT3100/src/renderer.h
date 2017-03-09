@@ -105,6 +105,8 @@ public:
 
 	//Primitives vectorielles
 	bool createRectangle = false;
+	std::list<ofRectangle> listeRectangle;
+	
 
 	int posImageX;
 	int posImageY;

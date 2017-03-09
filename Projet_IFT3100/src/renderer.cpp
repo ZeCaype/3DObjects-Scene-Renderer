@@ -106,7 +106,7 @@ void Renderer::draw()
 	if (createRectangle == true) 
 	{
 		ofSetColor(0, 255, 0);
-		ofDrawRectangle(50,50, posRectangleX, posRectangleY);
+		ofDrawRectangle(50, 50, posRectangleX, posRectangleY);
 	}
 
 	camera->end();
