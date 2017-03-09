@@ -41,33 +41,34 @@ void Gui::reset() {
 	guiImage.add(alphaImage.setup("Alpha", defaultAlphaImage, 0, 255));
 
 	// Cercle UI
-	guiCircle.setup("Sphere", "", offsetX, 250);
+	guiCircle.setup("Sphere", "", offsetX, 220);
 	guiCircle.add(circleRadius.setup("circle radius", defaultCircleRadius, 5, 200));
 
 	// Caméra
-	guiCamera.setup("Camera", "", offsetX, 320);
+	guiCamera.setup("Camera", "", offsetX, 270);
 	guiCamera.add(fovSlider.setup("Field of view", defaultFov, 0, 120));
 
 
 	// Primitive
-	guiPrimitive.setup("Primitives Vectorielles", "", offsetX, 400);
+	guiPrimitive.setup("Primitives Vectorielles", "", offsetX, 330);
 	// Rectangle
 	guiPrimitive.add(primitiveCarreButton.setup("Rectangle")); primitiveCarreCheck = false;
-	guiPrimitive.add(posXSlider.setup("Pos X Rectangle", -600, -600, 600));
-	guiPrimitive.add(posYSlider.setup("Pos Y Rectangle", 312, -600, 600));
+	guiPrimitive.add(posXSlider.setup("Pos X Rectangle", -600, -900, 900));
+	guiPrimitive.add(posYSlider.setup("Pos Y Rectangle", 312, -900, 900));
 	// Ellipse
 	guiPrimitive.add(primitiveEllipse.setup("Ellipse")); primitiveEllipseCheck = false;
-	guiPrimitive.add(posXEllipseSlider.setup("Pos X Ellipse", 450, -600, 600));
-	guiPrimitive.add(posYEllipseSlider.setup("Pos Y Ellipse", 600, -1000, 1000));
+	guiPrimitive.add(posXEllipseSlider.setup("Pos X Ellipse", 450, -1500, 1500));
+	guiPrimitive.add(posYEllipseSlider.setup("Pos Y Ellipse", 600, -1500, 1500));
 	// Triangle
-	guiPrimitive.add(primitiveTriangle.setup("Triangle")); primitiveTriangleCheck = false;
-	guiPrimitive.add(tx1.setup("Sommet #1 - Coord 'x'", 306, -600, 600));
-	guiPrimitive.add(ty1.setup("Sommet #1 - Coord 'y'", 300, -600, 600));
-	guiPrimitive.add(tx2.setup("Sommet #2 - Coord 'x'", 552, -600, 600));
-	guiPrimitive.add(ty2.setup("Sommet #2 - Coord 'y'", -174, -600, 600));
-	guiPrimitive.add(tx3.setup("Sommet #3 - Coord 'x'", -156, -600, 600));
-	guiPrimitive.add(ty3.setup("Sommet #3 - Coord 'y'", -174, -600, 600));
+	guiPrimitive.add(primitiveLigne.setup("Ligne")); primitiveLigneCheck = false;
+	guiPrimitive.add(tx1.setup("Sommet #1 - Coord 'x'", 306, -900, 900));
+	guiPrimitive.add(ty1.setup("Sommet #1 - Coord 'y'", 300, -850, 850));
+	guiPrimitive.add(tx2.setup("Sommet #2 - Coord 'x'", 552, -900, 900));
+	guiPrimitive.add(ty2.setup("Sommet #2 - Coord 'y'", -174, -850, 850));
 	
+	//Autres (Couleur slider)
+	guiOptions.setup("Couleur : Primitives", "", offsetX, 565);
+	guiOptions.add(test.setup("Toggle", 0, 0, 30));
 	
 }
 
@@ -83,6 +84,7 @@ void Gui::draw()
 	guiCircle.draw();
 	guiCamera.draw();
 	guiPrimitive.draw();
+	guiOptions.draw();
 }
 
 // Retourne la position en X de l'image
@@ -126,7 +128,6 @@ int Gui::getAlphaImage()
 	return alphaImage;
 }
 
-
 int Gui::getRadius() 
 {
 	return circleRadius;
@@ -157,11 +158,6 @@ float Gui::getTX2()
 	return tx2;
 }
 
-float Gui::getTX3()
-{
-	return tx3;
-}
-
 float Gui::getTY1()
 {
 	return ty1;
@@ -172,9 +168,9 @@ float Gui::getTY2()
 	return ty2;
 }
 
-float Gui::getTY3()
+bool Gui::getToggle()
 {
-	return ty3;
+	return test;
 }
 
 float Gui::getposXEllipseSlider() {

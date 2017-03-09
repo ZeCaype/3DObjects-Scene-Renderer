@@ -35,17 +35,13 @@ public:
 
 	float getTX1(); 
 	float getTX2();
-	float getTX3();
 	float getTY1();
 	float getTY2();
-	float getTY3();
-	
-
 
 	float getposXEllipseSlider(); 
 	float getposYEllipseSlider();	
 	
-
+	bool getToggle();
 
 	int getPosImageX();
 	int getPosImageY();
@@ -81,22 +77,24 @@ public:
 	ofxPanel guiCamera;
 	ofxFloatSlider fovSlider;
 
+	//Éléments pour les primitives vectorielles
 	ofxPanel guiPrimitive;
 	ofxFloatSlider posXSlider;
 	ofxFloatSlider posYSlider;
 	ofxFloatSlider tx1;
 	ofxFloatSlider tx2;
-	ofxFloatSlider tx3;
 	ofxFloatSlider ty1;
 	ofxFloatSlider ty2;
-	ofxFloatSlider ty3;
 	ofxFloatSlider posXEllipseSlider;
 	ofxFloatSlider posYEllipseSlider;
 
-
 	ofxButton primitiveCarreButton; bool primitiveCarreCheck;
 	ofxButton primitiveEllipse; bool primitiveEllipseCheck;
-	ofxButton primitiveTriangle; bool primitiveTriangleCheck;
+	ofxButton primitiveLigne; bool primitiveLigneCheck;
+
+	//Éléments Autres
+	ofxPanel guiOptions;
+	ofxToggle test;
 
 	~Gui();
 };

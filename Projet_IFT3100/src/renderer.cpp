@@ -122,21 +122,78 @@ void Renderer::draw()
 	
 	if (createRectangle == true) 
 	{
-		ofSetColor(0, 255, 0);
-		ofDrawRectangle(50, 50, posRectangleX, posRectangleY);
+		if (posRectangleX > 0 && posRectangleY > 0)
+		{
+			ofSetColor(0, 255, 0); //Couleur de l'intérieur du Rectangle
+			ofDrawRectangle(50 + (recStroke / 2), 50 + (recStroke / 2), posRectangleX, posRectangleY);
+			ofSetColor(0, 0, 0); //Couleur de la stroke du rectangle
+			ofDrawRectangle(50, 50, posRectangleX + recStroke, posRectangleY + recStroke);
+		}
+
+		else if (posRectangleX < 0 && posRectangleY < 0)
+		{
+			ofSetColor(0, 255, 0); //Couleur de l'intérieur du Rectangle
+			ofDrawRectangle(50 - (recStroke / 2), 50 - (recStroke / 2), posRectangleX, posRectangleY);
+			ofSetColor(0, 0, 0); //Couleur de la stroke du rectangle
+			ofDrawRectangle(50, 50, posRectangleX - recStroke, posRectangleY - recStroke);
+		}
+
+		else if (posRectangleX > 0 && posRectangleY < 0)
+		{
+			ofSetColor(0, 255, 0); //Couleur de l'intérieur du Rectangle
+			ofDrawRectangle(50 + (recStroke / 2), 50 - (recStroke / 2), posRectangleX, posRectangleY);
+			ofSetColor(0, 0, 0); //Couleur de la stroke du rectangle
+			ofDrawRectangle(50, 50, posRectangleX + recStroke, posRectangleY - recStroke);
+		}
+
+		else if (posRectangleX < 0 && posRectangleY > 0)
+		{
+			ofSetColor(0, 255, 0); //Couleur de l'intérieur du Rectangle
+			ofDrawRectangle(50 - (recStroke / 2), 50 + (recStroke / 2), posRectangleX, posRectangleY);
+			ofSetColor(0, 0, 0); //Couleur de la stroke du rectangle
+			ofDrawRectangle(50, 50, posRectangleX - recStroke, posRectangleY + recStroke);
+		}
 	}
 
 	if (createEllipse == true)
 	{
-		ofSetColor(0, 255, 0);
-		ofDrawEllipse(10,10, posEllipseX, posEllipseY);
+		if (posEllipseX > 0 && posEllipseY > 0) 
+		{
+			ofSetColor(0, 255, 0);
+			ofDrawEllipse(10, 10, posEllipseX, posEllipseY);
+			ofSetColor(0, 0, 0); //Couleur de la stroke de L'ellipse
+			ofDrawEllipse(10, 10, posEllipseX + ellipseStroke, posEllipseY + ellipseStroke);
+		}
+
+		else if (posEllipseX < 0 && posEllipseY < 0)
+		{
+			ofSetColor(0, 255, 0);
+			ofDrawEllipse(10, 10, posEllipseX, posEllipseY);
+			ofSetColor(0, 0, 0); //Couleur de la stroke de L'ellipse
+			ofDrawEllipse(10, 10, posEllipseX - ellipseStroke, posEllipseY - ellipseStroke);
+		}
+
+		else if (posEllipseX > 0 && posEllipseY < 0)
+		{
+			ofSetColor(0, 255, 0);
+			ofDrawEllipse(10, 10, posEllipseX, posEllipseY);
+			ofSetColor(0, 0, 0); //Couleur de la stroke de L'ellipse
+			ofDrawEllipse(10, 10, posEllipseX + ellipseStroke, posEllipseY - ellipseStroke);
+		}
+
+		else if (posEllipseX < 0 && posEllipseY > 0)
+		{
+			ofSetColor(0, 255, 0);
+			ofDrawEllipse(10, 10, posEllipseX, posEllipseY);
+			ofSetColor(0, 0, 0); //Couleur de la stroke de L'ellipse
+			ofDrawEllipse(10, 10, posEllipseX - ellipseStroke, posEllipseY + ellipseStroke);
+		}
 	}
 
-	if (createTriangle == true)
+	if (createLigne == true)
 	{
-		ofSetColor(0, 0, 0);
-		ofDrawTriangle(tx1, ty1, tx2, ty2, tx3, ty3);
-		
+		ofSetColor(0, 255, 0);
+		ofDrawLine(tx1, ty1, tx2, ty2);
 	}
 
 	camera->end();
@@ -160,10 +217,6 @@ void Renderer::setTX2(int posX)
 {
 	tx2 = posX;
 }
-void Renderer::setTX3(int posX)
-{
-	tx3 = posX;
-}
 
 void Renderer::setTY1(int posY)
 {
@@ -173,11 +226,6 @@ void Renderer::setTY1(int posY)
 void Renderer::setTY2(int posY)
 {
 	ty2 = posY;
-}
-
-void Renderer::setTY3(int posY)
-{
-	ty3 = posY;
 }
 
 void Renderer::setposXEllipseSlider(int posX)
@@ -190,6 +238,15 @@ void Renderer::setposYEllipseSlider(int posY)
 	posEllipseY = posY;
 }
 
+void Renderer::setToggle(bool state)
+{
+	stateToggle = state;
+}
+
+void Renderer::Reaction() 
+{
+	ofLog() << "<JE TOGGLE>";
+}
 
 // Fonction de paramétrisation de l'image
 // Update la position en X de l'image
@@ -279,10 +336,10 @@ void Renderer::primitiveRectangle(int x, int y)
 	ofLog() << "<Test Rectangle:>";
 }
 
-void Renderer::primitiveTriangle(int x, int y)
+void Renderer::primitiveLigne(int x, int y)
 {
-	createTriangle = true;
-	ofLog() << "<Test Triangle:>";
+	createLigne = true;
+	ofLog() << "<Test Ligne:>";
 
 }
 
