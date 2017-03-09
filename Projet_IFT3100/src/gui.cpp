@@ -45,11 +45,18 @@ void Gui::setup()
 
 	//Primitive
 	guiPrimitive.setup("Primitives Vectorielles", "", offsetX, 400);
+
 	guiPrimitive.add(primitiveCarreButton.setup("Rectangle")); primitiveCarreCheck = false;
 	guiPrimitive.add(posXSlider.setup("Pos X Rectangle", defaultPosX, -600, 600));
 	guiPrimitive.add(posYSlider.setup("Pos Y Rectangle", defaultPosY, 20, 600));
+
 	guiPrimitive.add(primitiveEllipse.setup("Ellipse")); primitiveEllipseCheck = false;
+	
 	guiPrimitive.add(primitiveTriangle.setup("Triangle")); primitiveTriangleCheck = false;
+	guiPrimitive.add(posTriangleSliderX.setup("Pos X Triangle", defaultPosX, -600, 600));
+	guiPrimitive.add(posTriangleSliderY.setup("Pos Y Triangle", defaultPosY, -600, 600));
+
+
 }
 
 void Gui::reset() {
