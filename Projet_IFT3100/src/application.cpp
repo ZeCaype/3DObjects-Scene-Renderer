@@ -1,9 +1,11 @@
 ﻿#include "Application.h"
 
+// Constructeur de la classe Application
 Application::Application(Gui *guipam) 
 {
 	gui = guipam;
 
+	// Déclaration des touches de clavier
 	isKeyPressA = false;
 	isKeyPressD = false;
 	isKeyPressE = false;
@@ -20,8 +22,8 @@ Application::Application(Gui *guipam)
 
 	renderer = nullptr;
 
+	// Paramétrisation de la fenêtre du gui
 	ofGLFWWindowSettings settings;
-
 	settings.width = 300;
 	settings.height = 800;
 	settings.setPosition(ofVec2f(700, 50));
@@ -32,25 +34,26 @@ Application::Application(Gui *guipam)
 	ofRunApp(guiWindow, guiApp);
 }
 
-//--------------------------------------------------------------
+// Paramétrisation de la classe Application
 void Application::setup() 
 {
 	ofLog() << "<application::setup>";
 
+	// Initialisation de la paramétrisation du rendue
 	renderer = new Renderer();
 	renderer->setup();
 }
 
 //--------------------------------------------------------------
-void Application::update() 
+void Application::update()
 {
-	//Camera/////////////////////////////////////////////////////////////
+	// Appel des fonctions de la caméra
 	if (renderer->isCameraPerspective)
 		ofSetWindowTitle("camera " + renderer->cameraName + " perpective (1-6 wasdqe uhjkyi r)");
 	else
 		ofSetWindowTitle("camera " + renderer->cameraName + " orthographic");
 
-	renderer->isCameraMoveForward =  isKeyPressW;
+	renderer->isCameraMoveForward = isKeyPressW;
 	renderer->isCameraMoveBackward = isKeyPressS;
 
 	renderer->isCameraMoveLeft = isKeyPressA;
@@ -68,34 +71,39 @@ void Application::update()
 	renderer->isCameraRollLeft = isKeyPressY;
 	renderer->isCameraRollRight = isKeyPressI;
 
-	//renderer->isCameraFovNarrow = isKeyPressZ;
-	//renderer->isCameraFovWide = isKeyPressX;
-
-	///////////////////////////////////////////////////////////////////////////
-
+	// Appel des fonctions de la paramétrisation des formes géométriques
 	renderer->setRadius(gui->getRadius());
 	renderer->setFieldOfView(gui->getFov());
 	renderer->setPosXSlider(gui->getPosXSlider());
 	renderer->setPosYSlider(gui->getPosYSlider());
+	renderer->setposXTriangleSlider(gui->getposXTriangleSlider());
+	renderer->setposYTriangleSlider(gui->getposYTriangleSlider());
+	renderer->setposXEllipseSlider(gui->getposXEllipseSlider());
+	renderer->setposYEllipseSlider(gui->getposYEllipseSlider());
 
-	// Image
-	if (gui->exportButton && gui->exportCheck == false)
-	{
-		int test = ofGetWidth();
-		renderer->imageExport("render", "png");
-		ofLog() << "<image is in file /bin/data/" << ">";
-		gui->exportCheck = true;
-	}
-	else if (!gui->exportButton) gui->exportCheck = false; 
-
-	// Rectangle
+	// Appel de la fonction du rectangle
 	if (gui->primitiveCarreButton && gui->primitiveCarreCheck == false)
 	{
 		renderer->primitiveRectangle(10, 10);
 		gui->primitiveCarreCheck = true;
 	}
 	else if (!gui->primitiveCarreButton) gui->primitiveCarreCheck = false;
+	// Appel de la fonction de l'ellipse
+	if (gui->primitiveEllipse && gui->primitiveEllipseCheck == false)
+	{
+		renderer->primitiveEllispe(10,10);
+		gui->primitiveEllipseCheck = true;
+	}
+	else if (!gui->primitiveEllipse) gui->primitiveEllipseCheck = false;
+	// Appel de la fonction du triangle
+	if (gui->primitiveTriangle && gui->primitiveTriangleCheck == false)
+	{
+		renderer->primitiveTriangle(10, 10);
+		gui->primitiveTriangleCheck = true;
+	}
+	else if (!gui->primitiveTriangle) gui->primitiveTriangleCheck = false;
 
+	// Appel des fonction de la paramétrisation de l'image
 	renderer->setPosImageX(gui->getPosImageX());
 	renderer->setPosImageY(gui->getPosImageY());
 	renderer->setSizeImageWidth(gui->getSizeImageWidth());
@@ -104,21 +112,26 @@ void Application::update()
 	renderer->setSaturationImage(gui->getSaturationImage());
 	renderer->setBrightnessImage(gui->getBrightnessImage());
 	renderer->setAlphaImage(gui->getAlphaImage());
+	// Appel de la fonction d'exportation de l'image
+	if (gui->exportButton && gui->exportCheck == false)
+	{
+		int test = ofGetWidth();
+		renderer->imageExport("render", "png");
+		ofLog() << "<image is in file /bin/data/" << ">";
+		gui->exportCheck = true;
+	}
+	else if (!gui->exportButton) gui->exportCheck = false;
 
 	renderer->update();
 }
 
-void Application::draw() {
+// Appel de la fonction pour dessiner sur le rendue
+void Application::draw() 
+{
 	renderer->draw();
 }
 
-
-Application::~Application()
-{
-	if (nullptr != renderer)
-		delete renderer;
-}
-
+// Appel des fonctions lorsqu'une touche donnée est appuyée
 void Application::keyPressed(int key) {
 
 	switch (key) {
@@ -175,7 +188,7 @@ void Application::keyPressed(int key) {
 	}
 }
 
-
+// Appel des fonctions d'une touche appuyée donnée lorsqu'elle est relachée
 void Application::keyReleased(int key) {
 	switch (key) {
 		case 49:  // key 1
@@ -281,6 +294,7 @@ void Application::keyReleased(int key) {
 // Fonction invoquée quand une sélection de fichiers est déposée sur la fenêtre de l'application
 void Application::dragEvent(ofDragInfo dragInfo)
 {
+	// Message de confirmation dans la console
 	ofLog() << "<app::ofDragInfo file[0]: " << dragInfo.files.at(0)
 		<< " at : " << dragInfo.position << ">";
 
@@ -290,7 +304,14 @@ void Application::dragEvent(ofDragInfo dragInfo)
 	// Activer le chargement de l'image dans le rendue
 	renderer->isFondLoaded = true;
 
-	/*// Redimensionner la fenêtre aux dimensions de l'image
-	if (renderer->fond.getWidth() > 0 && renderer->fond.getHeight() > 0)
+	// Redimensionner la fenêtre aux dimensions de l'image
+	/*if (renderer->fond.getWidth() > 0 && renderer->fond.getHeight() > 0)
 	ofSetWindowShape(renderer->fond.getWidth(), renderer->fond.getHeight());*/
+}
+
+// Destructeur de la classe Application
+Application::~Application()
+{
+	if (nullptr != renderer)
+		delete renderer;
 }

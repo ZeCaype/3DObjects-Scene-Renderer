@@ -6,11 +6,14 @@
 
 enum class Camera { FRONT, BACK, LEFT, RIGHT, TOP, DOWN};
 
-class Renderer : public ofBaseApp
-{
+class Renderer : public ofBaseApp {
 public:
+	// Paramétrisation du temps
+	float timeCurrent;
+	float timeLast;
+	float timeElapsed;
 
-	//Camera
+	// Caméra
 	Camera cameraActive;
 
 	ofCamera cameraFront;
@@ -28,18 +31,13 @@ public:
 	ofVec3f cameraTarget;
 
 	string cameraName;
-	float posRectangleX;
-	float posRectangleY;
-
+	
+	// Initialisation de la caméra
 	float cameraFov;
 	float cameraNear;
 	float cameraFar;
 
 	float fovDelta;
-
-	float timeCurrent;
-	float timeLast;
-	float timeElapsed;
 
 	float speedDelta;
 	float speedTranslation;
@@ -55,6 +53,7 @@ public:
 	int yIndex;
 	int zIndex;
 
+	// Initialisation des constantes booléennes
 	bool isVisibleCamera;
 
 	bool isCameraMoveLeft;
@@ -103,11 +102,35 @@ public:
 
 	bool isFondLoaded;
 
-	//Primitives vectorielles
-	bool createRectangle = false;
-	std::list<ofRectangle> listeRectangle;
+	// Initialisation des primitives vectorielles
+	float posRectangleX;
+	float posRectangleY;
+
+	float posTriangleX;
+	float posTriangleY;
 	
 
+	float posEllipseX;
+	float posEllipseY;
+
+	bool createRectangle = false;
+	bool createEllipse = false;
+	bool createTriangle = false;
+
+	void primitiveRectangle(int x, int y);
+	void primitiveTriangle(int x, int y);
+	void primitiveEllispe(int x, int y);
+
+	void setPosXSlider(int posX);
+	void setPosYSlider(int posY);
+
+	void setposXTriangleSlider(int posX);
+	void setposYTriangleSlider(int posY);
+
+	void setposXEllipseSlider(int posX);
+	void setposYEllipseSlider(int posY);
+
+	// Initialisation de l'image
 	int posImageX;
 	int posImageY;
 	int sizeImageWidth;
@@ -126,6 +149,7 @@ public:
 	void update();
 	void draw();
 
+	// Fonctions de la paramétrisation de l'image
 	void setPosImageX(int posX);
 	void setPosImageY(int posY);
 	void setSizeImageWidth(int sizeW);
@@ -144,9 +168,7 @@ public:
 	void imageExport(const string name, const string extension) const;
 
 
-	void primitiveRectangle(int x, int y);
-	void setPosXSlider(int posX);
-	void setPosYSlider(int posY);
+	
 
 	void carredessin() const; 
 	shared_ptr<Gui> gui;

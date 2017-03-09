@@ -5,9 +5,9 @@
 
 class Gui : public ofBaseApp {
 public:
-
 	int offsetX;
 
+	// Initialisation des paramètres par défaut de l'image
 	int defaultPosX;
 	int defaultPosY;
 	int defaultSizeImageWidth;
@@ -33,6 +33,16 @@ public:
 	float posX;
 	float posY;
 
+	float getposXTriangleSlider(); 
+	float getposYTriangleSlider();
+	
+
+
+	float getposXEllipseSlider(); 
+	float getposYEllipseSlider();	
+	
+
+
 	int getPosImageX();
 	int getPosImageY();
 	int getSizeImageWidth();
@@ -41,8 +51,7 @@ public:
 	int getSaturationImage();
 	int getBrightnessImage();
 	int getAlphaImage();
-
-
+	
 
 	int getRadius();
 	float getFov();
@@ -52,7 +61,7 @@ public:
 	ofxButton exportButton; bool exportCheck;
 	
 
-
+	// Initialisation des sliders des paramètres de l'image
 	ofxIntSlider posImageX;
 	ofxIntSlider posImageY;
 	ofxIntSlider sizeImageWidth;
@@ -71,6 +80,11 @@ public:
 	ofxPanel guiPrimitive;
 	ofxFloatSlider posXSlider;
 	ofxFloatSlider posYSlider;
+	ofxFloatSlider posXTriangleSlider;
+	ofxFloatSlider posYTriangleSlider;
+	ofxFloatSlider posXEllipseSlider;
+	ofxFloatSlider posYEllipseSlider;
+
 
 	ofxButton primitiveCarreButton; bool primitiveCarreCheck;
 	ofxButton primitiveEllipse; bool primitiveEllipseCheck;

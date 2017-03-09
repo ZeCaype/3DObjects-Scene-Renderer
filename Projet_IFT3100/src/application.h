@@ -8,10 +8,8 @@
 class Application : public ofBaseApp {
 
 private:
-	
 	Gui * gui;
 public:
-
 	bool isKeyPressA;
 	bool isKeyPressD;
 	bool isKeyPressE;
@@ -33,6 +31,7 @@ public:
 	void setup();
 	void update();
 	void draw();
+
 	void keyPressed(int key);
 	void keyReleased(int key);
 

@@ -7,6 +7,7 @@
 // Point d'entrée de l'application
 int main() 
 {
+	// Paramétrisation de la fenêtre du rendue
 	ofGLFWWindowSettings settings;
 	settings.width = 600;
 	settings.height = 600;
@@ -14,6 +15,7 @@ int main()
 	settings.resizable = true;
 	shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);
 
+	// Initialisation du programme
 	shared_ptr<Application> mainApp(new Application(new Gui()));
 	ofRunApp(mainWindow, mainApp);
 	ofRunMainLoop();

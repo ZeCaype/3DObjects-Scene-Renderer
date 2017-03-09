@@ -15,6 +15,7 @@ void Renderer::setup()
 	ofBackground(255);
 	ofSetCircleResolution(200);
 
+	// Paramétrisation de l'image
 	ofSetFrameRate(60);
 	ofEnableDepthTest();
 	posRectangleX = 0;
@@ -78,6 +79,7 @@ void Renderer::draw()
 
 	camera->begin();
 
+	// Activation des différentes caméras
 	if (isVisibleCamera)
 	{
 		if (cameraActive != Camera::FRONT)
@@ -109,6 +111,22 @@ void Renderer::draw()
 		ofDrawRectangle(50, 50, posRectangleX, posRectangleY);
 	}
 
+	if (createEllipse == true)
+	{
+		ofSetColor(0, 255, 0);
+		ofDrawEllipse(10,10, posEllipseX, posEllipseY);
+		ofLog() << "Ellipse";
+	}
+	ofSetColor(0, 255, 0);
+	ofDrawTriangle(140, 140, 160, 160, 170, 170);
+	if (createEllipse == true)
+	{
+		
+
+		
+		ofLog() << "Triangle";
+	}
+
 	camera->end();
 }
 void Renderer::setPosXSlider(int posX)
@@ -121,45 +139,68 @@ void Renderer::setPosYSlider(int posY)
 	posRectangleY = posY;
 }
 
+void Renderer::setposXTriangleSlider(int posX)
+{
+	posTriangleX = posX;
+}
+
+void Renderer::setposYTriangleSlider(int posY)
+{
+	posTriangleY = posY;
+}
+void Renderer::setposXEllipseSlider(int posX)
+{
+	posEllipseX = posX;
+}
+
+void Renderer::setposYEllipseSlider(int posY)
+{
+	posEllipseY = posY;
+}
+
+
+// Fonction de paramétrisation de l'image
+// Update la position en X de l'image
 void Renderer::setPosImageX(int posX)
 {
 	posImageX = posX;
 }
-
+// Update la position en Y de l'image
 void Renderer::setPosImageY(int posY)
 {
 	posImageY = posY;
 }
-
+// Update la longueur de l'image
 void Renderer::setSizeImageWidth(int sizeW)
 {
 	sizeImageWidth = sizeW;
 }
-
+// Update la largeur de l'image
 void Renderer::setSizeImageHeight(int sizeH)
 {
 	sizeImageHeight = sizeH;
 }
-
+// Update Hue du HSB de l'image
 void Renderer::setHueImage(int hue)
 {
 	hueImage = hue;
 }
-
+// Update Saturation du HSB de l'image
 void Renderer::setSaturationImage(int sat)
 {
 	saturationImage = sat;
 }
-
+// Update Brightness du HSB de l'image
 void Renderer::setBrightnessImage(int bright)
 {
 	brightnessImage = bright;
 }
-
+// Update Alpha de l'image
 void Renderer::setAlphaImage(int alpha)
 {
 	alphaImage = alpha;
 }
+
 
 void Renderer::setRadius(int radius) 
 {
@@ -206,6 +247,20 @@ void Renderer::primitiveRectangle(int x, int y)
 	ofLog() << "<Test Rectangle:>";
 }
 
+void Renderer::primitiveTriangle(int x, int y)
+{
+	createTriangle = true;
+	ofLog() << "<Test Triangle:>";
+
+}
+
+void Renderer::primitiveEllispe(int x, int y)
+{
+	createEllipse = true;
+	ofLog() << "<Test Ellipse:>";
+
+}
+
 // Destructeur de la classe Renderer
 Renderer::~Renderer()
 {
@@ -215,7 +270,7 @@ void Renderer::cameraSetupParameters() {
 	// paramètres
 	cameraFov = 60.0f;
 	cameraNear = 50.0f;
-	cameraFar = 1750.0f;
+	cameraFar = 2500.0f;
 
 	cameraTarget = { 0.0f, 0.0f, 0.0f };
 

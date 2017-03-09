@@ -14,8 +14,9 @@ void Gui::setup()
 	defaultCircleRadius = 205 / 2;
 	defaultFov = 60;
 
-	defaultPosX = 0;
-	defaultPosY = 0;
+	// Paramétrisation par défaut de l'image
+	defaultPosX = 50;
+	defaultPosY = 50;
 	defaultSizeImageWidth = 150;
 	defaultSizeImageHeight = 150;
 	defaultHueImage = 0;
@@ -23,7 +24,11 @@ void Gui::setup()
 	defaultBrightnessImage = 255;
 	defaultAlphaImage = 255;
 
-	//Image
+	reset();
+}
+
+void Gui::reset() {
+	// Image
 	guiImage.setup("Image", "", offsetX, 20);
 	guiImage.add(exportButton.setup("Exportation")); exportCheck = false;
 	guiImage.add(posImageX.setup("Position X de l'image", defaultPosX, 0, 600));
@@ -35,44 +40,38 @@ void Gui::setup()
 	guiImage.add(brightnessImage.setup("Brightness", defaultBrightnessImage, 0, 255));
 	guiImage.add(alphaImage.setup("Alpha", defaultAlphaImage, 0, 255));
 
-	//Cercle UI
+	// Cercle UI
 	guiCircle.setup("Sphere", "", offsetX, 250);
 	guiCircle.add(circleRadius.setup("circle radius", defaultCircleRadius, 5, 200));
 
-	//Camera
+	// Caméra
 	guiCamera.setup("Camera", "", offsetX, 320);
 	guiCamera.add(fovSlider.setup("Field of view", defaultFov, 0, 120));
 
-	//Primitive
+
+	// Primitive
 	guiPrimitive.setup("Primitives Vectorielles", "", offsetX, 400);
+	// Rectangle
 	guiPrimitive.add(primitiveCarreButton.setup("Rectangle")); primitiveCarreCheck = false;
 	guiPrimitive.add(posXSlider.setup("Pos X Rectangle", defaultPosX, -600, 600));
 	guiPrimitive.add(posYSlider.setup("Pos Y Rectangle", defaultPosY, -600, 600));
+	// Ellipse
 	guiPrimitive.add(primitiveEllipse.setup("Ellipse")); primitiveEllipseCheck = false;
+	guiPrimitive.add(posXEllipseSlider.setup("Pos X Ellipse", defaultPosX, -600, 600));
+	guiPrimitive.add(posYEllipseSlider.setup("Pos Y Ellipse", defaultPosX, -600, 600));
+	// Triangle
 	guiPrimitive.add(primitiveTriangle.setup("Triangle")); primitiveTriangleCheck = false;
-}
-
-void Gui::reset() {
-	//Image
-	defaultPosX = 0;
-	defaultPosY = 0;
-	defaultSizeImageWidth = 150;
-	defaultSizeImageHeight = 150;
-	defaultHueImage = 0;
-	defaultSaturationImage = 0;
-	defaultBrightnessImage = 255;
-	defaultAlphaImage = 255;
+	guiPrimitive.add(posXTriangleSlider.setup("Pos X Triangle", defaultPosX, -600, 600));
+	guiPrimitive.add(posYTriangleSlider.setup("Pos Y Triangle", defaultPosX, -600, 600));
 	
-	defaultCircleRadius = 205/2;
-	defaultFov = 60;
 }
 
-// Fonction
+// Fonction de mise à jour du gui
 void Gui::update()
 {
 }
 
-// Fonction
+// Fonction de dessin du gui
 void Gui::draw()
 {
 	guiImage.draw();
@@ -81,45 +80,47 @@ void Gui::draw()
 	guiPrimitive.draw();
 }
 
+// Retourne la position en X de l'image
 int Gui::getPosImageX()
 {
 	return posImageX;
 }
-
+// Retourne la position en Y de l'image
 int Gui::getPosImageY()
 {
 	return posImageY;
 }
-
+// Retourne la longueur de l'image
 int Gui::getSizeImageWidth()
 {
 	return sizeImageWidth;
 }
-
+// Retourne la largeur de l'image
 int Gui::getSizeImageHeight()
 {
 	return sizeImageHeight;
 }
-
+// Retourne Hue de l'image
 int Gui::getHueImage()
 {
 	return hueImage;
 }
-
+// Retourne Saturation de l'image
 int Gui::getSaturationImage()
 {
 	return saturationImage;
 }
-
+// Retourne Brightness de l'image
 int Gui::getBrightnessImage()
 {
 	return brightnessImage;
 }
-
+// Retourne Alpha de l'image
 int Gui::getAlphaImage()
 {
 	return alphaImage;
 }
+
 
 int Gui::getRadius() 
 {
@@ -140,6 +141,26 @@ float Gui::getPosYSlider()
 {
 	return posYSlider;
 }
+
+float Gui::getposXTriangleSlider()
+{
+	return posXTriangleSlider; 
+}
+
+float Gui::getposYTriangleSlider()
+{
+	return posYTriangleSlider;
+}
+
+float Gui::getposXEllipseSlider() {
+	return posXEllipseSlider; 
+}
+
+float Gui::getposYEllipseSlider()
+{
+	return posYEllipseSlider;
+}
+
 // Destructeur de la classe
 Gui::~Gui()
 {
