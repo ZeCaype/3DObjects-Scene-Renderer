@@ -66,20 +66,21 @@ void Gui::reset() {
 	guiPrimitive.add(tx2.setup("Sommet #2 - Coord 'x'", 552, -900, 900));
 	guiPrimitive.add(ty2.setup("Sommet #2 - Coord 'y'", -174, -850, 850));
 	
-	//Autres (Couleur slider)
-	guiOptions.setup("Couleur : Primitives", "", offsetX, 565);
-	guiOptions.add(test.setup("Toggle", 0, 0, 30));
-	
+	// Optiosn
+	guiOption.setup("Options", "", offsetX, 750);
+	guiOption.add(exitButton.setup("Quitter l'application"));
 }
 
 // Fonction de mise à jour du gui
 void Gui::update()
 {
+	if (exitButton) std::exit(0);
 }
 
 // Fonction de dessin du gui
 void Gui::draw()
 {
+	guiOption.draw();
 	guiImage.draw();
 	guiCircle.draw();
 	guiCamera.draw();
