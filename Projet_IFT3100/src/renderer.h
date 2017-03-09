@@ -13,6 +13,9 @@ public:
 	float timeLast;
 	float timeElapsed;
 
+	// Lumière
+	ofLight * light;
+
 	// Caméra
 	Camera cameraActive;
 
@@ -108,21 +111,18 @@ public:
 
 	float tx1;
 	float tx2;
-	float tx3;
-	float ty1;
 	float ty2;
-	float ty3;
+	float ty1;
 	
-
 	float posEllipseX;
 	float posEllipseY;
 
 	bool createRectangle = false;
 	bool createEllipse = false;
-	bool createTriangle = false;
+	bool createLigne = false;
 
 	void primitiveRectangle(int x, int y);
-	void primitiveTriangle(int x, int y);
+	void primitiveLigne(int x, int y);
 	void primitiveEllispe(int x, int y);
 
 	void setPosXSlider(int posX);
@@ -130,14 +130,22 @@ public:
 
 	void setTX1(int posX);
 	void setTX2(int posY);
-	void setTX3(int posX);
 	void setTY1(int posY);
 	void setTY2(int posY);
-	void setTY3(int posY);
 
 	void setposXEllipseSlider(int posX);
 	void setposYEllipseSlider(int posY);
 
+
+	float ellipseStroke = 50;
+	float recStroke = 50;
+	float triStroke = 50;
+
+	bool stateToggle;
+	void setToggle(bool state);
+	void Reaction();
+
+	//------------------------------------------------------------
 	// Initialisation de l'image
 	int posImageX;
 	int posImageY;
@@ -176,15 +184,13 @@ public:
 	void imageExport(const string name, const string extension) const;
 
 
-	
-
 	void carredessin() const; 
 	shared_ptr<Gui> gui;
-
-	~Renderer();
 
 	void cameraSetupParameters();
 	void setupCamera();
 	void updateCamera();
 	void cameraDraw();
+
+	~Renderer();
 };

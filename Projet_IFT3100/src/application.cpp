@@ -80,10 +80,9 @@ void Application::update()
 	renderer->setposYEllipseSlider(gui->getposYEllipseSlider());
 	renderer->setTX1(gui->getTX1());
 	renderer->setTX2(gui->getTX2());
-	renderer->setTX3(gui->getTX3());
 	renderer->setTY1(gui->getTY1());
 	renderer->setTY2(gui->getTY2());
-	renderer->setTY3(gui->getTY3());
+	renderer->setToggle(gui->getToggle());
 
 	// Appel de la fonction du rectangle
 	if (gui->primitiveCarreButton && gui->primitiveCarreCheck == false)
@@ -99,13 +98,13 @@ void Application::update()
 		gui->primitiveEllipseCheck = true;
 	}
 	else if (!gui->primitiveEllipse) gui->primitiveEllipseCheck = false;
-	// Appel de la fonction du triangle
-	if (gui->primitiveTriangle && gui->primitiveTriangleCheck == false)
+	// Appel de la fonction de la ligne
+	if (gui->primitiveLigne && gui->primitiveLigneCheck == false)
 	{
-		renderer->primitiveTriangle(10, 10);
-		gui->primitiveTriangleCheck = true;
+		renderer->primitiveLigne(10, 10);
+		gui->primitiveLigneCheck = true;
 	}
-	else if (!gui->primitiveTriangle) gui->primitiveTriangleCheck = false;
+	else if (!gui->primitiveLigne) gui->primitiveLigneCheck = false;
 
 	// Appel des fonction de la paramétrisation de l'image
 	renderer->setPosImageX(gui->getPosImageX());
@@ -125,6 +124,12 @@ void Application::update()
 		gui->exportCheck = true;
 	}
 	else if (!gui->exportButton) gui->exportCheck = false;
+
+	// Appel du Toggle
+	if (gui->test == true)
+	{
+		renderer->Reaction();
+	}
 
 	renderer->update();
 }

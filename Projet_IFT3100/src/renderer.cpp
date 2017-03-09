@@ -3,6 +3,7 @@
 // Constructeur de la classe Renderer
 Renderer::Renderer()
 {
+	light = nullptr;
 }
 
 // Fonction invoquée pour configurer les éléments du framebuffer
@@ -15,9 +16,16 @@ void Renderer::setup()
 	ofBackground(255);
 	ofSetCircleResolution(200);
 
-	// Paramétrisation de l'image
+	// Application des effets
 	ofSetFrameRate(60);
 	ofEnableDepthTest();
+	ofEnableLighting();
+
+	// Paramétrisation de la lumière (enfin de voir les modèles correctement)
+	ofSetSmoothLighting(true);
+	light = new ofLight();
+
+	// Paramétrisation de l'image
 	posRectangleX = 0;
 	posImageX = 0;
 	posImageY = 0;
@@ -34,6 +42,11 @@ void Renderer::setup()
 
 void Renderer::reset()
 {
+	// Initialisation de la lumière
+	light->setAmbientColor(ofColor(255, 255, 255));
+	light->setDiffuseColor(ofColor(255, 255, 255));
+	light->enable();
+
 	// initialisation des variables
 	sceneOffset = 1000 / 2.0f * -1.0f;
 	cameraOffset = sceneOffset * 3.5f * -1.0f;
@@ -72,12 +85,14 @@ void Renderer::draw()
 	ofTranslate(ofGetWindowWidth() / 2, ofGetWindowHeight() / 2);
 
 	// Afficher l'image de fond sur toute la surface de la fenêtre seulement si isFondLoaded est true
-	//ofSetColor(255, 255, 255, 255)
 	ofSetColor(ofColor::fromHsb(hueImage, saturationImage, brightnessImage, alphaImage));
 	if (isFondLoaded == true)
 		fond.draw(posImageX - ofGetWindowWidth() / 2, posImageY - ofGetWindowHeight() / 2, sizeImageWidth, sizeImageHeight);
 
 	camera->begin();
+	
+	// Activation de la lumière
+	light->setPosition(0, 0, -1000);
 
 	// Activation des différentes caméras
 	if (isVisibleCamera)
@@ -107,20 +122,78 @@ void Renderer::draw()
 	
 	if (createRectangle == true) 
 	{
-		ofSetColor(0, 255, 0);
-		ofDrawRectangle(50, 50, posRectangleX, posRectangleY);
+		if (posRectangleX > 0 && posRectangleY > 0)
+		{
+			ofSetColor(0, 255, 0); //Couleur de l'intérieur du Rectangle
+			ofDrawRectangle(50 + (recStroke / 2), 50 + (recStroke / 2), posRectangleX, posRectangleY);
+			ofSetColor(0, 0, 0); //Couleur de la stroke du rectangle
+			ofDrawRectangle(50, 50, posRectangleX + recStroke, posRectangleY + recStroke);
+		}
+
+		else if (posRectangleX < 0 && posRectangleY < 0)
+		{
+			ofSetColor(0, 255, 0); //Couleur de l'intérieur du Rectangle
+			ofDrawRectangle(50 - (recStroke / 2), 50 - (recStroke / 2), posRectangleX, posRectangleY);
+			ofSetColor(0, 0, 0); //Couleur de la stroke du rectangle
+			ofDrawRectangle(50, 50, posRectangleX - recStroke, posRectangleY - recStroke);
+		}
+
+		else if (posRectangleX > 0 && posRectangleY < 0)
+		{
+			ofSetColor(0, 255, 0); //Couleur de l'intérieur du Rectangle
+			ofDrawRectangle(50 + (recStroke / 2), 50 - (recStroke / 2), posRectangleX, posRectangleY);
+			ofSetColor(0, 0, 0); //Couleur de la stroke du rectangle
+			ofDrawRectangle(50, 50, posRectangleX + recStroke, posRectangleY - recStroke);
+		}
+
+		else if (posRectangleX < 0 && posRectangleY > 0)
+		{
+			ofSetColor(0, 255, 0); //Couleur de l'intérieur du Rectangle
+			ofDrawRectangle(50 - (recStroke / 2), 50 + (recStroke / 2), posRectangleX, posRectangleY);
+			ofSetColor(0, 0, 0); //Couleur de la stroke du rectangle
+			ofDrawRectangle(50, 50, posRectangleX - recStroke, posRectangleY + recStroke);
+		}
 	}
 
 	if (createEllipse == true)
 	{
-		ofSetColor(0, 255, 0);
-		ofDrawEllipse(10,10, posEllipseX, posEllipseY);
+		if (posEllipseX > 0 && posEllipseY > 0) 
+		{
+			ofSetColor(0, 255, 0);
+			ofDrawEllipse(10, 10, posEllipseX, posEllipseY);
+			ofSetColor(0, 0, 0); //Couleur de la stroke de L'ellipse
+			ofDrawEllipse(10, 10, posEllipseX + ellipseStroke, posEllipseY + ellipseStroke);
+		}
+
+		else if (posEllipseX < 0 && posEllipseY < 0)
+		{
+			ofSetColor(0, 255, 0);
+			ofDrawEllipse(10, 10, posEllipseX, posEllipseY);
+			ofSetColor(0, 0, 0); //Couleur de la stroke de L'ellipse
+			ofDrawEllipse(10, 10, posEllipseX - ellipseStroke, posEllipseY - ellipseStroke);
+		}
+
+		else if (posEllipseX > 0 && posEllipseY < 0)
+		{
+			ofSetColor(0, 255, 0);
+			ofDrawEllipse(10, 10, posEllipseX, posEllipseY);
+			ofSetColor(0, 0, 0); //Couleur de la stroke de L'ellipse
+			ofDrawEllipse(10, 10, posEllipseX + ellipseStroke, posEllipseY - ellipseStroke);
+		}
+
+		else if (posEllipseX < 0 && posEllipseY > 0)
+		{
+			ofSetColor(0, 255, 0);
+			ofDrawEllipse(10, 10, posEllipseX, posEllipseY);
+			ofSetColor(0, 0, 0); //Couleur de la stroke de L'ellipse
+			ofDrawEllipse(10, 10, posEllipseX - ellipseStroke, posEllipseY + ellipseStroke);
+		}
 	}
 
-	if (createTriangle == true)
+	if (createLigne == true)
 	{
 		ofSetColor(0, 255, 0);
-		ofDrawTriangle(tx1, ty1, tx2, ty2, tx3, ty3);
+		ofDrawLine(tx1, ty1, tx2, ty2);
 	}
 	int x = -600;
 	int y =-600; 
@@ -177,10 +250,6 @@ void Renderer::setTX2(int posX)
 {
 	tx2 = posX;
 }
-void Renderer::setTX3(int posX)
-{
-	tx3 = posX;
-}
 
 void Renderer::setTY1(int posY)
 {
@@ -190,11 +259,6 @@ void Renderer::setTY1(int posY)
 void Renderer::setTY2(int posY)
 {
 	ty2 = posY;
-}
-
-void Renderer::setTY3(int posY)
-{
-	ty3 = posY;
 }
 
 void Renderer::setposXEllipseSlider(int posX)
@@ -207,6 +271,15 @@ void Renderer::setposYEllipseSlider(int posY)
 	posEllipseY = posY;
 }
 
+void Renderer::setToggle(bool state)
+{
+	stateToggle = state;
+}
+
+void Renderer::Reaction() 
+{
+	ofLog() << "<JE TOGGLE>";
+}
 
 // Fonction de paramétrisation de l'image
 // Update la position en X de l'image
@@ -296,10 +369,10 @@ void Renderer::primitiveRectangle(int x, int y)
 	ofLog() << "<Test Rectangle:>";
 }
 
-void Renderer::primitiveTriangle(int x, int y)
+void Renderer::primitiveLigne(int x, int y)
 {
-	createTriangle = true;
-	ofLog() << "<Test Triangle:>";
+	createLigne = true;
+	ofLog() << "<Test Ligne:>";
 
 }
 
@@ -308,11 +381,6 @@ void Renderer::primitiveEllispe(int x, int y)
 	createEllipse = true;
 	ofLog() << "<Test Ellipse:>";
 
-}
-
-// Destructeur de la classe Renderer
-Renderer::~Renderer()
-{
 }
 
 void Renderer::cameraSetupParameters() {
@@ -458,3 +526,8 @@ void Renderer::updateCamera() {
 	}
 }
 
+// Destructeur de la classe Renderer
+Renderer::~Renderer()
+{
+	if (light != nullptr) delete light;
+}
