@@ -33,6 +33,16 @@ public:
 	float posX;
 	float posY;
 
+	float getposXTriangleSlider(); 
+	float getposYTriangleSlider();
+	
+
+
+	float getposXEllipseSlider(); 
+	float getposYEllipseSlider();	
+	
+
+
 	int getPosImageX();
 	int getPosImageY();
 	int getSizeImageWidth();
@@ -41,6 +51,7 @@ public:
 	int getSaturationImage();
 	int getBrightnessImage();
 	int getAlphaImage();
+	
 
 
 
@@ -71,6 +82,11 @@ public:
 	ofxPanel guiPrimitive;
 	ofxFloatSlider posXSlider;
 	ofxFloatSlider posYSlider;
+	ofxFloatSlider posXTriangleSlider;
+	ofxFloatSlider posYTriangleSlider;
+	ofxFloatSlider posXEllipseSlider;
+	ofxFloatSlider posYEllipseSlider;
+
 
 	ofxButton primitiveCarreButton; bool primitiveCarreCheck;
 	ofxButton primitiveEllipse; bool primitiveEllipseCheck;

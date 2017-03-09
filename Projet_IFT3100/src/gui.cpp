@@ -43,13 +43,22 @@ void Gui::setup()
 	guiCamera.setup("Camera", "", offsetX, 320);
 	guiCamera.add(fovSlider.setup("Field of view", defaultFov, 0, 120));
 
+
 	//Primitive
 	guiPrimitive.setup("Primitives Vectorielles", "", offsetX, 400);
+
 	guiPrimitive.add(primitiveCarreButton.setup("Rectangle")); primitiveCarreCheck = false;
 	guiPrimitive.add(posXSlider.setup("Pos X Rectangle", defaultPosX, -600, 600));
 	guiPrimitive.add(posYSlider.setup("Pos Y Rectangle", defaultPosY, -600, 600));
+
 	guiPrimitive.add(primitiveEllipse.setup("Ellipse")); primitiveEllipseCheck = false;
+	guiPrimitive.add(posXEllipseSlider.setup("Pos X Ellipse", defaultPosX, -600, 600));
+	guiPrimitive.add(posYEllipseSlider.setup("Pos Y Ellipse", defaultPosX, -600, 600));
+
 	guiPrimitive.add(primitiveTriangle.setup("Triangle")); primitiveTriangleCheck = false;
+	guiPrimitive.add(posXTriangleSlider.setup("Pos X Triangle", defaultPosX, -600, 600));
+	guiPrimitive.add(posYTriangleSlider.setup("Pos Y Triangle", defaultPosX, -600, 600));
+	
 }
 
 void Gui::reset() {
@@ -140,6 +149,26 @@ float Gui::getPosYSlider()
 {
 	return posYSlider;
 }
+
+float Gui::getposXTriangleSlider()
+{
+	return posXTriangleSlider; 
+}
+
+float Gui::getposYTriangleSlider()
+{
+	return posYTriangleSlider;
+}
+
+float Gui::getposXEllipseSlider() {
+	return posXEllipseSlider; 
+}
+
+float Gui::getposYEllipseSlider()
+{
+	return posYEllipseSlider;
+}
+
 // Destructeur de la classe
 Gui::~Gui()
 {

@@ -28,8 +28,7 @@ public:
 	ofVec3f cameraTarget;
 
 	string cameraName;
-	float posRectangleX;
-	float posRectangleY;
+	
 
 	float cameraFov;
 	float cameraNear;
@@ -104,7 +103,35 @@ public:
 	bool isFondLoaded;
 
 	//Primitives vectorielles
+	float posRectangleX;
+	float posRectangleY;
+
+	float posTriangleX;
+	float posTriangleY;
+	
+
+	float posEllipseX;
+	float posEllipseY;
+
 	bool createRectangle = false;
+	bool createEllipse = false;
+	bool createTriangle = false;
+
+	void primitiveRectangle(int x, int y);
+	void primitiveTriangle(int x, int y);
+	void primitiveEllispe(int x, int y);
+
+	void setPosXSlider(int posX);
+	void setPosYSlider(int posY);
+
+	void setposXTriangleSlider(int posX);
+	void setposYTriangleSlider(int posY);
+
+	void setposXEllipseSlider(int posX);
+	void setposYEllipseSlider(int posY);
+
+
+
 
 	int posImageX;
 	int posImageY;
@@ -142,9 +169,7 @@ public:
 	void imageExport(const string name, const string extension) const;
 
 
-	void primitiveRectangle(int x, int y);
-	void setPosXSlider(int posX);
-	void setPosYSlider(int posY);
+	
 
 	void carredessin() const; 
 	shared_ptr<Gui> gui;

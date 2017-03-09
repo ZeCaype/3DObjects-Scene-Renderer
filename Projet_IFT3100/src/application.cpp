@@ -42,7 +42,7 @@ void Application::setup()
 }
 
 //--------------------------------------------------------------
-void Application::update() 
+void Application::update()
 {
 	//Camera/////////////////////////////////////////////////////////////
 	if (renderer->isCameraPerspective)
@@ -50,7 +50,7 @@ void Application::update()
 	else
 		ofSetWindowTitle("camera " + renderer->cameraName + " orthographic");
 
-	renderer->isCameraMoveForward =  isKeyPressW;
+	renderer->isCameraMoveForward = isKeyPressW;
 	renderer->isCameraMoveBackward = isKeyPressS;
 
 	renderer->isCameraMoveLeft = isKeyPressA;
@@ -77,7 +77,10 @@ void Application::update()
 	renderer->setFieldOfView(gui->getFov());
 	renderer->setPosXSlider(gui->getPosXSlider());
 	renderer->setPosYSlider(gui->getPosYSlider());
-
+	renderer->setposXTriangleSlider(gui->getposXTriangleSlider());
+	renderer->setposYTriangleSlider(gui->getposYTriangleSlider());
+	renderer->setposXEllipseSlider(gui->getposXEllipseSlider());
+	renderer->setposYEllipseSlider(gui->getposYEllipseSlider());
 	// Image
 	if (gui->exportButton && gui->exportCheck == false)
 	{
@@ -86,7 +89,7 @@ void Application::update()
 		ofLog() << "<image is in file /bin/data/" << ">";
 		gui->exportCheck = true;
 	}
-	else if (!gui->exportButton) gui->exportCheck = false; 
+	else if (!gui->exportButton) gui->exportCheck = false;
 
 	// Rectangle
 	if (gui->primitiveCarreButton && gui->primitiveCarreCheck == false)
@@ -95,6 +98,25 @@ void Application::update()
 		gui->primitiveCarreCheck = true;
 	}
 	else if (!gui->primitiveCarreButton) gui->primitiveCarreCheck = false;
+
+
+	// Ellipse
+	if (gui->primitiveEllipse && gui->primitiveEllipseCheck == false)
+	{
+		renderer->primitiveEllispe(10,10);
+		gui->primitiveEllipseCheck = true;
+	}
+	else if (!gui->primitiveEllipse) gui->primitiveEllipseCheck = false;
+
+	// Triangle
+	if (gui->primitiveTriangle && gui->primitiveTriangleCheck == false)
+	{
+		renderer->primitiveTriangle(10, 10);
+		gui->primitiveTriangleCheck = true;
+	}
+	else if (!gui->primitiveTriangle) gui->primitiveTriangleCheck = false;
+
+	
 
 	renderer->setPosImageX(gui->getPosImageX());
 	renderer->setPosImageY(gui->getPosImageY());

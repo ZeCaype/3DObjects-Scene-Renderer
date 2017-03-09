@@ -109,6 +109,22 @@ void Renderer::draw()
 		ofDrawRectangle(50,50, posRectangleX, posRectangleY);
 	}
 
+	if (createEllipse == true)
+	{
+		ofSetColor(0, 255, 0);
+		ofDrawEllipse(10,10, posEllipseX, posEllipseY);
+		ofLog() << "Ellipse";
+	}
+	ofSetColor(0, 255, 0);
+	ofDrawTriangle(140, 140, 160, 160, 170, 170);
+	if (createEllipse == true)
+	{
+		
+
+		
+		ofLog() << "Triangle";
+	}
+
 	camera->end();
 }
 void Renderer::setPosXSlider(int posX)
@@ -120,6 +136,27 @@ void Renderer::setPosYSlider(int posY)
 {
 	posRectangleY = posY;
 }
+
+void Renderer::setposXTriangleSlider(int posX)
+{
+	posTriangleX = posX;
+}
+
+void Renderer::setposYTriangleSlider(int posY)
+{
+	posTriangleY = posY;
+}
+void Renderer::setposXEllipseSlider(int posX)
+{
+	posEllipseX = posX;
+}
+
+void Renderer::setposYEllipseSlider(int posY)
+{
+	posEllipseY = posY;
+}
+
+
 
 void Renderer::setPosImageX(int posX)
 {
@@ -204,6 +241,20 @@ void Renderer::primitiveRectangle(int x, int y)
 {
 	createRectangle = true;
 	ofLog() << "<Test Rectangle:>";
+}
+
+void Renderer::primitiveTriangle(int x, int y)
+{
+	createTriangle = true;
+	ofLog() << "<Test Triangle:>";
+
+}
+
+void Renderer::primitiveEllispe(int x, int y)
+{
+	createEllipse = true;
+	ofLog() << "<Test Ellipse:>";
+
 }
 
 // Destructeur de la classe Renderer
