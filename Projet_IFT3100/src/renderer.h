@@ -29,6 +29,7 @@ public:
 
 	string cameraName;
 	float posRectangleX;
+	float posRectangleY;
 
 	float cameraFov;
 	float cameraNear;
@@ -143,6 +144,7 @@ public:
 
 	void primitiveRectangle(int x, int y);
 	void setPosXSlider(int posX);
+	void setPosYSlider(int posY);
 
 	void carredessin() const; 
 	shared_ptr<Gui> gui;
