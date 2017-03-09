@@ -115,7 +115,7 @@ void Renderer::draw()
 	{
 		ofSetColor(0, 255, 0);
 		ofDrawEllipse(10,10, posEllipseX, posEllipseY);
-		ofLog() << "Ellipse";
+		//ofLog() << "Ellipse";
 	}
 	ofSetColor(0, 255, 0);
 	ofDrawTriangle(140, 140, 160, 160, 170, 170);
@@ -124,7 +124,7 @@ void Renderer::draw()
 		
 
 		
-		ofLog() << "Triangle";
+		//ofLog() << "Triangle";
 	}
 
 	camera->end();
