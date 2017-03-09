@@ -17,7 +17,7 @@ void Renderer::setup()
 
 	ofSetFrameRate(60);
 	ofEnableDepthTest();
-
+	posRectangleX = 0;
 	posImageX = 0;
 	posImageY = 0;
 	sizeImageWidth = 150;
@@ -102,7 +102,7 @@ void Renderer::draw()
 		ofDrawSphere(i * 300, 300, circleRadius);
 		ofDrawSphere(i * -300, 300, circleRadius);
 	}
-
+	
 	if (createRectangle == true) 
 	{
 		ofSetColor(0, 255, 0);
