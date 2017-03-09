@@ -27,6 +27,8 @@ public:
 	void update();
 	void draw();
 
+	float getPosXSlider();
+	float posX;
 	int getPosImageX();
 	int getPosImageY();
 	int getSizeImageWidth();

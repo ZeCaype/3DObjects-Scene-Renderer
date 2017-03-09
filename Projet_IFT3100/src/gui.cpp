@@ -133,7 +133,7 @@ float Gui::getFov()
 
 float Gui::getPosXSlider()
 {
-	return posXSlider;
+	return posX;
 }
 // Destructeur de la classe
 Gui::~Gui()
