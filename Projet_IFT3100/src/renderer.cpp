@@ -195,34 +195,41 @@ void Renderer::draw()
 		ofSetColor(0, 255, 0);
 		ofDrawLine(tx1, ty1, tx2, ty2);
 	}
-	int x = -600;
-	int y =-600; 
+	
+	if (createFormeVectorielle == true)
+	{
+		//int x = posformeVectorielleX;
+		//int y = posformeVectorielleY;
+		int x =-600;
+		int y = -600;
+		ofSetColor(0, 0, 0);
+		ofDrawEllipse(x - 35, y, 30, 75);
+
+		ofSetColor(0, 0, 0);
+		ofDrawEllipse(x + 35, y, 30, 75);
+
+		ofSetColor(255, 255, 255);
+		ofDrawEllipse(x, y, 250, 100);
+
+
+		ofSetColor(255, 204, 0);
+		ofDrawEllipse(x, y, 325, 150);
+
+		ofSetColor(255, 153, 2);
+		ofDrawEllipse(x, y, 400, 200);
+
+		ofSetColor(51, 204, 0);
+		ofDrawRectangle(x + 45, y, -90, -250);
+
+		ofDrawTriangle(x + 45, y - 250, x + 85, y - 150, x + 200, y - 130);
+		ofDrawTriangle(x + 45, y - 250, x + 85 + 60, y - 230, x + 200, y - 130);
+
+		ofDrawTriangle(x - 45, y - 250, x - 85, y - 150, x - 200, y - 130);
+		ofDrawTriangle(x - 45, y - 250, x - 85 - 60, y - 230, x - 200, y - 130);
+	}
+	
 	
 
-	ofSetColor(0, 0, 0);
-	ofDrawEllipse(x - 35, y, 30, 75);
-
-	ofSetColor(0, 0, 0);
-	ofDrawEllipse(x + 35, y, 30, 75);
-
-	ofSetColor(255, 255, 255);
-	ofDrawEllipse(x, y, 250, 100);
-
-
-	ofSetColor(255, 204, 0);
-	ofDrawEllipse(x, y, 325, 150);
-
-	ofSetColor(255,153,2);
-	ofDrawEllipse(x , y , 400, 200);
-
-	ofSetColor(51, 204, 0);
-	ofDrawRectangle(x+45, y, -90, -250);
-
-	ofDrawTriangle(x+45,y-250,x + 85, y - 150 ,x + 200, y-130);
-	ofDrawTriangle(x + 45, y - 250, x + 85 + 60, y - 230, x + 200, y - 130);
-
-	ofDrawTriangle(x - 45, y - 250, x - 85, y - 150, x - 200, y - 130);
-	ofDrawTriangle(x - 45, y - 250, x - 85 - 60, y - 230, x - 200, y - 130);
 	
 
 
@@ -230,6 +237,18 @@ void Renderer::draw()
 
 
 	camera->end();
+}
+void Renderer::setformeVectorielXSlider(int posX)
+{
+	posformeVectorielleX= posX;
+}
+void Renderer::setformeVectorielYSlider(int posX)
+{
+	posformeVectorielleY = posX;
+}
+void Renderer::setPosXSlider(int posX)
+{
+	posRectangleX = posX;
 }
 void Renderer::setPosXSlider(int posX)
 {
@@ -374,6 +393,12 @@ void Renderer::primitiveLigne(int x, int y)
 	createLigne = true;
 	ofLog() << "<Test Ligne:>";
 
+}
+
+void Renderer::FormeVectorielle(int x, int y)
+{
+	createFormeVectorielle = true; 
+	ofLog() << "FORME VECTOR";
 }
 
 void Renderer::primitiveEllispe(int x, int y)

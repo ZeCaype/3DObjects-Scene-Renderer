@@ -40,6 +40,9 @@ public:
 
 	float getposXEllipseSlider(); 
 	float getposYEllipseSlider();	
+
+	float getformeVectorielleXSlider(); 
+	float getformeVectorielleYSlider(); 
 	
 	bool getToggle();
 
@@ -88,9 +91,15 @@ public:
 	ofxFloatSlider posXEllipseSlider;
 	ofxFloatSlider posYEllipseSlider;
 
+	ofxFloatSlider formeVectorielleXSlider;
+	ofxFloatSlider formeVectorielleYSlider;
+	
+
 	ofxButton primitiveCarreButton; bool primitiveCarreCheck;
 	ofxButton primitiveEllipse; bool primitiveEllipseCheck;
 	ofxButton primitiveLigne; bool primitiveLigneCheck;
+
+	ofxButton formeVectorielleButton; bool formeVectorielleCheck; 
 
 	//Éléments Autres
 	ofxPanel guiOptions;

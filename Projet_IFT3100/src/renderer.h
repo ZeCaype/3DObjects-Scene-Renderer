@@ -108,6 +108,8 @@ public:
 	// Initialisation des primitives vectorielles
 	float posRectangleX;
 	float posRectangleY;
+	float posformeVectorielleX; 
+	float posformeVectorielleY; 
 
 	float tx1;
 	float tx2;
@@ -120,10 +122,15 @@ public:
 	bool createRectangle = false;
 	bool createEllipse = false;
 	bool createLigne = false;
+	bool createFormeVectorielle = false; 
 
 	void primitiveRectangle(int x, int y);
 	void primitiveLigne(int x, int y);
 	void primitiveEllispe(int x, int y);
+	void FormeVectorielle(int x, int y);
+
+	void setformeVectorielXSlider(int posX);
+	void setformeVectorielYSlider(int posY);
 
 	void setPosXSlider(int posX);
 	void setPosYSlider(int posY);

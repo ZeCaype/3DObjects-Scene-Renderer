@@ -83,6 +83,9 @@ void Application::update()
 	renderer->setTY1(gui->getTY1());
 	renderer->setTY2(gui->getTY2());
 	renderer->setToggle(gui->getToggle());
+	renderer->setformeVectorielXSlider(gui->getformeVectorielleXSlider());
+	renderer->setformeVectorielYSlider(gui->getformeVectorielleYSlider());
+
 
 	// Appel de la fonction du rectangle
 	if (gui->primitiveCarreButton && gui->primitiveCarreCheck == false)
@@ -106,6 +109,15 @@ void Application::update()
 	}
 	else if (!gui->primitiveLigne) gui->primitiveLigneCheck = false;
 
+	//Forme Vectorielle 
+	if (gui->formeVectorielleButton && gui->formeVectorielleCheck == false)
+	{
+	renderer->FormeVectorielle(10, 10);
+	ofLog() << "SKKR";
+
+	gui->formeVectorielleCheck = true;
+	}
+	else if (!gui->formeVectorielleButton) gui->formeVectorielleCheck = false;
 	// Appel des fonction de la paramétrisation de l'image
 	renderer->setPosImageX(gui->getPosImageX());
 	renderer->setPosImageY(gui->getPosImageY());

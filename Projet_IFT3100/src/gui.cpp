@@ -65,9 +65,13 @@ void Gui::reset() {
 	guiPrimitive.add(ty1.setup("Sommet #1 - Coord 'y'", 300, -850, 850));
 	guiPrimitive.add(tx2.setup("Sommet #2 - Coord 'x'", 552, -900, 900));
 	guiPrimitive.add(ty2.setup("Sommet #2 - Coord 'y'", -174, -850, 850));
-	
+
+	// Forme Vectorielle 
+	guiPrimitive.add(formeVectorielleButton.setup("Forme Vectorielle")); formeVectorielleCheck = false; 
+	guiPrimitive.add(formeVectorielleXSlider.setup("Pos X Ellipse", 450, -1500, 1500));
+	guiPrimitive.add(formeVectorielleYSlider.setup("Pos Y Ellipse", 600, -1500, 1500));
 	//Autres (Couleur slider)
-	guiOptions.setup("Couleur : Primitives", "", offsetX, 565);
+	guiOptions.setup("Couleur : Primitives", "", offsetX, 665);
 	guiOptions.add(test.setup("Toggle", 0, 0, 30));
 	
 }
@@ -180,6 +184,14 @@ float Gui::getposXEllipseSlider() {
 float Gui::getposYEllipseSlider()
 {
 	return posYEllipseSlider;
+}
+
+float Gui::getformeVectorielleXSlider() {
+	return formeVectorielleXSlider;
+}
+
+float Gui::getformeVectorielleYSlider() {
+	return formeVectorielleYSlider;
 }
 
 // Destructeur de la classe
