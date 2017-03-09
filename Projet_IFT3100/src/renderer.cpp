@@ -134,8 +134,9 @@ void Renderer::draw()
 
 	if (createTriangle == true)
 	{
-		//ofSetColor(0, 255, 0);
+		ofSetColor(0, 0, 0);
 		ofDrawTriangle(tx1, ty1, tx2, ty2, tx3, ty3);
+		
 	}
 
 	camera->end();
