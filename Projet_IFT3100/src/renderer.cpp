@@ -9,7 +9,7 @@ Renderer::Renderer()
 void Renderer::setup()
 {
 	ofLog() << "<renderer::setup>";
-	ofSetWindowTitle("Rendue");
+	ofSetWindowTitle("Rendu");
 
 	// Application d'un fond en blanc
 	ofBackground(255);
@@ -106,7 +106,7 @@ void Renderer::draw()
 	if (createRectangle == true) 
 	{
 		ofSetColor(0, 255, 0);
-		ofDrawRectangle(50,50, posRectangleX, 100);
+		ofDrawRectangle(50,50, posRectangleX, posRectangleY);
 	}
 
 	camera->end();
@@ -114,6 +114,11 @@ void Renderer::draw()
 void Renderer::setPosXSlider(int posX)
 {
 	posRectangleX = posX;
+}
+
+void Renderer::setPosYSlider(int posY)
+{
+	posRectangleY = posY;
 }
 
 void Renderer::setPosImageX(int posX)

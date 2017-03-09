@@ -28,7 +28,11 @@ public:
 	void draw();
 
 	float getPosXSlider();
+	float getPosYSlider();
+
 	float posX;
+	float posY;
+
 	int getPosImageX();
 	int getPosImageY();
 	int getSizeImageWidth();
@@ -65,6 +69,7 @@ public:
 	ofxPanel guiPrimitive;
 	ofxFloatSlider posXSlider;
 	ofxFloatSlider posYSlider;
+
 	ofxButton primitiveCarreButton; bool primitiveCarreCheck;
 	ofxButton primitiveEllipse; bool primitiveEllipseCheck;
 	ofxButton primitiveTriangle; bool primitiveTriangleCheck;
