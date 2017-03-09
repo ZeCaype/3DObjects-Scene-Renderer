@@ -238,15 +238,26 @@ void Renderer::setposYEllipseSlider(int posY)
 	posEllipseY = posY;
 }
 
-void Renderer::setToggle(bool state)
+void Renderer::setToggle(ofxToggle bouton)
 {
-	stateToggle = state;
+	stateToggle = bouton;
 }
 
-void Renderer::Reaction() 
+void Renderer::ReactionRec() 
 {
-	ofLog() << "<JE TOGGLE>";
+	ofLog() << "<JE TOGGLE RECTANGLE>";
 }
+
+void Renderer::ReactionEll()
+{
+	ofLog() << "<JE TOGGLE ELLIPSE>";
+}
+
+void Renderer::ReactionLig()
+{
+	ofLog() << "<JE TOGGLE LIGNE>";
+}
+
 
 // Fonction de paramétrisation de l'image
 // Update la position en X de l'image

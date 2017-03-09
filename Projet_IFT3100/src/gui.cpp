@@ -66,6 +66,13 @@ void Gui::reset() {
 	guiPrimitive.add(tx2.setup("Sommet #2 - Coord 'x'", 552, -900, 900));
 	guiPrimitive.add(ty2.setup("Sommet #2 - Coord 'y'", -174, -850, 850));
 	
+
+	guiOptions.setup("Option", "", offsetX, 565);
+	guiOptions.add(rec.setup("Focus Rectangle", 0, 0, 22));
+	guiOptions.add(ell.setup("Focus Ellipse", 0, 0, 22));
+	guiOptions.add(lig.setup("Focus Ligne", 0, 0, 22));
+
+
 	// Optiosn
 	guiOption.setup("Options", "", offsetX, 750);
 	guiOption.add(exitButton.setup("Quitter l'application"));
@@ -169,9 +176,19 @@ float Gui::getTY2()
 	return ty2;
 }
 
-bool Gui::getToggle()
+ofxToggle Gui::getToggleRectangle()
 {
-	return test;
+	return rec;
+}
+
+ofxToggle Gui::getToggleEllipse()
+{
+	return ell;
+}
+
+ofxToggle Gui::getToggleLigne()
+{
+	return lig;
 }
 
 float Gui::getposXEllipseSlider() {

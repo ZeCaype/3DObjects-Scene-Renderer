@@ -41,7 +41,9 @@ public:
 	float getposXEllipseSlider(); 
 	float getposYEllipseSlider();	
 	
-	bool getToggle();
+	ofxToggle getToggleRectangle();
+	ofxToggle getToggleEllipse();
+	ofxToggle getToggleLigne();
 
 	int getPosImageX();
 	int getPosImageY();
@@ -97,7 +99,9 @@ public:
 
 	//Éléments Autres
 	ofxPanel guiOptions;
-	ofxToggle test;
+	ofxToggle rec;
+	ofxToggle ell;
+	ofxToggle lig;
 
 	~Gui();
 };

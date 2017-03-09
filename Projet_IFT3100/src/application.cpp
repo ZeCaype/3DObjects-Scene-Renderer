@@ -82,7 +82,9 @@ void Application::update()
 	renderer->setTX2(gui->getTX2());
 	renderer->setTY1(gui->getTY1());
 	renderer->setTY2(gui->getTY2());
-	renderer->setToggle(gui->getToggle());
+	renderer->setToggle(gui->getToggleRectangle());
+	renderer->setToggle(gui->getToggleEllipse());
+	renderer->setToggle(gui->getToggleLigne());
 
 	// Appel de la fonction du rectangle
 	if (gui->primitiveCarreButton && gui->primitiveCarreCheck == false)
@@ -125,10 +127,18 @@ void Application::update()
 	}
 	else if (!gui->exportButton) gui->exportCheck = false;
 
-	// Appel du Toggle
-	if (gui->test == true)
+	// Appels du Toggle
+	if (gui->rec == true && gui->ell == false && gui->lig == false)
 	{
-		renderer->Reaction();
+		renderer->ReactionRec();
+	}
+	else if (gui->rec == false && gui->ell == true && gui->lig == false)
+	{
+		renderer->ReactionEll();
+	}
+	else if (gui->rec == false && gui->ell == false && gui->lig == true)
+	{
+		renderer->ReactionLig();
 	}
 
 	renderer->update();
