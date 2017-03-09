@@ -33,8 +33,12 @@ public:
 	float posX;
 	float posY;
 
-	float getposXTriangleSlider(); 
-	float getposYTriangleSlider();
+	float getTX1(); 
+	float getTX2();
+	float getTX3();
+	float getTY1();
+	float getTY2();
+	float getTY3();
 	
 
 
@@ -80,8 +84,12 @@ public:
 	ofxPanel guiPrimitive;
 	ofxFloatSlider posXSlider;
 	ofxFloatSlider posYSlider;
-	ofxFloatSlider posXTriangleSlider;
-	ofxFloatSlider posYTriangleSlider;
+	ofxFloatSlider tx1;
+	ofxFloatSlider tx2;
+	ofxFloatSlider tx3;
+	ofxFloatSlider ty1;
+	ofxFloatSlider ty2;
+	ofxFloatSlider ty3;
 	ofxFloatSlider posXEllipseSlider;
 	ofxFloatSlider posYEllipseSlider;
 

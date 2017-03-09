@@ -115,16 +115,12 @@ void Renderer::draw()
 	{
 		ofSetColor(0, 255, 0);
 		ofDrawEllipse(10,10, posEllipseX, posEllipseY);
-		//ofLog() << "Ellipse";
 	}
-	ofSetColor(0, 255, 0);
-	ofDrawTriangle(140, 140, 160, 160, 170, 170);
-	if (createEllipse == true)
-	{
-		
 
-		
-		//ofLog() << "Triangle";
+	if (createTriangle == true)
+	{
+		ofSetColor(0, 255, 0);
+		ofDrawTriangle(tx1, ty1, tx2, ty2, tx3, ty3);
 	}
 
 	camera->end();
@@ -139,15 +135,35 @@ void Renderer::setPosYSlider(int posY)
 	posRectangleY = posY;
 }
 
-void Renderer::setposXTriangleSlider(int posX)
+void Renderer::setTX1(int posX)
 {
-	posTriangleX = posX;
+	tx1 = posX;
 }
 
-void Renderer::setposYTriangleSlider(int posY)
+void Renderer::setTX2(int posX)
 {
-	posTriangleY = posY;
+	tx2 = posX;
 }
+void Renderer::setTX3(int posX)
+{
+	tx3 = posX;
+}
+
+void Renderer::setTY1(int posY)
+{
+	ty1 = posY;
+}
+
+void Renderer::setTY2(int posY)
+{
+	ty2 = posY;
+}
+
+void Renderer::setTY3(int posY)
+{
+	ty3 = posY;
+}
+
 void Renderer::setposXEllipseSlider(int posX)
 {
 	posEllipseX = posX;

@@ -53,16 +53,21 @@ void Gui::reset() {
 	guiPrimitive.setup("Primitives Vectorielles", "", offsetX, 400);
 	// Rectangle
 	guiPrimitive.add(primitiveCarreButton.setup("Rectangle")); primitiveCarreCheck = false;
-	guiPrimitive.add(posXSlider.setup("Pos X Rectangle", defaultPosX, -600, 600));
-	guiPrimitive.add(posYSlider.setup("Pos Y Rectangle", defaultPosY, -600, 600));
+	guiPrimitive.add(posXSlider.setup("Pos X Rectangle", -600, -600, 600));
+	guiPrimitive.add(posYSlider.setup("Pos Y Rectangle", 312, -600, 600));
 	// Ellipse
 	guiPrimitive.add(primitiveEllipse.setup("Ellipse")); primitiveEllipseCheck = false;
-	guiPrimitive.add(posXEllipseSlider.setup("Pos X Ellipse", defaultPosX, -600, 600));
-	guiPrimitive.add(posYEllipseSlider.setup("Pos Y Ellipse", defaultPosX, -600, 600));
+	guiPrimitive.add(posXEllipseSlider.setup("Pos X Ellipse", 450, -600, 600));
+	guiPrimitive.add(posYEllipseSlider.setup("Pos Y Ellipse", 600, -1000, 1000));
 	// Triangle
 	guiPrimitive.add(primitiveTriangle.setup("Triangle")); primitiveTriangleCheck = false;
-	guiPrimitive.add(posXTriangleSlider.setup("Pos X Triangle", defaultPosX, -600, 600));
-	guiPrimitive.add(posYTriangleSlider.setup("Pos Y Triangle", defaultPosX, -600, 600));
+	guiPrimitive.add(tx1.setup("Sommet #1 - Coord 'x'", 306, -600, 600));
+	guiPrimitive.add(ty1.setup("Sommet #1 - Coord 'y'", 300, -600, 600));
+	guiPrimitive.add(tx2.setup("Sommet #2 - Coord 'x'", 552, -600, 600));
+	guiPrimitive.add(ty2.setup("Sommet #2 - Coord 'y'", -174, -600, 600));
+	guiPrimitive.add(tx3.setup("Sommet #3 - Coord 'x'", -156, -600, 600));
+	guiPrimitive.add(ty3.setup("Sommet #3 - Coord 'y'", -174, -600, 600));
+	
 	
 }
 
@@ -142,14 +147,34 @@ float Gui::getPosYSlider()
 	return posYSlider;
 }
 
-float Gui::getposXTriangleSlider()
+float Gui::getTX1()
 {
-	return posXTriangleSlider; 
+	return tx1; 
 }
 
-float Gui::getposYTriangleSlider()
+float Gui::getTX2()
 {
-	return posYTriangleSlider;
+	return tx2;
+}
+
+float Gui::getTX3()
+{
+	return tx3;
+}
+
+float Gui::getTY1()
+{
+	return ty1;
+}
+
+float Gui::getTY2()
+{
+	return ty2;
+}
+
+float Gui::getTY3()
+{
+	return ty3;
 }
 
 float Gui::getposXEllipseSlider() {

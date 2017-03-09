@@ -106,8 +106,12 @@ public:
 	float posRectangleX;
 	float posRectangleY;
 
-	float posTriangleX;
-	float posTriangleY;
+	float tx1;
+	float tx2;
+	float tx3;
+	float ty1;
+	float ty2;
+	float ty3;
 	
 
 	float posEllipseX;
@@ -124,8 +128,12 @@ public:
 	void setPosXSlider(int posX);
 	void setPosYSlider(int posY);
 
-	void setposXTriangleSlider(int posX);
-	void setposYTriangleSlider(int posY);
+	void setTX1(int posX);
+	void setTX2(int posY);
+	void setTX3(int posX);
+	void setTY1(int posY);
+	void setTY2(int posY);
+	void setTY3(int posY);
 
 	void setposXEllipseSlider(int posX);
 	void setposYEllipseSlider(int posY);

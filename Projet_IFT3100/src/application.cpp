@@ -76,10 +76,14 @@ void Application::update()
 	renderer->setFieldOfView(gui->getFov());
 	renderer->setPosXSlider(gui->getPosXSlider());
 	renderer->setPosYSlider(gui->getPosYSlider());
-	renderer->setposXTriangleSlider(gui->getposXTriangleSlider());
-	renderer->setposYTriangleSlider(gui->getposYTriangleSlider());
 	renderer->setposXEllipseSlider(gui->getposXEllipseSlider());
 	renderer->setposYEllipseSlider(gui->getposYEllipseSlider());
+	renderer->setTX1(gui->getTX1());
+	renderer->setTX2(gui->getTX2());
+	renderer->setTX3(gui->getTX3());
+	renderer->setTY1(gui->getTY1());
+	renderer->setTY2(gui->getTY2());
+	renderer->setTY3(gui->getTY3());
 
 	// Appel de la fonction du rectangle
 	if (gui->primitiveCarreButton && gui->primitiveCarreCheck == false)
