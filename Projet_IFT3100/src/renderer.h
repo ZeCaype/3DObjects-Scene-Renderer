@@ -14,6 +14,9 @@ public:
 	float timeElapsed;
 
 	// Lumière
+	int xLight;
+	int yLight;
+	int zLight;
 	ofLight * light;
 
 	// Caméra
@@ -35,6 +38,10 @@ public:
 
 	string cameraName;
 	
+	// Modèle
+	ofxAssimpModelLoader model;
+	bool isModelLoaded;
+
 	// Initialisation de la caméra
 	float cameraFov;
 	float cameraNear;
@@ -152,6 +159,16 @@ public:
 	int rfill = 0;
 	int gfill = 0;
 	int bfill = 0;
+	
+	void setRfond(int R_Fond);
+	void setGfond(int G_Fond);
+	void setBfond(int B_Fond);
+	int rfond = 0;
+	int gfond = 0;
+	int bfond = 0;
+
+	int contourLargeur;
+	void setContourLargeur(int cnt);
 
 	void setposXEllipseSlider(int posX);
 	void setposYEllipseSlider(int posY);
@@ -197,6 +214,10 @@ public:
 	void setSaturationImage(int sat);
 	void setBrightnessImage(int bright);
 	void setAlphaImage(int alpha);
+
+	void setXLight(int xL);
+	void setYLight(int yL);
+	void setZLight(int zL);
 
 	void setRadius(int radius);
 	void setFieldOfView(float fov);
