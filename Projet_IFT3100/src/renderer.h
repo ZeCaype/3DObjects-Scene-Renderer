@@ -159,6 +159,16 @@ public:
 	int rfill = 0;
 	int gfill = 0;
 	int bfill = 0;
+	
+	void setRfond(int R_Fond);
+	void setGfond(int G_Fond);
+	void setBfond(int B_Fond);
+	int rfond = 0;
+	int gfond = 0;
+	int bfond = 0;
+
+	int contourLargeur;
+	void setContourLargeur(int cnt);
 
 	void setposXEllipseSlider(int posX);
 	void setposYEllipseSlider(int posY);

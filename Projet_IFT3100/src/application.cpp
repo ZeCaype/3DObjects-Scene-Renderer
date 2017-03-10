@@ -90,12 +90,17 @@ void Application::update()
 	renderer->setGfill(gui->getCSGF());
 	renderer->setBfill(gui->getCSBF());
 
+	renderer->setRfond(gui->getFOND_R());
+	renderer->setGfond(gui->getFOND_G());
+	renderer->setBfond(gui->getFOND_B());
+
 	renderer->setformeVectorielXSlider(gui->getformeVectorielleXSlider());
 	renderer->setformeVectorielYSlider(gui->getformeVectorielleYSlider());
 	renderer->setToggle(gui->getToggleRectangle());
 	renderer->setToggle(gui->getToggleEllipse());
 	renderer->setToggle(gui->getToggleLigne());
 
+	renderer->setContourLargeur(gui->getContour());
 
 	// Appel de la fonction du rectangle
 	if (gui->primitiveCarreButton && gui->primitiveCarreCheck == false)

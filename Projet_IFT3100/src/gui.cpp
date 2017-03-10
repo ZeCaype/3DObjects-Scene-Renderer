@@ -51,15 +51,15 @@ void Gui::reset() {
 
 
 	// Primitive
-	guiPrimitive.setup("Primitives Vectorielles", "", offsetX, 340);
+	guiPrimitive.setup("Primitives Vectorielles", "Primitives Vectorielles", offsetX, 340);
 	// Rectangle
 	guiPrimitive.add(primitiveCarreButton.setup("Rectangle")); primitiveCarreCheck = false;
-	guiPrimitive.add(posXSlider.setup("Pos X Rectangle", -600, -900, 900));
-	guiPrimitive.add(posYSlider.setup("Pos Y Rectangle", 312, -900, 900));
+	guiPrimitive.add(posXSlider.setup("Largeur Rectangle", -600, -900, 900));
+	guiPrimitive.add(posYSlider.setup("Hauteur Rectangle", 312, -900, 900));
 	// Ellipse
 	guiPrimitive.add(primitiveEllipse.setup("Ellipse")); primitiveEllipseCheck = false;
-	guiPrimitive.add(posXEllipseSlider.setup("Pos X Ellipse", 450, -1500, 1500));
-	guiPrimitive.add(posYEllipseSlider.setup("Pos Y Ellipse", 600, -1500, 1500));
+	guiPrimitive.add(posXEllipseSlider.setup("Largeur Ellipse", 450, -1500, 1500));
+	guiPrimitive.add(posYEllipseSlider.setup("Hauteur Ellipse", 600, -1500, 1500));
 	// Triangle
 	guiPrimitive.add(primitiveLigne.setup("Ligne")); primitiveLigneCheck = false;
 	guiPrimitive.add(tx1.setup("Sommet #1 - Coord 'x'", 306, -900, 900));
@@ -78,13 +78,17 @@ void Gui::reset() {
 	guiOptions.add(lig.setup("Focus Ligne", 0, 0, 22));
 
 	//Couleurs Stroke + Fill
-	guiColorPrimitives.setup("Couleur Stroke-Fill", "", 260, 330);
+	guiColorPrimitives.setup("Couleur Stroke-Fill", "", 260, 340);
+	guiColorPrimitives.add(sliderContour.setup("Largeur Contour", 50, 0, 100));
 	guiColorPrimitives.add(sliderRStroke.setup("Stroke/Red", 0, 0, 255));
 	guiColorPrimitives.add(sliderGStroke.setup("Stroke/Green", 0, 0, 255));
 	guiColorPrimitives.add(sliderBStroke.setup("Stroke/Blue", 0, 0, 255));
 	guiColorPrimitives.add(sliderRFill.setup("Fill/Red", 0, 0, 255));
 	guiColorPrimitives.add(sliderGFill.setup("Fill/Green", 0, 0, 255));
 	guiColorPrimitives.add(sliderBFill.setup("Fill/Blue", 0, 0, 255));
+	guiColorPrimitives.add(sliderFONDR.setup("Fond/Red", 255, 0, 255));
+	guiColorPrimitives.add(sliderFONDG.setup("Fond/Green", 255, 0, 255));
+	guiColorPrimitives.add(sliderFONDB.setup("Fond/Blue", 255, 0, 255));
 
 	// Scène 3D
 	guiScene.setup("Scene 3D", "", 260, 10);
@@ -119,6 +123,24 @@ void Gui::draw()
 	guiColorPrimitives.draw();
 	guiScene.draw();
 	guiLight.draw();
+}
+
+int  Gui::getFOND_R() 
+{
+	return sliderFONDR;
+}
+int  Gui::getFOND_G() 
+{
+	return sliderFONDG;
+}
+int  Gui::getFOND_B() 
+{
+	return sliderFONDB;
+}
+
+int  Gui::getContour()
+{
+	return sliderContour;
 }
 
 // Retourne la position en X de l'image
