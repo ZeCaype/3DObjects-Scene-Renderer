@@ -38,6 +38,19 @@ public:
 	float getTY1();
 	float getTY2();
 
+	int getCSRS();
+	int getCSGS();
+	int getCSBS();
+	int getCSRF();
+	int getCSGF();
+	int getCSBF();
+
+	int getFOND_R();
+	int getFOND_G();
+	int getFOND_B();
+
+	int getContour();
+
 	float getposXEllipseSlider(); 
 	float getposYEllipseSlider();	
 
@@ -57,6 +70,9 @@ public:
 	int getBrightnessImage();
 	int getAlphaImage();
 	
+	int getXLight();
+	int getYLight();
+	int getZLight();
 
 	int getRadius();
 	float getFov();
@@ -68,6 +84,7 @@ public:
 	// Initialisation des sliders des paramètres de l'image
 	ofxPanel guiImage;
 	ofxButton exportButton; bool exportCheck;
+	ofxButton importButton; bool importCheck;
 	ofxIntSlider posImageX;
 	ofxIntSlider posImageY;
 	ofxIntSlider sizeImageWidth;
@@ -99,12 +116,35 @@ public:
 	ofxFloatSlider formeVectorielleXSlider;
 	ofxFloatSlider formeVectorielleYSlider;
 	
+	ofxPanel guiColorPrimitives;
+	ofxIntSlider sliderRStroke;
+	ofxIntSlider sliderGStroke;
+	ofxIntSlider sliderBStroke;
+	ofxIntSlider sliderRFill;
+	ofxIntSlider sliderGFill;
+	ofxIntSlider sliderBFill;
+
+	ofxIntSlider sliderFONDR;
+	ofxIntSlider sliderFONDG;
+	ofxIntSlider sliderFONDB;
+
+	ofxIntSlider sliderContour;
 
 	ofxButton primitiveCarreButton; bool primitiveCarreCheck;
 	ofxButton primitiveEllipse; bool primitiveEllipseCheck;
 	ofxButton primitiveLigne; bool primitiveLigneCheck;
 
 	ofxButton formeVectorielleButton; bool formeVectorielleCheck; 
+
+	// Scène 3D
+	ofxPanel guiScene;
+	ofxButton modelButton; bool modelCheck;
+
+	// Lumière
+	ofxPanel guiLight;
+	ofxIntSlider xLightSlider;
+	ofxIntSlider yLightSlider;
+	ofxIntSlider zLightSlider;
 
 	//Éléments Autres
 	ofxPanel guiOptions;

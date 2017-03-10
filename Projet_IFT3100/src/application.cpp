@@ -24,7 +24,7 @@ Application::Application(Gui *guipam)
 
 	// Paramétrisation de la fenêtre du gui
 	ofGLFWWindowSettings settings;
-	settings.width = 300;
+	settings.width = 600;
 	settings.height = 800;
 	settings.setPosition(ofVec2f(700, 50));
 	settings.resizable = false;
@@ -82,13 +82,25 @@ void Application::update()
 	renderer->setTX2(gui->getTX2());
 	renderer->setTY1(gui->getTY1());
 	renderer->setTY2(gui->getTY2());
-	renderer->setToggle(gui->getToggle());
+
+	renderer->setRstroke(gui->getCSRS());
+	renderer->setGstroke(gui->getCSGS());
+	renderer->setBstroke(gui->getCSBS());
+	renderer->setRfill(gui->getCSRF());
+	renderer->setGfill(gui->getCSGF());
+	renderer->setBfill(gui->getCSBF());
+
+	renderer->setRfond(gui->getFOND_R());
+	renderer->setGfond(gui->getFOND_G());
+	renderer->setBfond(gui->getFOND_B());
+
 	renderer->setformeVectorielXSlider(gui->getformeVectorielleXSlider());
 	renderer->setformeVectorielYSlider(gui->getformeVectorielleYSlider());
 	renderer->setToggle(gui->getToggleRectangle());
 	renderer->setToggle(gui->getToggleEllipse());
 	renderer->setToggle(gui->getToggleLigne());
 
+	renderer->setContourLargeur(gui->getContour());
 
 	// Appel de la fonction du rectangle
 	if (gui->primitiveCarreButton && gui->primitiveCarreCheck == false)
@@ -116,7 +128,6 @@ void Application::update()
 	if (gui->formeVectorielleButton && gui->formeVectorielleCheck == false)
 	{
 	renderer->FormeVectorielle(10, 10);
-	ofLog() << "SKKR";
 
 	gui->formeVectorielleCheck = true;
 	}
@@ -139,6 +150,30 @@ void Application::update()
 		gui->exportCheck = true;
 	}
 	else if (!gui->exportButton) gui->exportCheck = false;
+	// Appel de la rotation des images dans le vecteur d'images importées
+	if (gui->importButton && gui->importCheck == false)
+	{
+		std::rotate(renderer->vecteurImage.begin(),
+			renderer->vecteurImage.end() - 1, // Ça va être le premier élément
+			renderer->vecteurImage.end());
+		gui->importCheck = true;
+	}
+	else if (!gui->importButton) gui->importCheck = false;
+
+	// Appel de la fonction d'importation d'un modèle 3D
+	if (gui->modelButton && gui->modelCheck == false)
+	{
+		renderer->model.loadModel("Solaire.3ds");
+		renderer->model.setRotation(0, 90, 90, 0, 0);
+		renderer->model.setPosition(0, -400, -200);
+		gui->modelCheck = true;
+	}
+	else if (!gui->modelButton) gui->modelCheck = false;
+
+	// Appel pour la position de la lumière
+	renderer->setXLight(gui->getXLight());
+	renderer->setYLight(gui->getYLight());
+	renderer->setZLight(gui->getZLight());
 
 	// Appels du Toggle
 	if (gui->rec == true && gui->ell == false && gui->lig == false)
@@ -332,6 +367,9 @@ void Application::dragEvent(ofDragInfo dragInfo)
 
 	// Importer le premier fichier déposé sur la fenêtre si c'est une image (attention : aucune validation du type de fichier !)
 	renderer->fond.load(dragInfo.files.at(0));
+
+	// Ajouter l'image importée au vecteur d'images
+	renderer->vecteurImage.push_back(renderer->fond);
 
 	// Activer le chargement de l'image dans le rendue
 	renderer->isFondLoaded = true;
