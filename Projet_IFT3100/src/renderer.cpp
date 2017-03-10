@@ -127,33 +127,33 @@ void Renderer::draw()
 		if (posRectangleX > 0 && posRectangleY > 0)
 		{
 			ofSetColor(rfill, gfill, bfill); //Couleur de l'intérieur du Rectangle
-			ofDrawRectangle(50 + (contourLargeur / 2), 50 + (contourLargeur / 2), posRectangleX, posRectangleY);
+			ofDrawRectangle(positionXRectangle - (contourLargeur / 2), positionYRectangle - (contourLargeur / 2), positionZRectangle - (contourLargeur / 2), posRectangleX, posRectangleY);
 			ofSetColor(rstroke, gstroke, bstroke); //Couleur de la stroke du rectangle
-			ofDrawRectangle(50, 50, posRectangleX + contourLargeur, posRectangleY + contourLargeur);
+			ofDrawRectangle(positionXRectangle, positionYRectangle, positionZRectangle, posRectangleX + contourLargeur, posRectangleY + contourLargeur);
 		}
 
 		else if (posRectangleX < 0 && posRectangleY < 0)
 		{
 			ofSetColor(rfill, gfill, bfill); //Couleur de l'intérieur du Rectangle
-			ofDrawRectangle(50 - (contourLargeur / 2), 50 - (contourLargeur / 2), posRectangleX, posRectangleY);
+			ofDrawRectangle(positionXRectangle - (contourLargeur / 2), positionYRectangle - (contourLargeur / 2), positionZRectangle - (contourLargeur / 2),  posRectangleX, posRectangleY);
 			ofSetColor(rstroke, gstroke, bstroke); //Couleur de la stroke du rectangle
-			ofDrawRectangle(50, 50, posRectangleX - contourLargeur, posRectangleY - contourLargeur);
+			ofDrawRectangle(positionXRectangle, positionYRectangle, positionZRectangle,  posRectangleX - contourLargeur, posRectangleY - contourLargeur);
 		}
 
 		else if (posRectangleX > 0 && posRectangleY < 0)
 		{
 			ofSetColor(rfill, gfill, bfill); //Couleur de l'intérieur du Rectangle
-			ofDrawRectangle(50 + (contourLargeur / 2), 50 - (contourLargeur / 2), posRectangleX, posRectangleY);
+			ofDrawRectangle(positionXRectangle - (contourLargeur / 2), positionYRectangle - (contourLargeur / 2), positionZRectangle - (contourLargeur / 2), posRectangleX, posRectangleY);
 			ofSetColor(rstroke, gstroke, bstroke); //Couleur de la stroke du rectangle
-			ofDrawRectangle(50, 50, posRectangleX + contourLargeur, posRectangleY - contourLargeur);
+			ofDrawRectangle(positionXRectangle, positionYRectangle, positionZRectangle, posRectangleX + contourLargeur, posRectangleY - contourLargeur);
 		}
 
 		else if (posRectangleX < 0 && posRectangleY > 0)
 		{
 			ofSetColor(rfill, gfill, bfill); //Couleur de l'intérieur du Rectangle
-			ofDrawRectangle(50 - (contourLargeur / 2), 50 + (contourLargeur / 2), posRectangleX, posRectangleY);
+			ofDrawRectangle(positionXRectangle - (contourLargeur / 2), positionYRectangle - (contourLargeur / 2), positionZRectangle - (contourLargeur / 2), posRectangleX, posRectangleY);
 			ofSetColor(rstroke, gstroke, bstroke); //Couleur de la stroke du rectangle
-			ofDrawRectangle(50, 50, posRectangleX - contourLargeur, posRectangleY + contourLargeur);
+			ofDrawRectangle(positionXRectangle, positionYRectangle, positionZRectangle, posRectangleX - contourLargeur, posRectangleY + contourLargeur);
 		}
 	}
 
@@ -162,40 +162,41 @@ void Renderer::draw()
 		if (posEllipseX > 0 && posEllipseY > 0) 
 		{
 			ofSetColor(rfill, gfill, bfill);
-			ofDrawEllipse(10, 10, posEllipseX, posEllipseY);
+			ofDrawEllipse(positionXEllipse, positionYEllipse,positionZEllipse, posEllipseX, posEllipseY);
 			ofSetColor(rstroke, gstroke, bstroke); //Couleur de la stroke de L'ellipse
-			ofDrawEllipse(10, 10, posEllipseX + contourLargeur, posEllipseY + contourLargeur);
+			ofDrawEllipse(positionXEllipse, positionYEllipse, positionZEllipse, posEllipseX + contourLargeur, posEllipseY + contourLargeur);
 		}
 
 		else if (posEllipseX < 0 && posEllipseY < 0)
 		{
 			ofSetColor(rfill, gfill, bfill);
-			ofDrawEllipse(10, 10, posEllipseX, posEllipseY);
+			ofDrawEllipse(positionXEllipse, positionYEllipse, positionZEllipse, posEllipseX, posEllipseY);
 			ofSetColor(rstroke, gstroke, bstroke); //Couleur de la stroke de L'ellipse
-			ofDrawEllipse(10, 10, posEllipseX - contourLargeur, posEllipseY - contourLargeur);
+			ofDrawEllipse(positionXEllipse, positionYEllipse, positionZEllipse, posEllipseX - contourLargeur, posEllipseY - contourLargeur);
 		}
 
 		else if (posEllipseX > 0 && posEllipseY < 0)
 		{
 			ofSetColor(rfill, gfill, bfill);
-			ofDrawEllipse(10, 10, posEllipseX, posEllipseY);
+			ofDrawEllipse(positionXEllipse, positionYEllipse, positionZEllipse, posEllipseX, posEllipseY);
 			ofSetColor(rstroke, gstroke, bstroke); //Couleur de la stroke de L'ellipse
-			ofDrawEllipse(10, 10, posEllipseX + contourLargeur, posEllipseY - contourLargeur);
+			ofDrawEllipse(positionXEllipse, positionYEllipse, positionZEllipse, posEllipseX + contourLargeur, posEllipseY - contourLargeur);
 		}
 
 		else if (posEllipseX < 0 && posEllipseY > 0)
 		{
 			ofSetColor(rfill, gfill, bfill);
-			ofDrawEllipse(10, 10, posEllipseX, posEllipseY);
+			ofDrawEllipse(positionXEllipse, positionYEllipse, positionZEllipse, posEllipseX, posEllipseY);
 			ofSetColor(rstroke, gstroke, bstroke); //Couleur de la stroke de L'ellipse
-			ofDrawEllipse(10, 10, posEllipseX - contourLargeur, posEllipseY + contourLargeur);
+			ofDrawEllipse(positionXEllipse, positionYEllipse, positionZEllipse, posEllipseX - contourLargeur, posEllipseY + contourLargeur);
 		}
 	}
 
 	if (createLigne == true)
 	{
 		ofSetColor(rstroke, gstroke, bstroke);
-		ofDrawLine(tx1, ty1, tx2, ty2);
+		ofDrawLine(tx1, ty1, tz1, tx2, ty2, tz2);
+		
 		ofSetLineWidth(contourLargeur);
 	}
 	
@@ -203,29 +204,30 @@ void Renderer::draw()
 	{
 		int x = posformeVectorielleX;
 		int y = posformeVectorielleY;
+		int z = posformeVectorielleZ;
 		ofSetColor(0, 0, 0);
-		ofDrawEllipse(x - 35, y, 30, 75);
+		ofDrawEllipse(x - 35, y,z, 30, 75);
 
 		ofSetColor(0, 0, 0);
-		ofDrawEllipse(x + 35, y, 30, 75);
+		ofDrawEllipse(x + 35, y,z, 30, 75);
 
 		ofSetColor(255, 255, 255);
-		ofDrawEllipse(x, y, 250, 100);
+		ofDrawEllipse(x, y,z, 250, 100);
 
 		ofSetColor(255, 204, 0);
-		ofDrawEllipse(x, y, 325, 150);
+		ofDrawEllipse(x, y,z, 325, 150);
 
 		ofSetColor(255, 153, 2);
-		ofDrawEllipse(x, y, 400, 200);
+		ofDrawEllipse(x, y,z, 400, 200);
 
 		ofSetColor(51, 204, 0);
-		ofDrawRectangle(x + 45, y, -90, -250);
+		ofDrawRectangle(x + 45, y,z, -90, -250);
 
-		ofDrawTriangle(x + 45, y - 250, x + 85, y - 150, x + 200, y - 130);
-		ofDrawTriangle(x + 45, y - 250, x + 85 + 60, y - 230, x + 200, y - 130);
+		ofDrawTriangle(x + 45, y - 250,z, x + 85, y - 150,z, x + 200, y - 130,z);
+		ofDrawTriangle(x + 45, y - 250,z, x + 85 + 60, y - 230,z, x + 200, y - 130,z);
 
-		ofDrawTriangle(x - 45, y - 250, x - 85, y - 150, x - 200, y - 130);
-		ofDrawTriangle(x - 45, y - 250, x - 85 - 60, y - 230, x - 200, y - 130);
+		ofDrawTriangle(x - 45, y - 250,z, x - 85, y - 150,z, x - 200, y - 130,z);
+		ofDrawTriangle(x - 45, y - 250,z, x - 85 - 60, y - 230,z, x - 200, y - 130,z);
 	}
 	
 	// Importation d'un modèle 3D

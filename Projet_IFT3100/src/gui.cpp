@@ -54,39 +54,45 @@ void Gui::reset() {
 	guiCamera.add(cameraFarSlider.setup("Plan far", defaultCameraFar, 1500, 3000));
 
 	// Primitive
-	guiPrimitive.setup("Primitives Vectorielles", "Primitives Vectorielles", offsetX, 375);
+	guiPrimitive.setup("Primitives Vectorielles", "Primitives Vectorielles", 260, 200);
 	// Rectangle
 	guiPrimitive.add(primitiveCarreButton.setup("Rectangle")); primitiveCarreCheck = false;
 	guiPrimitive.add(posXSlider.setup("Largeur Rectangle", -600, -900, 900));
 	guiPrimitive.add(posYSlider.setup("Hauteur Rectangle", 312, -900, 900));
 
-	guiPrimitive.add(positionXRectangleSlider.setup("Position X Rectangle", -600, -1500, 1500));
-	guiPrimitive.add(positionYRectangleSlider.setup("Position Y Rectangle", -600, -1500, 1500));
+	guiPrimitive.add(positionXRectangleSlider.setup("Position X Rectangle", 300, -1500, 1500));
+	guiPrimitive.add(positionYRectangleSlider.setup("Position Y Rectangle", 300, -1500, 1500));
+	guiPrimitive.add(positionZRectangleSlider.setup("Position Z Rectangle", 300, -1500, 1500));
 	// Ellipse
 	guiPrimitive.add(primitiveEllipse.setup("Ellipse")); primitiveEllipseCheck = false;
 	guiPrimitive.add(posXEllipseSlider.setup("Largeur Ellipse", 450, -1500, 1500));
-	guiPrimitive.add(posYEllipseSlider.setup("Hauteur 1111111Ellipse", 600, -1500, 1500));
-	guiPrimitive.add(positionXEllipseSlider.setup("Position X Ellipse", -600, -1500, 1500));
-	guiPrimitive.add(positionYEllipseSlider.setup("Position Y Ellipse", -600, -1500, 1500));
+	guiPrimitive.add(posYEllipseSlider.setup("Hauteur Ellipse", 600, -1500, 1500));
+
+	guiPrimitive.add(positionXEllipseSlider.setup("Position X Ellipse", 300, -1500, 1500));
+	guiPrimitive.add(positionYEllipseSlider.setup("Position Y Ellipse", 300, -1500, 1500));
+	guiPrimitive.add(positionZEllipseSlider.setup("Position Z Ellipse", 300, -1500, 1500));
 	// Triangle
 	guiPrimitive.add(primitiveLigne.setup("Ligne")); primitiveLigneCheck = false;
 	guiPrimitive.add(tx1.setup("Sommet #1 - Coord 'x'", 306, -900, 900));
 	guiPrimitive.add(ty1.setup("Sommet #1 - Coord 'y'", 300, -850, 850));
+	guiPrimitive.add(tz1.setup("Sommet #1 - Coord 'z'", 300, -850, 850));
 	guiPrimitive.add(tx2.setup("Sommet #2 - Coord 'x'", 552, -900, 900));
-	guiPrimitive.add(ty2.setup("Sommet #2 - Coord 'y'", -174, -850, 850));
+	guiPrimitive.add(ty2.setup("Sommet #2 - Coord 'y'", 552, -900, 900));
+	guiPrimitive.add(tz2.setup("Sommet #2 - Coord 'z'", -174, -850, 850));
 
 	// Forme Vectorielle 
 	guiPrimitive.add(formeVectorielleButton.setup("Forme Vectorielle")); formeVectorielleCheck = false; 
 	guiPrimitive.add(formeVectorielleXSlider.setup("Pos X Vecteur", 450, -1500, 1500));
 	guiPrimitive.add(formeVectorielleYSlider.setup("Pos Y Vecteur", 600, -1500, 1500));
-	
+	guiPrimitive.add(formeVectorielleZSlider.setup("Pos Z Vecteur", 600, -1500, 1500));
+
 	guiOptions.setup("Option", "", offsetX, 665);
 	guiOptions.add(rec.setup("Clear Rectangle", 0, 0, 22));
 	guiOptions.add(ell.setup("Clear Ellipse", 0, 0, 22));
 	guiOptions.add(lig.setup("Clear Ligne", 0, 0, 22));
 
 	//Couleurs Stroke + Fill
-	guiColorPrimitives.setup("Couleur Stroke-Fill", "", 260, 375);
+	guiColorPrimitives.setup("Couleur Stroke-Fill", "", offsetX, 375);
 	guiColorPrimitives.add(sliderContour.setup("Largeur Contour", 50, 0, 100));
 	guiColorPrimitives.add(sliderRStroke.setup("Stroke/Red", 0, 0, 255));
 	guiColorPrimitives.add(sliderGStroke.setup("Stroke/Green", 0, 0, 255));
@@ -240,6 +246,14 @@ float Gui::getTY2()
 {
 	return ty2;
 }
+float Gui::getTZ1()
+{
+	return tz1;
+}
+float Gui::getTZ2()
+{
+	return tz2;
+}
 
 int Gui::getCSRS() 
 {
@@ -298,6 +312,11 @@ float Gui::getformeVectorielleYSlider() {
 	return formeVectorielleYSlider;
 }
 
+float Gui::getformeVectorielleZSlider() {
+	return formeVectorielleZSlider;
+}
+
+
 
 float Gui::getPositionXEllipseSlider() {
 	return positionXEllipseSlider;
@@ -307,6 +326,22 @@ float Gui::getPositionXEllipseSlider() {
 float Gui::getPositionYEllipseSlider() {
 	return positionYEllipseSlider;
 }
+
+float Gui::getPositionZEllipseSlider() {
+	return positionZEllipseSlider;
+}
+
+
+float Gui::getPositionXRectangleSlider() {
+	return positionXRectangleSlider;
+}
+float Gui::getPositionYRectangleSlider() {
+	return positionYRectangleSlider;
+}
+float Gui::getPositionZRectangleSlider() {
+	return positionZRectangleSlider;
+}
+
 
 
 int Gui::getXLight()

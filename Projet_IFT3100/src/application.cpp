@@ -79,12 +79,24 @@ void Application::update()
 	// Appel des fonctions de la paramétrisation des formes géométriques
 	renderer->posRectangleX=(gui->getPosXSlider());
 	renderer->posRectangleY=(gui->getPosYSlider());
+
+	renderer->positionXEllipse = (gui->getPositionXEllipseSlider());
+	renderer->positionYEllipse = (gui->getPositionYEllipseSlider());
+	renderer->positionZEllipse = (gui->getPositionZEllipseSlider());
+
+	renderer->positionXRectangle = (gui->getPositionXRectangleSlider());
+	renderer->positionYRectangle = (gui->getPositionYRectangleSlider());
+	renderer->positionZRectangle = (gui->getPositionZRectangleSlider());
+
+
 	renderer->posEllipseX=(gui->getposXEllipseSlider());
 	renderer->posEllipseY=(gui->getposYEllipseSlider());
 	renderer->tx1=(gui->getTX1());
 	renderer->tx2=(gui->getTX2());
 	renderer->ty1=(gui->getTY1());
 	renderer->ty2=(gui->getTY2());
+	renderer->tz1 = (gui->getTZ1());
+	renderer->tz2 = (gui->getTZ2());
 
 	renderer->rstroke=(gui->getCSRS());
 	renderer->gstroke=(gui->getCSGS());
@@ -99,6 +111,8 @@ void Application::update()
 
 	renderer->posformeVectorielleX=(gui->getformeVectorielleXSlider());
 	renderer->posformeVectorielleY=(gui->getformeVectorielleYSlider());
+	renderer->posformeVectorielleZ = (gui->getformeVectorielleZSlider());
+
 	renderer->setToggle(gui->getToggleRectangle());
 	renderer->setToggle(gui->getToggleEllipse());
 	renderer->setToggle(gui->getToggleLigne());

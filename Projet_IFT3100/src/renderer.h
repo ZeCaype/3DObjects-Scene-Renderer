@@ -115,16 +115,31 @@ public:
 	// Initialisation des primitives vectorielles
 	float posRectangleX;
 	float posRectangleY;
+
 	float posformeVectorielleX; 
 	float posformeVectorielleY; 
+	float posformeVectorielleZ;
 
 	float tx1;
 	float tx2;
 	float ty2;
 	float ty1;
-	
+	float tz2;
+	float tz1;
+
+
 	float posEllipseX;
 	float posEllipseY;
+
+	float positionXEllipse;
+	float positionYEllipse;
+	float positionZEllipse; 
+
+	float positionXRectangle; 
+	float positionYRectangle; 
+	float positionZRectangle; 
+
+
 
 	bool createRectangle = false;
 	bool createEllipse = false;

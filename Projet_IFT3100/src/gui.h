@@ -29,8 +29,6 @@ public:
 	void update();
 	void draw();
 
-	float getPosXSlider();
-	float getPosYSlider();
 
 	float posX;
 	float posY;
@@ -39,6 +37,8 @@ public:
 	float getTX2();
 	float getTY1();
 	float getTY2();
+	float getTZ1();
+	float getTZ2();
 
 	int getCSRS();
 	int getCSGS();
@@ -56,15 +56,26 @@ public:
 	float getposXEllipseSlider(); 
 	float getposYEllipseSlider();	
 
+
+	float getPosXSlider();
+	float getPosYSlider();
+	
+	//forme vectorielle 
 	float getformeVectorielleXSlider(); 
 	float getformeVectorielleYSlider(); 
+	float getformeVectorielleZSlider();
 
-	float getPostionXRectangleSlider();
+
+	//Primitive 2d
+	float getPositionXRectangleSlider();
 	float getPositionYRectangleSlider(); 
+	float getPositionZRectangleSlider();
+
 	float getPositionXEllipseSlider(); 
 	float getPositionYEllipseSlider(); 
-	float getPositionXLigneSlider();
-	float getPositionYLigneSlider(); 
+	float getPositionZEllipseSlider();
+
+	
 	
 	ofxToggle getToggleRectangle();
 	ofxToggle getToggleEllipse();
@@ -123,21 +134,25 @@ public:
 	ofxFloatSlider tx2;
 	ofxFloatSlider ty1;
 	ofxFloatSlider ty2;
+	ofxFloatSlider tz1;
+	ofxFloatSlider tz2;
 	ofxFloatSlider posXEllipseSlider;
 	ofxFloatSlider posYEllipseSlider;
+
 	ofxFloatSlider positionYEllipseSlider;
 	ofxFloatSlider positionXEllipseSlider; 
+	ofxFloatSlider positionZEllipseSlider;
 
 	ofxFloatSlider positionXRectangleSlider; 
 	ofxFloatSlider positionYRectangleSlider;
+	ofxFloatSlider positionZRectangleSlider;
 
-	ofxFloatSlider positionXLigneSlider; 
-	ofxFloatSlider positionYLigneSlider; 
 
 
 	ofxFloatSlider formeVectorielleXSlider;
 	ofxFloatSlider formeVectorielleYSlider;
-	
+	ofxFloatSlider formeVectorielleZSlider;
+
 	ofxPanel guiColorPrimitives;
 	ofxIntSlider sliderRStroke;
 	ofxIntSlider sliderGStroke;
