@@ -58,6 +58,13 @@ public:
 
 	float getformeVectorielleXSlider(); 
 	float getformeVectorielleYSlider(); 
+
+	float getPostionXRectangleSlider();
+	float getPositionYRectangleSlider(); 
+	float getPositionXEllipseSlider(); 
+	float getPositionYEllipseSlider(); 
+	float getPositionXLigneSlider();
+	float getPositionYLigneSlider(); 
 	
 	ofxToggle getToggleRectangle();
 	ofxToggle getToggleEllipse();
@@ -118,6 +125,15 @@ public:
 	ofxFloatSlider ty2;
 	ofxFloatSlider posXEllipseSlider;
 	ofxFloatSlider posYEllipseSlider;
+	ofxFloatSlider positionYEllipseSlider;
+	ofxFloatSlider positionXEllipseSlider; 
+
+	ofxFloatSlider positionXRectangleSlider; 
+	ofxFloatSlider positionYRectangleSlider;
+
+	ofxFloatSlider positionXLigneSlider; 
+	ofxFloatSlider positionYLigneSlider; 
+
 
 	ofxFloatSlider formeVectorielleXSlider;
 	ofxFloatSlider formeVectorielleYSlider;

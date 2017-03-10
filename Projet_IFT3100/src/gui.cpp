@@ -59,10 +59,14 @@ void Gui::reset() {
 	guiPrimitive.add(primitiveCarreButton.setup("Rectangle")); primitiveCarreCheck = false;
 	guiPrimitive.add(posXSlider.setup("Largeur Rectangle", -600, -900, 900));
 	guiPrimitive.add(posYSlider.setup("Hauteur Rectangle", 312, -900, 900));
+	guiPrimitive.add(positionXRectangleSlider.setup("Position X Rectangle", -600, -1500, 1500));
+	guiPrimitive.add(positionYRectangleSlider.setup("Position Y Rectangle", -600, -1500, 1500));
 	// Ellipse
 	guiPrimitive.add(primitiveEllipse.setup("Ellipse")); primitiveEllipseCheck = false;
 	guiPrimitive.add(posXEllipseSlider.setup("Largeur Ellipse", 450, -1500, 1500));
 	guiPrimitive.add(posYEllipseSlider.setup("Hauteur Ellipse", 600, -1500, 1500));
+	guiPrimitive.add(positionYEllipseSlider.setup("Position X Ellipse", -600, -1500, 1500));
+	guiPrimitive.add(positionYEllipseSlider.setup("Position Y Ellipse", -600, -1500, 1500));
 	// Triangle
 	guiPrimitive.add(primitiveLigne.setup("Ligne")); primitiveLigneCheck = false;
 	guiPrimitive.add(tx1.setup("Sommet #1 - Coord 'x'", 306, -900, 900));
@@ -293,6 +297,17 @@ float Gui::getformeVectorielleYSlider() {
 	return formeVectorielleYSlider;
 }
 
+
+float Gui::getPositionXEllipseSlider() {
+	return positionXEllipseSlider;
+}
+
+
+float Gui::getPositionYEllipseSlider() {
+	return positionYEllipseSlider;
+}
+
+
 int Gui::getXLight()
 {
 	return xLightSlider;
@@ -307,6 +322,14 @@ int Gui::getZLight()
 {
 	return zLightSlider;
 }
+
+int Gui::getZLight()
+{
+	return zLightSlider;
+}
+
+
+
 
 // Destructeur de la classe
 Gui::~Gui()
