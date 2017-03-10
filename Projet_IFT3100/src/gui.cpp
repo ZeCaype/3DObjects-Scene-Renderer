@@ -86,6 +86,16 @@ void Gui::reset() {
 	guiColorPrimitives.add(sliderGFill.setup("Fill/Green", 0, 0, 255));
 	guiColorPrimitives.add(sliderBFill.setup("Fill/Blue", 0, 0, 255));
 
+	// Scène 3D
+	guiScene.setup("Scene 3D", "", 260, 10);
+	guiScene.add(modelButton.setup("Modele")); modelCheck = false;
+
+	// Lumière
+	guiLight.setup("Lumiere", "", 260, 90);
+	guiLight.add(xLightSlider.setup("x Lumiere", 0, -1000, 1000));
+	guiLight.add(yLightSlider.setup("y Lumiere", 0, -1000, 1000));
+	guiLight.add(zLightSlider.setup("z Lumiere", -1000, -1000, 1000));
+
 	// Options
 	guiOption.setup("Options", "", offsetX, 750);
 	guiOption.add(exitButton.setup("Quitter l'application"));
@@ -107,6 +117,8 @@ void Gui::draw()
 	guiPrimitive.draw();
 	guiOptions.draw();
 	guiColorPrimitives.draw();
+	guiScene.draw();
+	guiLight.draw();
 }
 
 // Retourne la position en X de l'image
@@ -245,6 +257,21 @@ float Gui::getformeVectorielleXSlider() {
 
 float Gui::getformeVectorielleYSlider() {
 	return formeVectorielleYSlider;
+}
+
+int Gui::getXLight()
+{
+	return xLightSlider;
+}
+
+int Gui::getYLight()
+{
+	return yLightSlider;
+}
+
+int Gui::getZLight()
+{
+	return zLightSlider;
 }
 
 // Destructeur de la classe

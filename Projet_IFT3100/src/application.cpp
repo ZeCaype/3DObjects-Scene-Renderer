@@ -155,6 +155,21 @@ void Application::update()
 	}
 	else if (!gui->importButton) gui->importCheck = false;
 
+	// Appel de la fonction d'importation d'un modèle 3D
+	if (gui->modelButton && gui->modelCheck == false)
+	{
+		renderer->model.loadModel("Solaire.3ds");
+		renderer->model.setRotation(0, 90, 90, 0, 0);
+		renderer->model.setPosition(0, -400, -200);
+		gui->modelCheck = true;
+	}
+	else if (!gui->modelButton) gui->modelCheck = false;
+
+	// Appel pour la position de la lumière
+	renderer->setXLight(gui->getXLight());
+	renderer->setYLight(gui->getYLight());
+	renderer->setZLight(gui->getZLight());
+
 	// Appels du Toggle
 	if (gui->rec == true && gui->ell == false && gui->lig == false)
 	{

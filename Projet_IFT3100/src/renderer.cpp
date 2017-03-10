@@ -94,7 +94,7 @@ void Renderer::draw()
 	camera->begin();
 	
 	// Activation de la lumière
-	light->setPosition(0, 0, -1000);
+	light->setPosition(xLight, yLight, zLight);
 
 	// Activation des différentes caméras
 	if (isVisibleCamera)
@@ -230,6 +230,11 @@ void Renderer::draw()
 		ofDrawTriangle(x - 45, y - 250, x - 85 - 60, y - 230, x - 200, y - 130);
 	}
 	
+	// Importation d'un modèle 3D
+	if (isModelLoaded)
+	{
+		model.drawFaces();
+	}
 	
 	camera->end();
 }
@@ -374,6 +379,20 @@ void Renderer::setAlphaImage(int alpha)
 	alphaImage = alpha;
 }
 
+void Renderer::setXLight(int xL)
+{
+	xLight = xL;
+}
+
+void Renderer::setYLight(int yL)
+{
+	yLight = yL;
+}
+
+void Renderer::setZLight(int zL)
+{
+	zLight = zL;
+}
 
 void Renderer::setRadius(int radius) 
 {

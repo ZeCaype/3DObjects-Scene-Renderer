@@ -64,6 +64,9 @@ public:
 	int getBrightnessImage();
 	int getAlphaImage();
 	
+	int getXLight();
+	int getYLight();
+	int getZLight();
 
 	int getRadius();
 	float getFov();
@@ -120,6 +123,16 @@ public:
 	ofxButton primitiveLigne; bool primitiveLigneCheck;
 
 	ofxButton formeVectorielleButton; bool formeVectorielleCheck; 
+
+	// Scène 3D
+	ofxPanel guiScene;
+	ofxButton modelButton; bool modelCheck;
+
+	// Lumière
+	ofxPanel guiLight;
+	ofxIntSlider xLightSlider;
+	ofxIntSlider yLightSlider;
+	ofxIntSlider zLightSlider;
 
 	//Éléments Autres
 	ofxPanel guiOptions;
