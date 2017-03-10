@@ -72,7 +72,7 @@ void Gui::reset() {
 	guiPrimitive.add(formeVectorielleYSlider.setup("Pos Y Vecteur", 600, -1500, 1500));
 	//Autres (Couleur slider)
 	guiOptions.setup("Couleur : Primitives", "", offsetX, 665);
-	guiOptions.add(test.setup("Toggle", 0, 0, 30));
+ 	guiOptions.add(test.setup("Toggle", 0, 0, 30));
 	
 	
 
