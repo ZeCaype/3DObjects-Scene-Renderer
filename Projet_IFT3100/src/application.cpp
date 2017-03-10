@@ -24,7 +24,7 @@ Application::Application(Gui *guipam)
 
 	// Paramétrisation de la fenêtre du gui
 	ofGLFWWindowSettings settings;
-	settings.width = 300;
+	settings.width = 600;
 	settings.height = 800;
 	settings.setPosition(ofVec2f(700, 50));
 	settings.resizable = false;
@@ -82,7 +82,14 @@ void Application::update()
 	renderer->setTX2(gui->getTX2());
 	renderer->setTY1(gui->getTY1());
 	renderer->setTY2(gui->getTY2());
-	renderer->setToggle(gui->getToggle());
+
+	renderer->setRstroke(gui->getCSRS());
+	renderer->setGstroke(gui->getCSGS());
+	renderer->setBstroke(gui->getCSBS());
+	renderer->setRfill(gui->getCSRF());
+	renderer->setGfill(gui->getCSGF());
+	renderer->setBfill(gui->getCSBF());
+
 	renderer->setformeVectorielXSlider(gui->getformeVectorielleXSlider());
 	renderer->setformeVectorielYSlider(gui->getformeVectorielleYSlider());
 	renderer->setToggle(gui->getToggleRectangle());
@@ -116,7 +123,6 @@ void Application::update()
 	if (gui->formeVectorielleButton && gui->formeVectorielleCheck == false)
 	{
 	renderer->FormeVectorielle(10, 10);
-	ofLog() << "SKKR";
 
 	gui->formeVectorielleCheck = true;
 	}

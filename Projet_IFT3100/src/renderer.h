@@ -140,6 +140,19 @@ public:
 	void setTY1(int posY);
 	void setTY2(int posY);
 
+	void setRstroke(int R_Stroke);
+	void setGstroke(int G_Stroke);
+	void setBstroke(int B_Stroke);
+	void setRfill(int R_Fill);
+	void setGfill(int G_Fill);
+	void setBfill(int B_Fill);
+	int rstroke = 0;
+	int gstroke = 0;
+	int bstroke = 0;
+	int rfill = 0;
+	int gfill = 0;
+	int bfill = 0;
+
 	void setposXEllipseSlider(int posX);
 	void setposYEllipseSlider(int posY);
 
@@ -153,6 +166,7 @@ public:
 	void ReactionRec();
 	void ReactionEll();
 	void ReactionLig();
+	int focusPrime = 0;
 
 	//------------------------------------------------------------
 	// Initialisation de l'image

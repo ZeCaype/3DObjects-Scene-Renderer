@@ -70,19 +70,22 @@ void Gui::reset() {
 	guiPrimitive.add(formeVectorielleButton.setup("Forme Vectorielle")); formeVectorielleCheck = false; 
 	guiPrimitive.add(formeVectorielleXSlider.setup("Pos X Vecteur", 450, -1500, 1500));
 	guiPrimitive.add(formeVectorielleYSlider.setup("Pos Y Vecteur", 600, -1500, 1500));
-	//Autres (Couleur slider)
-	guiOptions.setup("Couleur : Primitives", "", offsetX, 665);
-	guiOptions.add(test.setup("Toggle", 0, 0, 30));
 	
-	
-
-	guiOptions.setup("Option", "", offsetX, 565);
+	guiOptions.setup("Option", "", offsetX, 665);
 	guiOptions.add(rec.setup("Focus Rectangle", 0, 0, 22));
 	guiOptions.add(ell.setup("Focus Ellipse", 0, 0, 22));
 	guiOptions.add(lig.setup("Focus Ligne", 0, 0, 22));
 
+	//Couleurs Stroke + Fill
+	guiColorPrimitives.setup("Couleur Stroke-Fill", "", 260, 330);
+	guiColorPrimitives.add(sliderRStroke.setup("Stroke/Red", 0, 0, 255));
+	guiColorPrimitives.add(sliderGStroke.setup("Stroke/Green", 0, 0, 255));
+	guiColorPrimitives.add(sliderBStroke.setup("Stroke/Blue", 0, 0, 255));
+	guiColorPrimitives.add(sliderRFill.setup("Fill/Red", 0, 0, 255));
+	guiColorPrimitives.add(sliderGFill.setup("Fill/Green", 0, 0, 255));
+	guiColorPrimitives.add(sliderBFill.setup("Fill/Blue", 0, 0, 255));
 
-	// Optiosn
+	// Options
 	guiOption.setup("Options", "", offsetX, 750);
 	guiOption.add(exitButton.setup("Quitter l'application"));
 }
@@ -102,6 +105,7 @@ void Gui::draw()
 	guiCamera.draw();
 	guiPrimitive.draw();
 	guiOptions.draw();
+	guiColorPrimitives.draw();
 }
 
 // Retourne la position en X de l'image
@@ -183,6 +187,31 @@ float Gui::getTY1()
 float Gui::getTY2()
 {
 	return ty2;
+}
+
+int Gui::getCSRS() 
+{
+	return sliderRStroke;
+}
+int Gui::getCSGS()
+{
+	return sliderGStroke;
+}
+int Gui::getCSBS()
+{
+	return sliderBStroke;
+}
+int Gui::getCSRF()
+{
+	return sliderRFill;
+}
+int Gui::getCSGF()
+{
+	return sliderGFill;
+}
+int Gui::getCSBF()
+{
+	return sliderBFill;
 }
 
 ofxToggle Gui::getToggleRectangle()

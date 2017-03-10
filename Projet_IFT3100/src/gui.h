@@ -38,6 +38,13 @@ public:
 	float getTY1();
 	float getTY2();
 
+	int getCSRS();
+	int getCSGS();
+	int getCSBS();
+	int getCSRF();
+	int getCSGF();
+	int getCSBF();
+
 	float getposXEllipseSlider(); 
 	float getposYEllipseSlider();	
 
@@ -99,6 +106,13 @@ public:
 	ofxFloatSlider formeVectorielleXSlider;
 	ofxFloatSlider formeVectorielleYSlider;
 	
+	ofxPanel guiColorPrimitives;
+	ofxIntSlider sliderRStroke;
+	ofxIntSlider sliderGStroke;
+	ofxIntSlider sliderBStroke;
+	ofxIntSlider sliderRFill;
+	ofxIntSlider sliderGFill;
+	ofxIntSlider sliderBFill;
 
 	ofxButton primitiveCarreButton; bool primitiveCarreCheck;
 	ofxButton primitiveEllipse; bool primitiveEllipseCheck;

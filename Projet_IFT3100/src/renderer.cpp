@@ -126,33 +126,33 @@ void Renderer::draw()
 	{
 		if (posRectangleX > 0 && posRectangleY > 0)
 		{
-			ofSetColor(0, 255, 0); //Couleur de l'intérieur du Rectangle
+			ofSetColor(rfill, gfill, bfill); //Couleur de l'intérieur du Rectangle
 			ofDrawRectangle(50 + (recStroke / 2), 50 + (recStroke / 2), posRectangleX, posRectangleY);
-			ofSetColor(0, 0, 0); //Couleur de la stroke du rectangle
+			ofSetColor(rstroke, gstroke, bstroke); //Couleur de la stroke du rectangle
 			ofDrawRectangle(50, 50, posRectangleX + recStroke, posRectangleY + recStroke);
 		}
 
 		else if (posRectangleX < 0 && posRectangleY < 0)
 		{
-			ofSetColor(0, 255, 0); //Couleur de l'intérieur du Rectangle
+			ofSetColor(rfill, gfill, bfill); //Couleur de l'intérieur du Rectangle
 			ofDrawRectangle(50 - (recStroke / 2), 50 - (recStroke / 2), posRectangleX, posRectangleY);
-			ofSetColor(0, 0, 0); //Couleur de la stroke du rectangle
+			ofSetColor(rstroke, gstroke, bstroke); //Couleur de la stroke du rectangle
 			ofDrawRectangle(50, 50, posRectangleX - recStroke, posRectangleY - recStroke);
 		}
 
 		else if (posRectangleX > 0 && posRectangleY < 0)
 		{
-			ofSetColor(0, 255, 0); //Couleur de l'intérieur du Rectangle
+			ofSetColor(rfill, gfill, bfill); //Couleur de l'intérieur du Rectangle
 			ofDrawRectangle(50 + (recStroke / 2), 50 - (recStroke / 2), posRectangleX, posRectangleY);
-			ofSetColor(0, 0, 0); //Couleur de la stroke du rectangle
+			ofSetColor(rstroke, gstroke, bstroke); //Couleur de la stroke du rectangle
 			ofDrawRectangle(50, 50, posRectangleX + recStroke, posRectangleY - recStroke);
 		}
 
 		else if (posRectangleX < 0 && posRectangleY > 0)
 		{
-			ofSetColor(0, 255, 0); //Couleur de l'intérieur du Rectangle
+			ofSetColor(rfill, gfill, bfill); //Couleur de l'intérieur du Rectangle
 			ofDrawRectangle(50 - (recStroke / 2), 50 + (recStroke / 2), posRectangleX, posRectangleY);
-			ofSetColor(0, 0, 0); //Couleur de la stroke du rectangle
+			ofSetColor(rstroke, gstroke, bstroke); //Couleur de la stroke du rectangle
 			ofDrawRectangle(50, 50, posRectangleX - recStroke, posRectangleY + recStroke);
 		}
 	}
@@ -161,40 +161,40 @@ void Renderer::draw()
 	{
 		if (posEllipseX > 0 && posEllipseY > 0) 
 		{
-			ofSetColor(0, 255, 0);
+			ofSetColor(rfill, gfill, bfill);
 			ofDrawEllipse(10, 10, posEllipseX, posEllipseY);
-			ofSetColor(0, 0, 0); //Couleur de la stroke de L'ellipse
+			ofSetColor(rstroke, gstroke, bstroke); //Couleur de la stroke de L'ellipse
 			ofDrawEllipse(10, 10, posEllipseX + ellipseStroke, posEllipseY + ellipseStroke);
 		}
 
 		else if (posEllipseX < 0 && posEllipseY < 0)
 		{
-			ofSetColor(0, 255, 0);
+			ofSetColor(rfill, gfill, bfill);
 			ofDrawEllipse(10, 10, posEllipseX, posEllipseY);
-			ofSetColor(0, 0, 0); //Couleur de la stroke de L'ellipse
+			ofSetColor(rstroke, gstroke, bstroke); //Couleur de la stroke de L'ellipse
 			ofDrawEllipse(10, 10, posEllipseX - ellipseStroke, posEllipseY - ellipseStroke);
 		}
 
 		else if (posEllipseX > 0 && posEllipseY < 0)
 		{
-			ofSetColor(0, 255, 0);
+			ofSetColor(rfill, gfill, bfill);
 			ofDrawEllipse(10, 10, posEllipseX, posEllipseY);
-			ofSetColor(0, 0, 0); //Couleur de la stroke de L'ellipse
+			ofSetColor(rstroke, gstroke, bstroke); //Couleur de la stroke de L'ellipse
 			ofDrawEllipse(10, 10, posEllipseX + ellipseStroke, posEllipseY - ellipseStroke);
 		}
 
 		else if (posEllipseX < 0 && posEllipseY > 0)
 		{
-			ofSetColor(0, 255, 0);
+			ofSetColor(rfill, gfill, bfill);
 			ofDrawEllipse(10, 10, posEllipseX, posEllipseY);
-			ofSetColor(0, 0, 0); //Couleur de la stroke de L'ellipse
+			ofSetColor(rstroke, gstroke, bstroke); //Couleur de la stroke de L'ellipse
 			ofDrawEllipse(10, 10, posEllipseX - ellipseStroke, posEllipseY + ellipseStroke);
 		}
 	}
 
 	if (createLigne == true)
 	{
-		ofSetColor(0, 255, 0);
+		ofSetColor(rstroke, gstroke, bstroke);
 		ofDrawLine(tx1, ty1, tx2, ty2);
 	}
 	
@@ -231,15 +231,34 @@ void Renderer::draw()
 	}
 	
 	
-
-	
-
-
-
-
-
 	camera->end();
 }
+
+void Renderer::setRstroke(int R_Stroke) 
+{
+	rstroke = R_Stroke;
+}
+void Renderer::setGstroke(int G_Stroke) 
+{
+	gstroke = G_Stroke;
+}
+void Renderer::setBstroke(int B_Stroke) 
+{
+	bstroke = B_Stroke;
+}
+void Renderer::setRfill(int R_Fill) 
+{
+	rfill = R_Fill;
+}
+void Renderer::setGfill(int G_Fill) 
+{
+	gfill = G_Fill;
+}
+void Renderer::setBfill(int B_Fill) 
+{
+	bfill = B_Fill;
+}
+
 void Renderer::setformeVectorielXSlider(int posX)
 {
 	posformeVectorielleX= posX;
@@ -296,16 +315,19 @@ void Renderer::setToggle(ofxToggle bouton)
 
 void Renderer::ReactionRec() 
 {
+	focusPrime = 1;
 	ofLog() << "<JE TOGGLE RECTANGLE>";
 }
 
 void Renderer::ReactionEll()
 {
+	focusPrime = 2;
 	ofLog() << "<JE TOGGLE ELLIPSE>";
 }
 
 void Renderer::ReactionLig()
 {
+	focusPrime = 3;
 	ofLog() << "<JE TOGGLE LIGNE>";
 }
 
