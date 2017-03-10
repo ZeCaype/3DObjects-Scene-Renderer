@@ -85,9 +85,11 @@ void Renderer::draw()
 	ofTranslate(ofGetWindowWidth() / 2, ofGetWindowHeight() / 2);
 
 	// Afficher l'image de fond sur toute la surface de la fenêtre seulement si isFondLoaded est true
-	ofSetColor(ofColor::fromHsb(hueImage, saturationImage, brightnessImage, alphaImage));
 	if (isFondLoaded == true)
+	{
+		ofSetColor(ofColor::fromHsb(hueImage, saturationImage, brightnessImage, alphaImage));
 		fond.draw(posImageX - ofGetWindowWidth() / 2, posImageY - ofGetWindowHeight() / 2, sizeImageWidth, sizeImageHeight);
+	}
 
 	camera->begin();
 	

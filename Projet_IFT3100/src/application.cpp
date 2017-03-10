@@ -333,6 +333,9 @@ void Application::dragEvent(ofDragInfo dragInfo)
 	// Importer le premier fichier déposé sur la fenêtre si c'est une image (attention : aucune validation du type de fichier !)
 	renderer->fond.load(dragInfo.files.at(0));
 
+	// Ajouter l'image importée au vecteur d'images
+	renderer->vecteurImage.push_back(renderer->fond);
+
 	// Activer le chargement de l'image dans le rendue
 	renderer->isFondLoaded = true;
 

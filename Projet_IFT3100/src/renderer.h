@@ -99,9 +99,9 @@ public:
 	bool isKeyPressZ;
 
 	// Image importée
-	ofImage fond;
-
+	vector<ofImage> vecteurImage;
 	ofColor couleur;
+	ofImage fond;
 
 	bool isFondLoaded;
 
