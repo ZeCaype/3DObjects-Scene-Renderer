@@ -45,6 +45,12 @@ public:
 	int getCSGF();
 	int getCSBF();
 
+	int getFOND_R();
+	int getFOND_G();
+	int getFOND_B();
+
+	int getContour();
+
 	float getposXEllipseSlider(); 
 	float getposYEllipseSlider();	
 
@@ -114,6 +120,12 @@ public:
 	ofxIntSlider sliderRFill;
 	ofxIntSlider sliderGFill;
 	ofxIntSlider sliderBFill;
+
+	ofxIntSlider sliderFONDR;
+	ofxIntSlider sliderFONDG;
+	ofxIntSlider sliderFONDB;
+
+	ofxIntSlider sliderContour;
 
 	ofxButton primitiveCarreButton; bool primitiveCarreCheck;
 	ofxButton primitiveEllipse; bool primitiveEllipseCheck;
