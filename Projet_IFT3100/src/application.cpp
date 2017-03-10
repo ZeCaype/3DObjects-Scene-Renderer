@@ -71,9 +71,12 @@ void Application::update()
 	renderer->isCameraRollLeft = isKeyPressY;
 	renderer->isCameraRollRight = isKeyPressI;
 
-	// Appel des fonctions de la paramétrisation des formes géométriques
-	renderer->setRadius(gui->getRadius());
+	renderer->circleRadius = gui->getRadius();
 	renderer->setFieldOfView(gui->getFov());
+	renderer->cameraNear = gui->getCameraNear();
+	renderer->cameraFar = gui->getCameraFar();
+
+	// Appel des fonctions de la paramétrisation des formes géométriques
 	renderer->setPosXSlider(gui->getPosXSlider());
 	renderer->setPosYSlider(gui->getPosYSlider());
 	renderer->setposXEllipseSlider(gui->getposXEllipseSlider());

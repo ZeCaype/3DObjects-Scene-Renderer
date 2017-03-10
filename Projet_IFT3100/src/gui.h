@@ -19,6 +19,8 @@ public:
 
 	int defaultCircleRadius;
 	float defaultFov;
+	int defaultCameraNear;
+	int defaultCameraFar;
 
 	Gui();
 
@@ -67,7 +69,9 @@ public:
 
 	int getRadius();
 	float getFov();
-	
+	int getCameraNear();
+	int getCameraFar();
+
 	// Initialisation des fonctions de l'application
 	ofxPanel guiOption;
 	ofxButton exitButton;
@@ -92,6 +96,8 @@ public:
 	// Initialisation des paramètres de la caméra
 	ofxPanel guiCamera;
 	ofxFloatSlider fovSlider;
+	ofxIntSlider cameraNearSlider;
+	ofxIntSlider cameraFarSlider;
 
 	//Éléments pour les primitives vectorielles
 	ofxPanel guiPrimitive;

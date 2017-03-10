@@ -13,6 +13,8 @@ void Gui::setup()
 	offsetX = 30;
 	defaultCircleRadius = 205 / 2;
 	defaultFov = 60;
+	defaultCameraNear = 50;
+	defaultCameraFar = 2500;
 
 	// Paramétrisation par défaut de l'image
 	defaultPosX = 50;
@@ -48,10 +50,11 @@ void Gui::reset() {
 	// Caméra
 	guiCamera.setup("Camera", "", offsetX, 280);
 	guiCamera.add(fovSlider.setup("Field of view", defaultFov, 0, 120));
-
+	guiCamera.add(cameraNearSlider.setup("Plan near", defaultCameraNear, 0, 600));
+	guiCamera.add(cameraFarSlider.setup("Plan far", defaultCameraFar, 1500, 3000));
 
 	// Primitive
-	guiPrimitive.setup("Primitives Vectorielles", "", offsetX, 340);
+	guiPrimitive.setup("Primitives Vectorielles", "", offsetX, 360);
 	// Rectangle
 	guiPrimitive.add(primitiveCarreButton.setup("Rectangle")); primitiveCarreCheck = false;
 	guiPrimitive.add(posXSlider.setup("Pos X Rectangle", -600, -900, 900));
@@ -158,6 +161,14 @@ int Gui::getRadius()
 float Gui::getFov()
 {
 	return fovSlider;
+}
+
+int Gui::getCameraNear() {
+	return cameraNearSlider;
+}
+
+int Gui::getCameraFar() {
+	return cameraFarSlider;
 }
 
 float Gui::getPosXSlider()
