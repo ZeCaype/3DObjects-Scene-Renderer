@@ -59,13 +59,14 @@ void Gui::reset() {
 	guiPrimitive.add(primitiveCarreButton.setup("Rectangle")); primitiveCarreCheck = false;
 	guiPrimitive.add(posXSlider.setup("Largeur Rectangle", -600, -900, 900));
 	guiPrimitive.add(posYSlider.setup("Hauteur Rectangle", 312, -900, 900));
+
 	guiPrimitive.add(positionXRectangleSlider.setup("Position X Rectangle", -600, -1500, 1500));
 	guiPrimitive.add(positionYRectangleSlider.setup("Position Y Rectangle", -600, -1500, 1500));
 	// Ellipse
 	guiPrimitive.add(primitiveEllipse.setup("Ellipse")); primitiveEllipseCheck = false;
 	guiPrimitive.add(posXEllipseSlider.setup("Largeur Ellipse", 450, -1500, 1500));
-	guiPrimitive.add(posYEllipseSlider.setup("Hauteur Ellipse", 600, -1500, 1500));
-	guiPrimitive.add(positionYEllipseSlider.setup("Position X Ellipse", -600, -1500, 1500));
+	guiPrimitive.add(posYEllipseSlider.setup("Hauteur 1111111Ellipse", 600, -1500, 1500));
+	guiPrimitive.add(positionXEllipseSlider.setup("Position X Ellipse", -600, -1500, 1500));
 	guiPrimitive.add(positionYEllipseSlider.setup("Position Y Ellipse", -600, -1500, 1500));
 	// Triangle
 	guiPrimitive.add(primitiveLigne.setup("Ligne")); primitiveLigneCheck = false;
@@ -323,10 +324,6 @@ int Gui::getZLight()
 	return zLightSlider;
 }
 
-int Gui::getZLight()
-{
-	return zLightSlider;
-}
 
 
 
