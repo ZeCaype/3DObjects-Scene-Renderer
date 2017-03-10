@@ -76,9 +76,9 @@ void Gui::reset() {
 	guiPrimitive.add(formeVectorielleYSlider.setup("Pos Y Vecteur", 600, -1500, 1500));
 	
 	guiOptions.setup("Option", "", offsetX, 665);
-	guiOptions.add(rec.setup("Focus Rectangle", 0, 0, 22));
-	guiOptions.add(ell.setup("Focus Ellipse", 0, 0, 22));
-	guiOptions.add(lig.setup("Focus Ligne", 0, 0, 22));
+	guiOptions.add(rec.setup("Clear Rectangle", 0, 0, 22));
+	guiOptions.add(ell.setup("Clear Ellipse", 0, 0, 22));
+	guiOptions.add(lig.setup("Clear Ligne", 0, 0, 22));
 
 	//Couleurs Stroke + Fill
 	guiColorPrimitives.setup("Couleur Stroke-Fill", "", 260, 375);
