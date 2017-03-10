@@ -619,6 +619,9 @@ void Renderer::updateCamera() {
 	{
 		camera->setFov(cameraFov);
 	}
+
+	camera->setNearClip(cameraNear);
+	camera->setFarClip(cameraFar);
 }
 
 // Destructeur de la classe Renderer
