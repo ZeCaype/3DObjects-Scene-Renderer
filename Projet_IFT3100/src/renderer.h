@@ -136,43 +136,18 @@ public:
 	void primitiveEllispe(int x, int y);
 	void FormeVectorielle(int x, int y);
 
-	void setformeVectorielXSlider(int posX);
-	void setformeVectorielYSlider(int posY);
-
-	void setPosXSlider(int posX);
-	void setPosYSlider(int posY);
-
-	void setTX1(int posX);
-	void setTX2(int posY);
-	void setTY1(int posY);
-	void setTY2(int posY);
-
-	void setRstroke(int R_Stroke);
-	void setGstroke(int G_Stroke);
-	void setBstroke(int B_Stroke);
-	void setRfill(int R_Fill);
-	void setGfill(int G_Fill);
-	void setBfill(int B_Fill);
 	int rstroke = 0;
 	int gstroke = 0;
 	int bstroke = 0;
 	int rfill = 0;
 	int gfill = 0;
 	int bfill = 0;
-	
-	void setRfond(int R_Fond);
-	void setGfond(int G_Fond);
-	void setBfond(int B_Fond);
+
 	int rfond = 0;
 	int gfond = 0;
 	int bfond = 0;
 
 	int contourLargeur;
-	void setContourLargeur(int cnt);
-
-	void setposXEllipseSlider(int posX);
-	void setposYEllipseSlider(int posY);
-
 
 	float ellipseStroke = 50;
 	float recStroke = 50;
@@ -206,20 +181,7 @@ public:
 	void draw();
 
 	// Fonctions de la paramétrisation de l'image
-	void setPosImageX(int posX);
-	void setPosImageY(int posY);
-	void setSizeImageWidth(int sizeW);
-	void setSizeImageHeight(int sizeH);
-	void setHueImage(int hue);
-	void setSaturationImage(int sat);
-	void setBrightnessImage(int bright);
-	void setAlphaImage(int alpha);
 
-	void setXLight(int xL);
-	void setYLight(int yL);
-	void setZLight(int zL);
-
-	void setRadius(int radius);
 	void setFieldOfView(float fov);
 
 	void keyPressed(int key);

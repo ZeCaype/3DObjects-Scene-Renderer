@@ -77,33 +77,33 @@ void Application::update()
 	renderer->cameraFar = gui->getCameraFar();
 
 	// Appel des fonctions de la paramétrisation des formes géométriques
-	renderer->setPosXSlider(gui->getPosXSlider());
-	renderer->setPosYSlider(gui->getPosYSlider());
-	renderer->setposXEllipseSlider(gui->getposXEllipseSlider());
-	renderer->setposYEllipseSlider(gui->getposYEllipseSlider());
-	renderer->setTX1(gui->getTX1());
-	renderer->setTX2(gui->getTX2());
-	renderer->setTY1(gui->getTY1());
-	renderer->setTY2(gui->getTY2());
+	renderer->posRectangleX=(gui->getPosXSlider());
+	renderer->posRectangleY=(gui->getPosYSlider());
+	renderer->posEllipseX=(gui->getposXEllipseSlider());
+	renderer->posEllipseY=(gui->getposYEllipseSlider());
+	renderer->tx1=(gui->getTX1());
+	renderer->tx2=(gui->getTX2());
+	renderer->ty1=(gui->getTY1());
+	renderer->ty2=(gui->getTY2());
 
-	renderer->setRstroke(gui->getCSRS());
-	renderer->setGstroke(gui->getCSGS());
-	renderer->setBstroke(gui->getCSBS());
-	renderer->setRfill(gui->getCSRF());
-	renderer->setGfill(gui->getCSGF());
-	renderer->setBfill(gui->getCSBF());
+	renderer->rstroke=(gui->getCSRS());
+	renderer->gstroke=(gui->getCSGS());
+	renderer->bstroke=(gui->getCSBS());
+	renderer->rfill=(gui->getCSRF());
+	renderer->gfill=(gui->getCSGF());
+	renderer->bfill=(gui->getCSBF());
 
-	renderer->setRfond(gui->getFOND_R());
-	renderer->setGfond(gui->getFOND_G());
-	renderer->setBfond(gui->getFOND_B());
+	renderer->rfond=(gui->getFOND_R());
+	renderer->gfond=(gui->getFOND_G());
+	renderer->bfond=(gui->getFOND_B());
 
-	renderer->setformeVectorielXSlider(gui->getformeVectorielleXSlider());
-	renderer->setformeVectorielYSlider(gui->getformeVectorielleYSlider());
+	renderer->posformeVectorielleX=(gui->getformeVectorielleXSlider());
+	renderer->posformeVectorielleY=(gui->getformeVectorielleYSlider());
 	renderer->setToggle(gui->getToggleRectangle());
 	renderer->setToggle(gui->getToggleEllipse());
 	renderer->setToggle(gui->getToggleLigne());
 
-	renderer->setContourLargeur(gui->getContour());
+	renderer->contourLargeur = gui->getContour();
 
 	// Appel de la fonction du rectangle
 	if (gui->primitiveCarreButton && gui->primitiveCarreCheck == false)
@@ -136,14 +136,14 @@ void Application::update()
 	}
 	else if (!gui->formeVectorielleButton) gui->formeVectorielleCheck = false;
 	// Appel des fonction de la paramétrisation de l'image
-	renderer->setPosImageX(gui->getPosImageX());
-	renderer->setPosImageY(gui->getPosImageY());
-	renderer->setSizeImageWidth(gui->getSizeImageWidth());
-	renderer->setSizeImageHeight(gui->getSizeImageHeight());
-	renderer->setHueImage(gui->getHueImage());
-	renderer->setSaturationImage(gui->getSaturationImage());
-	renderer->setBrightnessImage(gui->getBrightnessImage());
-	renderer->setAlphaImage(gui->getAlphaImage());
+	renderer->posImageX=(gui->getPosImageX());
+	renderer->posImageY=(gui->getPosImageY());
+	renderer->sizeImageWidth=(gui->getSizeImageWidth());
+	renderer->sizeImageHeight=(gui->getSizeImageHeight());
+	renderer->hueImage=(gui->getHueImage());
+	renderer->saturationImage=(gui->getSaturationImage());
+	renderer->brightnessImage=(gui->getBrightnessImage());
+	renderer->alphaImage=(gui->getAlphaImage());
 	// Appel de la fonction d'exportation de l'image
 	if (gui->exportButton && gui->exportCheck == false)
 	{
@@ -174,9 +174,9 @@ void Application::update()
 	else if (!gui->modelButton) gui->modelCheck = false;
 
 	// Appel pour la position de la lumière
-	renderer->setXLight(gui->getXLight());
-	renderer->setYLight(gui->getYLight());
-	renderer->setZLight(gui->getZLight());
+	renderer->xLight=(gui->getXLight());
+	renderer->yLight=(gui->getYLight());
+	renderer->zLight=(gui->getZLight());
 
 	// Appels du Toggle
 	if (gui->rec == true && gui->ell == false && gui->lig == false)

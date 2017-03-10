@@ -214,7 +214,6 @@ void Renderer::draw()
 		ofSetColor(255, 255, 255);
 		ofDrawEllipse(x, y, 250, 100);
 
-
 		ofSetColor(255, 204, 0);
 		ofDrawEllipse(x, y, 325, 150);
 
@@ -240,93 +239,6 @@ void Renderer::draw()
 	camera->end();
 }
 
-void Renderer::setRfond(int R_Fond)
-{
-	rfond = R_Fond;
-}
-void Renderer::setGfond(int G_Fond) 
-{
-	gfond = G_Fond;
-}
-void Renderer::setBfond(int B_Fond) 
-{
-	bfond = B_Fond;
-}
-
-void Renderer::setRstroke(int R_Stroke) 
-{
-	rstroke = R_Stroke;
-}
-void Renderer::setGstroke(int G_Stroke) 
-{
-	gstroke = G_Stroke;
-}
-void Renderer::setBstroke(int B_Stroke) 
-{
-	bstroke = B_Stroke;
-}
-void Renderer::setRfill(int R_Fill) 
-{
-	rfill = R_Fill;
-}
-void Renderer::setGfill(int G_Fill) 
-{
-	gfill = G_Fill;
-}
-void Renderer::setBfill(int B_Fill) 
-{
-	bfill = B_Fill;
-}
-
-void Renderer::setformeVectorielXSlider(int posX)
-{
-	posformeVectorielleX= posX;
-}
-void Renderer::setformeVectorielYSlider(int posX)
-{
-	posformeVectorielleY = posX;
-}
-
-void Renderer::setPosXSlider(int posX)
-{
-	posRectangleX = posX;
-}
-
-void Renderer::setPosYSlider(int posY)
-{
-	posRectangleY = posY;
-}
-
-void Renderer::setTX1(int posX)
-{
-	tx1 = posX;
-}
-
-void Renderer::setTX2(int posX)
-{
-	tx2 = posX;
-}
-
-void Renderer::setTY1(int posY)
-{
-	ty1 = posY;
-}
-
-void Renderer::setTY2(int posY)
-{
-	ty2 = posY;
-}
-
-void Renderer::setposXEllipseSlider(int posX)
-{
-	posEllipseX = posX;
-}
-
-void Renderer::setposYEllipseSlider(int posY)
-{
-	posEllipseY = posY;
-}
-
 void Renderer::setToggle(ofxToggle bouton)
 {
 	stateToggle = bouton;
@@ -350,74 +262,7 @@ void Renderer::ReactionLig()
 	ofLog() << "<JE TOGGLE LIGNE>";
 }
 
-void Renderer::setContourLargeur(int cnt)
-{
-	contourLargeur = cnt;
-}
-
-
 // Fonction de paramétrisation de l'image
-// Update la position en X de l'image
-void Renderer::setPosImageX(int posX)
-{
-	posImageX = posX;
-}
-// Update la position en Y de l'image
-void Renderer::setPosImageY(int posY)
-{
-	posImageY = posY;
-}
-// Update la longueur de l'image
-void Renderer::setSizeImageWidth(int sizeW)
-{
-	sizeImageWidth = sizeW;
-}
-// Update la largeur de l'image
-void Renderer::setSizeImageHeight(int sizeH)
-{
-	sizeImageHeight = sizeH;
-}
-// Update Hue du HSB de l'image
-void Renderer::setHueImage(int hue)
-{
-	hueImage = hue;
-}
-// Update Saturation du HSB de l'image
-void Renderer::setSaturationImage(int sat)
-{
-	saturationImage = sat;
-}
-// Update Brightness du HSB de l'image
-void Renderer::setBrightnessImage(int bright)
-{
-	brightnessImage = bright;
-}
-// Update Alpha de l'image
-void Renderer::setAlphaImage(int alpha)
-{
-	alphaImage = alpha;
-}
-
-void Renderer::setXLight(int xL)
-{
-	xLight = xL;
-}
-
-void Renderer::setYLight(int yL)
-{
-	yLight = yL;
-}
-
-void Renderer::setZLight(int zL)
-{
-	zLight = zL;
-}
-
-void Renderer::setRadius(int radius) 
-{
-	circleRadius = radius;
-}
-
 void Renderer::setFieldOfView(float fov) {
 	cameraFov = fov;
 }
@@ -475,7 +320,6 @@ void Renderer::primitiveEllispe(int x, int y)
 {
 	createEllipse = true;
 	ofLog() << "<Test Ellipse:>";
-
 }
 
 void Renderer::cameraSetupParameters() {

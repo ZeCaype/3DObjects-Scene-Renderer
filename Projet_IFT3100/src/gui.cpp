@@ -54,7 +54,7 @@ void Gui::reset() {
 	guiCamera.add(cameraFarSlider.setup("Plan far", defaultCameraFar, 1500, 3000));
 
 	// Primitive
-	guiPrimitive.setup("Primitives Vectorielles", "Primitives Vectorielles", offsetX, 340);
+	guiPrimitive.setup("Primitives Vectorielles", "Primitives Vectorielles", offsetX, 375);
 	// Rectangle
 	guiPrimitive.add(primitiveCarreButton.setup("Rectangle")); primitiveCarreCheck = false;
 	guiPrimitive.add(posXSlider.setup("Largeur Rectangle", -600, -900, 900));
@@ -81,7 +81,7 @@ void Gui::reset() {
 	guiOptions.add(lig.setup("Focus Ligne", 0, 0, 22));
 
 	//Couleurs Stroke + Fill
-	guiColorPrimitives.setup("Couleur Stroke-Fill", "", 260, 340);
+	guiColorPrimitives.setup("Couleur Stroke-Fill", "", 260, 375);
 	guiColorPrimitives.add(sliderContour.setup("Largeur Contour", 50, 0, 100));
 	guiColorPrimitives.add(sliderRStroke.setup("Stroke/Red", 0, 0, 255));
 	guiColorPrimitives.add(sliderGStroke.setup("Stroke/Green", 0, 0, 255));
