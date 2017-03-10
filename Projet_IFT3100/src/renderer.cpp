@@ -12,11 +12,8 @@ void Renderer::setup()
 	ofLog() << "<renderer::setup>";
 	ofSetWindowTitle("Rendu");
 
-	// Application d'un fond en blanc
-	ofBackground(255);
-	ofSetCircleResolution(200);
-
 	// Application des effets
+	ofSetCircleResolution(200);
 	ofSetFrameRate(60);
 	ofEnableDepthTest();
 	ofEnableLighting();
@@ -84,6 +81,9 @@ void Renderer::draw()
 {
 	ofTranslate(ofGetWindowWidth() / 2, ofGetWindowHeight() / 2);
 
+	// Couleur de fond castée par les sliders
+	ofBackground(rfond, gfond, bfond);
+
 	// Afficher l'image de fond sur toute la surface de la fenêtre seulement si isFondLoaded est true
 	if (isFondLoaded == true)
 	{
@@ -92,8 +92,6 @@ void Renderer::draw()
 	}
 
 	camera->begin();
-
-	ofBackground(rfond,gfond,bfond); //Couleur de fond castée par les sliders
 
 	// Activation de la lumière
 	light->setPosition(xLight, yLight, zLight);
