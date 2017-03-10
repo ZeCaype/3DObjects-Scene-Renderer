@@ -233,7 +233,7 @@ void Renderer::draw()
 	{
 		model.drawFaces();
 	}
-	
+
 	camera->end();
 }
 
@@ -244,19 +244,19 @@ void Renderer::setToggle(ofxToggle bouton)
 
 void Renderer::ReactionRec() 
 {
-	focusPrime = 1;
+	createRectangle = false;
 	ofLog() << "<JE TOGGLE RECTANGLE>";
 }
 
 void Renderer::ReactionEll()
 {
-	focusPrime = 2;
+	createEllipse = false;
 	ofLog() << "<JE TOGGLE ELLIPSE>";
 }
 
 void Renderer::ReactionLig()
 {
-	focusPrime = 3;
+	createLigne = false;
 	ofLog() << "<JE TOGGLE LIGNE>";
 }
 
