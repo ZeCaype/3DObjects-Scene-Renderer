@@ -75,6 +75,7 @@ public:
 	// Initialisation des sliders des paramètres de l'image
 	ofxPanel guiImage;
 	ofxButton exportButton; bool exportCheck;
+	ofxButton importButton; bool importCheck;
 	ofxIntSlider posImageX;
 	ofxIntSlider posImageY;
 	ofxIntSlider sizeImageWidth;

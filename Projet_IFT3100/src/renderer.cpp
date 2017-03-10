@@ -88,7 +88,7 @@ void Renderer::draw()
 	if (isFondLoaded == true)
 	{
 		ofSetColor(ofColor::fromHsb(hueImage, saturationImage, brightnessImage, alphaImage));
-		fond.draw(posImageX - ofGetWindowWidth() / 2, posImageY - ofGetWindowHeight() / 2, sizeImageWidth, sizeImageHeight);
+		vecteurImage[vecteurImage.size() - 1].draw(posImageX - ofGetWindowWidth() / 2, posImageY - ofGetWindowHeight() / 2, sizeImageWidth, sizeImageHeight);
 	}
 
 	camera->begin();

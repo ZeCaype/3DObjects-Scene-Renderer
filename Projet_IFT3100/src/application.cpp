@@ -145,6 +145,15 @@ void Application::update()
 		gui->exportCheck = true;
 	}
 	else if (!gui->exportButton) gui->exportCheck = false;
+	// Appel de la rotation des images dans le vecteur d'images importées
+	if (gui->importButton && gui->importCheck == false)
+	{
+		std::rotate(renderer->vecteurImage.begin(),
+			renderer->vecteurImage.end() - 1, // Ça va être le premier élément
+			renderer->vecteurImage.end());
+		gui->importCheck = true;
+	}
+	else if (!gui->importButton) gui->importCheck = false;
 
 	// Appels du Toggle
 	if (gui->rec == true && gui->ell == false && gui->lig == false)
