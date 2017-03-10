@@ -29,8 +29,9 @@ void Gui::setup()
 
 void Gui::reset() {
 	// Image
-	guiImage.setup("Image", "", offsetX, 20);
+	guiImage.setup("Image", "", offsetX, 10);
 	guiImage.add(exportButton.setup("Exportation")); exportCheck = false;
+	guiImage.add(importButton.setup("Importation precedente")); importCheck = false;
 	guiImage.add(posImageX.setup("Position X de l'image", defaultPosX, 0, 600));
 	guiImage.add(posImageY.setup("Position Y de l'image", defaultPosY, 0, 600));
 	guiImage.add(sizeImageWidth.setup("Longueur de l'image", defaultSizeImageWidth, 25, 600));
@@ -41,16 +42,16 @@ void Gui::reset() {
 	guiImage.add(alphaImage.setup("Alpha", defaultAlphaImage, 0, 255));
 
 	// Cercle UI
-	guiCircle.setup("Sphere", "", offsetX, 220);
+	guiCircle.setup("Sphere", "", offsetX, 230);
 	guiCircle.add(circleRadius.setup("circle radius", defaultCircleRadius, 5, 200));
 
 	// Caméra
-	guiCamera.setup("Camera", "", offsetX, 270);
+	guiCamera.setup("Camera", "", offsetX, 280);
 	guiCamera.add(fovSlider.setup("Field of view", defaultFov, 0, 120));
 
 
 	// Primitive
-	guiPrimitive.setup("Primitives Vectorielles", "", offsetX, 330);
+	guiPrimitive.setup("Primitives Vectorielles", "", offsetX, 340);
 	// Rectangle
 	guiPrimitive.add(primitiveCarreButton.setup("Rectangle")); primitiveCarreCheck = false;
 	guiPrimitive.add(posXSlider.setup("Pos X Rectangle", -600, -900, 900));
