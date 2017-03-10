@@ -71,7 +71,7 @@ public:
 	int getSaturationImage();
 	int getBrightnessImage();
 	int getAlphaImage();
-	
+
 	int getXLight();
 	int getYLight();
 	int getZLight();

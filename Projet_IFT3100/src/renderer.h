@@ -171,6 +171,8 @@ public:
 	int brightnessImage;
 	int alphaImage;
 
+	string nameModel;
+
 	int circleRadius;
 
 	Renderer();

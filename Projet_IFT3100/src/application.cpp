@@ -166,7 +166,7 @@ void Application::update()
 	// Appel de la fonction d'importation d'un modèle 3D
 	if (gui->modelButton && gui->modelCheck == false)
 	{
-		renderer->model.loadModel("Solaire.3ds");
+		renderer->model.loadModel(renderer->nameModel);
 		renderer->model.setRotation(0, 90, 90, 0, 0);
 		renderer->model.setPosition(0, -400, -200);
 		gui->modelCheck = true;
