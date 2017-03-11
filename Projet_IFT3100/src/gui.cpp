@@ -57,7 +57,6 @@ void Gui::reset() {
 	guiPrimitive.setup("Primitives Vectorielles", "Primitives Vectorielles", 260, 200);
 	// Rectangle
 	guiPrimitive.add(rec.setup("Rectangle", false));
-	//guiPrimitive.add(primitiveCarreButton.setup("Rectangle")); primitiveCarreCheck = false;
 	guiPrimitive.add(posXSlider.setup("Largeur Rectangle", -600, -900, 900));
 	guiPrimitive.add(posYSlider.setup("Hauteur Rectangle", 312, -900, 900));
 
@@ -65,15 +64,15 @@ void Gui::reset() {
 	guiPrimitive.add(positionYRectangleSlider.setup("Position Y Rectangle", 300, -1500, 1500));
 	guiPrimitive.add(positionZRectangleSlider.setup("Position Z Rectangle", 300, -1500, 1500));
 	// Ellipse
-	guiPrimitive.add(primitiveEllipse.setup("Ellipse")); primitiveEllipseCheck = false;
+	guiPrimitive.add(ell.setup("Ellipse", false));
 	guiPrimitive.add(posXEllipseSlider.setup("Largeur Ellipse", 450, -1500, 1500));
 	guiPrimitive.add(posYEllipseSlider.setup("Hauteur Ellipse", 600, -1500, 1500));
 
 	guiPrimitive.add(positionXEllipseSlider.setup("Position X Ellipse", 300, -1500, 1500));
 	guiPrimitive.add(positionYEllipseSlider.setup("Position Y Ellipse", 300, -1500, 1500));
 	guiPrimitive.add(positionZEllipseSlider.setup("Position Z Ellipse", 300, -1500, 1500));
-	// Triangle
-	guiPrimitive.add(primitiveLigne.setup("Ligne")); primitiveLigneCheck = false;
+	// Ligne
+	guiPrimitive.add(lig.setup("Ligne", false));
 	guiPrimitive.add(tx1.setup("Sommet #1 - Coord 'x'", 306, -900, 900));
 	guiPrimitive.add(ty1.setup("Sommet #1 - Coord 'y'", 300, -850, 850));
 	guiPrimitive.add(tz1.setup("Sommet #1 - Coord 'z'", 300, -850, 850));
@@ -82,15 +81,10 @@ void Gui::reset() {
 	guiPrimitive.add(tz2.setup("Sommet #2 - Coord 'z'", -174, -850, 850));
 
 	// Forme Vectorielle 
-	guiPrimitive.add(formeVectorielleButton.setup("Forme Vectorielle")); formeVectorielleCheck = false; 
+	guiPrimitive.add(formeVec.setup("Forme Vectorielle", false));
 	guiPrimitive.add(formeVectorielleXSlider.setup("Pos X Vecteur", 450, -1500, 1500));
 	guiPrimitive.add(formeVectorielleYSlider.setup("Pos Y Vecteur", 600, -1500, 1500));
 	guiPrimitive.add(formeVectorielleZSlider.setup("Pos Z Vecteur", 600, -1500, 1500));
-
-	guiOptions.setup("Option", "", offsetX, 665);
-	//guiOptions.add(rec.setup("Clear Rectangle", 0, 0, 22));
-	guiOptions.add(ell.setup("Clear Ellipse", 0, 0, 22));
-	guiOptions.add(lig.setup("Clear Ligne", 0, 0, 22));
 
 	//Couleurs Stroke + Fill
 	guiColorPrimitives.setup("Couleur Stroke-Fill", "", offsetX, 375);
@@ -280,19 +274,24 @@ int Gui::getCSBF()
 	return sliderBFill;
 }
 
-/*ofxToggle*/ bool Gui::getToggleRectangle()
+bool Gui::getToggleRectangle()
 {
 	return rec;
 }
 
-ofxToggle Gui::getToggleEllipse()
+bool Gui::getToggleEllipse()
 {
 	return ell;
 }
 
-ofxToggle Gui::getToggleLigne()
+bool Gui::getToggleLigne()
 {
 	return lig;
+}
+
+bool Gui::getToggleFormeVectorielle()
+{
+	return formeVec;
 }
 
 float Gui::getposXEllipseSlider() {

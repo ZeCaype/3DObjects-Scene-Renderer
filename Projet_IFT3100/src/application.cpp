@@ -77,8 +77,6 @@ void Application::update()
 	renderer->cameraFar = gui->getCameraFar();
 
 	// Appel des fonctions de la paramétrisation des formes géométriques
-	renderer->createRectangle = gui->getToggleRectangle();
-
 	renderer->posRectangleX=(gui->getPosXSlider());
 	renderer->posRectangleY=(gui->getPosYSlider());
 
@@ -115,42 +113,14 @@ void Application::update()
 	renderer->posformeVectorielleY=(gui->getformeVectorielleYSlider());
 	renderer->posformeVectorielleZ = (gui->getformeVectorielleZSlider());
 
-	//renderer->setToggle(gui->getToggleRectangle());
-	renderer->setToggle(gui->getToggleEllipse());
-	renderer->setToggle(gui->getToggleLigne());
+	//Formes 2D
+	renderer->createRectangle = gui->getToggleRectangle();
+	renderer->createEllipse = gui->getToggleEllipse();
+	renderer->createLigne = gui->getToggleLigne();
+	renderer->createFormeVectorielle = gui->getToggleFormeVectorielle();
 
 	renderer->contourLargeur = gui->getContour();
 
-	// Appel de la fonction du rectangle
-	/*if (gui->primitiveCarreButton && gui->primitiveCarreCheck == false)
-	{
-		renderer->primitiveRectangle(10, 10);
-		gui->primitiveCarreCheck = true;
-	}
-	else if (!gui->primitiveCarreButton) gui->primitiveCarreCheck = false;*/
-	// Appel de la fonction de l'ellipse
-	if (gui->primitiveEllipse && gui->primitiveEllipseCheck == false)
-	{
-		renderer->primitiveEllispe(10,10);
-		gui->primitiveEllipseCheck = true;
-	}
-	else if (!gui->primitiveEllipse) gui->primitiveEllipseCheck = false;
-	// Appel de la fonction de la ligne
-	if (gui->primitiveLigne && gui->primitiveLigneCheck == false)
-	{
-		renderer->primitiveLigne(10, 10);
-		gui->primitiveLigneCheck = true;
-	}
-	else if (!gui->primitiveLigne) gui->primitiveLigneCheck = false;
-
-	//Forme Vectorielle 
-	if (gui->formeVectorielleButton && gui->formeVectorielleCheck == false)
-	{
-	renderer->FormeVectorielle(10, 10);
-
-	gui->formeVectorielleCheck = true;
-	}
-	else if (!gui->formeVectorielleButton) gui->formeVectorielleCheck = false;
 	// Appel des fonction de la paramétrisation de l'image
 	renderer->posImageX=(gui->getPosImageX());
 	renderer->posImageY=(gui->getPosImageY());
@@ -194,20 +164,6 @@ void Application::update()
 	renderer->xLight=(gui->getXLight());
 	renderer->yLight=(gui->getYLight());
 	renderer->zLight=(gui->getZLight());
-
-	// Appels du Toggle
-	/*if (gui->rec == true && gui->ell == false && gui->lig == false)
-	{
-		renderer->ReactionRec();
-	}*/
-	/*else*/ if (gui->rec == false && gui->ell == true && gui->lig == false)
-	{
-		renderer->ReactionEll();
-	}
-	else if (gui->rec == false && gui->ell == false && gui->lig == true)
-	{
-		renderer->ReactionLig();
-	}
 
 	renderer->update();
 }

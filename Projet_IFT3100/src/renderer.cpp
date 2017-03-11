@@ -240,29 +240,6 @@ void Renderer::draw()
 	}
 }
 
-void Renderer::setToggle(ofxToggle bouton)
-{
-	stateToggle = bouton;
-}
-
-void Renderer::ReactionRec() 
-{
-	createRectangle = false;
-	ofLog() << "<JE TOGGLE RECTANGLE>";
-}
-
-void Renderer::ReactionEll()
-{
-	createEllipse = false;
-	ofLog() << "<JE TOGGLE ELLIPSE>";
-}
-
-void Renderer::ReactionLig()
-{
-	createLigne = false;
-	ofLog() << "<JE TOGGLE LIGNE>";
-}
-
 // Fonction permettant d'activer une commande en pressant une touche
 void Renderer::keyPressed(int key)
 {
@@ -291,31 +268,6 @@ void Renderer::imageExport(const string name, const string extension) const
 	imageTemp.save(fileName);
 
 	ofLog() << "<export image: " << fileName << ">";
-}
-
-void Renderer::primitiveRectangle(int x, int y)
-{
-	createRectangle = true;
-	ofLog() << "<Test Rectangle:>";
-}
-
-void Renderer::primitiveLigne(int x, int y)
-{
-	createLigne = true;
-	ofLog() << "<Test Ligne:>";
-
-}
-
-void Renderer::FormeVectorielle(int x, int y)
-{
-	createFormeVectorielle = true; 
-	ofLog() << "FORME VECTOR";
-}
-
-void Renderer::primitiveEllispe(int x, int y)
-{
-	createEllipse = true;
-	ofLog() << "<Test Ellipse:>";
 }
 
 void Renderer::cameraSetupParameters() {

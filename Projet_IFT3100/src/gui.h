@@ -76,10 +76,10 @@ public:
 	float getPositionZEllipseSlider();
 
 	
-	
-	/*ofxToggle*/ bool getToggleRectangle();
-	ofxToggle getToggleEllipse();
-	ofxToggle getToggleLigne();
+	bool getToggleRectangle();
+	bool getToggleEllipse();
+	bool getToggleLigne();
+	bool getToggleFormeVectorielle();
 
 	int getPosImageX();
 	int getPosImageY();
@@ -167,12 +167,6 @@ public:
 
 	ofxIntSlider sliderContour;
 
-	ofxButton primitiveCarreButton; bool primitiveCarreCheck;
-	ofxButton primitiveEllipse; bool primitiveEllipseCheck;
-	ofxButton primitiveLigne; bool primitiveLigneCheck;
-
-	ofxButton formeVectorielleButton; bool formeVectorielleCheck; 
-
 	// Scène 3D
 	ofxPanel guiScene;
 	ofxButton modelButton; bool modelCheck;
@@ -188,6 +182,7 @@ public:
 	ofxToggle rec;
 	ofxToggle ell;
 	ofxToggle lig;
+	ofxToggle formeVec;
 
 	~Gui();
 };

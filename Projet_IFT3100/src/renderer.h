@@ -146,11 +146,6 @@ public:
 	bool createLigne = false;
 	bool createFormeVectorielle = false; 
 
-	void primitiveRectangle(int x, int y);
-	void primitiveLigne(int x, int y);
-	void primitiveEllispe(int x, int y);
-	void FormeVectorielle(int x, int y);
-
 	int rstroke = 0;
 	int gstroke = 0;
 	int bstroke = 0;
@@ -168,11 +163,6 @@ public:
 	float recStroke = 50;
 	float triStroke = 50;
 
-	ofxToggle stateToggle;
-	void setToggle(ofxToggle bouton);
-	void ReactionRec();
-	void ReactionEll();
-	void ReactionLig();
 	int focusPrime = 0;
 
 	//------------------------------------------------------------
