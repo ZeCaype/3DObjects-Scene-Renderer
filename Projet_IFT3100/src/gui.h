@@ -61,9 +61,9 @@ public:
 	float getPosYSlider();
 	
 	//forme vectorielle 
-	float getformeVectorielleXSlider(); 
-	float getformeVectorielleYSlider(); 
-	float getformeVectorielleZSlider();
+	float getformeVectorielleRSlider(); 
+	float getformeVectorielleTSlider(); 
+	float getformeVectoriellePSlider();
 
 	float getRotAngle();
 	int getRotX();
@@ -153,11 +153,6 @@ public:
 
 
 	// Forme vectorielle
-	// Coordonnées Cartesiennes
-	ofxFloatSlider formeVectorielleXSlider;
-	ofxFloatSlider formeVectorielleYSlider;
-	ofxFloatSlider formeVectorielleZSlider;
-	// Coordonnées sphériques
 	ofxFloatSlider formeVectorielleRSlider;
 	ofxFloatSlider formeVectorielleTSlider;
 	ofxFloatSlider formeVectoriellePSlider;
