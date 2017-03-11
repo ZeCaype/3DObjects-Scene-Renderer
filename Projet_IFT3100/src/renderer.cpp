@@ -84,13 +84,6 @@ void Renderer::draw()
 	// Couleur de fond castée par les sliders
 	ofBackground(rfond, gfond, bfond);
 
-	// Afficher l'image de fond sur toute la surface de la fenêtre seulement si isFondLoaded est true
-	if (isFondLoaded == true)
-	{
-		ofSetColor(ofColor::fromHsb(hueImage, saturationImage, brightnessImage, alphaImage));
-		vecteurImage[vecteurImage.size() - 1].draw(posImageX - ofGetWindowWidth() / 2, posImageY - ofGetWindowHeight() / 2, sizeImageWidth, sizeImageHeight);
-	}
-
 	camera->begin();
 
 	// Activation de la lumière
@@ -231,12 +224,20 @@ void Renderer::draw()
 	}
 	
 	// Importation d'un modèle 3D
-	if (isModelLoaded)
+	if (isModelLoaded == true)
 	{
 		model.drawFaces();
 	}
 
 	camera->end();
+
+
+	// Afficher l'image de fond sur toute la surface de la fenêtre seulement si isFondLoaded est true
+	if (isFondLoaded == true)
+	{
+		ofSetColor(ofColor::fromHsb(hueImage, saturationImage, brightnessImage, alphaImage));
+		vecteurImage[vecteurImage.size() - 1].draw(posImageX - ofGetWindowWidth() / 2, posImageY - ofGetWindowHeight() / 2, sizeImageWidth, sizeImageHeight);
+	}
 }
 
 void Renderer::setToggle(ofxToggle bouton)
