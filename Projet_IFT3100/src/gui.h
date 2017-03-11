@@ -77,7 +77,7 @@ public:
 
 	
 	
-	ofxToggle getToggleRectangle();
+	/*ofxToggle*/ bool getToggleRectangle();
 	ofxToggle getToggleEllipse();
 	ofxToggle getToggleLigne();
 

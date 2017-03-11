@@ -72,11 +72,13 @@ void Application::update()
 	renderer->isCameraRollRight = isKeyPressI;
 
 	renderer->circleRadius = gui->getRadius();
-	renderer->setFieldOfView(gui->getFov());
+	renderer->cameraFov = gui->getFov();
 	renderer->cameraNear = gui->getCameraNear();
 	renderer->cameraFar = gui->getCameraFar();
 
 	// Appel des fonctions de la paramétrisation des formes géométriques
+	renderer->createRectangle = gui->getToggleRectangle();
+
 	renderer->posRectangleX=(gui->getPosXSlider());
 	renderer->posRectangleY=(gui->getPosYSlider());
 
@@ -113,19 +115,19 @@ void Application::update()
 	renderer->posformeVectorielleY=(gui->getformeVectorielleYSlider());
 	renderer->posformeVectorielleZ = (gui->getformeVectorielleZSlider());
 
-	renderer->setToggle(gui->getToggleRectangle());
+	//renderer->setToggle(gui->getToggleRectangle());
 	renderer->setToggle(gui->getToggleEllipse());
 	renderer->setToggle(gui->getToggleLigne());
 
 	renderer->contourLargeur = gui->getContour();
 
 	// Appel de la fonction du rectangle
-	if (gui->primitiveCarreButton && gui->primitiveCarreCheck == false)
+	/*if (gui->primitiveCarreButton && gui->primitiveCarreCheck == false)
 	{
 		renderer->primitiveRectangle(10, 10);
 		gui->primitiveCarreCheck = true;
 	}
-	else if (!gui->primitiveCarreButton) gui->primitiveCarreCheck = false;
+	else if (!gui->primitiveCarreButton) gui->primitiveCarreCheck = false;*/
 	// Appel de la fonction de l'ellipse
 	if (gui->primitiveEllipse && gui->primitiveEllipseCheck == false)
 	{
@@ -194,11 +196,11 @@ void Application::update()
 	renderer->zLight=(gui->getZLight());
 
 	// Appels du Toggle
-	if (gui->rec == true && gui->ell == false && gui->lig == false)
+	/*if (gui->rec == true && gui->ell == false && gui->lig == false)
 	{
 		renderer->ReactionRec();
-	}
-	else if (gui->rec == false && gui->ell == true && gui->lig == false)
+	}*/
+	/*else*/ if (gui->rec == false && gui->ell == true && gui->lig == false)
 	{
 		renderer->ReactionEll();
 	}

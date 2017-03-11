@@ -263,11 +263,6 @@ void Renderer::ReactionLig()
 	ofLog() << "<JE TOGGLE LIGNE>";
 }
 
-// Fonction de paramétrisation de l'image
-void Renderer::setFieldOfView(float fov) {
-	cameraFov = fov;
-}
-
 // Fonction permettant d'activer une commande en pressant une touche
 void Renderer::keyPressed(int key)
 {
