@@ -50,13 +50,14 @@ void Gui::reset() {
 	// Caméra
 	guiCamera.setup("Camera", "", offsetX, 280);
 	guiCamera.add(fovSlider.setup("Field of view", defaultFov, 0, 120));
-	guiCamera.add(cameraNearSlider.setup("Plan near", defaultCameraNear, 0, 600));
-	guiCamera.add(cameraFarSlider.setup("Plan far", defaultCameraFar, 1500, 3000));
+	guiCamera.add(cameraNearSlider.setup("Plan near", defaultCameraNear, 0, 999));
+	guiCamera.add(cameraFarSlider.setup("Plan far", defaultCameraFar, 1000, 6000));
 
 	// Primitive
 	guiPrimitive.setup("Primitives Vectorielles", "Primitives Vectorielles", 260, 200);
 	// Rectangle
-	guiPrimitive.add(primitiveCarreButton.setup("Rectangle")); primitiveCarreCheck = false;
+	guiPrimitive.add(rec.setup("Rectangle", false));
+	//guiPrimitive.add(primitiveCarreButton.setup("Rectangle")); primitiveCarreCheck = false;
 	guiPrimitive.add(posXSlider.setup("Largeur Rectangle", -600, -900, 900));
 	guiPrimitive.add(posYSlider.setup("Hauteur Rectangle", 312, -900, 900));
 
@@ -87,7 +88,7 @@ void Gui::reset() {
 	guiPrimitive.add(formeVectorielleZSlider.setup("Pos Z Vecteur", 600, -1500, 1500));
 
 	guiOptions.setup("Option", "", offsetX, 665);
-	guiOptions.add(rec.setup("Clear Rectangle", 0, 0, 22));
+	//guiOptions.add(rec.setup("Clear Rectangle", 0, 0, 22));
 	guiOptions.add(ell.setup("Clear Ellipse", 0, 0, 22));
 	guiOptions.add(lig.setup("Clear Ligne", 0, 0, 22));
 
@@ -279,7 +280,7 @@ int Gui::getCSBF()
 	return sliderBFill;
 }
 
-ofxToggle Gui::getToggleRectangle()
+/*ofxToggle*/ bool Gui::getToggleRectangle()
 {
 	return rec;
 }

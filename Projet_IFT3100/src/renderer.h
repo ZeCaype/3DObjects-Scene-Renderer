@@ -199,8 +199,6 @@ public:
 
 	// Fonctions de la paramétrisation de l'image
 
-	void setFieldOfView(float fov);
-
 	void keyPressed(int key);
 	void keyReleased(int key);
 
@@ -213,7 +211,6 @@ public:
 	void cameraSetupParameters();
 	void setupCamera();
 	void updateCamera();
-	void cameraDraw();
 
 	~Renderer();
 };
