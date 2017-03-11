@@ -112,6 +112,10 @@ void Application::update()
 	renderer->posformeVectorielleX=(gui->getformeVectorielleXSlider());
 	renderer->posformeVectorielleY=(gui->getformeVectorielleYSlider());
 	renderer->posformeVectorielleZ = (gui->getformeVectorielleZSlider());
+	renderer->rotAngle = (gui->getRotAngle());
+	renderer->rotX = (gui->getRotX());
+	renderer->rotY = (gui->getRotY());
+	renderer->rotZ = (gui->getRotZ());
 
 	//Formes 2D
 	renderer->createRectangle = gui->getToggleRectangle();

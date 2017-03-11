@@ -85,6 +85,11 @@ void Gui::reset() {
 	guiPrimitive.add(formeVectorielleXSlider.setup("Pos X Vecteur", 450, -1500, 1500));
 	guiPrimitive.add(formeVectorielleYSlider.setup("Pos Y Vecteur", 600, -1500, 1500));
 	guiPrimitive.add(formeVectorielleZSlider.setup("Pos Z Vecteur", 600, -1500, 1500));
+	// Rotation
+	guiPrimitive.add(rotAngleSlider.setup("Angle de rotation", 0, 0, 180));
+	guiPrimitive.add(rotXSlider.setup("X Rotation", 0, -1, 1));
+	guiPrimitive.add(rotYSlider.setup("Y Rotation", 0, -1, 1));
+	guiPrimitive.add(rotZSlider.setup("Z Rotation", 0, -1, 1));
 
 	//Couleurs Stroke + Fill
 	guiColorPrimitives.setup("Couleur Stroke-Fill", "", offsetX, 375);
@@ -315,7 +320,21 @@ float Gui::getformeVectorielleZSlider() {
 	return formeVectorielleZSlider;
 }
 
+float Gui::getRotAngle() {
+	return rotAngleSlider;
+}
 
+int Gui::getRotX() {
+	return rotXSlider;
+}
+
+int Gui::getRotY() {
+	return rotYSlider;
+}
+
+int Gui::getRotZ() {
+	return rotZSlider;
+}
 
 float Gui::getPositionXEllipseSlider() {
 	return positionXEllipseSlider;

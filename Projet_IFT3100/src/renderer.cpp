@@ -193,6 +193,8 @@ void Renderer::draw()
 		ofSetLineWidth(contourLargeur);
 	}
 	
+	ofPushMatrix();
+	ofRotate(rotAngle, rotX, rotY, rotZ);
 	if (createFormeVectorielle == true)
 	{
 		int x = posformeVectorielleX;
@@ -222,7 +224,8 @@ void Renderer::draw()
 		ofDrawTriangle(x - 45, y - 250,z, x - 85, y - 150,z, x - 200, y - 130,z);
 		ofDrawTriangle(x - 45, y - 250,z, x - 85 - 60, y - 230,z, x - 200, y - 130,z);
 	}
-	
+	ofPopMatrix();
+
 	// Importation d'un modèle 3D
 	if (isModelLoaded == true)
 	{

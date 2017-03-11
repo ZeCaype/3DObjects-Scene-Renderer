@@ -65,6 +65,10 @@ public:
 	float getformeVectorielleYSlider(); 
 	float getformeVectorielleZSlider();
 
+	float getRotAngle();
+	int getRotX();
+	int getRotY();
+	int getRotZ();
 
 	//Primitive 2d
 	float getPositionXRectangleSlider();
@@ -148,10 +152,20 @@ public:
 	ofxFloatSlider positionZRectangleSlider;
 
 
-
+	// Forme vectorielle
+	// Coordonnées Cartesiennes
 	ofxFloatSlider formeVectorielleXSlider;
 	ofxFloatSlider formeVectorielleYSlider;
 	ofxFloatSlider formeVectorielleZSlider;
+	// Coordonnées sphériques
+	ofxFloatSlider formeVectorielleRSlider;
+	ofxFloatSlider formeVectorielleTSlider;
+	ofxFloatSlider formeVectoriellePSlider;
+	// Rotation
+	ofxFloatSlider rotAngleSlider;
+	ofxIntSlider rotXSlider;
+	ofxIntSlider rotYSlider;
+	ofxIntSlider rotZSlider;
 
 	ofxPanel guiColorPrimitives;
 	ofxIntSlider sliderRStroke;

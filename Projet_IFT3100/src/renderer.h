@@ -120,6 +120,11 @@ public:
 	float posformeVectorielleY; 
 	float posformeVectorielleZ;
 
+	float rotAngle;
+	int rotX;
+	int rotY;
+	int rotZ;
+
 	float tx1;
 	float tx2;
 	float ty2;
