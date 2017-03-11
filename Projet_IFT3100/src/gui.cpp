@@ -106,7 +106,6 @@ void Gui::reset() {
 
 	// Scène 3D
 	guiScene.setup("Scene 3D", "", 260, 10);
-	guiScene.add(modelString.setup("Nom+Extension", nameString));
 	guiScene.add(modelButton.setup("Modele")); modelCheck = false;
 
 	// Lumière

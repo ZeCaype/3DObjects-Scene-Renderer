@@ -175,7 +175,6 @@ public:
 
 	// Scène 3D
 	ofxPanel guiScene;
-	ofxLabel modelString; string nameString;
 	ofxButton modelButton; bool modelCheck;
 
 	// Lumière
