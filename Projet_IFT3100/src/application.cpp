@@ -183,6 +183,7 @@ void Application::update()
 		renderer->model.loadModel(renderer->nameModel);
 		renderer->model.setRotation(0, 90, 90, 0, 0);
 		renderer->model.setPosition(0, -400, -200);
+		renderer->isModelLoaded = true;
 		gui->modelCheck = true;
 	}
 	else if (!gui->modelButton) gui->modelCheck = false;
