@@ -133,7 +133,6 @@ void Application::update()
 	// Appel de la fonction d'exportation de l'image
 	if (gui->exportButton && gui->exportCheck == false)
 	{
-		int test = ofGetWidth();
 		renderer->imageExport("render", "png");
 		ofLog() << "<image is in file /bin/data/" << ">";
 		gui->exportCheck = true;
