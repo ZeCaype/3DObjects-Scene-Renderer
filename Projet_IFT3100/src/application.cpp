@@ -49,9 +49,9 @@ void Application::update()
 {
 	// Appel des fonctions de la caméra
 	if (renderer->isCameraPerspective)
-		ofSetWindowTitle("camera " + renderer->cameraName + " perpective (1-6 wasdqe uhjkyi r)");
+		ofSetWindowTitle("camera " + renderer->cameraName + " Perspective (1-6 wasdqe uhjkyi r)");
 	else
-		ofSetWindowTitle("camera " + renderer->cameraName + " orthographic");
+		ofSetWindowTitle("camera " + renderer->cameraName + " Orthographique");
 
 	renderer->isCameraMoveForward = isKeyPressW;
 	renderer->isCameraMoveBackward = isKeyPressS;
