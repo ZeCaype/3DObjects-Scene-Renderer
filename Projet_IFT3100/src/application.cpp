@@ -143,6 +143,24 @@ void Application::update()
 
 	//paramétrisation de la sphere 3d 
 	renderer->primitive3dSphere = (gui->getprimitive3dSphere());
+	renderer->positionPrimitive3dXSphere = (gui->getpositionPrimitive3dXSphere());
+	renderer->positionPrimitive3dYSphere = (gui->getpositionPrimitive3dYSphere());
+	renderer->positionPrimitive3dZSphere = (gui->getpositionPrimitive3dZSphere());
+	renderer->primitive3dSphereSize = (gui->getprimitive3dSizeSphere());
+	renderer->primitive3dSphereRotation = (gui->getToggleprimitive3dRotationSphere());
+
+
+	renderer->primitive3dSphereCouleur = (gui->getprimitive3dSphereCouleur());
+	renderer->positionPrimitive3dXBox = (gui->getpositionPrimitive3dXSphereCouleur());
+	renderer->positionPrimitive3dYBox = (gui->getpositionPrimitive3dYSphereCouleur());
+	renderer->positionPrimitive3dZBox = (gui->getpositionPrimitive3dZSphereCouleur());
+	
+	renderer->primitive3dStrokeSphereCouleur = (gui->getToggleprimitive3dStrokeSphereCouleur());
+	renderer->primitive3dSphereRotationCouleur = (gui->getToggleprimitive3dRotationSphereCouleur());
+	renderer->nbrCercleCouleur = (gui->getprimitive3dNombreSphereCouleur());
+	
+	renderer->circleRadius = gui->getRadius();
+
 	// Appel de la fonction d'importation d'un modèle 3D
 	if (gui->modelButton && gui->modelCheck == false)
 	{
@@ -182,10 +200,12 @@ void Application::update()
 	renderer->cameraFov = gui->getFov();
 	renderer->cameraNear = gui->getCameraNear();
 	renderer->cameraFar = gui->getCameraFar();
+	
+
 
 	// Autres /////////////////////////////////////////////////////////////////////////////////////
-	// Rayon des sphères
-	renderer->circleRadius = gui->getRadius();
+	
+	
 	// Couleur du fond
 	renderer->rfond = (gui->getFOND_R());
 	renderer->gfond = (gui->getFOND_G());

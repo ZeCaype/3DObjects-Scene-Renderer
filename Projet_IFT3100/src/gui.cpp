@@ -14,7 +14,7 @@ void Gui::setup()
 	defaultCircleRadius = 205 / 2;
 	defaultFov = 60;
 	defaultCameraNear = 50;
-	defaultCameraFar = 2500;
+	defaultCameraFar = 3000;
 
 	// Paramétrisation par défaut de l'image
 	defaultPosX = 50;
@@ -45,10 +45,25 @@ void Gui::reset() {
 
 	// Cercle UI
 	guiCircle.setup("Sphere", "", offsetX, 230);
-	guiCircle.add(circleRadius.setup("Rayon spheres", defaultCircleRadius, 5, 200));
+
+	guiCircle.add(primitive3dSphere.setup("Sphere", true));
+	guiCircle.add(primitive3dRotationSphere.setup("Rotation", false));
+	guiCircle.add(positionPrimitive3dXSphere.setup("Position X", ofGetWidth() / 2 -275, -1500, 1500));
+	guiCircle.add(positionPrimitive3dYSphere.setup("Position Y", ofGetHeight() / 2 - 275, -1500, 1500));
+	guiCircle.add(positionPrimitive3dZSphere.setup("Position Z", 75, -1500, 1500));
+	guiCircle.add(Primitive3dSizeSphere.setup("Size", 34, 1, 50));
+	
+	guiCircle.add(primitive3dSphereCouleur.setup("Sphere Couleur", true));
+	guiCircle.add(primitive3dRotationSphereCouleur.setup("Rotation", false));
+	guiCircle.add(positionPrimitive3dXSphereCouleur.setup("Position X", 300, -1500, 1500));
+	guiCircle.add(positionPrimitive3dYSphereCouleur.setup("Position Y", 300, -1500, 1500));
+	guiCircle.add(positionPrimitive3dZSphereCouleur.setup("Position Z", 0, -1500, 1500));
+	guiCircle.add(circleRadius.setup("Rayon spheres", 5, 5, 15));
+	guiCircle.add(primitive3dNombreSphereCouleur.setup("Nbre de cercle couleur", 2, 0, 5));
+
 
 	// Caméra
-	guiCamera.setup("Camera", "", offsetX, 280);
+	guiCamera.setup("Camera", "", 495, 450);
 	guiCamera.add(fovSlider.setup("Field of view", defaultFov, 0, 120));
 	guiCamera.add(cameraNearSlider.setup("Plan near", defaultCameraNear, 0, 999));
 	guiCamera.add(cameraFarSlider.setup("Plan far", defaultCameraFar, 1000, 6000));
@@ -68,7 +83,6 @@ void Gui::reset() {
 	guiPrimitive.add(ell.setup("Ellipse", false));
 	guiPrimitive.add(posXEllipseSlider.setup("Largeur Ellipse", 450, -1500, 1500));
 	guiPrimitive.add(posYEllipseSlider.setup("Hauteur Ellipse", 600, -1500, 1500));
-
 	guiPrimitive.add(positionXEllipseSlider.setup("Position X Ellipse", 300, -1500, 1500));
 	guiPrimitive.add(positionYEllipseSlider.setup("Position Y Ellipse", 300, -1500, 1500));
 	guiPrimitive.add(positionZEllipseSlider.setup("Position Z Ellipse", 300, -1500, 1500));
@@ -94,7 +108,7 @@ void Gui::reset() {
 	guiPrimitive.add(rotZSlider.setup("Z Rotation", 0, -1, 1));
 
 	//Couleurs Stroke + Fill
-	guiColorPrimitives.setup("Couleur Stroke-Fill", "", offsetX, 375);
+	guiColorPrimitives.setup("Couleur Stroke-Fill", "", offsetX, 530);
 	guiColorPrimitives.add(sliderContour.setup("Largeur Contour", 50, 0, 100));
 	guiColorPrimitives.add(sliderRStroke.setup("Stroke/Red", 0, 0, 255));
 	guiColorPrimitives.add(sliderGStroke.setup("Stroke/Green", 0, 0, 255));
@@ -123,7 +137,9 @@ void Gui::reset() {
 
 	//primitive 3d 
 	guiPrimitive3d.setup("Primitives 3D", "Primitive3D ", 495, 10);
-	guiPrimitive3d.add(primitive3dSphere.setup("Sphere", true)); 
+
+
+	
 	guiPrimitive3d.add(primitive3dToggle.setup("Primitive 3D Cylindre" , false));
 	guiPrimitive3d.add(primitive3dStroke.setup("WireFrame", false));
 	guiPrimitive3d.add(primitive3dRotation.setup("Rotation", false));
@@ -448,9 +464,65 @@ bool Gui::getToggleprimitive3dRotationBox() {
 	return  primitive3dRotationBox;
 }
 
+
 bool Gui::getprimitive3dSphere() {
 	return primitive3dSphere;
 }
+
+
+float Gui::getpositionPrimitive3dXSphere() {
+	return positionPrimitive3dXSphere;
+}
+float Gui::getpositionPrimitive3dYSphere() {
+	return positionPrimitive3dYSphere;
+}
+float Gui::getpositionPrimitive3dZSphere() {
+	return positionPrimitive3dZSphere;
+}
+
+
+
+float Gui::getprimitive3dSizeSphere() {
+	return Primitive3dSizeSphere;
+}
+
+
+
+bool Gui::getToggleprimitive3dRotationSphere() {
+	return  primitive3dRotationSphere;
+}
+
+bool Gui::getprimitive3dSphereCouleur() {
+	return primitive3dSphereCouleur;
+}
+
+
+float Gui::getpositionPrimitive3dXSphereCouleur() {
+	return positionPrimitive3dXSphereCouleur;
+}
+float Gui::getpositionPrimitive3dYSphereCouleur() {
+	return positionPrimitive3dYSphereCouleur;
+}
+float Gui::getpositionPrimitive3dZSphereCouleur() {
+	return positionPrimitive3dZSphereCouleur;
+}
+float Gui::getprimitive3dNombreSphereCouleur() {
+	return primitive3dNombreSphereCouleur;
+}
+
+
+
+bool Gui::getToggleprimitive3dStrokeSphereCouleur() {
+	return primitive3dStrokeSphereCouleur;
+}
+
+bool Gui::getToggleprimitive3dRotationSphereCouleur() {
+	return  primitive3dRotationSphereCouleur;
+}
+
+
+
+
 
 int Gui::getXLight()
 {
@@ -466,6 +538,8 @@ int Gui::getZLight()
 {
 	return zLightSlider;
 }
+
+
 
 
 

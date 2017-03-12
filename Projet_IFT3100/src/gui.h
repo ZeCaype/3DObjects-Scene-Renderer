@@ -183,7 +183,41 @@ public:
 	ofxPanel guiScene;
 	ofxButton modelButton; bool modelCheck;
 	ofxToggle primitive3dSphere; 
+
+	ofxToggle primitive3dRotationSphere;
+	ofxFloatSlider positionPrimitive3dXSphere;
+	ofxFloatSlider positionPrimitive3dYSphere;
+	ofxFloatSlider positionPrimitive3dZSphere;
+	ofxFloatSlider Primitive3dSizeSphere;
+	
 	bool getprimitive3dSphere(); 
+	float getpositionPrimitive3dXSphere();
+	float getpositionPrimitive3dYSphere();
+	float getpositionPrimitive3dZSphere();
+	float getprimitive3dSizeSphere();
+	bool getToggleprimitive3dRotationSphere();
+
+
+
+	ofxToggle primitive3dSphereCouleur;
+	ofxToggle primitive3dStrokeSphereCouleur;
+	ofxToggle primitive3dRotationSphereCouleur;
+	ofxFloatSlider positionPrimitive3dXSphereCouleur;
+	ofxFloatSlider positionPrimitive3dYSphereCouleur;
+	ofxFloatSlider positionPrimitive3dZSphereCouleur;
+	ofxFloatSlider primitive3dNombreSphereCouleur; 
+
+	bool getprimitive3dSphereCouleur();
+	float getpositionPrimitive3dXSphereCouleur();
+	float getpositionPrimitive3dYSphereCouleur();
+	float getpositionPrimitive3dZSphereCouleur();
+	float getprimitive3dNombreSphereCouleur(); 
+	bool getToggleprimitive3dStrokeSphereCouleur();
+	bool getToggleprimitive3dRotationSphereCouleur();
+
+
+
+	
 
 	
 

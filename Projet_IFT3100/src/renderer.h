@@ -90,6 +90,8 @@ public:
 	ofMaterial material;
 	ofVboMesh boxSides[ofBoxPrimitive::SIDES_TOTAL];
 	ofBoxPrimitive box;
+	ofSpherePrimitive sphere;
+	ofSpherePrimitive sphereCouleur; 
 
 	float positionPrimitive3dX;
 	float positionPrimitive3dY;
@@ -103,8 +105,24 @@ public:
 	float primitive3dSizeBox;
 	bool  primitive3dRoatationBox = false;
 	bool  primitice3dStrokeBox = false;
+	
 	bool primitive3dSphere; 
+	bool primitive3dSphereRotation = false;
+	float primitive3dSphereSize; 
+	float positionPrimitive3dXSphere;
+	float positionPrimitive3dYSphere;
+	float positionPrimitive3dZSphere;
 
+	bool primitive3dSphereCouleur;
+	bool primitive3dSphereRotationCouleur = false;
+	bool primitive3dStrokeSphereCouleur = false; 
+	float positionPrimitive3dXSphereCouleur;
+	float positionPrimitive3dYSphereCouleur;
+	float positionPrimitive3dZSphereCouleur;
+	float nbrCercleCouleur; 
+
+
+	bool createPrimitive3dSphereCouleur; 
 	bool createPrimitive3dBox = false;
 	bool createPrimitive3d = false;
 	bool createPrimitice = false;

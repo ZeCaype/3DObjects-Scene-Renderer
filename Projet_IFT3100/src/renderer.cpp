@@ -119,14 +119,10 @@ void Renderer::draw()
 			cameraDown.draw();
 	}
 
-	for (int i = 0; i < 2; i++) {
-		ofSetColor(i * 70, 100 - i * 25, 120);
-		ofDrawSphere(i * 300, 0, circleRadius);
-		ofDrawSphere(i * -300, 0, circleRadius);
-		ofSetColor(150, 0, 50 + i * 75);
-		ofDrawSphere(i * 300, 300, circleRadius);
-		ofDrawSphere(i * -300, 300, circleRadius);
-	}
+
+
+		
+	
 	
 	if (createRectangle == true) 
 	{
@@ -315,27 +311,72 @@ void Renderer::draw()
 			box.setPosition(positionPrimitive3dXBox, positionPrimitive3dYBox, positionPrimitive3dZBox);
 			ofSetColor(0, 170, 0);
 			box.draw();
+
+		
 		
 
 
 	}
-
+	
 
 	ofPopMatrix();
 
-
 	if (primitive3dSphere == true)
 	{
-		material.begin();
-		ofNoFill();
 
+
+		if (primitive3dSphereRotation == true)
+		{
+			float spinX = sin(ofGetElapsedTimef()*.35f);
+			float spinY = cos(ofGetElapsedTimef()*.075f);
+			sphere.rotate(spinX, 1.0, 0.0, 0.0);
+			sphere.rotate(spinY, 0, 1.0, 0.0);
+		}
+
+
+
+		sphere.setScale(primitive3dSphereSize);
+		sphere.setPosition(positionPrimitive3dXSphere,positionPrimitive3dYSphere, positionPrimitive3dZSphere);
 		ofSetColor(0, 0, 0);
-		ofDrawSphere(ofGetWidth() / 2 - 275, ofGetHeight() / 2 - 150, ofGetWidth());
+		sphere.drawWireframe();
 
-		material.end();
+
 
 
 	}
+
+	if (primitive3dSphereCouleur == true) {
+
+		if (primitive3dSphereRotationCouleur == true)
+		{
+			float spinX = sin(ofGetElapsedTimef()*.35f);
+			float spinY = cos(ofGetElapsedTimef()*.075f);
+			sphereCouleur.rotate(spinX, 1.0, 0.0, 0.0);
+			sphereCouleur.rotate(spinY, 0, 1.0, 0.0);
+		}
+
+		for (int i = 0; i < nbrCercleCouleur; i++) {
+			sphereCouleur.setScale(circleRadius);
+			ofSetColor(i * 70, 100 - i * 25, 120);
+			
+			sphereCouleur.setPosition(i * 300, 0, 0);
+			sphereCouleur.draw();
+			sphereCouleur.setPosition(i * -300, 0, 0);
+			sphereCouleur.draw();
+
+			ofSetColor(150, 0, 50 + i * 75);
+			sphereCouleur.setPosition(i * 300, 300, 0);
+			sphereCouleur.draw();
+			sphereCouleur.setPosition(i * -300, 300, 0);
+			sphereCouleur.draw();
+
+
+		}
+
+	}
+
+
+	
 
 	
 	// Importation d'un modèle 3D
