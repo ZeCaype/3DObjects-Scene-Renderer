@@ -38,6 +38,15 @@ void Renderer::setup()
 
 	circleRadius = 0;
 	cameraSetupParameters();
+
+	//Setup nuage de points////
+	intervalleNuage = 2000;
+	for (int i = 0; i < 10000; i++) {
+		xNuage.push_back(ofRandom(-intervalleNuage, intervalleNuage));
+		yNuage.push_back(ofRandom(-intervalleNuage, intervalleNuage));
+		zNuage.push_back(ofRandom(-intervalleNuage, intervalleNuage));
+		sizePointNuage.push_back(ofRandom(1, 4));
+	}
 }
 
 void Renderer::reset()
@@ -48,8 +57,7 @@ void Renderer::reset()
 	light->enable();
 
 	// initialisation des variables
-	sceneOffset = 1000 / 2.0f * -1.0f;
-	cameraOffset = sceneOffset * 3.5f * -1.0f;
+	cameraOffset = 2000;
 
 	// position initiale de chaque caméra
 	cameraFront.setPosition(0, 0, -cameraOffset);
@@ -129,7 +137,7 @@ void Renderer::draw()
 		if (posRectangleX > 0 && posRectangleY > 0)
 		{
 			ofSetColor(rfill, gfill, bfill); //Couleur de l'intérieur du Rectangle
-			ofDrawRectangle(positionXRectangle - (contourLargeur / 2), positionYRectangle - (contourLargeur / 2), positionZRectangle - (contourLargeur / 2), posRectangleX, posRectangleY);
+			ofDrawRectangle(positionXRectangle + (contourLargeur / 2), positionYRectangle + (contourLargeur / 2), positionZRectangle, posRectangleX, posRectangleY);
 			ofSetColor(rstroke, gstroke, bstroke); //Couleur de la stroke du rectangle
 			ofDrawRectangle(positionXRectangle, positionYRectangle, positionZRectangle, posRectangleX + contourLargeur, posRectangleY + contourLargeur);
 		}
@@ -137,7 +145,7 @@ void Renderer::draw()
 		else if (posRectangleX < 0 && posRectangleY < 0)
 		{
 			ofSetColor(rfill, gfill, bfill); //Couleur de l'intérieur du Rectangle
-			ofDrawRectangle(positionXRectangle - (contourLargeur / 2), positionYRectangle - (contourLargeur / 2), positionZRectangle - (contourLargeur / 2),  posRectangleX, posRectangleY);
+			ofDrawRectangle(positionXRectangle - (contourLargeur / 2), positionYRectangle - (contourLargeur / 2), positionZRectangle,  posRectangleX, posRectangleY);
 			ofSetColor(rstroke, gstroke, bstroke); //Couleur de la stroke du rectangle
 			ofDrawRectangle(positionXRectangle, positionYRectangle, positionZRectangle,  posRectangleX - contourLargeur, posRectangleY - contourLargeur);
 		}
@@ -145,7 +153,7 @@ void Renderer::draw()
 		else if (posRectangleX > 0 && posRectangleY < 0)
 		{
 			ofSetColor(rfill, gfill, bfill); //Couleur de l'intérieur du Rectangle
-			ofDrawRectangle(positionXRectangle - (contourLargeur / 2), positionYRectangle - (contourLargeur / 2), positionZRectangle - (contourLargeur / 2), posRectangleX, posRectangleY);
+			ofDrawRectangle(positionXRectangle + (contourLargeur / 2), positionYRectangle - (contourLargeur / 2), positionZRectangle, posRectangleX, posRectangleY);
 			ofSetColor(rstroke, gstroke, bstroke); //Couleur de la stroke du rectangle
 			ofDrawRectangle(positionXRectangle, positionYRectangle, positionZRectangle, posRectangleX + contourLargeur, posRectangleY - contourLargeur);
 		}
@@ -153,7 +161,7 @@ void Renderer::draw()
 		else if (posRectangleX < 0 && posRectangleY > 0)
 		{
 			ofSetColor(rfill, gfill, bfill); //Couleur de l'intérieur du Rectangle
-			ofDrawRectangle(positionXRectangle - (contourLargeur / 2), positionYRectangle - (contourLargeur / 2), positionZRectangle - (contourLargeur / 2), posRectangleX, posRectangleY);
+			ofDrawRectangle(positionXRectangle - (contourLargeur / 2), positionYRectangle + (contourLargeur / 2), positionZRectangle, posRectangleX, posRectangleY);
 			ofSetColor(rstroke, gstroke, bstroke); //Couleur de la stroke du rectangle
 			ofDrawRectangle(positionXRectangle, positionYRectangle, positionZRectangle, posRectangleX - contourLargeur, posRectangleY + contourLargeur);
 		}
@@ -385,6 +393,13 @@ void Renderer::draw()
 		model.drawFaces();
 	}
 
+	// Nuage de points
+	if (nuageDePoint == true) {
+		for (int i = 0; i < xNuage.size(); i++) {
+			ofDrawSphere(xNuage[i], yNuage[i], zNuage[i], sizePointNuage[i]);
+		}
+	}
+
 	camera->end();
 
 
@@ -458,6 +473,7 @@ void Renderer::cameraSetupParameters() {
 	isCameraFovWide = false;
 
 	isCameraPerspective = true;
+	aspectRatio4_3 = true;
 
 	isFondLoaded = false;
 
@@ -568,6 +584,12 @@ void Renderer::updateCamera() {
 		camera->setFov(cameraFov);
 	}
 
+	if (aspectRatio4_3) {
+		camera->setAspectRatio(1.333333333333333);
+	}
+	else {
+		camera->setAspectRatio(1.777777777777777);
+	}
 	camera->setNearClip(cameraNear);
 	camera->setFarClip(cameraFar);
 }

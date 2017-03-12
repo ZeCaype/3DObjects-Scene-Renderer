@@ -14,7 +14,7 @@ void Gui::setup()
 	defaultCircleRadius = 205 / 2;
 	defaultFov = 60;
 	defaultCameraNear = 50;
-	defaultCameraFar = 3000;
+	defaultCameraFar = 6000;
 
 	// Paramétrisation par défaut de l'image
 	defaultPosX = 50;
@@ -66,7 +66,8 @@ void Gui::reset() {
 	guiCamera.setup("Camera", "", 495, 450);
 	guiCamera.add(fovSlider.setup("Field of view", defaultFov, 0, 120));
 	guiCamera.add(cameraNearSlider.setup("Plan near", defaultCameraNear, 0, 999));
-	guiCamera.add(cameraFarSlider.setup("Plan far", defaultCameraFar, 1000, 6000));
+	guiCamera.add(cameraFarSlider.setup("Plan far", defaultCameraFar, 1000, 12000));
+	guiCamera.add(aspectRatio4_3.setup("Ratio d'aspect 4:3", true));
 
 
 	// Primitive
@@ -88,27 +89,27 @@ void Gui::reset() {
 	guiPrimitive.add(positionZEllipseSlider.setup("Position Z Ellipse", 300, -1500, 1500));
 	// Ligne
 	guiPrimitive.add(lig.setup("Ligne", false));
-	guiPrimitive.add(tx1.setup("Position #1 - Coord 'x'", 306, -900, 900));
-	guiPrimitive.add(ty1.setup("Position #1 - Coord 'y'", 300, -850, 850));
-	guiPrimitive.add(tz1.setup("Position #1 - Coord 'z'", 300, -850, 850));
-	guiPrimitive.add(tx2.setup("Position #2 - Coord 'x'", 552, -900, 900));
-	guiPrimitive.add(ty2.setup("Position #2 - Coord 'y'", 552, -900, 900));
-	guiPrimitive.add(tz2.setup("Position #2 - Coord 'z'", -174, -850, 850));
+	guiPrimitive.add(tx1.setup("X1", 306, -900, 900));
+	guiPrimitive.add(ty1.setup("Y1", 300, -850, 850));
+	guiPrimitive.add(tz1.setup("Z1", 300, -850, 850));
+	guiPrimitive.add(tx2.setup("X2", 552, -900, 900));
+	guiPrimitive.add(ty2.setup("Y2", 552, -900, 900));
+	guiPrimitive.add(tz2.setup("Z2", -174, -850, 850));
 	guiPrimitive.add(lineWidth.setup("Largeur de ligne", 2, 1, 10));
 
 	// Forme Vectorielle 
 	guiPrimitive.add(formeVec.setup("Forme Vectorielle", false));
 	guiPrimitive.add(formeVectorielleRSlider.setup("Rayon", 0, 0, 1000));
-	guiPrimitive.add(formeVectorielleTSlider.setup("Angle Theta", PI, 0, PI));
+	guiPrimitive.add(formeVectorielleTSlider.setup("Angle Theta", PI, -PI, PI));
 	guiPrimitive.add(formeVectoriellePSlider.setup("Angle Phi", 0, 0, 2*PI));
 	// Rotation
-	guiPrimitive.add(rotAngleSlider.setup("Angle de rotation", 0, 0, 180));
+	guiPrimitive.add(rotAngleSlider.setup("Angle de rotation", 0, 0, 360));
 	guiPrimitive.add(rotXSlider.setup("X Rotation", 0, -1, 1));
 	guiPrimitive.add(rotYSlider.setup("Y Rotation", 0, -1, 1));
 	guiPrimitive.add(rotZSlider.setup("Z Rotation", 0, -1, 1));
 
 	//Couleurs Stroke + Fill
-	guiColorPrimitives.setup("Couleur Stroke-Fill", "", offsetX, 530);
+	guiColorPrimitives.setup("Couleur Stroke-Fill", "", offsetX, 385);
 	guiColorPrimitives.add(sliderContour.setup("Largeur Contour", 50, 0, 100));
 	guiColorPrimitives.add(sliderRStroke.setup("Stroke/Red", 0, 0, 255));
 	guiColorPrimitives.add(sliderGStroke.setup("Stroke/Green", 0, 0, 255));
@@ -141,20 +142,22 @@ void Gui::reset() {
 
 	
 	guiPrimitive3d.add(primitive3dToggle.setup("Primitive 3D Cylindre" , false));
-	guiPrimitive3d.add(primitive3dStroke.setup("WireFrame", false));
-	guiPrimitive3d.add(primitive3dRotation.setup("Rotation", false));
-	guiPrimitive3d.add(positionPrimitive3dX.setup("Position X", 450,-1500,1500));
-	guiPrimitive3d.add(positionPrimitive3dY.setup("Position Y", 450, -1500, 1500));
-	guiPrimitive3d.add(positionPrimitive3dZ.setup("Position Z", 450, -1500, 1500));
-	guiPrimitive3d.add(Primitive3dSize.setup("Size",1,1,10));
+	guiPrimitive3d.add(primitive3dStroke.setup("WireFrame cylindre", false));
+	guiPrimitive3d.add(primitive3dRotation.setup("Rotation cylindre", false));
+	guiPrimitive3d.add(positionPrimitive3dX.setup("X cylindre ", 450,-1500,1500));
+	guiPrimitive3d.add(positionPrimitive3dY.setup("Y cylindre", 450, -1500, 1500));
+	guiPrimitive3d.add(positionPrimitive3dZ.setup("Z cylindre", 450, -1500, 1500));
+	guiPrimitive3d.add(Primitive3dSize.setup("Size cylindre",1,1,10));
 
 	guiPrimitive3d.add(primitive3dToggleBox.setup("Primitive 3D Cube", false));
-	guiPrimitive3d.add(primitive3dStrokeBox.setup("WireFrame", false));
-	guiPrimitive3d.add(primitive3dRotationBox.setup("Rotation", false));
-	guiPrimitive3d.add(positionPrimitive3dXBox.setup("Position X", 450, -1500, 1500));
-	guiPrimitive3d.add(positionPrimitive3dYBox.setup("Position Y", 450, -1500, 1500));
-	guiPrimitive3d.add(positionPrimitive3dZBox.setup("Position Z", 450, -1500, 1500));
-	guiPrimitive3d.add(Primitive3dSizeBox.setup("Size", 1, 1, 10));
+	guiPrimitive3d.add(primitive3dStrokeBox.setup("WireFrame cube", false));
+	guiPrimitive3d.add(primitive3dRotationBox.setup("Rotation cube", false));
+	guiPrimitive3d.add(positionPrimitive3dXBox.setup("X cube", 450, -1500, 1500));
+	guiPrimitive3d.add(positionPrimitive3dYBox.setup("Y cube", 450, -1500, 1500));
+	guiPrimitive3d.add(positionPrimitive3dZBox.setup("Z cube", 450, -1500, 1500));
+	guiPrimitive3d.add(Primitive3dSizeBox.setup("Size cube", 1, 1, 10));
+	
+	guiPrimitive3d.add(nuageDePoint.setup("Nuage de Points", false));
 
 
 	//primitive 3d 2 
@@ -259,6 +262,9 @@ int Gui::getCameraFar() {
 	return cameraFarSlider;
 }
 
+bool Gui::getAspectRatio() {
+	return aspectRatio4_3;
+}
 float Gui::getPosXSlider()
 {
 	return posXSlider;
@@ -523,6 +529,11 @@ bool Gui::getToggleprimitive3dRotationSphereCouleur() {
 
 
 
+
+
+bool Gui::getNuageDePoint() {
+	return nuageDePoint;
+}
 
 int Gui::getXLight()
 {

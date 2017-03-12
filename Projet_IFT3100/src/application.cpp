@@ -57,14 +57,6 @@ void Application::update()
 	renderer->saturationImage = (gui->getSaturationImage());
 	renderer->brightnessImage = (gui->getBrightnessImage());
 	renderer->alphaImage = (gui->getAlphaImage());
-	// Appel de la fonction d'exportation de l'image de rendu
-	if (gui->exportButton && gui->exportCheck == false)
-	{
-		renderer->imageExport("render", "png");
-		ofLog() << "<image is in file /bin/data/" << ">";
-		gui->exportCheck = true;
-	}
-	else if (!gui->exportButton) gui->exportCheck = false;
 	// Appel de la rotation des images dans le vecteur d'images importées
 	if (gui->importButton && gui->importCheck == false)
 	{
@@ -74,6 +66,14 @@ void Application::update()
 		gui->importCheck = true;
 	}
 	else if (!gui->importButton) gui->importCheck = false;
+	// Appel de la fonction d'exportation de l'image de rendu
+	if (gui->exportButton && gui->exportCheck == false)
+	{
+		renderer->imageExport("render", "png");
+		ofLog() << "<image is in file /bin/data/" << ">";
+		gui->exportCheck = true;
+	}
+	else if (!gui->exportButton) gui->exportCheck = false;
 
 	// Dessin vectoriel ///////////////////////////////////////////////////////////////////////////
 	// Formes 2D
@@ -172,10 +172,19 @@ void Application::update()
 	}
 	else if (!gui->modelButton) gui->modelCheck = false;
 
+	//Nuage de Points
+	renderer->nuageDePoint = gui->getNuageDePoint();
+
 	// Caméra /////////////////////////////////////////////////////////////////////////////////////
 	// Appel des fonctions de la caméra
-	if (renderer->isCameraPerspective)
-		ofSetWindowTitle("Camera " + renderer->cameraName + " Perspective (1-6 wasdqe uhjkyi r)");
+
+
+	if (renderer->isCameraPerspective && gui->getAspectRatio()) {
+		ofSetWindowTitle("Camera " + renderer->cameraName + " Perspective 4:3 (1-6 wasdqe uhjkyi op)");
+	}
+	else if (renderer->isCameraPerspective) {
+		ofSetWindowTitle("Camera " + renderer->cameraName + " Perspective 16:9 (1-6 wasdqe uhjkyi op)");
+	}
 	else
 		ofSetWindowTitle("Camera " + renderer->cameraName + " Orthographique");
 
@@ -203,6 +212,7 @@ void Application::update()
 	
 
 
+	renderer->aspectRatio4_3 = gui->getAspectRatio();
 	// Autres /////////////////////////////////////////////////////////////////////////////////////
 	
 	
@@ -363,6 +373,8 @@ void Application::keyReleased(int key) {
 		case 114: // key R
 			renderer->reset();
 			gui->reset();
+			renderer->isCameraPerspective = true;
+			renderer->setupCamera();
 			break;
 
 		case 115: // key S

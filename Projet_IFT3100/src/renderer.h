@@ -73,6 +73,14 @@ public:
 
 	int focusPrime = 0;
 
+	// Nuage de Points/////////////////////////////////////////////////////////////////////////////
+	int intervalleNuage;
+	bool nuageDePoint;
+	vector<int> xNuage;
+	vector<int> yNuage;
+	vector<int> zNuage;
+	vector<int> sizePointNuage;
+
 	// Transformation /////////////////////////////////////////////////////////////////////////////
 	float posformeVectorielleX;
 	float posformeVectorielleY;
@@ -165,10 +173,6 @@ public:
 	float speedTranslation;
 	float speedRotation;
 
-	float sceneOffset;
-
-	float colorOffset;
-
 	float cameraOffset;
 
 	int xIndex;
@@ -196,26 +200,7 @@ public:
 	bool isCameraFovWide;
 
 	bool isCameraPerspective;
-
-	bool isKeyPressUp;
-	bool isKeyPressDown;
-	bool isKeyPressLeft;
-	bool isKeyPressRight;
-
-	bool isKeyPressA;
-	bool isKeyPressD;
-	bool isKeyPressE;
-	bool isKeyPressH;
-	bool isKeyPressI;
-	bool isKeyPressJ;
-	bool isKeyPressK;
-	bool isKeyPressQ;
-	bool isKeyPressS;
-	bool isKeyPressU;
-	bool isKeyPressW;
-	bool isKeyPressX;
-	bool isKeyPressY;
-	bool isKeyPressZ;
+	bool aspectRatio4_3;
 
 	// Autres /////////////////////////////////////////////////////////////////////////////////////
 	// Paramétrisation du temps
