@@ -8,11 +8,6 @@ enum class Camera { FRONT, BACK, LEFT, RIGHT, TOP, DOWN};
 
 class Renderer : public ofBaseApp {
 public:
-	// Paramétrisation du temps
-	float timeCurrent;
-	float timeLast;
-	float timeElapsed;
-
 	// Image //////////////////////////////////////////////////////////////////////////////////////
 	// Image importée
 	vector<ofImage> vecteurImage;
@@ -203,13 +198,17 @@ public:
 	bool isKeyPressZ;
 
 	// Autres /////////////////////////////////////////////////////////////////////////////////////
+	// Paramétrisation du temps
+	float timeCurrent;
+	float timeLast;
+	float timeElapsed;
 	// Lumière
 	int xLight;
 	int yLight;
 	int zLight;
 	ofLight * light;
 
-	//------------------------------------------------------------
+	//---------------------------------------------------------------------------------------------
 
 	Renderer();
 
