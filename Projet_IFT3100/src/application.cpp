@@ -353,6 +353,8 @@ void Application::keyReleased(int key) {
 		case 114: // key R
 			renderer->reset();
 			gui->reset();
+			renderer->isCameraPerspective = true;
+			renderer->setupCamera();
 			break;
 
 		case 115: // key S
