@@ -82,9 +82,9 @@ void Gui::reset() {
 
 	// Forme Vectorielle 
 	guiPrimitive.add(formeVec.setup("Forme Vectorielle", false));
-	guiPrimitive.add(formeVectorielleRSlider.setup("Rayon", 0, -1000, 1000));
-	guiPrimitive.add(formeVectorielleTSlider.setup("Angle Theta", 0, 0, PI/2));
-	guiPrimitive.add(formeVectoriellePSlider.setup("Angle Phi", 0, 0, PI));
+	guiPrimitive.add(formeVectorielleRSlider.setup("Rayon", 0, 0, 1000));
+	guiPrimitive.add(formeVectorielleTSlider.setup("Angle Theta", PI, 0, PI));
+	guiPrimitive.add(formeVectoriellePSlider.setup("Angle Phi", 0, 0, 2*PI));
 	// Rotation
 	guiPrimitive.add(rotAngleSlider.setup("Angle de rotation", 0, 0, 180));
 	guiPrimitive.add(rotXSlider.setup("X Rotation", 0, -1, 1));
