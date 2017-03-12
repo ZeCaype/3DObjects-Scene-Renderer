@@ -125,6 +125,14 @@ void Application::update()
 	renderer->primitive3dRoatation = (gui->getToggleprimitive3dRotation());
 	renderer->createPrimitive3d = (gui->getToggleprimitive3d()); 
 
+	renderer->positionPrimitive3dXBox = (gui->getpositionPrimitive3dXBox());
+	renderer->positionPrimitive3dYBox = (gui->getpositionPrimitive3dYBox());
+	renderer->positionPrimitive3dZBox = (gui->getpositionPrimitive3dZBox());
+	renderer->primitive3dSizeBox = (gui->getprimitive3dSizeBox());
+	renderer->primitice3dStrokeBox = (gui->getToggleprimitive3dStrokeBox());
+	renderer->primitive3dRoatationBox = (gui->getToggleprimitive3dRotationBox());
+	renderer->createPrimitive3dBox = (gui->getToggleprimitive3dBox());
+
 
 	//Formes 2D
 	renderer->createRectangle = gui->getToggleRectangle();

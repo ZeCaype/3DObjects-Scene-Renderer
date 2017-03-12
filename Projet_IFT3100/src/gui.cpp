@@ -120,14 +120,25 @@ void Gui::reset() {
 
 
 	//primitive 3d 
-	guiPrimitive3d.setup("Primitives 3D", "Primitive3D", 500, 10);
-	guiPrimitive3d.add(primitive3dToggle.setup("Primitive 3D", false));
+	guiPrimitive3d.setup("Primitives 3D", "Primitive3D ", 500, 10);
+	guiPrimitive3d.add(primitive3dToggle.setup("Primitive 3D Cylindre" , false));
 	guiPrimitive3d.add(primitive3dStroke.setup("WireFrame", false));
 	guiPrimitive3d.add(primitive3dRotation.setup("Rotation", false));
 	guiPrimitive3d.add(positionPrimitive3dX.setup("Position X", 450,-1500,1500));
 	guiPrimitive3d.add(positionPrimitive3dY.setup("Position Y", 450, -1500, 1500));
 	guiPrimitive3d.add(positionPrimitive3dZ.setup("Position Z", 450, -1500, 1500));
 	guiPrimitive3d.add(Primitive3dSize.setup("Size",1,1,10));
+
+	guiPrimitive3d.add(primitive3dToggleBox.setup("Primitive 3D Box", false));
+	guiPrimitive3d.add(primitive3dStrokeBox.setup("WireFrame", false));
+	guiPrimitive3d.add(primitive3dRotationBox.setup("Rotation", false));
+	guiPrimitive3d.add(positionPrimitive3dXBox.setup("Position X", 450, -1500, 1500));
+	guiPrimitive3d.add(positionPrimitive3dYBox.setup("Position Y", 450, -1500, 1500));
+	guiPrimitive3d.add(positionPrimitive3dZBox.setup("Position Z", 450, -1500, 1500));
+	guiPrimitive3d.add(Primitive3dSizeBox.setup("Size", 1, 1, 10));
+
+
+	//primitive 3d 2 
 
 }
 
@@ -374,9 +385,6 @@ float Gui::getPositionZRectangleSlider() {
 }
 
 
-float Gui:: getprimitive3dSize (){
-	return Primitive3dSize;
-}
 
 float Gui::getpositionPrimitive3dX() {
 	return positionPrimitive3dX;
@@ -398,6 +406,40 @@ bool Gui::getToggleprimitive3dStroke() {
 bool Gui::getToggleprimitive3dRotation() {
 	return primitive3dRotation;
 }
+
+float Gui::getprimitive3dSize() {
+	return Primitive3dSize;
+}
+
+
+float Gui::getpositionPrimitive3dXBox() {
+	return positionPrimitive3dXBox;
+}
+float Gui::getpositionPrimitive3dYBox() {
+	return positionPrimitive3dYBox;
+}
+float Gui::getpositionPrimitive3dZBox() {
+	return positionPrimitive3dZBox;
+}
+
+
+
+float Gui::getprimitive3dSizeBox() {
+	return Primitive3dSizeBox;
+}
+bool Gui::getToggleprimitive3dBox() {
+	return primitive3dToggleBox;
+}
+
+
+bool Gui::getToggleprimitive3dStrokeBox() {
+	return primitive3dStrokeBox;
+}
+
+bool Gui::getToggleprimitive3dRotationBox() {
+	return  primitive3dRotationBox;
+}
+
 
 int Gui::getXLight()
 {

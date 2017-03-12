@@ -138,6 +138,24 @@ public:
 	bool getToggleprimitive3dStroke();
 	bool getToggleprimitive3dRotation();
 
+	ofxToggle primitive3dToggleBox;
+	ofxToggle primitive3dStrokeBox;
+	ofxToggle primitive3dRotationBox;
+	ofxFloatSlider positionPrimitive3dXBox;
+	ofxFloatSlider positionPrimitive3dYBox;
+	ofxFloatSlider positionPrimitive3dZBox;
+	ofxFloatSlider Primitive3dSizeBox;
+
+	float getpositionPrimitive3dXBox();
+	float getpositionPrimitive3dYBox();
+	float getpositionPrimitive3dZBox();
+	float getprimitive3dSizeBox();
+	bool getToggleprimitive3dBox();
+	bool getToggleprimitive3dStrokeBox();
+	bool getToggleprimitive3dRotationBox();
+
+
+	
 
 
 	

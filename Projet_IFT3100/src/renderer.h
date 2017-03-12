@@ -148,14 +148,22 @@ public:
 	ofVboMesh topCap, bottomCap, body;
 	ofMaterial material;
 
+	ofBoxPrimitive box;
+
 	float positionPrimitive3dX;
 	float positionPrimitive3dY;
 	float positionPrimitive3dZ;
 	float primitive3dSize;
-
 	bool  primitive3dRoatation = false; 
 	bool  primitice3dStroke = false;
+	float positionPrimitive3dXBox;
+	float positionPrimitive3dYBox;
+	float positionPrimitive3dZBox;
+	float primitive3dSizeBox;
+	bool  primitive3dRoatationBox = false;
+	bool  primitice3dStrokeBox = false;
 
+	bool createPrimitive3dBox = false;
 	bool createPrimitive3d = false;
 	bool createPrimitice = false;
 	bool createRectangle = false;
