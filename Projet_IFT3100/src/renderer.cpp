@@ -545,10 +545,10 @@ void Renderer::updateCamera() {
 	}
 
 	if (aspectRatio4_3) {
-		camera->setAspectRatio(4 / 3);
+		camera->setAspectRatio(1.333333333333333);
 	}
 	else {
-		camera->setAspectRatio(16 / 9);
+		camera->setAspectRatio(1.777777777777777);
 	}
 	camera->setNearClip(cameraNear);
 	camera->setFarClip(cameraFar);
