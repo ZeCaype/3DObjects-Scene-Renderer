@@ -45,48 +45,56 @@ void Gui::reset() {
 
 	// Cercle UI
 	guiCircle.setup("Sphere", "", offsetX, 230);
-	guiCircle.add(circleRadius.setup("circle radius", defaultCircleRadius, 5, 200));
+	guiCircle.add(circleRadius.setup("Rayon spheres", defaultCircleRadius, 5, 200));
 
 	// Caméra
 	guiCamera.setup("Camera", "", offsetX, 280);
 	guiCamera.add(fovSlider.setup("Field of view", defaultFov, 0, 120));
-	guiCamera.add(cameraNearSlider.setup("Plan near", defaultCameraNear, 0, 600));
-	guiCamera.add(cameraFarSlider.setup("Plan far", defaultCameraFar, 1500, 3000));
+	guiCamera.add(cameraNearSlider.setup("Plan near", defaultCameraNear, 0, 999));
+	guiCamera.add(cameraFarSlider.setup("Plan far", defaultCameraFar, 1000, 6000));
+
 
 	// Primitive
-	guiPrimitive.setup("Primitives Vectorielles", "Primitives Vectorielles", offsetX, 375);
+	guiPrimitive.setup("Primitives Vectorielles", "Primitives Vectorielles", 260, 200);
 	// Rectangle
-	guiPrimitive.add(primitiveCarreButton.setup("Rectangle")); primitiveCarreCheck = false;
+	guiPrimitive.add(rec.setup("Rectangle", false));
 	guiPrimitive.add(posXSlider.setup("Largeur Rectangle", -600, -900, 900));
 	guiPrimitive.add(posYSlider.setup("Hauteur Rectangle", 312, -900, 900));
 
-	guiPrimitive.add(positionXRectangleSlider.setup("Position X Rectangle", -600, -1500, 1500));
-	guiPrimitive.add(positionYRectangleSlider.setup("Position Y Rectangle", -600, -1500, 1500));
+	guiPrimitive.add(positionXRectangleSlider.setup("Position X Rectangle", 300, -1500, 1500));
+	guiPrimitive.add(positionYRectangleSlider.setup("Position Y Rectangle", 300, -1500, 1500));
+	guiPrimitive.add(positionZRectangleSlider.setup("Position Z Rectangle", 300, -1500, 1500));
 	// Ellipse
-	guiPrimitive.add(primitiveEllipse.setup("Ellipse")); primitiveEllipseCheck = false;
+	guiPrimitive.add(ell.setup("Ellipse", false));
 	guiPrimitive.add(posXEllipseSlider.setup("Largeur Ellipse", 450, -1500, 1500));
 	guiPrimitive.add(posYEllipseSlider.setup("Hauteur Ellipse", 600, -1500, 1500));
-	guiPrimitive.add(positionXEllipseSlider.setup("Position X Ellipse", -600, -1500, 1500));
-	guiPrimitive.add(positionYEllipseSlider.setup("Position Y Ellipse", -600, -1500, 1500));
-	// Triangle
-	guiPrimitive.add(primitiveLigne.setup("Ligne")); primitiveLigneCheck = false;
-	guiPrimitive.add(tx1.setup("Sommet #1 - Coord 'x'", 306, -900, 900));
-	guiPrimitive.add(ty1.setup("Sommet #1 - Coord 'y'", 300, -850, 850));
-	guiPrimitive.add(tx2.setup("Sommet #2 - Coord 'x'", 552, -900, 900));
-	guiPrimitive.add(ty2.setup("Sommet #2 - Coord 'y'", -174, -850, 850));
+
+	guiPrimitive.add(positionXEllipseSlider.setup("Position X Ellipse", 300, -1500, 1500));
+	guiPrimitive.add(positionYEllipseSlider.setup("Position Y Ellipse", 300, -1500, 1500));
+	guiPrimitive.add(positionZEllipseSlider.setup("Position Z Ellipse", 300, -1500, 1500));
+	// Ligne
+	guiPrimitive.add(lig.setup("Ligne", false));
+	guiPrimitive.add(tx1.setup("Position #1 - Coord 'x'", 306, -900, 900));
+	guiPrimitive.add(ty1.setup("Position #1 - Coord 'y'", 300, -850, 850));
+	guiPrimitive.add(tz1.setup("Position #1 - Coord 'z'", 300, -850, 850));
+	guiPrimitive.add(tx2.setup("Position #2 - Coord 'x'", 552, -900, 900));
+	guiPrimitive.add(ty2.setup("Position #2 - Coord 'y'", 552, -900, 900));
+	guiPrimitive.add(tz2.setup("Position #2 - Coord 'z'", -174, -850, 850));
+	guiPrimitive.add(lineWidth.setup("Largeur de ligne", 2, 1, 10));
 
 	// Forme Vectorielle 
-	guiPrimitive.add(formeVectorielleButton.setup("Forme Vectorielle")); formeVectorielleCheck = false; 
-	guiPrimitive.add(formeVectorielleXSlider.setup("Pos X Vecteur", 450, -1500, 1500));
-	guiPrimitive.add(formeVectorielleYSlider.setup("Pos Y Vecteur", 600, -1500, 1500));
-	
-	guiOptions.setup("Option", "", offsetX, 665);
-	guiOptions.add(rec.setup("Clear Rectangle", 0, 0, 22));
-	guiOptions.add(ell.setup("Clear Ellipse", 0, 0, 22));
-	guiOptions.add(lig.setup("Clear Ligne", 0, 0, 22));
+	guiPrimitive.add(formeVec.setup("Forme Vectorielle", false));
+	guiPrimitive.add(formeVectorielleRSlider.setup("Rayon", 0, 0, 1000));
+	guiPrimitive.add(formeVectorielleTSlider.setup("Angle Theta", PI, 0, PI));
+	guiPrimitive.add(formeVectoriellePSlider.setup("Angle Phi", 0, 0, 2*PI));
+	// Rotation
+	guiPrimitive.add(rotAngleSlider.setup("Angle de rotation", 0, 0, 180));
+	guiPrimitive.add(rotXSlider.setup("X Rotation", 0, -1, 1));
+	guiPrimitive.add(rotYSlider.setup("Y Rotation", 0, -1, 1));
+	guiPrimitive.add(rotZSlider.setup("Z Rotation", 0, -1, 1));
 
 	//Couleurs Stroke + Fill
-	guiColorPrimitives.setup("Couleur Stroke-Fill", "", 260, 375);
+	guiColorPrimitives.setup("Couleur Stroke-Fill", "", offsetX, 375);
 	guiColorPrimitives.add(sliderContour.setup("Largeur Contour", 50, 0, 100));
 	guiColorPrimitives.add(sliderRStroke.setup("Stroke/Red", 0, 0, 255));
 	guiColorPrimitives.add(sliderGStroke.setup("Stroke/Green", 0, 0, 255));
@@ -100,7 +108,6 @@ void Gui::reset() {
 
 	// Scène 3D
 	guiScene.setup("Scene 3D", "", 260, 10);
-	guiScene.add(modelString.setup("Nom+Extension", nameString));
 	guiScene.add(modelButton.setup("Modele")); modelCheck = false;
 
 	// Lumière
@@ -112,6 +119,30 @@ void Gui::reset() {
 	// Options
 	guiOption.setup("Options", "", offsetX, 750);
 	guiOption.add(exitButton.setup("Quitter l'application"));
+
+
+	//primitive 3d 
+	guiPrimitive3d.setup("Primitives 3D", "Primitive3D ", 495, 10);
+	guiPrimitive3d.add(primitive3dSphere.setup("Sphere", true)); 
+	guiPrimitive3d.add(primitive3dToggle.setup("Primitive 3D Cylindre" , false));
+	guiPrimitive3d.add(primitive3dStroke.setup("WireFrame", false));
+	guiPrimitive3d.add(primitive3dRotation.setup("Rotation", false));
+	guiPrimitive3d.add(positionPrimitive3dX.setup("Position X", 450,-1500,1500));
+	guiPrimitive3d.add(positionPrimitive3dY.setup("Position Y", 450, -1500, 1500));
+	guiPrimitive3d.add(positionPrimitive3dZ.setup("Position Z", 450, -1500, 1500));
+	guiPrimitive3d.add(Primitive3dSize.setup("Size",1,1,10));
+
+	guiPrimitive3d.add(primitive3dToggleBox.setup("Primitive 3D Cube", false));
+	guiPrimitive3d.add(primitive3dStrokeBox.setup("WireFrame", false));
+	guiPrimitive3d.add(primitive3dRotationBox.setup("Rotation", false));
+	guiPrimitive3d.add(positionPrimitive3dXBox.setup("Position X", 450, -1500, 1500));
+	guiPrimitive3d.add(positionPrimitive3dYBox.setup("Position Y", 450, -1500, 1500));
+	guiPrimitive3d.add(positionPrimitive3dZBox.setup("Position Z", 450, -1500, 1500));
+	guiPrimitive3d.add(Primitive3dSizeBox.setup("Size", 1, 1, 10));
+
+
+	//primitive 3d 2 
+
 }
 
 // Fonction de mise à jour du gui
@@ -132,6 +163,7 @@ void Gui::draw()
 	guiColorPrimitives.draw();
 	guiScene.draw();
 	guiLight.draw();
+	guiPrimitive3d.draw();
 }
 
 int  Gui::getFOND_R() 
@@ -240,6 +272,19 @@ float Gui::getTY2()
 {
 	return ty2;
 }
+float Gui::getTZ1()
+{
+	return tz1;
+}
+float Gui::getTZ2()
+{
+	return tz2;
+}
+
+int Gui::getLineWidth()
+{
+	return lineWidth;
+}
 
 int Gui::getCSRS() 
 {
@@ -266,19 +311,24 @@ int Gui::getCSBF()
 	return sliderBFill;
 }
 
-ofxToggle Gui::getToggleRectangle()
+bool Gui::getToggleRectangle()
 {
 	return rec;
 }
 
-ofxToggle Gui::getToggleEllipse()
+bool Gui::getToggleEllipse()
 {
 	return ell;
 }
 
-ofxToggle Gui::getToggleLigne()
+bool Gui::getToggleLigne()
 {
 	return lig;
+}
+
+bool Gui::getToggleFormeVectorielle()
+{
+	return formeVec;
 }
 
 float Gui::getposXEllipseSlider() {
@@ -290,14 +340,33 @@ float Gui::getposYEllipseSlider()
 	return posYEllipseSlider;
 }
 
-float Gui::getformeVectorielleXSlider() {
-	return formeVectorielleXSlider;
+float Gui::getformeVectorielleRSlider() {
+	return formeVectorielleRSlider;
 }
 
-float Gui::getformeVectorielleYSlider() {
-	return formeVectorielleYSlider;
+float Gui::getformeVectorielleTSlider() {
+	return formeVectorielleTSlider;
 }
 
+float Gui::getformeVectoriellePSlider() {
+	return formeVectoriellePSlider;
+}
+
+float Gui::getRotAngle() {
+	return rotAngleSlider;
+}
+
+int Gui::getRotX() {
+	return rotXSlider;
+}
+
+int Gui::getRotY() {
+	return rotYSlider;
+}
+
+int Gui::getRotZ() {
+	return rotZSlider;
+}
 
 float Gui::getPositionXEllipseSlider() {
 	return positionXEllipseSlider;
@@ -308,6 +377,80 @@ float Gui::getPositionYEllipseSlider() {
 	return positionYEllipseSlider;
 }
 
+float Gui::getPositionZEllipseSlider() {
+	return positionZEllipseSlider;
+}
+
+
+float Gui::getPositionXRectangleSlider() {
+	return positionXRectangleSlider;
+}
+float Gui::getPositionYRectangleSlider() {
+	return positionYRectangleSlider;
+}
+float Gui::getPositionZRectangleSlider() {
+	return positionZRectangleSlider;
+}
+
+
+
+float Gui::getpositionPrimitive3dX() {
+	return positionPrimitive3dX;
+}
+float Gui::getpositionPrimitive3dY() {
+	return positionPrimitive3dY;
+}
+float Gui::getpositionPrimitive3dZ() {
+	return positionPrimitive3dZ;
+}
+bool Gui::getToggleprimitive3d() {
+	return primitive3dToggle;
+}
+
+bool Gui::getToggleprimitive3dStroke() {
+	return primitive3dStroke;
+}
+
+bool Gui::getToggleprimitive3dRotation() {
+	return primitive3dRotation;
+}
+
+float Gui::getprimitive3dSize() {
+	return Primitive3dSize;
+}
+
+
+float Gui::getpositionPrimitive3dXBox() {
+	return positionPrimitive3dXBox;
+}
+float Gui::getpositionPrimitive3dYBox() {
+	return positionPrimitive3dYBox;
+}
+float Gui::getpositionPrimitive3dZBox() {
+	return positionPrimitive3dZBox;
+}
+
+
+
+float Gui::getprimitive3dSizeBox() {
+	return Primitive3dSizeBox;
+}
+bool Gui::getToggleprimitive3dBox() {
+	return primitive3dToggleBox;
+}
+
+
+bool Gui::getToggleprimitive3dStrokeBox() {
+	return primitive3dStrokeBox;
+}
+
+bool Gui::getToggleprimitive3dRotationBox() {
+	return  primitive3dRotationBox;
+}
+
+bool Gui::getprimitive3dSphere() {
+	return primitive3dSphere;
+}
 
 int Gui::getXLight()
 {
@@ -323,6 +466,7 @@ int Gui::getZLight()
 {
 	return zLightSlider;
 }
+
 
 
 

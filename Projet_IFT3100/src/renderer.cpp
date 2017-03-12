@@ -12,8 +12,11 @@ void Renderer::setup()
 	ofLog() << "<renderer::setup>";
 	ofSetWindowTitle("Rendu");
 
-	// Application des effets
+	// Application de la résolution
 	ofSetCircleResolution(200);
+	cylindre.setResolution(50,10,10);
+	
+	// Application des effets
 	ofSetFrameRate(60);
 	ofEnableDepthTest();
 	ofEnableLighting();
@@ -79,23 +82,26 @@ void Renderer::update()
 // Fonction invoquée pour ajouter des éléments dans le framebuffer
 void Renderer::draw()
 {
+	
+
+
 	ofTranslate(ofGetWindowWidth() / 2, ofGetWindowHeight() / 2);
 
 	// Couleur de fond castée par les sliders
 	ofBackground(rfond, gfond, bfond);
-
-	// Afficher l'image de fond sur toute la surface de la fenêtre seulement si isFondLoaded est true
-	if (isFondLoaded == true)
-	{
-		ofSetColor(ofColor::fromHsb(hueImage, saturationImage, brightnessImage, alphaImage));
-		vecteurImage[vecteurImage.size() - 1].draw(posImageX - ofGetWindowWidth() / 2, posImageY - ofGetWindowHeight() / 2, sizeImageWidth, sizeImageHeight);
-	}
 
 	camera->begin();
 
 	// Activation de la lumière
 	light->setPosition(xLight, yLight, zLight);
 
+	ofFill();
+
+//TEMPORRAIRE J'AVAIS DE LA DIFFICULTÉ A VOIR LA CAMERA
+	
+
+
+	
 	// Activation des différentes caméras
 	if (isVisibleCamera)
 	{
@@ -127,33 +133,33 @@ void Renderer::draw()
 		if (posRectangleX > 0 && posRectangleY > 0)
 		{
 			ofSetColor(rfill, gfill, bfill); //Couleur de l'intérieur du Rectangle
-			ofDrawRectangle(50 + (contourLargeur / 2), 50 + (contourLargeur / 2), posRectangleX, posRectangleY);
+			ofDrawRectangle(positionXRectangle - (contourLargeur / 2), positionYRectangle - (contourLargeur / 2), positionZRectangle - (contourLargeur / 2), posRectangleX, posRectangleY);
 			ofSetColor(rstroke, gstroke, bstroke); //Couleur de la stroke du rectangle
-			ofDrawRectangle(50, 50, posRectangleX + contourLargeur, posRectangleY + contourLargeur);
+			ofDrawRectangle(positionXRectangle, positionYRectangle, positionZRectangle, posRectangleX + contourLargeur, posRectangleY + contourLargeur);
 		}
 
 		else if (posRectangleX < 0 && posRectangleY < 0)
 		{
 			ofSetColor(rfill, gfill, bfill); //Couleur de l'intérieur du Rectangle
-			ofDrawRectangle(50 - (contourLargeur / 2), 50 - (contourLargeur / 2), posRectangleX, posRectangleY);
+			ofDrawRectangle(positionXRectangle - (contourLargeur / 2), positionYRectangle - (contourLargeur / 2), positionZRectangle - (contourLargeur / 2),  posRectangleX, posRectangleY);
 			ofSetColor(rstroke, gstroke, bstroke); //Couleur de la stroke du rectangle
-			ofDrawRectangle(50, 50, posRectangleX - contourLargeur, posRectangleY - contourLargeur);
+			ofDrawRectangle(positionXRectangle, positionYRectangle, positionZRectangle,  posRectangleX - contourLargeur, posRectangleY - contourLargeur);
 		}
 
 		else if (posRectangleX > 0 && posRectangleY < 0)
 		{
 			ofSetColor(rfill, gfill, bfill); //Couleur de l'intérieur du Rectangle
-			ofDrawRectangle(50 + (contourLargeur / 2), 50 - (contourLargeur / 2), posRectangleX, posRectangleY);
+			ofDrawRectangle(positionXRectangle - (contourLargeur / 2), positionYRectangle - (contourLargeur / 2), positionZRectangle - (contourLargeur / 2), posRectangleX, posRectangleY);
 			ofSetColor(rstroke, gstroke, bstroke); //Couleur de la stroke du rectangle
-			ofDrawRectangle(50, 50, posRectangleX + contourLargeur, posRectangleY - contourLargeur);
+			ofDrawRectangle(positionXRectangle, positionYRectangle, positionZRectangle, posRectangleX + contourLargeur, posRectangleY - contourLargeur);
 		}
 
 		else if (posRectangleX < 0 && posRectangleY > 0)
 		{
 			ofSetColor(rfill, gfill, bfill); //Couleur de l'intérieur du Rectangle
-			ofDrawRectangle(50 - (contourLargeur / 2), 50 + (contourLargeur / 2), posRectangleX, posRectangleY);
+			ofDrawRectangle(positionXRectangle - (contourLargeur / 2), positionYRectangle - (contourLargeur / 2), positionZRectangle - (contourLargeur / 2), posRectangleX, posRectangleY);
 			ofSetColor(rstroke, gstroke, bstroke); //Couleur de la stroke du rectangle
-			ofDrawRectangle(50, 50, posRectangleX - contourLargeur, posRectangleY + contourLargeur);
+			ofDrawRectangle(positionXRectangle, positionYRectangle, positionZRectangle, posRectangleX - contourLargeur, posRectangleY + contourLargeur);
 		}
 	}
 
@@ -162,107 +168,191 @@ void Renderer::draw()
 		if (posEllipseX > 0 && posEllipseY > 0) 
 		{
 			ofSetColor(rfill, gfill, bfill);
-			ofDrawEllipse(10, 10, posEllipseX, posEllipseY);
+			ofDrawEllipse(positionXEllipse, positionYEllipse,positionZEllipse, posEllipseX, posEllipseY);
 			ofSetColor(rstroke, gstroke, bstroke); //Couleur de la stroke de L'ellipse
-			ofDrawEllipse(10, 10, posEllipseX + contourLargeur, posEllipseY + contourLargeur);
+			ofDrawEllipse(positionXEllipse, positionYEllipse, positionZEllipse, posEllipseX + contourLargeur, posEllipseY + contourLargeur);
 		}
 
 		else if (posEllipseX < 0 && posEllipseY < 0)
 		{
 			ofSetColor(rfill, gfill, bfill);
-			ofDrawEllipse(10, 10, posEllipseX, posEllipseY);
+			ofDrawEllipse(positionXEllipse, positionYEllipse, positionZEllipse, posEllipseX, posEllipseY);
 			ofSetColor(rstroke, gstroke, bstroke); //Couleur de la stroke de L'ellipse
-			ofDrawEllipse(10, 10, posEllipseX - contourLargeur, posEllipseY - contourLargeur);
+			ofDrawEllipse(positionXEllipse, positionYEllipse, positionZEllipse, posEllipseX - contourLargeur, posEllipseY - contourLargeur);
 		}
 
 		else if (posEllipseX > 0 && posEllipseY < 0)
 		{
 			ofSetColor(rfill, gfill, bfill);
-			ofDrawEllipse(10, 10, posEllipseX, posEllipseY);
+			ofDrawEllipse(positionXEllipse, positionYEllipse, positionZEllipse, posEllipseX, posEllipseY);
 			ofSetColor(rstroke, gstroke, bstroke); //Couleur de la stroke de L'ellipse
-			ofDrawEllipse(10, 10, posEllipseX + contourLargeur, posEllipseY - contourLargeur);
+			ofDrawEllipse(positionXEllipse, positionYEllipse, positionZEllipse, posEllipseX + contourLargeur, posEllipseY - contourLargeur);
 		}
 
 		else if (posEllipseX < 0 && posEllipseY > 0)
 		{
 			ofSetColor(rfill, gfill, bfill);
-			ofDrawEllipse(10, 10, posEllipseX, posEllipseY);
+			ofDrawEllipse(positionXEllipse, positionYEllipse, positionZEllipse, posEllipseX, posEllipseY);
 			ofSetColor(rstroke, gstroke, bstroke); //Couleur de la stroke de L'ellipse
-			ofDrawEllipse(10, 10, posEllipseX - contourLargeur, posEllipseY + contourLargeur);
+			ofDrawEllipse(positionXEllipse, positionYEllipse, positionZEllipse, posEllipseX - contourLargeur, posEllipseY + contourLargeur);
 		}
 	}
 
 	if (createLigne == true)
 	{
+		ofSetLineWidth(lineWidth);
 		ofSetColor(rstroke, gstroke, bstroke);
-		ofDrawLine(tx1, ty1, tx2, ty2);
-		ofSetLineWidth(contourLargeur);
+		ofDrawLine(tx1, ty1, tz1, tx2, ty2, tz2);
+		ofSetLineWidth(1);
 	}
 	
+	ofPushMatrix();
+	ofRotate(rotAngle, rotX, rotY, rotZ);
 	if (createFormeVectorielle == true)
 	{
 		int x = posformeVectorielleX;
 		int y = posformeVectorielleY;
+		int z = posformeVectorielleZ;
 		ofSetColor(0, 0, 0);
-		ofDrawEllipse(x - 35, y, 30, 75);
+		ofDrawEllipse(x - 35, y, z, 30, 75);
 
 		ofSetColor(0, 0, 0);
-		ofDrawEllipse(x + 35, y, 30, 75);
+		ofDrawEllipse(x + 35, y, z, 30, 75);
 
 		ofSetColor(255, 255, 255);
-		ofDrawEllipse(x, y, 250, 100);
+		ofDrawEllipse(x, y, z, 250, 100);
 
 		ofSetColor(255, 204, 0);
-		ofDrawEllipse(x, y, 325, 150);
+		ofDrawEllipse(x, y, z, 325, 150);
 
 		ofSetColor(255, 153, 2);
-		ofDrawEllipse(x, y, 400, 200);
+		ofDrawEllipse(x, y, z, 400, 200);
 
 		ofSetColor(51, 204, 0);
-		ofDrawRectangle(x + 45, y, -90, -250);
+		ofDrawRectangle(x + 45, y, z, -90, -250);
 
-		ofDrawTriangle(x + 45, y - 250, x + 85, y - 150, x + 200, y - 130);
-		ofDrawTriangle(x + 45, y - 250, x + 85 + 60, y - 230, x + 200, y - 130);
+		ofDrawTriangle(x + 45, y - 250, z, x + 85, y - 150, z, x + 200, y - 130, z);
+		ofDrawTriangle(x + 45, y - 250, z, x + 85 + 60, y - 230, z, x + 200, y - 130, z);
 
-		ofDrawTriangle(x - 45, y - 250, x - 85, y - 150, x - 200, y - 130);
-		ofDrawTriangle(x - 45, y - 250, x - 85 - 60, y - 230, x - 200, y - 130);
+		ofDrawTriangle(x - 45, y - 250, z, x - 85, y - 150, z, x - 200, y - 130, z);
+		ofDrawTriangle(x - 45, y - 250, z, x - 85 - 60, y - 230, z, x - 200, y - 130, z);
+
+
 	}
+
+	if (createPrimitive3d == true)
+	{
+
+		if (primitive3dRoatation == true) {
+			float spinX = sin(ofGetElapsedTimef()*.35f);
+			float spinY = cos(ofGetElapsedTimef()*.075f);
+			cylindre.rotate(spinX, 1.0, 0.0, 0.0);
+			cylindre.rotate(spinY, 0, 1.0, 0.0);
+
+			if (primitice3dStroke == true) {
+				bottomCap = cylindre.getBottomCapMesh();
+				topCap = cylindre.getTopCapMesh();
+				body = cylindre.getCylinderMesh();
+				cylindre.drawWireframe();
+			}
+
+		}
+
+		else if (primitice3dStroke == true) {
+			bottomCap = cylindre.getBottomCapMesh();
+			topCap = cylindre.getTopCapMesh();
+			body = cylindre.getCylinderMesh();
+			cylindre.drawWireframe();
+			if (primitive3dRoatation == true) {
+				float spinX = sin(ofGetElapsedTimef()*.35f);
+				float spinY = cos(ofGetElapsedTimef()*.075f);
+				cylindre.rotate(spinX, 1.0, 0.0, 0.0);
+				cylindre.rotate(spinY, 0, 1.0, 0.0);
+			}
+		}
+		cylindre.setScale(primitive3dSize);
+		ofSetColor(0, 0, 170);
+		cylindre.setPosition(positionPrimitive3dX, positionPrimitive3dY, positionPrimitive3dZ);
+		cylindre.draw();
+	
+	}
+
+
+
+	if (createPrimitive3dBox == true) {
+
+
+		if (primitive3dRoatationBox == true) {
+
+			float spinX = sin(ofGetElapsedTimef()*.35f);
+			float spinY = cos(ofGetElapsedTimef()*.075f);
+			box.rotate(spinX, 1.0, 0.0, 0.0);
+			box.rotate(spinY, 0, 1.0, 0.0);
+			if (primitice3dStrokeBox == true) {
+
+				box.drawWireframe();
+			}
+
+
+
+		}
+
+		else if (primitice3dStrokeBox == true) {
+			
+			box.drawWireframe();
+
+			if (primitive3dRoatationBox == true) {
+				
+				float spinX = sin(ofGetElapsedTimef()*.35f);
+				float spinY = cos(ofGetElapsedTimef()*.075f);
+				box.rotate(spinX, 1.0, 0.0, 0.0);
+				box.rotate(spinY, 0, 1.0, 0.0);
+			}
+		}
+
+
+			box.setScale(primitive3dSizeBox);
+			box.setPosition(positionPrimitive3dXBox, positionPrimitive3dYBox, positionPrimitive3dZBox);
+			ofSetColor(0, 170, 0);
+			box.draw();
+		
+
+
+	}
+
+
+	ofPopMatrix();
+
+
+	if (primitive3dSphere == true)
+	{
+		material.begin();
+		ofNoFill();
+
+		ofSetColor(0, 0, 0);
+		ofDrawSphere(ofGetWidth() / 2 - 275, ofGetHeight() / 2 - 150, ofGetWidth());
+
+		material.end();
+
+
+	}
+
 	
 	// Importation d'un modèle 3D
-	if (isModelLoaded)
+	if (isModelLoaded == true)
 	{
 		model.drawFaces();
 	}
 
 	camera->end();
-}
 
-void Renderer::setToggle(ofxToggle bouton)
-{
-	stateToggle = bouton;
-}
 
-void Renderer::ReactionRec() 
-{
-	createRectangle = false;
-	ofLog() << "<JE TOGGLE RECTANGLE>";
-}
-
-void Renderer::ReactionEll()
-{
-	createEllipse = false;
-	ofLog() << "<JE TOGGLE ELLIPSE>";
-}
-
-void Renderer::ReactionLig()
-{
-	createLigne = false;
-	ofLog() << "<JE TOGGLE LIGNE>";
-}
-
-// Fonction de paramétrisation de l'image
-void Renderer::setFieldOfView(float fov) {
-	cameraFov = fov;
+	// Afficher l'image de fond sur toute la surface de la fenêtre seulement si isFondLoaded est true
+	if (isFondLoaded == true)
+	{
+		ofSetColor(ofColor::fromHsb(hueImage, saturationImage, brightnessImage, alphaImage));
+		vecteurImage[vecteurImage.size() - 1].draw(posImageX - ofGetWindowWidth() / 2, posImageY - ofGetWindowHeight() / 2, sizeImageWidth, sizeImageHeight);
+	}
 }
 
 // Fonction permettant d'activer une commande en pressant une touche
@@ -293,31 +383,6 @@ void Renderer::imageExport(const string name, const string extension) const
 	imageTemp.save(fileName);
 
 	ofLog() << "<export image: " << fileName << ">";
-}
-
-void Renderer::primitiveRectangle(int x, int y)
-{
-	createRectangle = true;
-	ofLog() << "<Test Rectangle:>";
-}
-
-void Renderer::primitiveLigne(int x, int y)
-{
-	createLigne = true;
-	ofLog() << "<Test Ligne:>";
-
-}
-
-void Renderer::FormeVectorielle(int x, int y)
-{
-	createFormeVectorielle = true; 
-	ofLog() << "FORME VECTOR";
-}
-
-void Renderer::primitiveEllispe(int x, int y)
-{
-	createEllipse = true;
-	ofLog() << "<Test Ellipse:>";
 }
 
 void Renderer::cameraSetupParameters() {
