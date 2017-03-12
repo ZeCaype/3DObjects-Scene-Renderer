@@ -53,6 +53,7 @@ void Gui::reset() {
 	guiCamera.add(cameraNearSlider.setup("Plan near", defaultCameraNear, 0, 999));
 	guiCamera.add(cameraFarSlider.setup("Plan far", defaultCameraFar, 1000, 6000));
 
+
 	// Primitive
 	guiPrimitive.setup("Primitives Vectorielles", "Primitives Vectorielles", 260, 200);
 	// Rectangle
@@ -121,6 +122,7 @@ void Gui::reset() {
 
 	//primitive 3d 
 	guiPrimitive3d.setup("Primitives 3D", "Primitive3D ", 495, 10);
+	
 	guiPrimitive3d.add(primitive3dToggle.setup("Primitive 3D Cylindre" , false));
 	guiPrimitive3d.add(primitive3dStroke.setup("WireFrame", false));
 	guiPrimitive3d.add(primitive3dRotation.setup("Rotation", false));

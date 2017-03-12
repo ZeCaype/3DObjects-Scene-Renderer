@@ -154,6 +154,8 @@ public:
 	bool getToggleprimitive3dStrokeBox();
 	bool getToggleprimitive3dRotationBox();
 
+	ofxToggle primitive3dSphere; 
+	bool getprimitive3dSphere(); 
 
 	
 
