@@ -112,6 +112,18 @@ void Gui::reset() {
 	// Options
 	guiOption.setup("Options", "", offsetX, 750);
 	guiOption.add(exitButton.setup("Quitter l'application"));
+
+
+	//primitive 3d 
+	guiPrimitive3d.setup("Primitives 3D", "Primitive3D", 500, 10);
+	guiPrimitive3d.add(primitive3dToggle.setup("Primitive 3D", false));
+	guiPrimitive3d.add(primitive3dStroke.setup("WireFrame", false));
+	guiPrimitive3d.add(primitive3dRotation.setup("Rotation", false));
+	guiPrimitive3d.add(positionPrimitive3dX.setup("Position X", 450,-1500,1500));
+	guiPrimitive3d.add(positionPrimitive3dY.setup("Position Y", 450, -1500, 1500));
+	guiPrimitive3d.add(positionPrimitive3dZ.setup("Position Z", 450, -1500, 1500));
+	guiPrimitive3d.add(Primitive3dSize.setup("Size",1,1,10));
+
 }
 
 // Fonction de mise à jour du gui
@@ -132,6 +144,7 @@ void Gui::draw()
 	guiColorPrimitives.draw();
 	guiScene.draw();
 	guiLight.draw();
+	guiPrimitive3d.draw();
 }
 
 int  Gui::getFOND_R() 
@@ -342,6 +355,30 @@ float Gui::getPositionZRectangleSlider() {
 }
 
 
+float Gui:: getprimitive3dSize (){
+	return Primitive3dSize;
+}
+
+float Gui::getpositionPrimitive3dX() {
+	return positionPrimitive3dX;
+}
+float Gui::getpositionPrimitive3dY() {
+	return positionPrimitive3dY;
+}
+float Gui::getpositionPrimitive3dZ() {
+	return positionPrimitive3dZ;
+}
+bool Gui::getToggleprimitive3d() {
+	return primitive3dToggle;
+}
+
+bool Gui::getToggleprimitive3dStroke() {
+	return primitive3dStroke;
+}
+
+bool Gui::getToggleprimitive3dRotation() {
+	return primitive3dRotation;
+}
 
 int Gui::getXLight()
 {
@@ -357,6 +394,7 @@ int Gui::getZLight()
 {
 	return zLightSlider;
 }
+
 
 
 

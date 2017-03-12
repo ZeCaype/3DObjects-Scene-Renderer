@@ -113,6 +113,15 @@ void Application::update()
 	renderer->posformeVectorielleY=(gui->getformeVectorielleYSlider());
 	renderer->posformeVectorielleZ = (gui->getformeVectorielleZSlider());
 
+	renderer->positionPrimitive3dX = (gui->getpositionPrimitive3dX());
+	renderer->positionPrimitive3dY = (gui->getpositionPrimitive3dY());
+	renderer->positionPrimitive3dZ = (gui->getpositionPrimitive3dZ());
+	renderer->primitive3dSize = (gui->getprimitive3dSize());
+	renderer->primitice3dStroke = (gui->getToggleprimitive3dStroke());
+	renderer->primitive3dRoatation = (gui->getToggleprimitive3dRotation());
+	renderer->createPrimitive3d = (gui->getToggleprimitive3d()); 
+
+
 	//Formes 2D
 	renderer->createRectangle = gui->getToggleRectangle();
 	renderer->createEllipse = gui->getToggleEllipse();
@@ -158,6 +167,7 @@ void Application::update()
 		gui->modelCheck = true;
 	}
 	else if (!gui->modelButton) gui->modelCheck = false;
+
 
 	// Appel pour la position de la lumière
 	renderer->xLight=(gui->getXLight());

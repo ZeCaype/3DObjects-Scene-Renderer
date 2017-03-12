@@ -139,8 +139,20 @@ public:
 	float positionYRectangle; 
 	float positionZRectangle; 
 
+	ofCylinderPrimitive cylindre;
+	ofVboMesh topCap, bottomCap, body;
+	ofMaterial material;
 
+	float positionPrimitive3dX;
+	float positionPrimitive3dY;
+	float positionPrimitive3dZ;
+	float primitive3dSize;
 
+	bool  primitive3dRoatation = false; 
+	bool  primitice3dStroke = false;
+
+	bool createPrimitive3d = false;
+	bool createPrimitice = false;
 	bool createRectangle = false;
 	bool createEllipse = false;
 	bool createLigne = false;

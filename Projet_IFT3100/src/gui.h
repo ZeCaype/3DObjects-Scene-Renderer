@@ -116,6 +116,28 @@ public:
 	ofxIntSlider brightnessImage;
 	ofxIntSlider alphaImage;
 
+	//Primitive 3D
+	ofxPanel guiPrimitive3d;
+	ofxToggle primitive3dToggle;
+	ofxToggle primitive3dStroke; 
+	ofxToggle primitive3dRotation;
+	ofxFloatSlider positionPrimitive3dX; 
+	ofxFloatSlider positionPrimitive3dY;
+	ofxFloatSlider positionPrimitive3dZ;
+	ofxFloatSlider Primitive3dSize; 
+	
+	float getpositionPrimitive3dX();
+	float getpositionPrimitive3dY();
+	float getpositionPrimitive3dZ();
+	float getprimitive3dSize();
+	bool getToggleprimitive3d(); 
+	bool getToggleprimitive3dStroke();
+	bool getToggleprimitive3dRotation();
+
+
+
+	
+
 	// Initialisation des paramètres du cercle
 	ofxPanel guiCircle;
 	ofxIntSlider circleRadius;
@@ -183,6 +205,7 @@ public:
 	ofxToggle ell;
 	ofxToggle lig;
 	ofxToggle formeVec;
+
 
 	~Gui();
 };
