@@ -47,7 +47,7 @@ void Application::setup()
 //--------------------------------------------------------------
 void Application::update()
 {
-	// Image ////////////////////////////////////////////////////////////////////////////////////////
+	// Image //////////////////////////////////////////////////////////////////////////////////////
 	// Appel des fonction de la paramétrisation de l'image
 	renderer->posImageX = (gui->getPosImageX());
 	renderer->posImageY = (gui->getPosImageY());
@@ -75,7 +75,7 @@ void Application::update()
 	}
 	else if (!gui->importButton) gui->importCheck = false;
 
-	// Dessin vectoriel /////////////////////////////////////////////////////////////////////////////
+	// Dessin vectoriel ///////////////////////////////////////////////////////////////////////////
 	// Formes 2D
 	renderer->createRectangle = gui->getToggleRectangle();
 	renderer->createEllipse = gui->getToggleEllipse();
@@ -83,6 +83,20 @@ void Application::update()
 	renderer->createFormeVectorielle = gui->getToggleFormeVectorielle();
 	// Contour des formes 2D
 	renderer->contourLargeur = gui->getContour();
+	// Position du rectangle 1
+	renderer->posRectangleX = (gui->getPosXSlider());
+	renderer->posRectangleY = (gui->getPosYSlider());
+	// Position du rectangle 2
+	renderer->positionXRectangle = (gui->getPositionXRectangleSlider());
+	renderer->positionYRectangle = (gui->getPositionYRectangleSlider());
+	renderer->positionZRectangle = (gui->getPositionZRectangleSlider());
+	// Position de l'ellipse 1
+	renderer->posEllipseX = (gui->getposXEllipseSlider());
+	renderer->posEllipseY = (gui->getposYEllipseSlider());
+	// Position de l'ellipse 2
+	renderer->positionXEllipse = (gui->getPositionXEllipseSlider());
+	renderer->positionYEllipse = (gui->getPositionYEllipseSlider());
+	renderer->positionZEllipse = (gui->getPositionZEllipseSlider());
 	// Paramétrisation de la ligne
 	renderer->tx1 = (gui->getTX1());
 	renderer->tx2 = (gui->getTX2());
@@ -98,21 +112,7 @@ void Application::update()
 	renderer->gfill = (gui->getCSGF());
 	renderer->bfill = (gui->getCSBF());
 
-	// Transformation ///////////////////////////////////////////////////////////////////////////////
-	// Position (translation) du rectangle 1
-	renderer->posRectangleX = (gui->getPosXSlider());
-	renderer->posRectangleY = (gui->getPosYSlider());
-	// Position (translation) du rectangle 2
-	renderer->positionXRectangle = (gui->getPositionXRectangleSlider());
-	renderer->positionYRectangle = (gui->getPositionYRectangleSlider());
-	renderer->positionZRectangle = (gui->getPositionZRectangleSlider());
-	// Position (translation) de l'ellipse 1
-	renderer->posEllipseX = (gui->getposXEllipseSlider());
-	renderer->posEllipseY = (gui->getposYEllipseSlider());
-	// Position (translation) de l'ellipse 2
-	renderer->positionXEllipse = (gui->getPositionXEllipseSlider());
-	renderer->positionYEllipse = (gui->getPositionYEllipseSlider());
-	renderer->positionZEllipse = (gui->getPositionZEllipseSlider());
+	// Transformation /////////////////////////////////////////////////////////////////////////////
 	// Position et rotation de la forme vectorielle (fleur)
 	renderer->posformeVectorielleX = (gui->getformeVectorielleRSlider())*sin(gui->getformeVectorielleTSlider())*cos(gui->getformeVectoriellePSlider());
 	renderer->posformeVectorielleY = (gui->getformeVectorielleRSlider())*sin(gui->getformeVectorielleTSlider())*sin(gui->getformeVectoriellePSlider());
@@ -122,7 +122,7 @@ void Application::update()
 	renderer->rotY = (gui->getRotY());
 	renderer->rotZ = (gui->getRotZ());
 
-	// Géométrie ////////////////////////////////////////////////////////////////////////////////////
+	// Géométrie //////////////////////////////////////////////////////////////////////////////////
 	// Paramétrisation du cylindre
 	renderer->positionPrimitive3dX = (gui->getpositionPrimitive3dX());
 	renderer->positionPrimitive3dY = (gui->getpositionPrimitive3dY());
@@ -150,7 +150,7 @@ void Application::update()
 	}
 	else if (!gui->modelButton) gui->modelCheck = false;
 
-	// Caméra ///////////////////////////////////////////////////////////////////////////////////////
+	// Caméra /////////////////////////////////////////////////////////////////////////////////////
 	// Appel des fonctions de la caméra
 	if (renderer->isCameraPerspective)
 		ofSetWindowTitle("Camera " + renderer->cameraName + " Perspective (1-6 wasdqe uhjkyi r)");
@@ -179,7 +179,7 @@ void Application::update()
 	renderer->cameraNear = gui->getCameraNear();
 	renderer->cameraFar = gui->getCameraFar();
 
-	// Autres ///////////////////////////////////////////////////////////////////////////////////////
+	// Autres /////////////////////////////////////////////////////////////////////////////////////
 	// Rayon des sphères
 	renderer->circleRadius = gui->getRadius();
 	// Couleur du fond
