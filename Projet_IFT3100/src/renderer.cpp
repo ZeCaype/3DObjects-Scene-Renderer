@@ -200,9 +200,10 @@ void Renderer::draw()
 
 	if (createLigne == true)
 	{
+		ofSetLineWidth(lineWidth);
 		ofSetColor(rstroke, gstroke, bstroke);
 		ofDrawLine(tx1, ty1, tz1, tx2, ty2, tz2);
-		ofSetLineWidth(contourLargeur);
+		ofSetLineWidth(1);
 	}
 	
 	ofPushMatrix();

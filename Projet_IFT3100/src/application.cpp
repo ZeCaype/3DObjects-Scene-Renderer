@@ -104,6 +104,7 @@ void Application::update()
 	renderer->ty2 = (gui->getTY2());
 	renderer->tz1 = (gui->getTZ1());
 	renderer->tz2 = (gui->getTZ2());
+	renderer->lineWidth = (gui->getLineWidth());
 	// Couleur des formes
 	renderer->rstroke = (gui->getCSRS());
 	renderer->gstroke = (gui->getCSGS());

@@ -50,6 +50,7 @@ public:
 	ofxFloatSlider ty2;
 	ofxFloatSlider tz1;
 	ofxFloatSlider tz2;
+	ofxIntSlider lineWidth;
 	ofxFloatSlider posXEllipseSlider;
 	ofxFloatSlider posYEllipseSlider;
 
@@ -94,6 +95,7 @@ public:
 	float getTY2();
 	float getTZ1();
 	float getTZ2();
+	int getLineWidth();
 
 	int getCSRS();
 	int getCSGS();

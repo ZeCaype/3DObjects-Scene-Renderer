@@ -74,12 +74,13 @@ void Gui::reset() {
 	guiPrimitive.add(positionZEllipseSlider.setup("Position Z Ellipse", 300, -1500, 1500));
 	// Ligne
 	guiPrimitive.add(lig.setup("Ligne", false));
-	guiPrimitive.add(tx1.setup("Sommet #1 - Coord 'x'", 306, -900, 900));
-	guiPrimitive.add(ty1.setup("Sommet #1 - Coord 'y'", 300, -850, 850));
-	guiPrimitive.add(tz1.setup("Sommet #1 - Coord 'z'", 300, -850, 850));
-	guiPrimitive.add(tx2.setup("Sommet #2 - Coord 'x'", 552, -900, 900));
-	guiPrimitive.add(ty2.setup("Sommet #2 - Coord 'y'", 552, -900, 900));
-	guiPrimitive.add(tz2.setup("Sommet #2 - Coord 'z'", -174, -850, 850));
+	guiPrimitive.add(tx1.setup("Position #1 - Coord 'x'", 306, -900, 900));
+	guiPrimitive.add(ty1.setup("Position #1 - Coord 'y'", 300, -850, 850));
+	guiPrimitive.add(tz1.setup("Position #1 - Coord 'z'", 300, -850, 850));
+	guiPrimitive.add(tx2.setup("Position #2 - Coord 'x'", 552, -900, 900));
+	guiPrimitive.add(ty2.setup("Position #2 - Coord 'y'", 552, -900, 900));
+	guiPrimitive.add(tz2.setup("Position #2 - Coord 'z'", -174, -850, 850));
+	guiPrimitive.add(lineWidth.setup("Largeur de ligne", 2, 1, 10));
 
 	// Forme Vectorielle 
 	guiPrimitive.add(formeVec.setup("Forme Vectorielle", false));
@@ -278,6 +279,11 @@ float Gui::getTZ1()
 float Gui::getTZ2()
 {
 	return tz2;
+}
+
+int Gui::getLineWidth()
+{
+	return lineWidth;
 }
 
 int Gui::getCSRS() 

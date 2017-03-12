@@ -48,6 +48,7 @@ public:
 	float ty1;
 	float tz2;
 	float tz1;
+	int lineWidth;
 
 	int rstroke = 0;
 	int gstroke = 0;
