@@ -159,8 +159,14 @@ void Application::update()
 
 	// Caméra /////////////////////////////////////////////////////////////////////////////////////
 	// Appel des fonctions de la caméra
-	if (renderer->isCameraPerspective)
-		ofSetWindowTitle("Camera " + renderer->cameraName + " Perspective (1-6 wasdqe uhjkyi r)");
+
+
+	if (renderer->isCameraPerspective && gui->getAspectRatio()) {
+		ofSetWindowTitle("Camera " + renderer->cameraName + " Perspective 4:3 (1-6 wasdqe uhjkyi op)");
+	}
+	else if (renderer->isCameraPerspective) {
+		ofSetWindowTitle("Camera " + renderer->cameraName + " Perspective 16:9 (1-6 wasdqe uhjkyi op)");
+	}
 	else
 		ofSetWindowTitle("Camera " + renderer->cameraName + " Orthographique");
 
@@ -186,6 +192,7 @@ void Application::update()
 	renderer->cameraNear = gui->getCameraNear();
 	renderer->cameraFar = gui->getCameraFar();
 
+	renderer->aspectRatio4_3 = gui->getAspectRatio();
 	// Autres /////////////////////////////////////////////////////////////////////////////////////
 	// Rayon des sphères
 	renderer->circleRadius = gui->getRadius();

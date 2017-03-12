@@ -204,10 +204,12 @@ public:
 	ofxFloatSlider fovSlider;
 	ofxIntSlider cameraNearSlider;
 	ofxIntSlider cameraFarSlider;
+	ofxToggle aspectRatio4_3;
 
 	float getFov();
 	int getCameraNear();
 	int getCameraFar();
+	bool getAspectRatio();
 
 	// Autres /////////////////////////////////////////////////////////////////////////////////////
 	int offsetX;

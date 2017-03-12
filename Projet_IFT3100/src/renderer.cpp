@@ -433,6 +433,7 @@ void Renderer::cameraSetupParameters() {
 	isCameraFovWide = false;
 
 	isCameraPerspective = true;
+	aspectRatio4_3 = true;
 
 	isFondLoaded = false;
 
@@ -543,6 +544,12 @@ void Renderer::updateCamera() {
 		camera->setFov(cameraFov);
 	}
 
+	if (aspectRatio4_3) {
+		camera->setAspectRatio(4 / 3);
+	}
+	else {
+		camera->setAspectRatio(16 / 9);
+	}
 	camera->setNearClip(cameraNear);
 	camera->setFarClip(cameraFar);
 }

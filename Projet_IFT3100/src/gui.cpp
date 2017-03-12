@@ -52,6 +52,7 @@ void Gui::reset() {
 	guiCamera.add(fovSlider.setup("Field of view", defaultFov, 0, 120));
 	guiCamera.add(cameraNearSlider.setup("Plan near", defaultCameraNear, 0, 999));
 	guiCamera.add(cameraFarSlider.setup("Plan far", defaultCameraFar, 1000, 6000));
+	guiCamera.add(aspectRatio4_3.setup("Ratio d'aspect 4:3", true));
 
 
 	// Primitive
@@ -94,7 +95,7 @@ void Gui::reset() {
 	guiPrimitive.add(rotZSlider.setup("Z Rotation", 0, -1, 1));
 
 	//Couleurs Stroke + Fill
-	guiColorPrimitives.setup("Couleur Stroke-Fill", "", offsetX, 375);
+	guiColorPrimitives.setup("Couleur Stroke-Fill", "", offsetX, 385);
 	guiColorPrimitives.add(sliderContour.setup("Largeur Contour", 50, 0, 100));
 	guiColorPrimitives.add(sliderRStroke.setup("Stroke/Red", 0, 0, 255));
 	guiColorPrimitives.add(sliderGStroke.setup("Stroke/Green", 0, 0, 255));
@@ -245,6 +246,9 @@ int Gui::getCameraFar() {
 	return cameraFarSlider;
 }
 
+bool Gui::getAspectRatio() {
+	return aspectRatio4_3;
+}
 float Gui::getPosXSlider()
 {
 	return posXSlider;

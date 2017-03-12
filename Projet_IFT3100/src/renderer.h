@@ -157,8 +157,6 @@ public:
 
 	float sceneOffset;
 
-	float colorOffset;
-
 	float cameraOffset;
 
 	int xIndex;
@@ -186,26 +184,7 @@ public:
 	bool isCameraFovWide;
 
 	bool isCameraPerspective;
-
-	bool isKeyPressUp;
-	bool isKeyPressDown;
-	bool isKeyPressLeft;
-	bool isKeyPressRight;
-
-	bool isKeyPressA;
-	bool isKeyPressD;
-	bool isKeyPressE;
-	bool isKeyPressH;
-	bool isKeyPressI;
-	bool isKeyPressJ;
-	bool isKeyPressK;
-	bool isKeyPressQ;
-	bool isKeyPressS;
-	bool isKeyPressU;
-	bool isKeyPressW;
-	bool isKeyPressX;
-	bool isKeyPressY;
-	bool isKeyPressZ;
+	bool aspectRatio4_3;
 
 	// Autres /////////////////////////////////////////////////////////////////////////////////////
 	// Paramétrisation du temps
