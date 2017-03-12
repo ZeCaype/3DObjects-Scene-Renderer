@@ -133,7 +133,7 @@ void Renderer::draw()
 		if (posRectangleX > 0 && posRectangleY > 0)
 		{
 			ofSetColor(rfill, gfill, bfill); //Couleur de l'intérieur du Rectangle
-			ofDrawRectangle(positionXRectangle - (contourLargeur / 2), positionYRectangle - (contourLargeur / 2), positionZRectangle - (contourLargeur / 2), posRectangleX, posRectangleY);
+			ofDrawRectangle(positionXRectangle + (contourLargeur / 2), positionYRectangle + (contourLargeur / 2), positionZRectangle, posRectangleX, posRectangleY);
 			ofSetColor(rstroke, gstroke, bstroke); //Couleur de la stroke du rectangle
 			ofDrawRectangle(positionXRectangle, positionYRectangle, positionZRectangle, posRectangleX + contourLargeur, posRectangleY + contourLargeur);
 		}
@@ -141,7 +141,7 @@ void Renderer::draw()
 		else if (posRectangleX < 0 && posRectangleY < 0)
 		{
 			ofSetColor(rfill, gfill, bfill); //Couleur de l'intérieur du Rectangle
-			ofDrawRectangle(positionXRectangle - (contourLargeur / 2), positionYRectangle - (contourLargeur / 2), positionZRectangle - (contourLargeur / 2),  posRectangleX, posRectangleY);
+			ofDrawRectangle(positionXRectangle - (contourLargeur / 2), positionYRectangle - (contourLargeur / 2), positionZRectangle,  posRectangleX, posRectangleY);
 			ofSetColor(rstroke, gstroke, bstroke); //Couleur de la stroke du rectangle
 			ofDrawRectangle(positionXRectangle, positionYRectangle, positionZRectangle,  posRectangleX - contourLargeur, posRectangleY - contourLargeur);
 		}
@@ -149,7 +149,7 @@ void Renderer::draw()
 		else if (posRectangleX > 0 && posRectangleY < 0)
 		{
 			ofSetColor(rfill, gfill, bfill); //Couleur de l'intérieur du Rectangle
-			ofDrawRectangle(positionXRectangle - (contourLargeur / 2), positionYRectangle - (contourLargeur / 2), positionZRectangle - (contourLargeur / 2), posRectangleX, posRectangleY);
+			ofDrawRectangle(positionXRectangle + (contourLargeur / 2), positionYRectangle - (contourLargeur / 2), positionZRectangle, posRectangleX, posRectangleY);
 			ofSetColor(rstroke, gstroke, bstroke); //Couleur de la stroke du rectangle
 			ofDrawRectangle(positionXRectangle, positionYRectangle, positionZRectangle, posRectangleX + contourLargeur, posRectangleY - contourLargeur);
 		}
@@ -157,7 +157,7 @@ void Renderer::draw()
 		else if (posRectangleX < 0 && posRectangleY > 0)
 		{
 			ofSetColor(rfill, gfill, bfill); //Couleur de l'intérieur du Rectangle
-			ofDrawRectangle(positionXRectangle - (contourLargeur / 2), positionYRectangle - (contourLargeur / 2), positionZRectangle - (contourLargeur / 2), posRectangleX, posRectangleY);
+			ofDrawRectangle(positionXRectangle - (contourLargeur / 2), positionYRectangle + (contourLargeur / 2), positionZRectangle, posRectangleX, posRectangleY);
 			ofSetColor(rstroke, gstroke, bstroke); //Couleur de la stroke du rectangle
 			ofDrawRectangle(positionXRectangle, positionYRectangle, positionZRectangle, posRectangleX - contourLargeur, posRectangleY + contourLargeur);
 		}
