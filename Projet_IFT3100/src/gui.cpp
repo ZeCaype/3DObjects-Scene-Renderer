@@ -82,9 +82,14 @@ void Gui::reset() {
 
 	// Forme Vectorielle 
 	guiPrimitive.add(formeVec.setup("Forme Vectorielle", false));
-	guiPrimitive.add(formeVectorielleXSlider.setup("Pos X Vecteur", 450, -1500, 1500));
-	guiPrimitive.add(formeVectorielleYSlider.setup("Pos Y Vecteur", 600, -1500, 1500));
-	guiPrimitive.add(formeVectorielleZSlider.setup("Pos Z Vecteur", 600, -1500, 1500));
+	guiPrimitive.add(formeVectorielleRSlider.setup("Rayon", 0, -1000, 1000));
+	guiPrimitive.add(formeVectorielleTSlider.setup("Angle Theta", 0, 0, PI/2));
+	guiPrimitive.add(formeVectoriellePSlider.setup("Angle Phi", 0, 0, PI));
+	// Rotation
+	guiPrimitive.add(rotAngleSlider.setup("Angle de rotation", 0, 0, 180));
+	guiPrimitive.add(rotXSlider.setup("X Rotation", 0, -1, 1));
+	guiPrimitive.add(rotYSlider.setup("Y Rotation", 0, -1, 1));
+	guiPrimitive.add(rotZSlider.setup("Z Rotation", 0, -1, 1));
 
 	//Couleurs Stroke + Fill
 	guiColorPrimitives.setup("Couleur Stroke-Fill", "", offsetX, 375);
@@ -316,19 +321,33 @@ float Gui::getposYEllipseSlider()
 	return posYEllipseSlider;
 }
 
-float Gui::getformeVectorielleXSlider() {
-	return formeVectorielleXSlider;
+float Gui::getformeVectorielleRSlider() {
+	return formeVectorielleRSlider;
 }
 
-float Gui::getformeVectorielleYSlider() {
-	return formeVectorielleYSlider;
+float Gui::getformeVectorielleTSlider() {
+	return formeVectorielleTSlider;
 }
 
-float Gui::getformeVectorielleZSlider() {
-	return formeVectorielleZSlider;
+float Gui::getformeVectoriellePSlider() {
+	return formeVectoriellePSlider;
 }
 
+float Gui::getRotAngle() {
+	return rotAngleSlider;
+}
 
+int Gui::getRotX() {
+	return rotXSlider;
+}
+
+int Gui::getRotY() {
+	return rotYSlider;
+}
+
+int Gui::getRotZ() {
+	return rotZSlider;
+}
 
 float Gui::getPositionXEllipseSlider() {
 	return positionXEllipseSlider;

@@ -109,9 +109,13 @@ void Application::update()
 	renderer->gfond=(gui->getFOND_G());
 	renderer->bfond=(gui->getFOND_B());
 
-	renderer->posformeVectorielleX=(gui->getformeVectorielleXSlider());
-	renderer->posformeVectorielleY=(gui->getformeVectorielleYSlider());
-	renderer->posformeVectorielleZ = (gui->getformeVectorielleZSlider());
+	renderer->posformeVectorielleX = (gui->getformeVectorielleRSlider())*sin(gui->getformeVectorielleTSlider())*cos(gui->getformeVectoriellePSlider());
+	renderer->posformeVectorielleY = (gui->getformeVectorielleRSlider())*sin(gui->getformeVectorielleTSlider())*sin(gui->getformeVectoriellePSlider());
+	renderer->posformeVectorielleZ = (gui->getformeVectorielleRSlider())*cos(gui->getformeVectorielleTSlider());
+	renderer->rotAngle = (gui->getRotAngle());
+	renderer->rotX = (gui->getRotX());
+	renderer->rotY = (gui->getRotY());
+	renderer->rotZ = (gui->getRotZ());
 
 	renderer->positionPrimitive3dX = (gui->getpositionPrimitive3dX());
 	renderer->positionPrimitive3dY = (gui->getpositionPrimitive3dY());

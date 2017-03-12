@@ -209,6 +209,8 @@ void Renderer::draw()
 		ofSetLineWidth(contourLargeur);
 	}
 	
+	ofPushMatrix();
+	ofRotate(rotAngle, rotX, rotY, rotZ);
 	if (createFormeVectorielle == true)
 	{
 		int x = posformeVectorielleX;
@@ -277,6 +279,8 @@ void Renderer::draw()
 		cylindre.draw();
 	
 	}
+	ofPopMatrix();
+
 
 
 	
