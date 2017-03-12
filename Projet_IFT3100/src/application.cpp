@@ -24,7 +24,7 @@ Application::Application(Gui *guipam)
 
 	// Paramétrisation de la fenêtre du gui
 	ofGLFWWindowSettings settings;
-	settings.width = 600;
+	settings.width = 720;
 	settings.height = 800;
 	settings.setPosition(ofVec2f(700, 50));
 	settings.resizable = false;

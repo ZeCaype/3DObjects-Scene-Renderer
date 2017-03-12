@@ -12,8 +12,11 @@ void Renderer::setup()
 	ofLog() << "<renderer::setup>";
 	ofSetWindowTitle("Rendu");
 
-	// Application des effets
+	// Application de la résolution
 	ofSetCircleResolution(200);
+	cylindre.setResolution(50,10,10);
+	
+	// Application des effets
 	ofSetFrameRate(60);
 	ofEnableDepthTest();
 	ofEnableLighting();
@@ -312,7 +315,7 @@ void Renderer::draw()
 			}*/
 			box.setScale(primitive3dSizeBox);
 			box.setPosition(positionPrimitive3dXBox, positionPrimitive3dYBox, positionPrimitive3dZBox);
-			ofSetColor(170, 0, 0);
+			ofSetColor(0, 170, 0);
 			box.draw();
 		}
 

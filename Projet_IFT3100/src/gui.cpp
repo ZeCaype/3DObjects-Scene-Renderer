@@ -120,7 +120,7 @@ void Gui::reset() {
 
 
 	//primitive 3d 
-	guiPrimitive3d.setup("Primitives 3D", "Primitive3D ", 500, 10);
+	guiPrimitive3d.setup("Primitives 3D", "Primitive3D ", 495, 10);
 	guiPrimitive3d.add(primitive3dToggle.setup("Primitive 3D Cylindre" , false));
 	guiPrimitive3d.add(primitive3dStroke.setup("WireFrame", false));
 	guiPrimitive3d.add(primitive3dRotation.setup("Rotation", false));
@@ -129,7 +129,7 @@ void Gui::reset() {
 	guiPrimitive3d.add(positionPrimitive3dZ.setup("Position Z", 450, -1500, 1500));
 	guiPrimitive3d.add(Primitive3dSize.setup("Size",1,1,10));
 
-	guiPrimitive3d.add(primitive3dToggleBox.setup("Primitive 3D Box", false));
+	guiPrimitive3d.add(primitive3dToggleBox.setup("Primitive 3D Cube", false));
 	guiPrimitive3d.add(primitive3dStrokeBox.setup("WireFrame", false));
 	guiPrimitive3d.add(primitive3dRotationBox.setup("Rotation", false));
 	guiPrimitive3d.add(positionPrimitive3dXBox.setup("Position X", 450, -1500, 1500));
