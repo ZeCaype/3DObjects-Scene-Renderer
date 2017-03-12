@@ -316,6 +316,9 @@ void Renderer::draw()
 	
 
 
+	ofPopMatrix();
+
+
 	if (primitive3dSphere == true)
 	{
 		material.begin();
@@ -325,12 +328,9 @@ void Renderer::draw()
 		ofDrawSphere(ofGetWidth() / 2 - 275, ofGetHeight() / 2 - 150, ofGetWidth());
 
 		material.end();
-		
+
 
 	}
-	ofPopMatrix();
-
-
 
 	
 	// Importation d'un modèle 3D
