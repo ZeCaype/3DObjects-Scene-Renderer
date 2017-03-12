@@ -65,7 +65,7 @@ void Gui::reset() {
 	// Ellipse
 	guiPrimitive.add(primitiveEllipse.setup("Ellipse")); primitiveEllipseCheck = false;
 	guiPrimitive.add(posXEllipseSlider.setup("Largeur Ellipse", 450, -1500, 1500));
-	guiPrimitive.add(posYEllipseSlider.setup("Hauteur 1111111Ellipse", 600, -1500, 1500));
+	guiPrimitive.add(posYEllipseSlider.setup("Hauteur Ellipse", 600, -1500, 1500));
 	guiPrimitive.add(positionXEllipseSlider.setup("Position X Ellipse", -600, -1500, 1500));
 	guiPrimitive.add(positionYEllipseSlider.setup("Position Y Ellipse", -600, -1500, 1500));
 	// Triangle
