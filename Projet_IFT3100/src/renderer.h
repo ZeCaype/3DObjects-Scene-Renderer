@@ -87,7 +87,7 @@ public:
 	ofCylinderPrimitive cylindre;
 	ofVboMesh topCap, bottomCap, body;
 	ofMaterial material;
-
+	ofVboMesh boxSides[ofBoxPrimitive::SIDES_TOTAL];
 	ofBoxPrimitive box;
 
 	float positionPrimitive3dX;

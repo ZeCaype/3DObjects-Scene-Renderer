@@ -279,41 +279,45 @@ void Renderer::draw()
 
 
 	if (createPrimitive3dBox == true) {
-		
+
 
 		if (primitive3dRoatationBox == true) {
-			
+
 			float spinX = sin(ofGetElapsedTimef()*.35f);
 			float spinY = cos(ofGetElapsedTimef()*.075f);
 			box.rotate(spinX, 1.0, 0.0, 0.0);
 			box.rotate(spinY, 0, 1.0, 0.0);
-			/*if (primitice3dStrokeBox == true) {
-				
+			if (primitice3dStrokeBox == true) {
+
 				box.drawWireframe();
-			}*/
+			}
 
 
 
 		}
 
-		/*else if (primitice3dStrokeBox == true) {
-			ofLog() << "feg";
+		else if (primitice3dStrokeBox == true) {
+			
 			box.drawWireframe();
+
 			if (primitive3dRoatationBox == true) {
-				ofLog() << "brap";
+				
 				float spinX = sin(ofGetElapsedTimef()*.35f);
 				float spinY = cos(ofGetElapsedTimef()*.075f);
 				box.rotate(spinX, 1.0, 0.0, 0.0);
 				box.rotate(spinY, 0, 1.0, 0.0);
-			}*/
+			}
+		}
+
+
 			box.setScale(primitive3dSizeBox);
 			box.setPosition(positionPrimitive3dXBox, positionPrimitive3dYBox, positionPrimitive3dZBox);
 			ofSetColor(0, 170, 0);
 			box.draw();
-		}
+		
 
-	
-	
+
+	}
 
 
 	ofPopMatrix();
