@@ -57,14 +57,6 @@ void Application::update()
 	renderer->saturationImage = (gui->getSaturationImage());
 	renderer->brightnessImage = (gui->getBrightnessImage());
 	renderer->alphaImage = (gui->getAlphaImage());
-	// Appel de la fonction d'exportation de l'image de rendu
-	if (gui->exportButton && gui->exportCheck == false)
-	{
-		renderer->imageExport("render", "png");
-		ofLog() << "<image is in file /bin/data/" << ">";
-		gui->exportCheck = true;
-	}
-	else if (!gui->exportButton) gui->exportCheck = false;
 	// Appel de la rotation des images dans le vecteur d'images importées
 	if (gui->importButton && gui->importCheck == false)
 	{
@@ -74,6 +66,14 @@ void Application::update()
 		gui->importCheck = true;
 	}
 	else if (!gui->importButton) gui->importCheck = false;
+	// Appel de la fonction d'exportation de l'image de rendu
+	if (gui->exportButton && gui->exportCheck == false)
+	{
+		renderer->imageExport("render", "png");
+		ofLog() << "<image is in file /bin/data/" << ">";
+		gui->exportCheck = true;
+	}
+	else if (!gui->exportButton) gui->exportCheck = false;
 
 	// Dessin vectoriel ///////////////////////////////////////////////////////////////////////////
 	// Formes 2D
