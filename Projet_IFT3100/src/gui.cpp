@@ -14,7 +14,7 @@ void Gui::setup()
 	defaultCircleRadius = 205 / 2;
 	defaultFov = 60;
 	defaultCameraNear = 50;
-	defaultCameraFar = 2500;
+	defaultCameraFar = 6000;
 
 	// Paramétrisation par défaut de l'image
 	defaultPosX = 50;
@@ -51,7 +51,7 @@ void Gui::reset() {
 	guiCamera.setup("Camera", "", offsetX, 280);
 	guiCamera.add(fovSlider.setup("Field of view", defaultFov, 0, 120));
 	guiCamera.add(cameraNearSlider.setup("Plan near", defaultCameraNear, 0, 999));
-	guiCamera.add(cameraFarSlider.setup("Plan far", defaultCameraFar, 1000, 6000));
+	guiCamera.add(cameraFarSlider.setup("Plan far", defaultCameraFar, 1000, 12000));
 	guiCamera.add(aspectRatio4_3.setup("Ratio d'aspect 4:3", true));
 
 
