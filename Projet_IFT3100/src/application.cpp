@@ -5,7 +5,7 @@ Application::Application(Gui *guipam)
 {
 	gui = guipam;
 
-	// Déclaration des touches de clavier
+	// Initialisation des touches de clavier
 	isKeyPressA = false;
 	isKeyPressD = false;
 	isKeyPressE = false;
@@ -47,6 +47,110 @@ void Application::setup()
 //--------------------------------------------------------------
 void Application::update()
 {
+	// Image ////////////////////////////////////////////////////////////////////////////////////////
+	// Appel des fonction de la paramétrisation de l'image
+	renderer->posImageX = (gui->getPosImageX());
+	renderer->posImageY = (gui->getPosImageY());
+	renderer->sizeImageWidth = (gui->getSizeImageWidth());
+	renderer->sizeImageHeight = (gui->getSizeImageHeight());
+	renderer->hueImage = (gui->getHueImage());
+	renderer->saturationImage = (gui->getSaturationImage());
+	renderer->brightnessImage = (gui->getBrightnessImage());
+	renderer->alphaImage = (gui->getAlphaImage());
+	// Appel de la fonction d'exportation de l'image de rendu
+	if (gui->exportButton && gui->exportCheck == false)
+	{
+		renderer->imageExport("render", "png");
+		ofLog() << "<image is in file /bin/data/" << ">";
+		gui->exportCheck = true;
+	}
+	else if (!gui->exportButton) gui->exportCheck = false;
+	// Appel de la rotation des images dans le vecteur d'images importées
+	if (gui->importButton && gui->importCheck == false)
+	{
+		std::rotate(renderer->vecteurImage.begin(),
+			renderer->vecteurImage.end() - 1, // Ça va être le premier élément
+			renderer->vecteurImage.end());
+		gui->importCheck = true;
+	}
+	else if (!gui->importButton) gui->importCheck = false;
+
+	// Dessin vectoriel /////////////////////////////////////////////////////////////////////////////
+	// Formes 2D
+	renderer->createRectangle = gui->getToggleRectangle();
+	renderer->createEllipse = gui->getToggleEllipse();
+	renderer->createLigne = gui->getToggleLigne();
+	renderer->createFormeVectorielle = gui->getToggleFormeVectorielle();
+	// Contour des formes 2D
+	renderer->contourLargeur = gui->getContour();
+	// Paramétrisation de la ligne
+	renderer->tx1 = (gui->getTX1());
+	renderer->tx2 = (gui->getTX2());
+	renderer->ty1 = (gui->getTY1());
+	renderer->ty2 = (gui->getTY2());
+	renderer->tz1 = (gui->getTZ1());
+	renderer->tz2 = (gui->getTZ2());
+	// Couleur des formes
+	renderer->rstroke = (gui->getCSRS());
+	renderer->gstroke = (gui->getCSGS());
+	renderer->bstroke = (gui->getCSBS());
+	renderer->rfill = (gui->getCSRF());
+	renderer->gfill = (gui->getCSGF());
+	renderer->bfill = (gui->getCSBF());
+
+	// Transformation ///////////////////////////////////////////////////////////////////////////////
+	// Position (translation) du rectangle 1
+	renderer->posRectangleX = (gui->getPosXSlider());
+	renderer->posRectangleY = (gui->getPosYSlider());
+	// Position (translation) du rectangle 2
+	renderer->positionXRectangle = (gui->getPositionXRectangleSlider());
+	renderer->positionYRectangle = (gui->getPositionYRectangleSlider());
+	renderer->positionZRectangle = (gui->getPositionZRectangleSlider());
+	// Position (translation) de l'ellipse 1
+	renderer->posEllipseX = (gui->getposXEllipseSlider());
+	renderer->posEllipseY = (gui->getposYEllipseSlider());
+	// Position (translation) de l'ellipse 2
+	renderer->positionXEllipse = (gui->getPositionXEllipseSlider());
+	renderer->positionYEllipse = (gui->getPositionYEllipseSlider());
+	renderer->positionZEllipse = (gui->getPositionZEllipseSlider());
+	// Position et rotation de la forme vectorielle (fleur)
+	renderer->posformeVectorielleX = (gui->getformeVectorielleRSlider())*sin(gui->getformeVectorielleTSlider())*cos(gui->getformeVectoriellePSlider());
+	renderer->posformeVectorielleY = (gui->getformeVectorielleRSlider())*sin(gui->getformeVectorielleTSlider())*sin(gui->getformeVectoriellePSlider());
+	renderer->posformeVectorielleZ = (gui->getformeVectorielleRSlider())*cos(gui->getformeVectorielleTSlider());
+	renderer->rotAngle = (gui->getRotAngle());
+	renderer->rotX = (gui->getRotX());
+	renderer->rotY = (gui->getRotY());
+	renderer->rotZ = (gui->getRotZ());
+
+	// Géométrie ////////////////////////////////////////////////////////////////////////////////////
+	// Paramétrisation du cylindre
+	renderer->positionPrimitive3dX = (gui->getpositionPrimitive3dX());
+	renderer->positionPrimitive3dY = (gui->getpositionPrimitive3dY());
+	renderer->positionPrimitive3dZ = (gui->getpositionPrimitive3dZ());
+	renderer->primitive3dSize = (gui->getprimitive3dSize());
+	renderer->primitice3dStroke = (gui->getToggleprimitive3dStroke());
+	renderer->primitive3dRoatation = (gui->getToggleprimitive3dRotation());
+	renderer->createPrimitive3d = (gui->getToggleprimitive3d());
+	// Paramétrisation du cube
+	renderer->positionPrimitive3dXBox = (gui->getpositionPrimitive3dXBox());
+	renderer->positionPrimitive3dYBox = (gui->getpositionPrimitive3dYBox());
+	renderer->positionPrimitive3dZBox = (gui->getpositionPrimitive3dZBox());
+	renderer->primitive3dSizeBox = (gui->getprimitive3dSizeBox());
+	renderer->primitice3dStrokeBox = (gui->getToggleprimitive3dStrokeBox());
+	renderer->primitive3dRoatationBox = (gui->getToggleprimitive3dRotationBox());
+	renderer->createPrimitive3dBox = (gui->getToggleprimitive3dBox());
+	// Appel de la fonction d'importation d'un modèle 3D
+	if (gui->modelButton && gui->modelCheck == false)
+	{
+		renderer->model.loadModel(renderer->nameModel);
+		renderer->model.setRotation(0, 90, 90, 0, 0);
+		renderer->model.setPosition(0, -400, -200);
+		renderer->isModelLoaded = true;
+		gui->modelCheck = true;
+	}
+	else if (!gui->modelButton) gui->modelCheck = false;
+
+	// Caméra ///////////////////////////////////////////////////////////////////////////////////////
 	// Appel des fonctions de la caméra
 	if (renderer->isCameraPerspective)
 		ofSetWindowTitle("Camera " + renderer->cameraName + " Perspective (1-6 wasdqe uhjkyi r)");
@@ -71,127 +175,30 @@ void Application::update()
 	renderer->isCameraRollLeft = isKeyPressY;
 	renderer->isCameraRollRight = isKeyPressI;
 
-	renderer->circleRadius = gui->getRadius();
 	renderer->cameraFov = gui->getFov();
 	renderer->cameraNear = gui->getCameraNear();
 	renderer->cameraFar = gui->getCameraFar();
 
-	// Appel des fonctions de la paramétrisation des formes géométriques
-	renderer->posRectangleX=(gui->getPosXSlider());
-	renderer->posRectangleY=(gui->getPosYSlider());
-
-	renderer->positionXEllipse = (gui->getPositionXEllipseSlider());
-	renderer->positionYEllipse = (gui->getPositionYEllipseSlider());
-	renderer->positionZEllipse = (gui->getPositionZEllipseSlider());
-
-	renderer->positionXRectangle = (gui->getPositionXRectangleSlider());
-	renderer->positionYRectangle = (gui->getPositionYRectangleSlider());
-	renderer->positionZRectangle = (gui->getPositionZRectangleSlider());
-
-
-	renderer->posEllipseX=(gui->getposXEllipseSlider());
-	renderer->posEllipseY=(gui->getposYEllipseSlider());
-	renderer->tx1=(gui->getTX1());
-	renderer->tx2=(gui->getTX2());
-	renderer->ty1=(gui->getTY1());
-	renderer->ty2=(gui->getTY2());
-	renderer->tz1 = (gui->getTZ1());
-	renderer->tz2 = (gui->getTZ2());
-
-	renderer->rstroke=(gui->getCSRS());
-	renderer->gstroke=(gui->getCSGS());
-	renderer->bstroke=(gui->getCSBS());
-	renderer->rfill=(gui->getCSRF());
-	renderer->gfill=(gui->getCSGF());
-	renderer->bfill=(gui->getCSBF());
-
-	renderer->rfond=(gui->getFOND_R());
-	renderer->gfond=(gui->getFOND_G());
-	renderer->bfond=(gui->getFOND_B());
-
-	renderer->posformeVectorielleX = (gui->getformeVectorielleRSlider())*sin(gui->getformeVectorielleTSlider())*cos(gui->getformeVectoriellePSlider());
-	renderer->posformeVectorielleY = (gui->getformeVectorielleRSlider())*sin(gui->getformeVectorielleTSlider())*sin(gui->getformeVectoriellePSlider());
-	renderer->posformeVectorielleZ = (gui->getformeVectorielleRSlider())*cos(gui->getformeVectorielleTSlider());
-	renderer->rotAngle = (gui->getRotAngle());
-	renderer->rotX = (gui->getRotX());
-	renderer->rotY = (gui->getRotY());
-	renderer->rotZ = (gui->getRotZ());
-
-	renderer->positionPrimitive3dX = (gui->getpositionPrimitive3dX());
-	renderer->positionPrimitive3dY = (gui->getpositionPrimitive3dY());
-	renderer->positionPrimitive3dZ = (gui->getpositionPrimitive3dZ());
-	renderer->primitive3dSize = (gui->getprimitive3dSize());
-	renderer->primitice3dStroke = (gui->getToggleprimitive3dStroke());
-	renderer->primitive3dRoatation = (gui->getToggleprimitive3dRotation());
-	renderer->createPrimitive3d = (gui->getToggleprimitive3d()); 
-
-	renderer->positionPrimitive3dXBox = (gui->getpositionPrimitive3dXBox());
-	renderer->positionPrimitive3dYBox = (gui->getpositionPrimitive3dYBox());
-	renderer->positionPrimitive3dZBox = (gui->getpositionPrimitive3dZBox());
-	renderer->primitive3dSizeBox = (gui->getprimitive3dSizeBox());
-	renderer->primitice3dStrokeBox = (gui->getToggleprimitive3dStrokeBox());
-	renderer->primitive3dRoatationBox = (gui->getToggleprimitive3dRotationBox());
-	renderer->createPrimitive3dBox = (gui->getToggleprimitive3dBox());
-
-
-	//Formes 2D
-	renderer->createRectangle = gui->getToggleRectangle();
-	renderer->createEllipse = gui->getToggleEllipse();
-	renderer->createLigne = gui->getToggleLigne();
-	renderer->createFormeVectorielle = gui->getToggleFormeVectorielle();
-
-	renderer->contourLargeur = gui->getContour();
-
-	// Appel des fonction de la paramétrisation de l'image
-	renderer->posImageX=(gui->getPosImageX());
-	renderer->posImageY=(gui->getPosImageY());
-	renderer->sizeImageWidth=(gui->getSizeImageWidth());
-	renderer->sizeImageHeight=(gui->getSizeImageHeight());
-	renderer->hueImage=(gui->getHueImage());
-	renderer->saturationImage=(gui->getSaturationImage());
-	renderer->brightnessImage=(gui->getBrightnessImage());
-	renderer->alphaImage=(gui->getAlphaImage());
-	// Appel de la fonction d'exportation de l'image
-	if (gui->exportButton && gui->exportCheck == false)
-	{
-		renderer->imageExport("render", "png");
-		ofLog() << "<image is in file /bin/data/" << ">";
-		gui->exportCheck = true;
-	}
-	else if (!gui->exportButton) gui->exportCheck = false;
-	// Appel de la rotation des images dans le vecteur d'images importées
-	if (gui->importButton && gui->importCheck == false)
-	{
-		std::rotate(renderer->vecteurImage.begin(),
-			renderer->vecteurImage.end() - 1, // Ça va être le premier élément
-			renderer->vecteurImage.end());
-		gui->importCheck = true;
-	}
-	else if (!gui->importButton) gui->importCheck = false;
-
-	// Appel de la fonction d'importation d'un modèle 3D
-	if (gui->modelButton && gui->modelCheck == false)
-	{
-		renderer->model.loadModel(renderer->nameModel);
-		renderer->model.setRotation(0, 90, 90, 0, 0);
-		renderer->model.setPosition(0, -400, -200);
-		renderer->isModelLoaded = true;
-		gui->modelCheck = true;
-	}
-	else if (!gui->modelButton) gui->modelCheck = false;
-
-
+	// Autres ///////////////////////////////////////////////////////////////////////////////////////
+	// Rayon des sphères
+	renderer->circleRadius = gui->getRadius();
+	// Couleur du fond
+	renderer->rfond = (gui->getFOND_R());
+	renderer->gfond = (gui->getFOND_G());
+	renderer->bfond = (gui->getFOND_B());
 	// Appel pour la position de la lumière
-	renderer->xLight=(gui->getXLight());
-	renderer->yLight=(gui->getYLight());
-	renderer->zLight=(gui->getZLight());
+	renderer->xLight = (gui->getXLight());
+	renderer->yLight = (gui->getYLight());
+	renderer->zLight = (gui->getZLight());
 
+	// Initialisation de update() de la classe Renderer
 	renderer->update();
 }
 
 // Appel de la fonction pour dessiner sur le rendue
 void Application::draw() 
 {
+	// Initialisation de draw() de la classe Renderer
 	renderer->draw();
 }
 
