@@ -57,8 +57,7 @@ void Renderer::reset()
 	light->enable();
 
 	// initialisation des variables
-	sceneOffset = 1000 / 2.0f * -1.0f;
-	cameraOffset = sceneOffset * 3.5f * -1.0f;
+	cameraOffset = 2000;
 
 	// position initiale de chaque caméra
 	cameraFront.setPosition(0, 0, -cameraOffset);

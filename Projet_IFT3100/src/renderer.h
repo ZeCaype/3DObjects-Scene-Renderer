@@ -155,8 +155,6 @@ public:
 	float speedTranslation;
 	float speedRotation;
 
-	float sceneOffset;
-
 	float cameraOffset;
 
 	int xIndex;

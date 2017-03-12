@@ -75,12 +75,12 @@ void Gui::reset() {
 	guiPrimitive.add(positionZEllipseSlider.setup("Position Z Ellipse", 300, -1500, 1500));
 	// Ligne
 	guiPrimitive.add(lig.setup("Ligne", false));
-	guiPrimitive.add(tx1.setup("Position #1 - Coord 'x'", 306, -900, 900));
-	guiPrimitive.add(ty1.setup("Position #1 - Coord 'y'", 300, -850, 850));
-	guiPrimitive.add(tz1.setup("Position #1 - Coord 'z'", 300, -850, 850));
-	guiPrimitive.add(tx2.setup("Position #2 - Coord 'x'", 552, -900, 900));
-	guiPrimitive.add(ty2.setup("Position #2 - Coord 'y'", 552, -900, 900));
-	guiPrimitive.add(tz2.setup("Position #2 - Coord 'z'", -174, -850, 850));
+	guiPrimitive.add(tx1.setup("X1", 306, -900, 900));
+	guiPrimitive.add(ty1.setup("Y1", 300, -850, 850));
+	guiPrimitive.add(tz1.setup("Z1", 300, -850, 850));
+	guiPrimitive.add(tx2.setup("X2", 552, -900, 900));
+	guiPrimitive.add(ty2.setup("Y2", 552, -900, 900));
+	guiPrimitive.add(tz2.setup("Z2", -174, -850, 850));
 	guiPrimitive.add(lineWidth.setup("Largeur de ligne", 2, 1, 10));
 
 	// Forme Vectorielle 
@@ -126,20 +126,20 @@ void Gui::reset() {
 	guiPrimitive3d.setup("Primitives 3D", "Primitive3D ", 495, 10);
 	guiPrimitive3d.add(primitive3dSphere.setup("Sphere", true)); 
 	guiPrimitive3d.add(primitive3dToggle.setup("Primitive 3D Cylindre" , false));
-	guiPrimitive3d.add(primitive3dStroke.setup("WireFrame", false));
-	guiPrimitive3d.add(primitive3dRotation.setup("Rotation", false));
-	guiPrimitive3d.add(positionPrimitive3dX.setup("Position X", 450,-1500,1500));
-	guiPrimitive3d.add(positionPrimitive3dY.setup("Position Y", 450, -1500, 1500));
-	guiPrimitive3d.add(positionPrimitive3dZ.setup("Position Z", 450, -1500, 1500));
-	guiPrimitive3d.add(Primitive3dSize.setup("Size",1,1,10));
+	guiPrimitive3d.add(primitive3dStroke.setup("WireFrame cylindre", false));
+	guiPrimitive3d.add(primitive3dRotation.setup("Rotation cylindre", false));
+	guiPrimitive3d.add(positionPrimitive3dX.setup("X cylindre ", 450,-1500,1500));
+	guiPrimitive3d.add(positionPrimitive3dY.setup("Y cylindre", 450, -1500, 1500));
+	guiPrimitive3d.add(positionPrimitive3dZ.setup("Z cylindre", 450, -1500, 1500));
+	guiPrimitive3d.add(Primitive3dSize.setup("Size cylindre",1,1,10));
 
 	guiPrimitive3d.add(primitive3dToggleBox.setup("Primitive 3D Cube", false));
-	guiPrimitive3d.add(primitive3dStrokeBox.setup("WireFrame", false));
-	guiPrimitive3d.add(primitive3dRotationBox.setup("Rotation", false));
-	guiPrimitive3d.add(positionPrimitive3dXBox.setup("Position X", 450, -1500, 1500));
-	guiPrimitive3d.add(positionPrimitive3dYBox.setup("Position Y", 450, -1500, 1500));
-	guiPrimitive3d.add(positionPrimitive3dZBox.setup("Position Z", 450, -1500, 1500));
-	guiPrimitive3d.add(Primitive3dSizeBox.setup("Size", 1, 1, 10));
+	guiPrimitive3d.add(primitive3dStrokeBox.setup("WireFrame cube", false));
+	guiPrimitive3d.add(primitive3dRotationBox.setup("Rotation cube", false));
+	guiPrimitive3d.add(positionPrimitive3dXBox.setup("X cube", 450, -1500, 1500));
+	guiPrimitive3d.add(positionPrimitive3dYBox.setup("Y cube", 450, -1500, 1500));
+	guiPrimitive3d.add(positionPrimitive3dZBox.setup("Z cube", 450, -1500, 1500));
+	guiPrimitive3d.add(Primitive3dSizeBox.setup("Size cube", 1, 1, 10));
 	
 	guiPrimitive3d.add(nuageDePoint.setup("Nuage de Points", false));
 
