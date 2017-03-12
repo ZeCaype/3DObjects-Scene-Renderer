@@ -345,7 +345,7 @@ void Renderer::draw()
 
 		sphere.setScale(primitive3dSphereSize);
 		sphere.setPosition(positionPrimitive3dXSphere,positionPrimitive3dYSphere, positionPrimitive3dZSphere);
-		ofSetColor(0, 0, 0);
+		ofSetColor(215, 135, 0);
 		sphere.drawWireframe();
 
 
