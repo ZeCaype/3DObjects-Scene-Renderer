@@ -201,7 +201,7 @@ public:
 	int brightnessImage;
 	int alphaImage;
 
-	string nameModel = "Solaire.3ds";
+	string nameModel = "model.3ds";
 
 	int circleRadius;
 
