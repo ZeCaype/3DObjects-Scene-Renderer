@@ -154,6 +154,9 @@ void Application::update()
 	}
 	else if (!gui->modelButton) gui->modelCheck = false;
 
+	//Nuage de Points
+	renderer->nuageDePoint = gui->getNuageDePoint();
+
 	// Caméra /////////////////////////////////////////////////////////////////////////////////////
 	// Appel des fonctions de la caméra
 	if (renderer->isCameraPerspective)

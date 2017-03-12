@@ -163,6 +163,8 @@ public:
 	ofxFloatSlider positionPrimitive3dZBox;
 	ofxFloatSlider Primitive3dSizeBox;
 
+	ofxToggle nuageDePoint;
+
 	float getpositionPrimitive3dX();
 	float getpositionPrimitive3dY();
 	float getpositionPrimitive3dZ();
@@ -178,6 +180,8 @@ public:
 	bool getToggleprimitive3dBox();
 	bool getToggleprimitive3dStrokeBox();
 	bool getToggleprimitive3dRotationBox();
+
+	bool getNuageDePoint();
 
 	// Scène 3D
 	ofxPanel guiScene;

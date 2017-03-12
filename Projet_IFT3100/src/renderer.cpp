@@ -38,6 +38,15 @@ void Renderer::setup()
 
 	circleRadius = 0;
 	cameraSetupParameters();
+
+	//Setup nuage de points////
+	intervalleNuage = 2000;
+	for (int i = 0; i < 10000; i++) {
+		xNuage.push_back(ofRandom(-intervalleNuage, intervalleNuage));
+		yNuage.push_back(ofRandom(-intervalleNuage, intervalleNuage));
+		zNuage.push_back(ofRandom(-intervalleNuage, intervalleNuage));
+		sizePointNuage.push_back(ofRandom(1, 4));
+	}
 }
 
 void Renderer::reset()
@@ -342,6 +351,13 @@ void Renderer::draw()
 	if (isModelLoaded == true)
 	{
 		model.drawFaces();
+	}
+
+	// Nuage de points
+	if (nuageDePoint == true) {
+		for (int i = 0; i < xNuage.size(); i++) {
+			ofDrawSphere(xNuage[i], yNuage[i], zNuage[i], sizePointNuage[i]);
+		}
 	}
 
 	camera->end();

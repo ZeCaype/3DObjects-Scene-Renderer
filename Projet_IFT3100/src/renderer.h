@@ -73,6 +73,14 @@ public:
 
 	int focusPrime = 0;
 
+	// Nuage de Points/////////////////////////////////////////////////////////////////////////////
+	int intervalleNuage;
+	bool nuageDePoint;
+	vector<int> xNuage;
+	vector<int> yNuage;
+	vector<int> zNuage;
+	vector<int> sizePointNuage;
+
 	// Transformation /////////////////////////////////////////////////////////////////////////////
 	float posformeVectorielleX;
 	float posformeVectorielleY;

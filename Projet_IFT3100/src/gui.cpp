@@ -139,6 +139,8 @@ void Gui::reset() {
 	guiPrimitive3d.add(positionPrimitive3dYBox.setup("Position Y", 450, -1500, 1500));
 	guiPrimitive3d.add(positionPrimitive3dZBox.setup("Position Z", 450, -1500, 1500));
 	guiPrimitive3d.add(Primitive3dSizeBox.setup("Size", 1, 1, 10));
+	
+	guiPrimitive3d.add(nuageDePoint.setup("Nuage de Points", false));
 
 
 	//primitive 3d 2 
@@ -450,6 +452,11 @@ bool Gui::getToggleprimitive3dRotationBox() {
 
 bool Gui::getprimitive3dSphere() {
 	return primitive3dSphere;
+}
+
+
+bool Gui::getNuageDePoint() {
+	return nuageDePoint;
 }
 
 int Gui::getXLight()
