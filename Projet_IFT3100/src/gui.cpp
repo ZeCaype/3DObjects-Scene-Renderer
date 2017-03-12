@@ -46,14 +46,14 @@ void Gui::reset() {
 	// Cercle UI
 	guiCircle.setup("Sphere", "", offsetX, 230);
 
-	guiCircle.add(primitive3dSphere.setup("Sphere", true));
+	guiCircle.add(primitive3dSphere.setup("Sphere", false));
 	guiCircle.add(primitive3dRotationSphere.setup("Rotation", false));
 	guiCircle.add(positionPrimitive3dXSphere.setup("Position X", ofGetWidth() / 2 -275, -1500, 1500));
 	guiCircle.add(positionPrimitive3dYSphere.setup("Position Y", ofGetHeight() / 2 - 275, -1500, 1500));
 	guiCircle.add(positionPrimitive3dZSphere.setup("Position Z", 75, -1500, 1500));
 	guiCircle.add(Primitive3dSizeSphere.setup("Size", 34, 1, 50));
 	
-	guiCircle.add(primitive3dSphereCouleur.setup("Sphere Couleur", true));
+	guiCircle.add(primitive3dSphereCouleur.setup("Sphere Couleur", false));
 	guiCircle.add(primitive3dRotationSphereCouleur.setup("Rotation", false));
 	guiCircle.add(positionPrimitive3dXSphereCouleur.setup("Position X", 300, -1500, 1500));
 	guiCircle.add(positionPrimitive3dYSphereCouleur.setup("Position Y", 300, -1500, 1500));
@@ -100,7 +100,7 @@ void Gui::reset() {
 	// Forme Vectorielle 
 	guiPrimitive.add(formeVec.setup("Forme Vectorielle", false));
 	guiPrimitive.add(formeVectorielleRSlider.setup("Rayon", 0, 0, 1000));
-	guiPrimitive.add(formeVectorielleTSlider.setup("Angle Theta", PI, -PI, PI));
+	guiPrimitive.add(formeVectorielleTSlider.setup("Angle Theta", PI, 0, PI));
 	guiPrimitive.add(formeVectoriellePSlider.setup("Angle Phi", 0, 0, 2*PI));
 	// Rotation
 	guiPrimitive.add(rotAngleSlider.setup("Angle de rotation", 0, 0, 360));
@@ -109,7 +109,7 @@ void Gui::reset() {
 	guiPrimitive.add(rotZSlider.setup("Z Rotation", 0, -1, 1));
 
 	//Couleurs Stroke + Fill
-	guiColorPrimitives.setup("Couleur Stroke-Fill", "", offsetX, 385);
+	guiColorPrimitives.setup("Couleur Stroke-Fill", "", offsetX, 520);
 	guiColorPrimitives.add(sliderContour.setup("Largeur Contour", 50, 0, 100));
 	guiColorPrimitives.add(sliderRStroke.setup("Stroke/Red", 0, 0, 255));
 	guiColorPrimitives.add(sliderGStroke.setup("Stroke/Green", 0, 0, 255));
