@@ -139,6 +139,9 @@ void Application::update()
 	renderer->primitice3dStrokeBox = (gui->getToggleprimitive3dStrokeBox());
 	renderer->primitive3dRoatationBox = (gui->getToggleprimitive3dRotationBox());
 	renderer->createPrimitive3dBox = (gui->getToggleprimitive3dBox());
+
+	//paramétrisation de la sphere 3d 
+	renderer->primitive3dSphere = (gui->getprimitive3dSphere());
 	// Appel de la fonction d'importation d'un modèle 3D
 	if (gui->modelButton && gui->modelCheck == false)
 	{

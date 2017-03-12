@@ -102,6 +102,7 @@ public:
 	float primitive3dSizeBox;
 	bool  primitive3dRoatationBox = false;
 	bool  primitice3dStrokeBox = false;
+	bool primitive3dSphere; 
 
 	bool createPrimitive3dBox = false;
 	bool createPrimitive3d = false;

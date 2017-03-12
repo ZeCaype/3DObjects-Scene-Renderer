@@ -95,17 +95,10 @@ void Renderer::draw()
 	// Activation de la lumière
 	light->setPosition(xLight, yLight, zLight);
 
-
+	ofFill();
 
 //TEMPORRAIRE J'AVAIS DE LA DIFFICULTÉ A VOIR LA CAMERA
-	material.begin();
-	ofNoFill();
-
-	ofSetColor(0, 0, 0);
-	ofDrawSphere(ofGetWidth()/2 -275, ofGetHeight()/2-150 , ofGetWidth());
-
-	material.end();
-	ofFill();
+	
 
 
 	
@@ -321,6 +314,20 @@ void Renderer::draw()
 
 	
 	
+
+
+	if (primitive3dSphere == true)
+	{
+		material.begin();
+		ofNoFill();
+
+		ofSetColor(0, 0, 0);
+		ofDrawSphere(ofGetWidth() / 2 - 275, ofGetHeight() / 2 - 150, ofGetWidth());
+
+		material.end();
+		
+
+	}
 	ofPopMatrix();
 
 
