@@ -45,7 +45,7 @@ void Gui::reset() {
 
 	// Cercle UI
 	guiCircle.setup("Sphere", "", offsetX, 230);
-	guiCircle.add(circleRadius.setup("circle radius", defaultCircleRadius, 5, 200));
+	guiCircle.add(circleRadius.setup("Rayon spheres", defaultCircleRadius, 5, 200));
 
 	// Caméra
 	guiCamera.setup("Camera", "", offsetX, 280);
