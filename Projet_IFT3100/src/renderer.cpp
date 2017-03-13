@@ -244,87 +244,6 @@ void Renderer::draw()
 
 	}
 
-	if (createPrimitive3d == true)
-	{
-
-		if (primitive3dRoatation == true) {
-			float spinX = sin(ofGetElapsedTimef()*.35f);
-			float spinY = cos(ofGetElapsedTimef()*.075f);
-			cylindre.rotate(spinX, 1.0, 0.0, 0.0);
-			cylindre.rotate(spinY, 0, 1.0, 0.0);
-
-			if (primitice3dStroke == true) {
-				bottomCap = cylindre.getBottomCapMesh();
-				topCap = cylindre.getTopCapMesh();
-				body = cylindre.getCylinderMesh();
-				cylindre.drawWireframe();
-			}
-
-		}
-
-		else if (primitice3dStroke == true) {
-			bottomCap = cylindre.getBottomCapMesh();
-			topCap = cylindre.getTopCapMesh();
-			body = cylindre.getCylinderMesh();
-			cylindre.drawWireframe();
-			if (primitive3dRoatation == true) {
-				float spinX = sin(ofGetElapsedTimef()*.35f);
-				float spinY = cos(ofGetElapsedTimef()*.075f);
-				cylindre.rotate(spinX, 1.0, 0.0, 0.0);
-				cylindre.rotate(spinY, 0, 1.0, 0.0);
-			}
-		}
-		cylindre.setScale(primitive3dSize);
-		ofSetColor(0, 0, 170);
-		cylindre.setPosition(positionPrimitive3dX, positionPrimitive3dY, positionPrimitive3dZ);
-		cylindre.draw();
-	
-	}
-
-
-
-	if (createPrimitive3dBox == true) {
-
-
-		if (primitive3dRoatationBox == true) {
-
-			float spinX = sin(ofGetElapsedTimef()*.35f);
-			float spinY = cos(ofGetElapsedTimef()*.075f);
-			box.rotate(spinX, 1.0, 0.0, 0.0);
-			box.rotate(spinY, 0, 1.0, 0.0);
-			if (primitice3dStrokeBox == true) {
-
-				box.drawWireframe();
-			}
-
-
-
-		}
-
-		else if (primitice3dStrokeBox == true) {
-			
-			box.drawWireframe();
-
-			if (primitive3dRoatationBox == true) {
-				
-				float spinX = sin(ofGetElapsedTimef()*.35f);
-				float spinY = cos(ofGetElapsedTimef()*.075f);
-				box.rotate(spinX, 1.0, 0.0, 0.0);
-				box.rotate(spinY, 0, 1.0, 0.0);
-			}
-		}
-
-
-			box.setScale(primitive3dSizeBox);
-			box.setPosition(positionPrimitive3dXBox, positionPrimitive3dYBox, positionPrimitive3dZBox);
-			ofSetColor(0, 170, 0);
-			box.draw();
-
-		
-		
-
-
-	}
 	
 
 	ofPopMatrix();
@@ -353,6 +272,91 @@ void Renderer::draw()
 
 	}
 
+	if (createPrimitive3d == true)
+	{
+
+		if (primitive3dRoatation == true) {
+			float spinX = sin(ofGetElapsedTimef()*.35f);
+			float spinY = cos(ofGetElapsedTimef()*.075f);
+			cylindre.rotate(spinX, 1.0, 0.0, 0.0);
+			cylindre.rotate(spinY, 0, 1.0, 0.0);
+
+			if (primitice3dStroke == true) {
+				bottomCap = cylindre.getBottomCapMesh();
+				topCap = cylindre.getTopCapMesh();
+				body = cylindre.getCylinderMesh();
+				ofSetColor(0, 170, 0);
+				cylindre.drawWireframe();
+			}
+
+		}
+
+		else if (primitice3dStroke == true) {
+			bottomCap = cylindre.getBottomCapMesh();
+			topCap = cylindre.getTopCapMesh();
+			body = cylindre.getCylinderMesh();
+			ofSetColor(0, 170, 0);
+			cylindre.drawWireframe();
+			if (primitive3dRoatation == true) {
+				float spinX = sin(ofGetElapsedTimef()*.35f);
+				float spinY = cos(ofGetElapsedTimef()*.075f);
+				cylindre.rotate(spinX, 1.0, 0.0, 0.0);
+				cylindre.rotate(spinY, 0, 1.0, 0.0);
+			}
+		}
+		cylindre.setScale(primitive3dSize);
+		ofSetColor(0, 0, 170);
+		cylindre.setPosition(positionPrimitive3dX, positionPrimitive3dY, positionPrimitive3dZ);
+		cylindre.draw();
+
+	}
+
+
+
+	if (createPrimitive3dBox == true) {
+
+
+		if (primitive3dRoatationBox == true) {
+
+			float spinX = sin(ofGetElapsedTimef()*.35f);
+			float spinY = cos(ofGetElapsedTimef()*.075f);
+			box.rotate(spinX, 1.0, 0.0, 0.0);
+			box.rotate(spinY, 0, 1.0, 0.0);
+			if (primitice3dStrokeBox == true) {
+				ofSetColor(0, 0, 170);
+				box.drawWireframe();
+			}
+
+
+
+		}
+
+		else if (primitice3dStrokeBox == true) {
+			ofSetColor(0, 0, 170);
+			box.drawWireframe();
+
+			if (primitive3dRoatationBox == true) {
+
+				float spinX = sin(ofGetElapsedTimef()*.35f);
+				float spinY = cos(ofGetElapsedTimef()*.075f);
+				box.rotate(spinX, 1.0, 0.0, 0.0);
+				box.rotate(spinY, 0, 1.0, 0.0);
+			}
+		}
+
+
+		box.setScale(primitive3dSizeBox);
+		box.setPosition(positionPrimitive3dXBox, positionPrimitive3dYBox, positionPrimitive3dZBox);
+		ofSetColor(0, 170, 0);
+		box.draw();
+
+
+
+
+
+	}
+
+
 	if (primitive3dSphereCouleur == true) {
 
 		if (primitive3dSphereRotationCouleur == true)
@@ -367,15 +371,15 @@ void Renderer::draw()
 			sphereCouleur.setScale(circleRadius);
 			ofSetColor(i * 70, 100 - i * 25, 120);
 			
-			sphereCouleur.setPosition(i * 300, 0, 0);
+			sphereCouleur.setPosition(positionPrimitive3dXSphereCouleur + (i * 300), positionPrimitive3dYSphereCouleur , positionPrimitive3dZSphereCouleur);
 			sphereCouleur.draw();
-			sphereCouleur.setPosition(i * -300, 0, 0);
+			sphereCouleur.setPosition(positionPrimitive3dXSphereCouleur + (i * -300), positionPrimitive3dYSphereCouleur, positionPrimitive3dZSphereCouleur);
 			sphereCouleur.draw();
 
 			ofSetColor(150, 0, 50 + i * 75);
-			sphereCouleur.setPosition(i * 300, 300, 0);
+			sphereCouleur.setPosition(positionPrimitive3dXSphereCouleur + (i * 300), positionPrimitive3dYSphereCouleur +300, positionPrimitive3dZSphereCouleur);
 			sphereCouleur.draw();
-			sphereCouleur.setPosition(i * -300, 300, 0);
+			sphereCouleur.setPosition(positionPrimitive3dXSphereCouleur + (i * -300), positionPrimitive3dYSphereCouleur +300, positionPrimitive3dZSphereCouleur);
 			sphereCouleur.draw();
 
 

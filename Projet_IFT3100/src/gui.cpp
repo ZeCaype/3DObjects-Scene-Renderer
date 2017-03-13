@@ -55,8 +55,8 @@ void Gui::reset() {
 	
 	guiCircle.add(primitive3dSphereCouleur.setup("Sphere Couleur", false));
 	guiCircle.add(primitive3dRotationSphereCouleur.setup("Rotation", false));
-	guiCircle.add(positionPrimitive3dXSphereCouleur.setup("Position X", 300, -1500, 1500));
-	guiCircle.add(positionPrimitive3dYSphereCouleur.setup("Position Y", 300, -1500, 1500));
+	guiCircle.add(positionPrimitive3dXSphereCouleur.setup("Position X", 0, -1500, 1500));
+	guiCircle.add(positionPrimitive3dYSphereCouleur.setup("Position Y", 0, -1500, 1500));
 	guiCircle.add(positionPrimitive3dZSphereCouleur.setup("Position Z", 0, -1500, 1500));
 	guiCircle.add(circleRadius.setup("Rayon spheres", 5, 5, 15));
 	guiCircle.add(primitive3dNombreSphereCouleur.setup("Nbre de cercle couleur", 2, 0, 5));
@@ -111,12 +111,12 @@ void Gui::reset() {
 	//Couleurs Stroke + Fill
 	guiColorPrimitives.setup("Couleur Stroke-Fill", "", offsetX, 525);
 	guiColorPrimitives.add(sliderContour.setup("Largeur Contour", 50, 0, 100));
-	guiColorPrimitives.add(sliderRStroke.setup("Stroke/Red", 0, 0, 255));
-	guiColorPrimitives.add(sliderGStroke.setup("Stroke/Green", 0, 0, 255));
-	guiColorPrimitives.add(sliderBStroke.setup("Stroke/Blue", 0, 0, 255));
-	guiColorPrimitives.add(sliderRFill.setup("Fill/Red", 0, 0, 255));
-	guiColorPrimitives.add(sliderGFill.setup("Fill/Green", 0, 0, 255));
-	guiColorPrimitives.add(sliderBFill.setup("Fill/Blue", 0, 0, 255));
+	guiColorPrimitives.add(sliderRStroke.setup("Stroke/Red", 50, 0, 255));
+	guiColorPrimitives.add(sliderGStroke.setup("Stroke/Green", 50, 0, 255));
+	guiColorPrimitives.add(sliderBStroke.setup("Stroke/Blue", 50, 0, 255));
+	guiColorPrimitives.add(sliderRFill.setup("Fill/Red", 100, 0, 255));
+	guiColorPrimitives.add(sliderGFill.setup("Fill/Green", 100, 0, 255));
+	guiColorPrimitives.add(sliderBFill.setup("Fill/Blue", 100, 0, 255));
 	guiColorPrimitives.add(sliderFONDR.setup("Fond/Red", 0, 0, 255));
 	guiColorPrimitives.add(sliderFONDG.setup("Fond/Green", 0, 0, 255));
 	guiColorPrimitives.add(sliderFONDB.setup("Fond/Blue", 0, 0, 255));

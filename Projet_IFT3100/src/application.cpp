@@ -151,9 +151,9 @@ void Application::update()
 
 
 	renderer->primitive3dSphereCouleur = (gui->getprimitive3dSphereCouleur());
-	renderer->positionPrimitive3dXBox = (gui->getpositionPrimitive3dXSphereCouleur());
-	renderer->positionPrimitive3dYBox = (gui->getpositionPrimitive3dYSphereCouleur());
-	renderer->positionPrimitive3dZBox = (gui->getpositionPrimitive3dZSphereCouleur());
+	renderer->positionPrimitive3dXSphereCouleur = (gui->getpositionPrimitive3dXSphereCouleur());
+	renderer->positionPrimitive3dYSphereCouleur = (gui->getpositionPrimitive3dYSphereCouleur());
+	renderer->positionPrimitive3dZSphereCouleur = (gui->getpositionPrimitive3dZSphereCouleur());
 	
 	renderer->primitive3dStrokeSphereCouleur = (gui->getToggleprimitive3dStrokeSphereCouleur());
 	renderer->primitive3dSphereRotationCouleur = (gui->getToggleprimitive3dRotationSphereCouleur());
