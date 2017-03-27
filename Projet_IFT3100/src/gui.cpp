@@ -117,9 +117,9 @@ void Gui::reset() {
 	guiColorPrimitives.add(sliderRFill.setup("Fill/Red", 100, 0, 255));
 	guiColorPrimitives.add(sliderGFill.setup("Fill/Green", 100, 0, 255));
 	guiColorPrimitives.add(sliderBFill.setup("Fill/Blue", 100, 0, 255));
-	guiColorPrimitives.add(sliderFONDR.setup("Fond/Red", 0, 0, 255));
-	guiColorPrimitives.add(sliderFONDG.setup("Fond/Green", 0, 0, 255));
-	guiColorPrimitives.add(sliderFONDB.setup("Fond/Blue", 0, 0, 255));
+	guiColorPrimitives.add(sliderFONDR.setup("Fond/Red", 255, 0, 255));
+	guiColorPrimitives.add(sliderFONDG.setup("Fond/Green", 255, 0, 255));
+	guiColorPrimitives.add(sliderFONDB.setup("Fond/Blue", 255, 0, 255));
 
 	// Scène 3D
 	guiScene.setup("Scene 3D", "", 260, 10);
