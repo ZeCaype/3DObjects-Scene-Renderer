@@ -58,9 +58,14 @@ void Renderer::setup()
 void Renderer::reset()
 {
 	// Initialisation de la lumière
-	//light->setAmbientColor(ofColor(255, 255, 255));
-	//light->setDiffuseColor(ofColor(255, 255, 255));
-	//light->enable();
+	if (light1T == true) light1->enable();
+	else if (!light1T == true) light1->disable();
+	if (light2T == true) light2->enable();
+	else if (!light2T == true) light2->disable();
+	if (light3T == true) light3->enable();
+	else if (!light3T == true) light3->disable();
+	if (light4T == true) light4->enable();
+	else if (!light4T == true) light4->disable();
 
 	// initialisation des variables
 	cameraOffset = 2000;

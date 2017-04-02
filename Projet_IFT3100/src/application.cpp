@@ -217,15 +217,19 @@ void Application::update()
 
 	// Lumières /////////////////////////////////////////////////////////////////////////////////////
 	// Appel pour la position de la lumière
+	renderer->light1T = gui->getLight1();
 	renderer->xLight1 = (gui->getXLight1());
 	renderer->yLight1 = (gui->getYLight1());
 	renderer->zLight1 = (gui->getZLight1());
+	renderer->light2T = gui->getLight2();
 	renderer->xLight2 = (gui->getXLight2());
 	renderer->yLight2 = (gui->getYLight2());
 	renderer->zLight2 = (gui->getZLight2());
+	renderer->light3T = gui->getLight3();
 	renderer->xLight3 = (gui->getXLight3());
 	renderer->yLight3 = (gui->getYLight3());
 	renderer->zLight3 = (gui->getZLight3());
+	renderer->light4T = gui->getLight4();
 	renderer->xLight4 = (gui->getXLight4());
 	renderer->yLight4 = (gui->getYLight4());
 	renderer->zLight4 = (gui->getZLight4());

@@ -238,27 +238,35 @@ public:
 
 	// Lumière /////////////////////////////////////////////////////////////////////////////////////
 	ofxPanel guiLight;
+	ofxToggle light1Toggle;
 	ofxIntSlider xLight1Slider;
 	ofxIntSlider yLight1Slider;
 	ofxIntSlider zLight1Slider;
+	ofxToggle light2Toggle;
 	ofxIntSlider xLight2Slider;
 	ofxIntSlider yLight2Slider;
 	ofxIntSlider zLight2Slider;
+	ofxToggle light3Toggle;
 	ofxIntSlider xLight3Slider;
 	ofxIntSlider yLight3Slider;
 	ofxIntSlider zLight3Slider;
+	ofxToggle light4Toggle;
 	ofxIntSlider xLight4Slider;
 	ofxIntSlider yLight4Slider;
 	ofxIntSlider zLight4Slider;
+	bool getLight1();
 	int getXLight1();
 	int getYLight1();
 	int getZLight1();
+	bool getLight2();
 	int getXLight2();
 	int getYLight2();
 	int getZLight2();
+	bool getLight3();
 	int getXLight3();
 	int getYLight3();
 	int getZLight3();
+	bool getLight4();
 	int getXLight4();
 	int getYLight4();
 	int getZLight4();
