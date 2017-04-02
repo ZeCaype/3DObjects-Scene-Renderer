@@ -208,10 +208,22 @@ public:
 	float timeLast;
 	float timeElapsed;
 	// Lumière
-	int xLight;
-	int yLight;
-	int zLight;
-	ofLight * light;
+	int xLight1;
+	int yLight1;
+	int zLight1;
+	ofLight * light1;
+	int xLight2;
+	int yLight2;
+	int zLight2;
+	ofLight * light2;
+	int xLight3;
+	int yLight3;
+	int zLight3;
+	ofLight * light3;
+	int xLight4;
+	int yLight4;
+	int zLight4;
+	ofLight * light4;
 
 	//---------------------------------------------------------------------------------------------
 

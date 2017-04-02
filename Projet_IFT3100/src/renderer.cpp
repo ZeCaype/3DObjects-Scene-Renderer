@@ -3,7 +3,10 @@
 // Constructeur de la classe Renderer
 Renderer::Renderer()
 {
-	light = nullptr;
+	light1 = nullptr;
+	light2 = nullptr;
+	light3 = nullptr;
+	light4 = nullptr;
 }
 
 // Fonction invoquée pour configurer les éléments du framebuffer
@@ -23,7 +26,10 @@ void Renderer::setup()
 
 	// Paramétrisation de la lumière (enfin de voir les modèles correctement)
 	ofSetSmoothLighting(true);
-	light = new ofLight();
+	light1 = new ofLight();
+	light2 = new ofLight();
+	light3 = new ofLight();
+	light4 = new ofLight();
 
 	// Paramétrisation de l'image
 	posRectangleX = 0;
@@ -52,9 +58,9 @@ void Renderer::setup()
 void Renderer::reset()
 {
 	// Initialisation de la lumière
-	light->setAmbientColor(ofColor(255, 255, 255));
-	light->setDiffuseColor(ofColor(255, 255, 255));
-	light->enable();
+	//light->setAmbientColor(ofColor(255, 255, 255));
+	//light->setDiffuseColor(ofColor(255, 255, 255));
+	//light->enable();
 
 	// initialisation des variables
 	cameraOffset = 2000;
@@ -101,7 +107,7 @@ void Renderer::draw()
 	camera->begin();
 
 	// Activation de la lumière
-	light->setPosition(xLight, yLight, zLight);
+	//light->setPosition(xLight, yLight, zLight);
 
 	ofFill();
 
@@ -601,5 +607,8 @@ void Renderer::updateCamera() {
 // Destructeur de la classe Renderer
 Renderer::~Renderer()
 {
-	if (light != nullptr) delete light;
+	if (light1 != nullptr) delete light1;
+	if (light2 != nullptr) delete light2;
+	if (light3 != nullptr) delete light3;
+	if (light4 != nullptr) delete light4;
 }

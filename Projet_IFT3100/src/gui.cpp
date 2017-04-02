@@ -153,9 +153,18 @@ void Gui::reset() {
 
 	// Lumières
 	guiLight.setup("Lumiere", "", 495, 320);
-	//guiLight.add(xLightSlider.setup("x Lumiere", 0, -1000, 1000));
-	//guiLight.add(yLightSlider.setup("y Lumiere", 0, -1000, 1000));
-	//guiLight.add(zLightSlider.setup("z Lumiere", -1000, -1000, 1000));
+	guiLight.add(xLight1Slider.setup("x Lumiere 1", 0, -1000, 1000));
+	guiLight.add(yLight1Slider.setup("y Lumiere 1", 0, -1000, 1000));
+	guiLight.add(zLight1Slider.setup("z Lumiere 1", 0, -1000, 1000));
+	guiLight.add(xLight2Slider.setup("x Lumiere 2", 0, -1000, 1000));
+	guiLight.add(yLight2Slider.setup("y Lumiere 2", 0, -1000, 1000));
+	guiLight.add(zLight2Slider.setup("z Lumiere 2", 0, -1000, 1000));
+	guiLight.add(xLight3Slider.setup("x Lumiere 3", 0, -1000, 1000));
+	guiLight.add(yLight3Slider.setup("y Lumiere 3", 0, -1000, 1000));
+	guiLight.add(zLight3Slider.setup("z Lumiere 3", 0, -1000, 1000));
+	guiLight.add(xLight4Slider.setup("x Lumiere 4", 0, -1000, 1000));
+	guiLight.add(yLight4Slider.setup("y Lumiere 4", 0, -1000, 1000));
+	guiLight.add(zLight4Slider.setup("z Lumiere 4", 0, -1000, 1000));
 
 }
 
