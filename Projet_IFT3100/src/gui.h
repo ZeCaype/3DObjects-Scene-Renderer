@@ -219,15 +219,6 @@ public:
 	bool getToggleprimitive3dStrokeSphereCouleur();
 	bool getToggleprimitive3dRotationSphereCouleur();
 
-
-
-	
-
-	
-
-
-	
-
 	// Caméra /////////////////////////////////////////////////////////////////////////////////////
 	float defaultFov;
 	int defaultCameraNear;
@@ -245,16 +236,37 @@ public:
 	int getCameraFar();
 	bool getAspectRatio();
 
+	// Lumière /////////////////////////////////////////////////////////////////////////////////////
+	ofxPanel guiLight;
+	ofxIntSlider xLight1Slider;
+	ofxIntSlider yLight1Slider;
+	ofxIntSlider zLight1Slider;
+	ofxIntSlider xLight2Slider;
+	ofxIntSlider yLight2Slider;
+	ofxIntSlider zLight2Slider;
+	ofxIntSlider xLight3Slider;
+	ofxIntSlider yLight3Slider;
+	ofxIntSlider zLight3Slider;
+	ofxIntSlider xLight4Slider;
+	ofxIntSlider yLight4Slider;
+	ofxIntSlider zLight4Slider;
+	int getXLight1();
+	int getYLight1();
+	int getZLight1();
+	int getXLight2();
+	int getYLight2();
+	int getZLight2();
+	int getXLight3();
+	int getYLight3();
+	int getZLight3();
+	int getXLight4();
+	int getYLight4();
+	int getZLight4();
+
+
 	// Autres /////////////////////////////////////////////////////////////////////////////////////
 	int offsetX;
-	// Lumière
-	ofxPanel guiLight;
-	ofxIntSlider xLightSlider;
-	ofxIntSlider yLightSlider;
-	ofxIntSlider zLightSlider;
-	int getXLight();
-	int getYLight();
-	int getZLight();
+
 	// Éléments Autres
 	ofxPanel guiOptions;
 	ofxToggle rec;

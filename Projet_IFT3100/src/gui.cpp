@@ -63,15 +63,14 @@ void Gui::reset() {
 
 
 	// Caméra
-	guiCamera.setup("Camera", "", 495, 450);
+	guiCamera.setup("Camera", "", 260, 60);
 	guiCamera.add(fovSlider.setup("Field of view", defaultFov, 0, 120));
 	guiCamera.add(cameraNearSlider.setup("Plan near", defaultCameraNear, 0, 999));
 	guiCamera.add(cameraFarSlider.setup("Plan far", defaultCameraFar, 1000, 12000));
 	guiCamera.add(aspectRatio4_3.setup("Ratio d'aspect 4:3", true));
 
-
 	// Primitive
-	guiPrimitive.setup("Primitives Vectorielles", "Primitives Vectorielles", 260, 200);
+	guiPrimitive.setup("Primitives Vectorielles", "Primitives Vectorielles", 260, 165);
 	// Rectangle
 	guiPrimitive.add(rec.setup("Rectangle", false));
 	guiPrimitive.add(posXSlider.setup("Largeur Rectangle", -600, -900, 900));
@@ -125,12 +124,6 @@ void Gui::reset() {
 	guiScene.setup("Scene 3D", "", 260, 10);
 	guiScene.add(modelButton.setup("Modele")); modelCheck = false;
 
-	// Lumière
-	guiLight.setup("Lumiere", "", 260, 90);
-	guiLight.add(xLightSlider.setup("x Lumiere", 0, -1000, 1000));
-	guiLight.add(yLightSlider.setup("y Lumiere", 0, -1000, 1000));
-	guiLight.add(zLightSlider.setup("z Lumiere", -1000, -1000, 1000));
-
 	// Options
 	guiOption.setup("Options", "", offsetX, 750);
 	guiOption.add(exitButton.setup("Quitter l'application"));
@@ -138,9 +131,6 @@ void Gui::reset() {
 
 	//primitive 3d 
 	guiPrimitive3d.setup("Primitives 3D", "Primitive3D ", 495, 10);
-
-
-	
 	guiPrimitive3d.add(primitive3dToggle.setup("Primitive 3D Cylindre" , false));
 	guiPrimitive3d.add(primitive3dStroke.setup("WireFrame cylindre", false));
 	guiPrimitive3d.add(primitive3dRotation.setup("Rotation cylindre", false));
@@ -159,8 +149,13 @@ void Gui::reset() {
 	
 	guiPrimitive3d.add(nuageDePoint.setup("Nuage de Points", false));
 
-
 	//primitive 3d 2 
+
+	// Lumières
+	guiLight.setup("Lumiere", "", 495, 320);
+	//guiLight.add(xLightSlider.setup("x Lumiere", 0, -1000, 1000));
+	//guiLight.add(yLightSlider.setup("y Lumiere", 0, -1000, 1000));
+	//guiLight.add(zLightSlider.setup("z Lumiere", -1000, -1000, 1000));
 
 }
 
@@ -535,23 +530,67 @@ bool Gui::getNuageDePoint() {
 	return nuageDePoint;
 }
 
-int Gui::getXLight()
+
+// Lumières
+int Gui::getXLight1()
 {
-	return xLightSlider;
+	return xLight1Slider;
 }
 
-int Gui::getYLight()
+int Gui::getYLight1()
 {
-	return yLightSlider;
+	return yLight1Slider;
 }
 
-int Gui::getZLight()
+int Gui::getZLight1()
 {
-	return zLightSlider;
+	return zLight1Slider;
 }
 
+int Gui::getXLight2()
+{
+	return xLight2Slider;
+}
 
+int Gui::getYLight2()
+{
+	return yLight2Slider;
+}
 
+int Gui::getZLight2()
+{
+	return zLight2Slider;
+}
+
+int Gui::getXLight3()
+{
+	return xLight3Slider;
+}
+
+int Gui::getYLight3()
+{
+	return yLight3Slider;
+}
+
+int Gui::getZLight3()
+{
+	return zLight3Slider;
+}
+
+int Gui::getXLight4()
+{
+	return xLight4Slider;
+}
+
+int Gui::getYLight4()
+{
+	return yLight4Slider;
+}
+
+int Gui::getZLight4()
+{
+	return zLight4Slider;
+}
 
 
 

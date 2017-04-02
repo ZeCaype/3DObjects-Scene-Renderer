@@ -213,6 +213,23 @@ void Application::update()
 
 
 	renderer->aspectRatio4_3 = gui->getAspectRatio();
+
+
+	// Lumières /////////////////////////////////////////////////////////////////////////////////////
+	// Appel pour la position de la lumière
+	renderer->xLight = (gui->getXLight1());
+	renderer->yLight = (gui->getYLight1());
+	renderer->zLight = (gui->getZLight1());
+	renderer->xLight = (gui->getXLight2());
+	renderer->yLight = (gui->getYLight2());
+	renderer->zLight = (gui->getZLight2());
+	renderer->xLight = (gui->getXLight3());
+	renderer->yLight = (gui->getYLight3());
+	renderer->zLight = (gui->getZLight3());
+	renderer->xLight = (gui->getXLight4());
+	renderer->yLight = (gui->getYLight4());
+	renderer->zLight = (gui->getZLight4());
+
 	// Autres /////////////////////////////////////////////////////////////////////////////////////
 	
 	
@@ -220,10 +237,6 @@ void Application::update()
 	renderer->rfond = (gui->getFOND_R());
 	renderer->gfond = (gui->getFOND_G());
 	renderer->bfond = (gui->getFOND_B());
-	// Appel pour la position de la lumière
-	renderer->xLight = (gui->getXLight());
-	renderer->yLight = (gui->getYLight());
-	renderer->zLight = (gui->getZLight());
 
 	// Initialisation de update() de la classe Renderer
 	renderer->update();
