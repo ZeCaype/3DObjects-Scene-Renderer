@@ -207,23 +207,24 @@ public:
 	float timeCurrent;
 	float timeLast;
 	float timeElapsed;
-	// Lumière
-	bool light1T;
+	
+	// Lumière ///////////////////////////////////////////////////////////////////////////////////
+	bool light1T = false;
 	int xLight1;
 	int yLight1;
 	int zLight1;
 	ofLight * light1;
-	bool light2T;
+	bool light2T = false;
 	int xLight2;
 	int yLight2;
 	int zLight2;
 	ofLight * light2;
-	bool light3T;
+	bool light3T = false;
 	int xLight3;
 	int yLight3;
 	int zLight3;
 	ofLight * light3;
-	bool light4T;
+	bool light4T = false;
 	int xLight4;
 	int yLight4;
 	int zLight4;

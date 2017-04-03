@@ -153,10 +153,10 @@ void Gui::reset() {
 
 	// Lumières
 	guiLight.setup("Lumiere", "", 495, 320);
-	guiLight.add(light1Toggle.setup("Lumiere Ambiante", false));
+	guiLight.add(light1Toggle.setup("Lumiere Ambiante", true));
 	guiLight.add(xLight1Slider.setup("x A", 0, -1000, 1000));
-	guiLight.add(yLight1Slider.setup("y A", 0, -1000, 1000));
-	guiLight.add(zLight1Slider.setup("z A", 0, -1000, 1000));
+	guiLight.add(yLight1Slider.setup("y A", 440, -1000, 1000));
+	guiLight.add(zLight1Slider.setup("z A", -1000, -1000, 1000));
 	guiLight.add(light2Toggle.setup("Lumiere Directionnelle", false));
 	guiLight.add(xLight2Slider.setup("x D", 0, -1000, 1000));
 	guiLight.add(yLight2Slider.setup("y D", 0, -1000, 1000));

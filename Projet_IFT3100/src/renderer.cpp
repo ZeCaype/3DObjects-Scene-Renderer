@@ -57,16 +57,6 @@ void Renderer::setup()
 
 void Renderer::reset()
 {
-	// Initialisation de la lumière
-	if (light1T == true) light1->enable();
-	else if (!light1T == true) light1->disable();
-	if (light2T == true) light2->enable();
-	else if (!light2T == true) light2->disable();
-	if (light3T == true) light3->enable();
-	else if (!light3T == true) light3->disable();
-	if (light4T == true) light4->enable();
-	else if (!light4T == true) light4->disable();
-
 	// initialisation des variables
 	cameraOffset = 2000;
 
@@ -112,7 +102,19 @@ void Renderer::draw()
 	camera->begin();
 
 	// Activation de la lumière
-	//light->setPosition(xLight, yLight, zLight);
+	if (light1T == true) light1->enable();
+	else if (!light1T == true) light1->disable();
+	if (light2T == true) light2->enable();
+	else if (!light2T == true) light2->disable();
+	if (light3T == true) light3->enable();
+	else if (!light3T == true) light3->disable();
+	if (light4T == true) light4->enable();
+	else if (!light4T == true) light4->disable();
+
+	light1->setPosition(xLight1, yLight1, zLight1);
+	light2->setPosition(xLight2, yLight2, zLight2);
+	light3->setPosition(xLight3, yLight3, zLight3);
+	light4->setPosition(xLight4, yLight4, zLight4);
 
 	ofFill();
 
