@@ -160,6 +160,7 @@ void Gui::reset() {
 	guiLight.add(RLight1Slider.setup("R Amb", 255, 0, 255));
 	guiLight.add(GLight1Slider.setup("G Amb", 255, 0, 255));
 	guiLight.add(BLight1Slider.setup("B Amb", 255, 0, 255));
+
 	guiLight.add(light2Toggle.setup("Lumiere Projecteur", false));
 	guiLight.add(xLight2Slider.setup("x Proj", 0, -300, 300));
 	guiLight.add(yLight2Slider.setup("y Proj", 0, -300, 300));
@@ -167,6 +168,8 @@ void Gui::reset() {
 	guiLight.add(RLight2Slider.setup("R Proj", 255, 0, 255));
 	guiLight.add(GLight2Slider.setup("G Proj", 255, 0, 255));
 	guiLight.add(BLight2Slider.setup("B Proj", 255, 0, 255));
+	guiLight.add(cut2Slider.setup("CutOff Proj", 45, 0, 90));
+	guiLight.add(conc2Slider.setup("Concentration Proj", 1, 0, 100));
 
 	/*
 	guiLight.add(light3Toggle.setup("Lumiere Ponctuelle", false));
@@ -620,6 +623,15 @@ int Gui::getBLight2()
 {
 	return BLight2Slider;
 }
+float Gui::getCutLight2()
+{
+	return cut2Slider;
+}
+float Gui::getConcLight2()
+{
+	return conc2Slider;
+}
+
 
 int Gui::getXLight3()
 {

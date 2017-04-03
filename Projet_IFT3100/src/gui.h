@@ -253,6 +253,8 @@ public:
 	ofxIntSlider RLight2Slider;
 	ofxIntSlider GLight2Slider;
 	ofxIntSlider BLight2Slider;
+	ofxFloatSlider cut2Slider;
+	ofxFloatSlider conc2Slider;
 
 	ofxToggle light3Toggle;
 	ofxIntSlider xLight3Slider;
@@ -281,6 +283,8 @@ public:
 	int getRLight2();
 	int getGLight2();
 	int getBLight2();
+	float getCutLight2();
+	float getConcLight2();
 
 	bool getLight3();
 	int getXLight3();

@@ -125,6 +125,8 @@ void Renderer::draw()
 	light2->setDiffuseColor(ofColor(RLight2, GLight2, BLight2));
 	light2->setSpecularColor(ofColor(255, 255, 255));
 	light2->setAmbientColor(ofColor(0, 0, 0));
+	light2->setSpotlightCutOff(cutLight2);
+	light2->setSpotConcentration(concLight2);
 
 	light3->setPosition(xLight3, yLight3, zLight3);
 	light4->setPosition(xLight4, yLight4, zLight4);

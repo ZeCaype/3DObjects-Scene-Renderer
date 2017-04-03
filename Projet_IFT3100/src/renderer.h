@@ -218,6 +218,7 @@ public:
 	int GLight1;
 	int BLight1;
 	ofLight * light1;
+
 	bool light2T = false;
 	int xLight2;
 	int yLight2;
@@ -225,12 +226,16 @@ public:
 	int RLight2;
 	int GLight2;
 	int BLight2;
+	float cutLight2;
+	float concLight2;
 	ofLight * light2;
+
 	bool light3T = false;
 	int xLight3;
 	int yLight3;
 	int zLight3;
 	ofLight * light3;
+
 	bool light4T = false;
 	int xLight4;
 	int yLight4;
