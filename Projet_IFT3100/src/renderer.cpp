@@ -3,6 +3,8 @@
 // Constructeur de la classe Renderer
 Renderer::Renderer()
 {
+	light = nullptr;
+	
 	light1 = nullptr;
 	light2 = nullptr;
 	light3 = nullptr;
@@ -26,6 +28,8 @@ void Renderer::setup()
 
 	// Paramétrisation de la lumière (enfin de voir les modèles correctement)
 	ofSetSmoothLighting(true);
+	light = new ofLight();
+
 	light1 = new ofLight();
 	light2 = new ofLight();
 	light3 = new ofLight();
@@ -100,6 +104,10 @@ void Renderer::draw()
 	ofBackground(rfond, gfond, bfond);
 
 	camera->begin();
+
+	light->enable();
+	light->setPosition(0,-1000,0);
+	light->setAmbientColor(ofColor(255, 255, 255));
 
 	// Activation de la lumière
 	if (light1T == true) light1->enable();
@@ -614,6 +622,8 @@ void Renderer::updateCamera() {
 // Destructeur de la classe Renderer
 Renderer::~Renderer()
 {
+	if (light != nullptr) delete light;
+
 	if (light1 != nullptr) delete light1;
 	if (light2 != nullptr) delete light2;
 	if (light3 != nullptr) delete light3;

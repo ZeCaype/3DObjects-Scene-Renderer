@@ -153,18 +153,21 @@ void Gui::reset() {
 
 	// Lumières
 	guiLight.setup("Lumiere", "", 495, 320);
-	guiLight.add(light1Toggle.setup("Lumiere Ambiante", true));
+	guiLight.add(light1Toggle.setup("Lumiere Ambiante", false));
 	guiLight.add(xLight1Slider.setup("x A", 0, -1000, 1000));
-	guiLight.add(yLight1Slider.setup("y A", 440, -1000, 1000));
-	guiLight.add(zLight1Slider.setup("z A", -1000, -1000, 1000));
+	guiLight.add(yLight1Slider.setup("y A", 0, -1000, 1000));
+	guiLight.add(zLight1Slider.setup("z A", 0, -1000, 1000));
+
 	guiLight.add(light2Toggle.setup("Lumiere Directionnelle", false));
 	guiLight.add(xLight2Slider.setup("x D", 0, -1000, 1000));
 	guiLight.add(yLight2Slider.setup("y D", 0, -1000, 1000));
 	guiLight.add(zLight2Slider.setup("z D", 0, -1000, 1000));
-	guiLight.add(light3Toggle.setup("Lumiere Ponctuelle,", false));
+
+	guiLight.add(light3Toggle.setup("Lumiere Ponctuelle", false));
 	guiLight.add(xLight3Slider.setup("x Po", 0, -1000, 1000));
 	guiLight.add(yLight3Slider.setup("y Po", 0, -1000, 1000));
 	guiLight.add(zLight3Slider.setup("z Po", 0, -1000, 1000));
+
 	guiLight.add(light4Toggle.setup("Lumiere Projecteur", false));
 	guiLight.add(xLight4Slider.setup("x Pr", 0, -1000, 1000));
 	guiLight.add(yLight4Slider.setup("y Pr", 0, -1000, 1000));

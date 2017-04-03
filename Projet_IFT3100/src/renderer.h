@@ -209,6 +209,8 @@ public:
 	float timeElapsed;
 	
 	// Lumière ///////////////////////////////////////////////////////////////////////////////////
+	ofLight * light;
+	
 	bool light1T = false;
 	int xLight1;
 	int yLight1;

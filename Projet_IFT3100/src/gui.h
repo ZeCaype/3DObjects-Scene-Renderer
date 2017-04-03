@@ -242,18 +242,22 @@ public:
 	ofxIntSlider xLight1Slider;
 	ofxIntSlider yLight1Slider;
 	ofxIntSlider zLight1Slider;
+
 	ofxToggle light2Toggle;
 	ofxIntSlider xLight2Slider;
 	ofxIntSlider yLight2Slider;
 	ofxIntSlider zLight2Slider;
+
 	ofxToggle light3Toggle;
 	ofxIntSlider xLight3Slider;
 	ofxIntSlider yLight3Slider;
 	ofxIntSlider zLight3Slider;
+
 	ofxToggle light4Toggle;
 	ofxIntSlider xLight4Slider;
 	ofxIntSlider yLight4Slider;
 	ofxIntSlider zLight4Slider;
+	
 	bool getLight1();
 	int getXLight1();
 	int getYLight1();
