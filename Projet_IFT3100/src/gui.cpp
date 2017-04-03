@@ -154,27 +154,31 @@ void Gui::reset() {
 	// Lumières
 	guiLight.setup("Lumiere", "", 495, 320);
 	guiLight.add(light1Toggle.setup("Lumiere Ambiante", false));
-	guiLight.add(xLight1Slider.setup("x Amb", 0, -1000, 1000));
-	guiLight.add(yLight1Slider.setup("y Amb", 0, -1000, 1000));
-	guiLight.add(zLight1Slider.setup("z Amb", 0, -1000, 1000));
+	guiLight.add(xLight1Slider.setup("x Amb", 0, -300, 300));
+	guiLight.add(yLight1Slider.setup("y Amb", 0, -300, 300));
+	guiLight.add(zLight1Slider.setup("z Amb", 0, -300, 300));
 	guiLight.add(RLight1Slider.setup("R Amb", 255, 0, 255));
 	guiLight.add(GLight1Slider.setup("G Amb", 255, 0, 255));
 	guiLight.add(BLight1Slider.setup("B Amb", 255, 0, 255));
-	guiLight.add(light2Toggle.setup("Lumiere Directionnelle", false));
-	guiLight.add(xLight2Slider.setup("x Dir", 0, -1000, 1000));
-	guiLight.add(yLight2Slider.setup("y Dir", 0, -1000, 1000));
-	guiLight.add(zLight2Slider.setup("z Dir", 0, -1000, 1000));
+	guiLight.add(light2Toggle.setup("Lumiere Projecteur", false));
+	guiLight.add(xLight2Slider.setup("x Proj", 0, -300, 300));
+	guiLight.add(yLight2Slider.setup("y Proj", 0, -300, 300));
+	guiLight.add(zLight2Slider.setup("z Proj", 0, -300, 300));
+	guiLight.add(RLight2Slider.setup("R Proj", 255, 0, 255));
+	guiLight.add(GLight2Slider.setup("G Proj", 255, 0, 255));
+	guiLight.add(BLight2Slider.setup("B Proj", 255, 0, 255));
 
+	/*
 	guiLight.add(light3Toggle.setup("Lumiere Ponctuelle", false));
 	guiLight.add(xLight3Slider.setup("x Ponct", 0, -1000, 1000));
 	guiLight.add(yLight3Slider.setup("y Ponct", 0, -1000, 1000));
 	guiLight.add(zLight3Slider.setup("z Ponct", 0, -1000, 1000));
 
-	guiLight.add(light4Toggle.setup("Lumiere Projecteur", false));
-	guiLight.add(xLight4Slider.setup("x Proj", 0, -1000, 1000));
-	guiLight.add(yLight4Slider.setup("y Proj", 0, -1000, 1000));
-	guiLight.add(zLight4Slider.setup("z Proj", 0, -1000, 1000));
-
+	guiLight.add(light4Toggle.setup("Lumiere Directionnelle", false));
+	guiLight.add(xLight4Slider.setup("x Dir", 0, -1000, 1000));
+	guiLight.add(yLight4Slider.setup("y Dir", 0, -1000, 1000));
+	guiLight.add(zLight4Slider.setup("z Dir", 0, -1000, 1000));
+	*/
 }
 
 // Fonction de mise à jour du gui
@@ -554,17 +558,14 @@ bool Gui::getLight1()
 {
 	return light1Toggle;
 }
-
 bool Gui::getLight2()
 {
 	return light2Toggle;
 }
-
 bool Gui::getLight3()
 {
 	return light3Toggle;
 }
-
 bool Gui::getLight4()
 {
 	return light4Toggle;
@@ -606,6 +607,18 @@ int Gui::getYLight2()
 int Gui::getZLight2()
 {
 	return zLight2Slider;
+}
+int Gui::getRLight2()
+{
+	return RLight2Slider;
+}
+int Gui::getGLight2()
+{
+	return GLight2Slider;
+}
+int Gui::getBLight2()
+{
+	return BLight2Slider;
 }
 
 int Gui::getXLight3()

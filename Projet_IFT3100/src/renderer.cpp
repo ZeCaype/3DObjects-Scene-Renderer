@@ -29,7 +29,6 @@ void Renderer::setup()
 	// Paramétrisation de la lumière (enfin de voir les modèles correctement)
 	ofSetSmoothLighting(true);
 	light = new ofLight();
-	
 	light1 = new ofLight();
 	light2 = new ofLight();
 	light3 = new ofLight();
@@ -95,18 +94,13 @@ void Renderer::update()
 // Fonction invoquée pour ajouter des éléments dans le framebuffer
 void Renderer::draw()
 {
-	
-
-
 	ofTranslate(ofGetWindowWidth() / 2, ofGetWindowHeight() / 2);
 
 	// Couleur de fond castée par les sliders
 	ofBackground(rfond, gfond, bfond);
 
-	camera->begin();
-
-	// Activation de la lumière
-	light->enable();
+	// Activation de la lumière de fond
+	light->disable();
 	light->setAmbientColor(ofColor(127, 127, 127));
 	light->setSpecularColor(ofColor(60, 60, 60));
 	light->setPosition(0, 0, -1000);
@@ -120,16 +114,25 @@ void Renderer::draw()
 	if (light4T == true) light4->enable();
 	else if (!light4T == true) light4->disable();
 
-	light1->setPosition(xLight1, yLight1, zLight1);
-	light2->setPosition(xLight2, yLight2, zLight2);
-	light3->setPosition(xLight3, yLight3, zLight3);
-	light4->setPosition(xLight4, yLight4, zLight4);
+	camera->begin();
 
+	light1->setPosition(xLight1, yLight1 - 250, zLight1 - 200);
 	light1->setDiffuseColor(ofColor(RLight1, GLight1, BLight1));
 	light1->setSpecularColor(ofColor(255, 255, 255));
 	light1->setAmbientColor(ofColor(0, 0, 0));
 
+	light2->setPosition(xLight2, yLight2 - 250, zLight2 - 200);
+	light2->setDiffuseColor(ofColor(RLight2, GLight2, BLight2));
+	light2->setSpecularColor(ofColor(255, 255, 255));
+	light2->setAmbientColor(ofColor(0, 0, 0));
+
+	light3->setPosition(xLight3, yLight3, zLight3);
+	light4->setPosition(xLight4, yLight4, zLight4);
+
 	material.setAmbientColor(ofColor(0, 255, 0));
+
+	light1->draw();
+	light2->draw();
 
 	ofFill();
 

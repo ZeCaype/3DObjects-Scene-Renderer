@@ -222,6 +222,9 @@ public:
 	int xLight2;
 	int yLight2;
 	int zLight2;
+	int RLight2;
+	int GLight2;
+	int BLight2;
 	ofLight * light2;
 	bool light3T = false;
 	int xLight3;

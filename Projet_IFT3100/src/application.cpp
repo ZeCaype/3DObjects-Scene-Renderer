@@ -228,14 +228,20 @@ void Application::update()
 	renderer->xLight2 = (gui->getXLight2());
 	renderer->yLight2 = (gui->getYLight2());
 	renderer->zLight2 = (gui->getZLight2());
+	renderer->RLight2 = gui->getRLight2();
+	renderer->GLight2 = gui->getGLight2();
+	renderer->BLight2 = gui->getBLight2();
+
 	renderer->light3T = gui->getLight3();
 	renderer->xLight3 = (gui->getXLight3());
 	renderer->yLight3 = (gui->getYLight3());
 	renderer->zLight3 = (gui->getZLight3());
+
 	renderer->light4T = gui->getLight4();
 	renderer->xLight4 = (gui->getXLight4());
 	renderer->yLight4 = (gui->getYLight4());
 	renderer->zLight4 = (gui->getZLight4());
+
 
 	// Autres /////////////////////////////////////////////////////////////////////////////////////
 	
