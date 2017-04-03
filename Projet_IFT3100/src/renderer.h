@@ -95,7 +95,6 @@ public:
 	// Géométrie //////////////////////////////////////////////////////////////////////////////////
 	ofCylinderPrimitive cylindre;
 	ofVboMesh topCap, bottomCap, body;
-	ofMaterial material;
 	ofVboMesh boxSides[ofBoxPrimitive::SIDES_TOTAL];
 	ofBoxPrimitive box;
 	ofSpherePrimitive sphere;
@@ -215,6 +214,9 @@ public:
 	int xLight1;
 	int yLight1;
 	int zLight1;
+	int RLight1;
+	int GLight1;
+	int BLight1;
 	ofLight * light1;
 	bool light2T = false;
 	int xLight2;
@@ -231,6 +233,8 @@ public:
 	int yLight4;
 	int zLight4;
 	ofLight * light4;
+
+	ofMaterial material;
 
 	//---------------------------------------------------------------------------------------------
 

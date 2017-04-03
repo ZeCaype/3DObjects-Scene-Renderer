@@ -221,6 +221,9 @@ void Application::update()
 	renderer->xLight1 = (gui->getXLight1());
 	renderer->yLight1 = (gui->getYLight1());
 	renderer->zLight1 = (gui->getZLight1());
+	renderer->RLight1 = gui->getRLight1();
+	renderer->GLight1 = gui->getGLight1();
+	renderer->BLight1 = gui->getBLight1();
 	renderer->light2T = gui->getLight2();
 	renderer->xLight2 = (gui->getXLight2());
 	renderer->yLight2 = (gui->getYLight2());

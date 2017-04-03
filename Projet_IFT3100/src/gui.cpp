@@ -154,24 +154,26 @@ void Gui::reset() {
 	// Lumières
 	guiLight.setup("Lumiere", "", 495, 320);
 	guiLight.add(light1Toggle.setup("Lumiere Ambiante", false));
-	guiLight.add(xLight1Slider.setup("x A", 0, -1000, 1000));
-	guiLight.add(yLight1Slider.setup("y A", 0, -1000, 1000));
-	guiLight.add(zLight1Slider.setup("z A", 0, -1000, 1000));
-
+	guiLight.add(xLight1Slider.setup("x Amb", 0, -1000, 1000));
+	guiLight.add(yLight1Slider.setup("y Amb", 0, -1000, 1000));
+	guiLight.add(zLight1Slider.setup("z Amb", 0, -1000, 1000));
+	guiLight.add(RLight1Slider.setup("R Amb", 255, 0, 255));
+	guiLight.add(GLight1Slider.setup("G Amb", 255, 0, 255));
+	guiLight.add(BLight1Slider.setup("B Amb", 255, 0, 255));
 	guiLight.add(light2Toggle.setup("Lumiere Directionnelle", false));
-	guiLight.add(xLight2Slider.setup("x D", 0, -1000, 1000));
-	guiLight.add(yLight2Slider.setup("y D", 0, -1000, 1000));
-	guiLight.add(zLight2Slider.setup("z D", 0, -1000, 1000));
+	guiLight.add(xLight2Slider.setup("x Dir", 0, -1000, 1000));
+	guiLight.add(yLight2Slider.setup("y Dir", 0, -1000, 1000));
+	guiLight.add(zLight2Slider.setup("z Dir", 0, -1000, 1000));
 
 	guiLight.add(light3Toggle.setup("Lumiere Ponctuelle", false));
-	guiLight.add(xLight3Slider.setup("x Po", 0, -1000, 1000));
-	guiLight.add(yLight3Slider.setup("y Po", 0, -1000, 1000));
-	guiLight.add(zLight3Slider.setup("z Po", 0, -1000, 1000));
+	guiLight.add(xLight3Slider.setup("x Ponct", 0, -1000, 1000));
+	guiLight.add(yLight3Slider.setup("y Ponct", 0, -1000, 1000));
+	guiLight.add(zLight3Slider.setup("z Ponct", 0, -1000, 1000));
 
 	guiLight.add(light4Toggle.setup("Lumiere Projecteur", false));
-	guiLight.add(xLight4Slider.setup("x Pr", 0, -1000, 1000));
-	guiLight.add(yLight4Slider.setup("y Pr", 0, -1000, 1000));
-	guiLight.add(zLight4Slider.setup("z Pr", 0, -1000, 1000));
+	guiLight.add(xLight4Slider.setup("x Proj", 0, -1000, 1000));
+	guiLight.add(yLight4Slider.setup("y Proj", 0, -1000, 1000));
+	guiLight.add(zLight4Slider.setup("z Proj", 0, -1000, 1000));
 
 }
 
@@ -572,27 +574,35 @@ int Gui::getXLight1()
 {
 	return xLight1Slider;
 }
-
 int Gui::getYLight1()
 {
 	return yLight1Slider;
 }
-
 int Gui::getZLight1()
 {
 	return zLight1Slider;
+}
+int Gui::getRLight1()
+{
+	return RLight1Slider;
+}
+int Gui::getGLight1()
+{
+	return GLight1Slider;
+}
+int Gui::getBLight1()
+{
+	return BLight1Slider;
 }
 
 int Gui::getXLight2()
 {
 	return xLight2Slider;
 }
-
 int Gui::getYLight2()
 {
 	return yLight2Slider;
 }
-
 int Gui::getZLight2()
 {
 	return zLight2Slider;
@@ -602,12 +612,10 @@ int Gui::getXLight3()
 {
 	return xLight3Slider;
 }
-
 int Gui::getYLight3()
 {
 	return yLight3Slider;
 }
-
 int Gui::getZLight3()
 {
 	return zLight3Slider;
@@ -617,12 +625,10 @@ int Gui::getXLight4()
 {
 	return xLight4Slider;
 }
-
 int Gui::getYLight4()
 {
 	return yLight4Slider;
 }
-
 int Gui::getZLight4()
 {
 	return zLight4Slider;

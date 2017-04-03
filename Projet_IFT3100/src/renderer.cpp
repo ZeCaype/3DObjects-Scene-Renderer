@@ -4,7 +4,7 @@
 Renderer::Renderer()
 {
 	light = nullptr;
-	
+
 	light1 = nullptr;
 	light2 = nullptr;
 	light3 = nullptr;
@@ -29,7 +29,7 @@ void Renderer::setup()
 	// Paramétrisation de la lumière (enfin de voir les modèles correctement)
 	ofSetSmoothLighting(true);
 	light = new ofLight();
-
+	
 	light1 = new ofLight();
 	light2 = new ofLight();
 	light3 = new ofLight();
@@ -105,11 +105,12 @@ void Renderer::draw()
 
 	camera->begin();
 
-	light->enable();
-	light->setPosition(0,-1000,0);
-	light->setAmbientColor(ofColor(255, 255, 255));
-
 	// Activation de la lumière
+	light->enable();
+	light->setAmbientColor(ofColor(127, 127, 127));
+	light->setSpecularColor(ofColor(60, 60, 60));
+	light->setPosition(0, 0, -1000);
+
 	if (light1T == true) light1->enable();
 	else if (!light1T == true) light1->disable();
 	if (light2T == true) light2->enable();
@@ -123,6 +124,12 @@ void Renderer::draw()
 	light2->setPosition(xLight2, yLight2, zLight2);
 	light3->setPosition(xLight3, yLight3, zLight3);
 	light4->setPosition(xLight4, yLight4, zLight4);
+
+	light1->setDiffuseColor(ofColor(RLight1, GLight1, BLight1));
+	light1->setSpecularColor(ofColor(255, 255, 255));
+	light1->setAmbientColor(ofColor(0, 0, 0));
+
+	material.setAmbientColor(ofColor(0, 255, 0));
 
 	ofFill();
 
@@ -408,15 +415,13 @@ void Renderer::draw()
 
 	}
 
-
-	
-
-	
+	material.begin();
 	// Importation d'un modèle 3D
 	if (isModelLoaded == true)
 	{
 		model.drawFaces();
 	}
+	material.end();
 
 	// Nuage de points
 	if (nuageDePoint == true) {
