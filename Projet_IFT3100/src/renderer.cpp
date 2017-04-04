@@ -126,13 +126,18 @@ void Renderer::draw()
 	light2->setSpotlightCutOff(cutLight2);
 	light2->setSpotConcentration(concLight2);
 
-	light3->setPosition(xLight3, yLight3, zLight3);
+	light3->setPosition(xLight3, yLight3 - 250, zLight3 - 200);
+	light3->setDiffuseColor(ofColor(RLight3, GLight3, BLight3));
+	light3->setSpecularColor(ofColor(255, 255, 255));
+	light3->setAmbientColor(ofColor(0, 0, 0));
+
 	light4->setPosition(xLight4, yLight4, zLight4);
 
 	camera->begin();
 
 	if (light1T) light1->draw();
 	if (light2T) light2->draw();
+	if (light3T) light3->draw();
 
 	ofFill();
 

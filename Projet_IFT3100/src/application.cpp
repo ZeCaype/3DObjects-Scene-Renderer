@@ -239,6 +239,9 @@ void Application::update()
 	renderer->xLight3 = (gui->getXLight3());
 	renderer->yLight3 = (gui->getYLight3());
 	renderer->zLight3 = (gui->getZLight3());
+	renderer->RLight3 = gui->getRLight3();
+	renderer->GLight3 = gui->getGLight3();
+	renderer->BLight3 = gui->getBLight3();
 
 	renderer->light4T = gui->getLight4();
 	renderer->xLight4 = (gui->getXLight4());

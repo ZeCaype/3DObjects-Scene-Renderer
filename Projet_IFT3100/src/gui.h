@@ -263,7 +263,9 @@ public:
 	ofxIntSlider xLight3Slider;
 	ofxIntSlider yLight3Slider;
 	ofxIntSlider zLight3Slider;
-
+	ofxIntSlider RLight3Slider;
+	ofxIntSlider GLight3Slider;
+	ofxIntSlider BLight3Slider;
 
 	ofxToggle light4Toggle;
 	ofxIntSlider xLight4Slider;
@@ -293,6 +295,9 @@ public:
 	int getXLight3();
 	int getYLight3();
 	int getZLight3();
+	int getRLight3();
+	int getGLight3();
+	int getBLight3();
 
 	bool getLight4();
 	int getXLight4();

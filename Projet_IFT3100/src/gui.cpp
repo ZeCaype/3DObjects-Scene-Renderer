@@ -169,16 +169,19 @@ void Gui::reset() {
 	guiLight.add(cut2Slider.setup("CutOff Proj", 45, 0, 90));
 	guiLight.add(conc2Slider.setup("Concentration Proj", 1, 0, 100));
 
-	/*
-	guiLight.add(light3Toggle.setup("Lumiere Ponctuelle", false));
-	guiLight.add(xLight3Slider.setup("x Ponct", 0, -1000, 1000));
-	guiLight.add(yLight3Slider.setup("y Ponct", 0, -1000, 1000));
-	guiLight.add(zLight3Slider.setup("z Ponct", 0, -1000, 1000));
+	guiLight.add(light3Toggle.setup("Lumiere Directionnelle", false));
+	guiLight.add(xLight3Slider.setup("x Dir", 0, -1000, 1000));
+	guiLight.add(yLight3Slider.setup("y Dir", 0, -1000, 1000));
+	guiLight.add(zLight3Slider.setup("z Dir", 0, -1000, 1000));
+	guiLight.add(RLight3Slider.setup("R Proj", 255, 0, 255));
+	guiLight.add(GLight3Slider.setup("G Proj", 255, 0, 255));
+	guiLight.add(BLight3Slider.setup("B Proj", 255, 0, 255));
 
-	guiLight.add(light4Toggle.setup("Lumiere Directionnelle", false));
-	guiLight.add(xLight4Slider.setup("x Dir", 0, -1000, 1000));
-	guiLight.add(yLight4Slider.setup("y Dir", 0, -1000, 1000));
-	guiLight.add(zLight4Slider.setup("z Dir", 0, -1000, 1000));
+	/*
+	guiLight.add(light4Toggle.setup("Lumiere Ponctuelle", false));
+	guiLight.add(xLight4Slider.setup("x Ponct", 0, -1000, 1000));
+	guiLight.add(yLight4Slider.setup("y Ponct", 0, -1000, 1000));
+	guiLight.add(zLight4Slider.setup("z Ponct", 0, -1000, 1000));
 	*/
 }
 
@@ -546,9 +549,6 @@ bool Gui::getToggleprimitive3dRotationSphereCouleur() {
 
 
 
-
-
-
 bool Gui::getNuageDePoint() {
 	return nuageDePoint;
 }
@@ -559,19 +559,6 @@ bool Gui::getLight1()
 {
 	return light1Toggle;
 }
-bool Gui::getLight2()
-{
-	return light2Toggle;
-}
-bool Gui::getLight3()
-{
-	return light3Toggle;
-}
-bool Gui::getLight4()
-{
-	return light4Toggle;
-}
-
 int Gui::getXLight1()
 {
 	return xLight1Slider;
@@ -597,6 +584,10 @@ int Gui::getBLight1()
 	return BLight1Slider;
 }
 
+bool Gui::getLight2()
+{
+	return light2Toggle;
+}
 int Gui::getXLight2()
 {
 	return xLight2Slider;
@@ -630,7 +621,10 @@ float Gui::getConcLight2()
 	return conc2Slider;
 }
 
-
+bool Gui::getLight3()
+{
+	return light3Toggle;
+}
 int Gui::getXLight3()
 {
 	return xLight3Slider;
@@ -643,7 +637,23 @@ int Gui::getZLight3()
 {
 	return zLight3Slider;
 }
+int Gui::getRLight3()
+{
+	return RLight3Slider;
+}
+int Gui::getGLight3()
+{
+	return GLight3Slider;
+}
+int Gui::getBLight3()
+{
+	return BLight3Slider;
+}
 
+bool Gui::getLight4()
+{
+	return light4Toggle;
+}
 int Gui::getXLight4()
 {
 	return xLight4Slider;
