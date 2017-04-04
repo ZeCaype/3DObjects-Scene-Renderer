@@ -125,7 +125,7 @@ void Renderer::draw()
 	light2->setAmbientColor(ofColor(0, 0, 0));
 	light2->setSpotlightCutOff(cutLight2);
 	light2->setSpotConcentration(concLight2);
-	light2->rotate(angleLight2, vectXLight2, vectYLight2, vectZLight2); // Le faisceau n'est pas réorienter comme il se devrait....
+	light2->setOrientation(ofVec3f(vectXLight2, vectYLight2, vectZLight2)); // Semble seulement réorientrer l'axe, mais le faisceau ne change pas
 
 	light3->setPosition(xLight3, yLight3, zLight3);
 	light4->setPosition(xLight4, yLight4, zLight4);
