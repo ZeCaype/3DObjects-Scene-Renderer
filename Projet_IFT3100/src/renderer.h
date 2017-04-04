@@ -228,6 +228,10 @@ public:
 	int BLight2;
 	float cutLight2;
 	float concLight2;
+	float angleLight2;
+	int vectXLight2;
+	int vectYLight2;
+	int vectZLight2;
 	ofLight * light2;
 
 	bool light3T = false;

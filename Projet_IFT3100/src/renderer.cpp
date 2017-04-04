@@ -114,8 +114,6 @@ void Renderer::draw()
 	if (light4T == true) light4->enable();
 	else if (!light4T == true) light4->disable();
 
-	camera->begin();
-
 	light1->setPosition(xLight1, yLight1 - 250, zLight1 - 200);
 	light1->setDiffuseColor(ofColor(RLight1, GLight1, BLight1));
 	light1->setSpecularColor(ofColor(255, 255, 255));
@@ -127,14 +125,15 @@ void Renderer::draw()
 	light2->setAmbientColor(ofColor(0, 0, 0));
 	light2->setSpotlightCutOff(cutLight2);
 	light2->setSpotConcentration(concLight2);
+	light2->rotate(angleLight2, vectXLight2, vectYLight2, vectZLight2); // Le faisceau n'est pas réorienter comme il se devrait....
 
 	light3->setPosition(xLight3, yLight3, zLight3);
 	light4->setPosition(xLight4, yLight4, zLight4);
 
-	material.setAmbientColor(ofColor(0, 255, 0));
+	camera->begin();
 
-	light1->draw();
-	light2->draw();
+	if (light1T) light1->draw();
+	if (light2T) light2->draw();
 
 	ofFill();
 
