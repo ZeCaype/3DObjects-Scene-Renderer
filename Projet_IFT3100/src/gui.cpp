@@ -168,9 +168,6 @@ void Gui::reset() {
 	guiLight.add(BLight2Slider.setup("B Proj", 255, 0, 255));
 	guiLight.add(cut2Slider.setup("CutOff Proj", 45, 0, 90));
 	guiLight.add(conc2Slider.setup("Concentration Proj", 1, 0, 100));
-	guiLight.add(vectXLight2Slider.setup("Vect X Proj", 0, -90, 90));
-	guiLight.add(vectYLight2Slider.setup("Vect Y Proj", 0, -90, 90));
-	guiLight.add(vectZLight2Slider.setup("Vect Z Proj", 0, -90, 90));
 
 	/*
 	guiLight.add(light3Toggle.setup("Lumiere Ponctuelle", false));
@@ -631,18 +628,6 @@ float Gui::getCutLight2()
 float Gui::getConcLight2()
 {
 	return conc2Slider;
-}
-float Gui::getVectXLight2()
-{
-	return vectXLight2Slider;
-}
-float Gui::getVectYLight2()
-{
-	return vectYLight2Slider;
-}
-float Gui::getVectZLight2()
-{
-	return vectZLight2Slider;
 }
 
 

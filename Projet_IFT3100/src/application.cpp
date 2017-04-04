@@ -234,9 +234,6 @@ void Application::update()
 	renderer->BLight2 = gui->getBLight2();
 	renderer->cutLight2 = gui->getCutLight2();
 	renderer->concLight2 = gui->getConcLight2();
-	renderer->vectXLight2 = gui->getVectXLight2();
-	renderer->vectYLight2 = gui->getVectYLight2();
-	renderer->vectZLight2 = gui->getVectZLight2();
 
 	renderer->light3T = gui->getLight3();
 	renderer->xLight3 = (gui->getXLight3());

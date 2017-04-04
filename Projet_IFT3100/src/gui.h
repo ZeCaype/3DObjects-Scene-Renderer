@@ -288,9 +288,6 @@ public:
 	int getBLight2();
 	float getCutLight2();
 	float getConcLight2();
-	float getVectXLight2();
-	float getVectYLight2();
-	float getVectZLight2();
 
 	bool getLight3();
 	int getXLight3();
