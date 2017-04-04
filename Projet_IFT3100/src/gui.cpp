@@ -167,15 +167,15 @@ void Gui::reset() {
 	guiLight.add(GLight2Slider.setup("G Proj", 255, 0, 255));
 	guiLight.add(BLight2Slider.setup("B Proj", 255, 0, 255));
 	guiLight.add(cut2Slider.setup("CutOff Proj", 45, 0, 90));
-	guiLight.add(conc2Slider.setup("Concentration Proj", 1, 0, 100));
+	guiLight.add(conc2Slider.setup("Concentration Proj", 0, 0, 100));
 
 	guiLight.add(light3Toggle.setup("Lumiere Directionnelle", false));
-	guiLight.add(xLight3Slider.setup("x Dir", 0, -1000, 1000));
-	guiLight.add(yLight3Slider.setup("y Dir", 0, -1000, 1000));
-	guiLight.add(zLight3Slider.setup("z Dir", 0, -1000, 1000));
 	guiLight.add(RLight3Slider.setup("R Proj", 255, 0, 255));
 	guiLight.add(GLight3Slider.setup("G Proj", 255, 0, 255));
 	guiLight.add(BLight3Slider.setup("B Proj", 255, 0, 255));
+	guiLight.add(xLight3Slider.setup("x Dir", 0, -180, 180));
+	guiLight.add(yLight3Slider.setup("y Dir", 0, -180, 180));
+	guiLight.add(zLight3Slider.setup("z Dir", 0, -180, 180));
 
 	/*
 	guiLight.add(light4Toggle.setup("Lumiere Ponctuelle", false));
@@ -625,15 +625,15 @@ bool Gui::getLight3()
 {
 	return light3Toggle;
 }
-int Gui::getXLight3()
+float Gui::getXLight3()
 {
 	return xLight3Slider;
 }
-int Gui::getYLight3()
+float Gui::getYLight3()
 {
 	return yLight3Slider;
 }
-int Gui::getZLight3()
+float Gui::getZLight3()
 {
 	return zLight3Slider;
 }

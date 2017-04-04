@@ -231,12 +231,13 @@ public:
 	ofLight * light2;
 
 	bool light3T = false;
-	int xLight3;
-	int yLight3;
-	int zLight3;
 	int RLight3;
 	int GLight3;
 	int BLight3;
+	float xLight3;
+	float yLight3;
+	float zLight3;
+	ofVec3f light3Ori;
 	ofLight * light3;
 
 	bool light4T = false;
@@ -267,6 +268,8 @@ public:
 	void cameraSetupParameters();
 	void setupCamera();
 	void updateCamera();
+
+	void setLightOri(ofLight & light, ofVec3f rot);
 
 	~Renderer();
 };

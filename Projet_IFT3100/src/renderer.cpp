@@ -118,6 +118,7 @@ void Renderer::draw()
 	light1->setDiffuseColor(ofColor(RLight1, GLight1, BLight1));
 	light1->setSpecularColor(ofColor(255, 255, 255));
 	light1->setAmbientColor(ofColor(0, 0, 0));
+	//light1->setAttenuation();
 
 	light2->setPosition(xLight2, yLight2 - 250, zLight2 - 200);
 	light2->setDiffuseColor(ofColor(RLight2, GLight2, BLight2));
@@ -125,13 +126,25 @@ void Renderer::draw()
 	light2->setAmbientColor(ofColor(0, 0, 0));
 	light2->setSpotlightCutOff(cutLight2);
 	light2->setSpotConcentration(concLight2);
+	//light2->setAttenuation();
 
-	light3->setPosition(xLight3, yLight3 - 250, zLight3 - 200);
+	light3->setPosition(0, 0 - 250, 0 - 200);
 	light3->setDiffuseColor(ofColor(RLight3, GLight3, BLight3));
 	light3->setSpecularColor(ofColor(255, 255, 255));
 	light3->setAmbientColor(ofColor(0, 0, 0));
+	light3->setDirectional();
+	light3Ori = ofVec3f(xLight3, yLight3, zLight3);
+	setLightOri(*light3, light3Ori);
+	//light3->setAttenuation();
 
 	light4->setPosition(xLight4, yLight4, zLight4);
+
+	material.setShininess(120);
+
+	material.setSpecularColor(ofColor(255, 255, 255, 255));
+	material.setEmissiveColor(ofColor(0, 0, 0, 255));
+	material.setDiffuseColor(ofColor(255, 255, 255, 255));
+	material.setAmbientColor(ofColor(255, 255, 255, 255));
 
 	camera->begin();
 
@@ -630,6 +643,16 @@ void Renderer::updateCamera() {
 	}
 	camera->setNearClip(cameraNear);
 	camera->setFarClip(cameraFar);
+}
+
+void Renderer::setLightOri(ofLight &light, ofVec3f rot)
+{
+	ofVec3f xax(1, 0, 0);
+	ofVec3f yax(0, 1, 0);
+	ofVec3f zax(0, 0, 1);
+	ofQuaternion q;
+	q.makeRotate(rot.x, xax, rot.y, yax, rot.z, zax);
+	light.setOrientation(q);
 }
 
 // Destructeur de la classe Renderer
