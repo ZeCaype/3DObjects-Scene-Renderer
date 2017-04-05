@@ -127,12 +127,12 @@ void Renderer::draw()
 	if (light3T == true) light3->enable();
 	else if (!light3T == true) light3->disable();
 	light3->setPosition(0, 0 - 250, 0 - 200);
+	light3Ori = ofVec3f(xLight3, yLight3, zLight3);
+	setLightOri(*light3, light3Ori);
 	light3->setDiffuseColor(ofColor(RLight3, GLight3, BLight3));
 	light3->setSpecularColor(ofColor(255, 255, 255));
 	light3->setAmbientColor(ofColor(0, 0, 0));
 	light3->setDirectional();
-	light3Ori = ofVec3f(xLight3, yLight3, zLight3);
-	setLightOri(*light3, light3Ori);
 	//light3->setAttenuation();
 
 	if (light4T == true) light4->enable();
@@ -141,6 +141,7 @@ void Renderer::draw()
 	light4->setDiffuseColor(ofColor(RLight4, GLight4, BLight4));
 	light4->setSpecularColor(ofColor(255, 255, 255));
 	light4->setAmbientColor(ofColor(0, 0, 0));
+	light4->setPointLight();
 	//light4->setAttenuation();
 
 	material.setShininess(120);

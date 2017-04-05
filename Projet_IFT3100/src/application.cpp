@@ -178,15 +178,23 @@ void Application::update()
 	// Caméra /////////////////////////////////////////////////////////////////////////////////////
 	// Appel des fonctions de la caméra
 
-
+	string str1 = "Camera " + renderer->cameraName + " Perspective 4:3 (1-6 wasdqe uhjkyi op)";
+	std::wstring widestr1 = std::wstring(str1.begin(), str1.end());
+	const wchar_t* widecstr1 = widestr1.c_str();
+	string str2 = "Camera " + renderer->cameraName + " Perspective 16:9 (1-6 wasdqe uhjkyi op)";
+	std::wstring widestr2 = std::wstring(str2.begin(), str2.end());
+	const wchar_t* widecstr2 = widestr2.c_str();
+	string str3 = "Camera " + renderer->cameraName + " Orthographique";
+	std::wstring widestr3 = std::wstring(str3.begin(), str3.end());
+	const wchar_t* widecstr3 = widestr3.c_str();
 	if (renderer->isCameraPerspective && gui->getAspectRatio()) {
-		ofSetWindowTitle("Camera " + renderer->cameraName + " Perspective 4:3 (1-6 wasdqe uhjkyi op)");
+		SetConsoleTitle(widecstr1);
 	}
 	else if (renderer->isCameraPerspective) {
-		ofSetWindowTitle("Camera " + renderer->cameraName + " Perspective 16:9 (1-6 wasdqe uhjkyi op)");
+		SetConsoleTitle(widecstr2);
 	}
 	else
-		ofSetWindowTitle("Camera " + renderer->cameraName + " Orthographique");
+		SetConsoleTitle(widecstr3);
 
 	renderer->isCameraMoveForward = isKeyPressW;
 	renderer->isCameraMoveBackward = isKeyPressS;
@@ -218,17 +226,17 @@ void Application::update()
 	// Lumières /////////////////////////////////////////////////////////////////////////////////////
 	// Appel pour la position de la lumière
 	renderer->light1T = gui->getLight1();
-	renderer->xLight1 = (gui->getXLight1());
-	renderer->yLight1 = (gui->getYLight1());
-	renderer->zLight1 = (gui->getZLight1());
+	renderer->xLight1 = gui->getXLight1();
+	renderer->yLight1 = gui->getYLight1();
+	renderer->zLight1 = gui->getZLight1();
 	renderer->RLight1 = gui->getRLight1();
 	renderer->GLight1 = gui->getGLight1();
 	renderer->BLight1 = gui->getBLight1();
 
 	renderer->light2T = gui->getLight2();
-	renderer->xLight2 = (gui->getXLight2());
-	renderer->yLight2 = (gui->getYLight2());
-	renderer->zLight2 = (gui->getZLight2());
+	renderer->xLight2 = gui->getXLight2();
+	renderer->yLight2 = gui->getYLight2();
+	renderer->zLight2 = gui->getZLight2();
 	renderer->RLight2 = gui->getRLight2();
 	renderer->GLight2 = gui->getGLight2();
 	renderer->BLight2 = gui->getBLight2();
@@ -236,17 +244,17 @@ void Application::update()
 	renderer->concLight2 = gui->getConcLight2();
 
 	renderer->light3T = gui->getLight3();
-	renderer->xLight3 = (gui->getXLight3());
-	renderer->yLight3 = (gui->getYLight3());
-	renderer->zLight3 = (gui->getZLight3());
+	renderer->xLight3 = gui->getXLight3();
+	renderer->yLight3 = gui->getYLight3();
+	renderer->zLight3 = gui->getZLight3();
 	renderer->RLight3 = gui->getRLight3();
 	renderer->GLight3 = gui->getGLight3();
 	renderer->BLight3 = gui->getBLight3();
 
 	renderer->light4T = gui->getLight4();
-	renderer->xLight4 = (gui->getXLight4());
-	renderer->yLight4 = (gui->getYLight4());
-	renderer->zLight4 = (gui->getZLight4());
+	renderer->xLight4 = gui->getXLight4();
+	renderer->yLight4 = gui->getYLight4();
+	renderer->zLight4 = gui->getZLight4();
 	renderer->RLight4 = gui->getRLight4();
 	renderer->GLight4 = gui->getGLight4();
 	renderer->BLight4 = gui->getBLight4();

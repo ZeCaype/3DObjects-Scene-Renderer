@@ -170,19 +170,19 @@ void Gui::reset() {
 
 	guiLightPart2.setup("Lumiere 2", "", 630, 320);
 	guiLightPart2.add(light3Toggle.setup("Lumiere Directionnelle", false));
-	guiLightPart2.add(RLight3Slider.setup("R Proj", 255, 0, 255));
-	guiLightPart2.add(GLight3Slider.setup("G Proj", 255, 0, 255));
-	guiLightPart2.add(BLight3Slider.setup("B Proj", 255, 0, 255));
 	guiLightPart2.add(xLight3Slider.setup("x Dir", 0, -180, 180));
 	guiLightPart2.add(yLight3Slider.setup("y Dir", 0, -180, 180));
 	guiLightPart2.add(zLight3Slider.setup("z Dir", 0, -180, 180));
+	guiLightPart2.add(RLight3Slider.setup("R Dir", 255, 0, 255));
+	guiLightPart2.add(GLight3Slider.setup("G Dir", 255, 0, 255));
+	guiLightPart2.add(BLight3Slider.setup("B Dir", 255, 0, 255));
 	guiLightPart2.add(light4Toggle.setup("Lumiere Ponctuelle", false));
 	guiLightPart2.add(xLight4Slider.setup("x Ponct", 0, -300, 300));
 	guiLightPart2.add(yLight4Slider.setup("y Ponct", 0, -300, 300));
 	guiLightPart2.add(zLight4Slider.setup("z Ponct", 0, -300, 300));
-	guiLightPart2.add(RLight4Slider.setup("R Proj", 255, 0, 255));
-	guiLightPart2.add(GLight4Slider.setup("G Proj", 255, 0, 255));
-	guiLightPart2.add(BLight4Slider.setup("B Proj", 255, 0, 255));
+	guiLightPart2.add(RLight4Slider.setup("R Ponct", 255, 0, 255));
+	guiLightPart2.add(GLight4Slider.setup("G Ponct", 255, 0, 255));
+	guiLightPart2.add(BLight4Slider.setup("B Ponct", 255, 0, 255));
 }
 
 // Fonction de mise à jour du gui
