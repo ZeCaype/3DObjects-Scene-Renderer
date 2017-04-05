@@ -26,7 +26,7 @@ Application::Application(Gui *guipam)
 	ofGLFWWindowSettings settings;
 	settings.width = 720;
 	settings.height = 800;
-	settings.setPosition(ofVec2f(700, 50));
+	settings.setPosition(ofVec2f(600 + 2*12 + 5, 34));
 	settings.resizable = false;
 	shared_ptr<ofAppBaseWindow> guiWindow = ofCreateWindow(settings);
 	guiWindow->setVerticalSync(false);

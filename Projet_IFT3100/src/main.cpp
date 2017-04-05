@@ -11,7 +11,7 @@ int main()
 	ofGLFWWindowSettings settings;
 	settings.width = 600;
 	settings.height = 600;
-	settings.setPosition(ofVec2f(50, 50));
+	settings.setPosition(ofVec2f(12, 35));
 	settings.resizable = true;
 	shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);
 
