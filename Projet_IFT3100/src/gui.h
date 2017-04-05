@@ -237,7 +237,7 @@ public:
 	bool getAspectRatio();
 
 	// Lumière /////////////////////////////////////////////////////////////////////////////////////
-	ofxPanel guiLight;
+	ofxPanel guiLightPart1;
 	ofxToggle light1Toggle;
 	ofxIntSlider xLight1Slider;
 	ofxIntSlider yLight1Slider;
@@ -245,7 +245,6 @@ public:
 	ofxIntSlider RLight1Slider;
 	ofxIntSlider GLight1Slider;
 	ofxIntSlider BLight1Slider;
-
 	ofxToggle light2Toggle;
 	ofxIntSlider xLight2Slider;
 	ofxIntSlider yLight2Slider;
@@ -259,6 +258,7 @@ public:
 	ofxFloatSlider vectYLight2Slider;
 	ofxFloatSlider vectZLight2Slider;
 
+	ofxPanel guiLightPart2;
 	ofxToggle light3Toggle;
 	ofxIntSlider RLight3Slider;
 	ofxIntSlider GLight3Slider;
@@ -266,7 +266,6 @@ public:
 	ofxFloatSlider xLight3Slider;
 	ofxFloatSlider yLight3Slider;
 	ofxFloatSlider zLight3Slider;
-
 	ofxToggle light4Toggle;
 	ofxIntSlider xLight4Slider;
 	ofxIntSlider yLight4Slider;
