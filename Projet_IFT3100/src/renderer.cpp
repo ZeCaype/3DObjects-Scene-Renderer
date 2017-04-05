@@ -138,14 +138,13 @@ void Renderer::draw()
 	//light3->setAttenuation();
 
 	light4->setPosition(xLight4, yLight4, zLight4);
-
+	
 	material.setShininess(120);
-
 	material.setSpecularColor(ofColor(255, 255, 255, 255));
 	material.setEmissiveColor(ofColor(0, 0, 0, 255));
 	material.setDiffuseColor(ofColor(255, 255, 255, 255));
 	material.setAmbientColor(ofColor(255, 255, 255, 255));
-
+	
 	camera->begin();
 
 	if (light1T) light1->draw();

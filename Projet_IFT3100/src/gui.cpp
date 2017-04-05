@@ -31,7 +31,7 @@ void Gui::setup()
 
 void Gui::reset() {
 	// Image
-	guiImage.setup("Image", "", offsetX, 10);
+	guiImage.setup("Image", "", offsetX - 20, 10);
 	guiImage.add(exportButton.setup("Exportation")); exportCheck = false;
 	guiImage.add(importButton.setup("Importation precedente")); importCheck = false;
 	guiImage.add(posImageX.setup("Position X de l'image", defaultPosX, 0, 600));
@@ -44,7 +44,7 @@ void Gui::reset() {
 	guiImage.add(alphaImage.setup("Alpha", defaultAlphaImage, 0, 255));
 
 	// Cercle UI
-	guiCircle.setup("Sphere", "", offsetX, 230);
+	guiCircle.setup("Sphere", "", offsetX - 20, 225);
 
 	guiCircle.add(primitive3dSphere.setup("Sphere", false));
 	guiCircle.add(primitive3dRotationSphere.setup("Rotation", false));
@@ -63,14 +63,14 @@ void Gui::reset() {
 
 
 	// Caméra
-	guiCamera.setup("Camera", "", 260, 60);
+	guiCamera.setup("Camera", "", 220, 52);
 	guiCamera.add(fovSlider.setup("Field of view", defaultFov, 0, 120));
 	guiCamera.add(cameraNearSlider.setup("Plan near", defaultCameraNear, 0, 999));
 	guiCamera.add(cameraFarSlider.setup("Plan far", defaultCameraFar, 1000, 12000));
 	guiCamera.add(aspectRatio4_3.setup("Ratio d'aspect 4:3", true));
 
 	// Primitive
-	guiPrimitive.setup("Primitives Vectorielles", "Primitives Vectorielles", 260, 165);
+	guiPrimitive.setup("Primitives Vectorielles", "Primitives Vectorielles", 220, 152);
 	// Rectangle
 	guiPrimitive.add(rec.setup("Rectangle", false));
 	guiPrimitive.add(posXSlider.setup("Largeur Rectangle", -600, -900, 900));
@@ -108,7 +108,7 @@ void Gui::reset() {
 	guiPrimitive.add(rotZSlider.setup("Z Rotation", 0, -1, 1));
 
 	//Couleurs Stroke + Fill
-	guiColorPrimitives.setup("Couleur Stroke-Fill", "", offsetX, 525);
+	guiColorPrimitives.setup("Couleur Stroke-Fill", "", offsetX - 20, 495);
 	guiColorPrimitives.add(sliderContour.setup("Largeur Contour", 50, 0, 100));
 	guiColorPrimitives.add(sliderRStroke.setup("Stroke/Red", 50, 0, 255));
 	guiColorPrimitives.add(sliderGStroke.setup("Stroke/Green", 50, 0, 255));
@@ -121,16 +121,16 @@ void Gui::reset() {
 	guiColorPrimitives.add(sliderFONDB.setup("Fond/Blue", 255, 0, 255));
 
 	// Scène 3D
-	guiScene.setup("Scene 3D", "", 260, 10);
+	guiScene.setup("Scene 3D", "", 220, 10);
 	guiScene.add(modelButton.setup("Modele")); modelCheck = false;
 
 	// Options
-	guiOption.setup("Options", "", offsetX, 750);
+	guiOption.setup("Options", "", offsetX - 20, 750);
 	guiOption.add(exitButton.setup("Quitter l'application"));
 
 
 	//primitive 3d 
-	guiPrimitive3d.setup("Primitives 3D", "Primitive3D ", 495, 10);
+	guiPrimitive3d.setup("Primitives 3D", "Primitive3D ", 425, 10);
 	guiPrimitive3d.add(primitive3dToggle.setup("Primitive 3D Cylindre" , false));
 	guiPrimitive3d.add(primitive3dStroke.setup("WireFrame cylindre", false));
 	guiPrimitive3d.add(primitive3dRotation.setup("Rotation cylindre", false));
@@ -150,7 +150,7 @@ void Gui::reset() {
 	guiPrimitive3d.add(nuageDePoint.setup("Nuage de Points", false));
 
 	// Lumières
-	guiLight.setup("Lumiere", "", 495, 320);
+	guiLight.setup("Lumiere", "", 425, 320);
 	guiLight.add(light1Toggle.setup("Lumiere Ambiante", false));
 	guiLight.add(xLight1Slider.setup("x Amb", 0, -300, 300));
 	guiLight.add(yLight1Slider.setup("y Amb", 0, -300, 300));
