@@ -158,8 +158,9 @@ void Gui::reset() {
 	guiLightPart1.add(RLight2Slider.setup("R Proj", 255, 0, 255));
 	guiLightPart1.add(GLight2Slider.setup("G Proj", 255, 0, 255));
 	guiLightPart1.add(BLight2Slider.setup("B Proj", 255, 0, 255));
-	guiLightPart1.add(cut2Slider.setup("CutOff Proj", 45, 0, 90));
-	guiLightPart1.add(conc2Slider.setup("Concentration Proj", 0, 0, 100));
+	guiLightPart1.add(cutLight2Slider.setup("CutOff Proj", 45, 0, 90));
+	guiLightPart1.add(concLight2Slider.setup("Concentration Proj", 0, 0, 100));
+	guiLightPart1.add(attLight2Slider.setup("Att Proj", 1.0, 0.00001, 1.99999));
 	guiLightPart1.add(light4Toggle.setup("Lumiere Ponctuelle", false));
 	guiLightPart1.add(xLight4Slider.setup("x Ponct", 0, -300, 300));
 	guiLightPart1.add(yLight4Slider.setup("y Ponct", 0, -300, 300));
@@ -167,12 +168,14 @@ void Gui::reset() {
 	guiLightPart1.add(RLight4Slider.setup("R Ponct", 255, 0, 255));
 	guiLightPart1.add(GLight4Slider.setup("G Ponct", 255, 0, 255));
 	guiLightPart1.add(BLight4Slider.setup("B Ponct", 255, 0, 255));
+	guiLightPart1.add(attLight4Slider.setup("Att Ponct", 1.0, 0.00001, 1.99999));
 
 	guiLightPart2.setup("Lumiere 2", "", 630, 320);
 	guiLightPart2.add(light1Toggle.setup("Lumiere Ambiante", false));
 	guiLightPart2.add(RLight1Slider.setup("R Amb", 255, 0, 255));
 	guiLightPart2.add(GLight1Slider.setup("G Amb", 255, 0, 255));
 	guiLightPart2.add(BLight1Slider.setup("B Amb", 255, 0, 255));
+	guiLightPart2.add(attLight1Slider.setup("Att Amb", 1.0, 0.00001, 1.99999));
 	guiLightPart2.add(light3Toggle.setup("Lumiere Directionnelle", false));
 	guiLightPart2.add(xLight3Slider.setup("x Dir", 0, -180, 180));
 	guiLightPart2.add(yLight3Slider.setup("y Dir", 0, -180, 180));
@@ -180,6 +183,7 @@ void Gui::reset() {
 	guiLightPart2.add(RLight3Slider.setup("R Dir", 255, 0, 255));
 	guiLightPart2.add(GLight3Slider.setup("G Dir", 255, 0, 255));
 	guiLightPart2.add(BLight3Slider.setup("B Dir", 255, 0, 255));
+	guiLightPart2.add(attLight3Slider.setup("Att Dir", 1.0, 0.00001, 1.99999));
 }
 
 // Fonction de mise à jour du gui
@@ -569,6 +573,10 @@ int Gui::getBLight1()
 {
 	return BLight1Slider;
 }
+float Gui::getAttLight1()
+{
+	return attLight1Slider;
+}
 
 bool Gui::getLight2()
 {
@@ -600,11 +608,15 @@ int Gui::getBLight2()
 }
 float Gui::getCutLight2()
 {
-	return cut2Slider;
+	return cutLight2Slider;
 }
 float Gui::getConcLight2()
 {
-	return conc2Slider;
+	return concLight2Slider;
+}
+float Gui::getAttLight2()
+{
+	return attLight2Slider;
 }
 
 bool Gui::getLight3()
@@ -635,6 +647,10 @@ int Gui::getBLight3()
 {
 	return BLight3Slider;
 }
+float Gui::getAttLight3()
+{
+	return attLight3Slider;
+}
 
 bool Gui::getLight4()
 {
@@ -663,6 +679,10 @@ int Gui::getGLight4()
 int Gui::getBLight4()
 {
 	return BLight4Slider;
+}
+float Gui::getAttLight4()
+{
+	return attLight4Slider;
 }
 
 

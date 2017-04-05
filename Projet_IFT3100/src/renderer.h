@@ -217,6 +217,7 @@ public:
 	int RLight1;
 	int GLight1;
 	int BLight1;
+	float attLight1;
 	ofLight * light1;
 
 	bool light2T = false;
@@ -228,6 +229,7 @@ public:
 	int BLight2;
 	float cutLight2;
 	float concLight2;
+	float attLight2;
 	ofLight * light2;
 
 	bool light3T = false;
@@ -237,6 +239,7 @@ public:
 	float xLight3;
 	float yLight3;
 	float zLight3;
+	float attLight3;
 	ofVec3f light3Ori;
 	ofLight * light3;
 
@@ -247,6 +250,7 @@ public:
 	int RLight4;
 	int GLight4;
 	int BLight4;
+	float attLight4;
 	ofLight * light4;
 
 	ofMaterial material;

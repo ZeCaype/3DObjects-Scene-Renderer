@@ -110,12 +110,12 @@ void Renderer::draw()
 	light->setAmbientColor(ofColor(RLight1, GLight1, BLight1));
 	light->setSpecularColor(ofColor(RLight1 / 2, GLight1 / 2, BLight1 / 2));
 	light->setDiffuseColor(ofColor(RLight1, GLight1, BLight1));
-	//light->setAttenuation();
+	light->setAttenuation(attLight1);
 	light1->setPosition(0, -3000, 0);
 	light1->setDiffuseColor(ofColor(RLight1, GLight1, BLight1));
 	light1->setSpecularColor(ofColor(RLight1 / 2, GLight1 / 2, BLight1 / 2));
 	light1->setAmbientColor(ofColor(RLight1, GLight1, BLight1));
-	//light1->setAttenuation();
+	light1->setAttenuation(attLight1);
 
 	if (light2T == true) light2->enable();
 	else if (!light2T == true) light2->disable();
@@ -125,7 +125,7 @@ void Renderer::draw()
 	light2->setAmbientColor(ofColor(0, 0, 0));
 	light2->setSpotlightCutOff(cutLight2);
 	light2->setSpotConcentration(concLight2);
-	//light2->setAttenuation();
+	light2->setAttenuation(attLight2);
 
 	if (light3T == true) light3->enable();
 	else if (!light3T == true) light3->disable();
@@ -136,7 +136,7 @@ void Renderer::draw()
 	light3->setSpecularColor(ofColor(255, 255, 255));
 	light3->setAmbientColor(ofColor(0, 0, 0));
 	light3->setDirectional();
-	//light3->setAttenuation();
+	light3->setAttenuation(attLight3);
 
 	if (light4T == true) light4->enable();
 	else if (!light4T == true) light4->disable();
@@ -145,7 +145,7 @@ void Renderer::draw()
 	light4->setSpecularColor(ofColor(255, 255, 255));
 	light4->setAmbientColor(ofColor(0, 0, 0));
 	light4->setPointLight();
-	//light4->setAttenuation();
+	light4->setAttenuation(attLight4);
 
 	material.setShininess(120);
 	material.setSpecularColor(ofColor(255, 255, 255, 255));

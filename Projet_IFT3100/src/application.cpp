@@ -229,6 +229,7 @@ void Application::update()
 	renderer->RLight1 = gui->getRLight1();
 	renderer->GLight1 = gui->getGLight1();
 	renderer->BLight1 = gui->getBLight1();
+	renderer->attLight1 = gui->getAttLight1();
 
 	renderer->light2T = gui->getLight2();
 	renderer->xLight2 = gui->getXLight2();
@@ -239,6 +240,7 @@ void Application::update()
 	renderer->BLight2 = gui->getBLight2();
 	renderer->cutLight2 = gui->getCutLight2();
 	renderer->concLight2 = gui->getConcLight2();
+	renderer->attLight2 = gui->getAttLight2();
 
 	renderer->light3T = gui->getLight3();
 	renderer->xLight3 = gui->getXLight3();
@@ -247,6 +249,7 @@ void Application::update()
 	renderer->RLight3 = gui->getRLight3();
 	renderer->GLight3 = gui->getGLight3();
 	renderer->BLight3 = gui->getBLight3();
+	renderer->attLight3 = gui->getAttLight3();
 
 	renderer->light4T = gui->getLight4();
 	renderer->xLight4 = gui->getXLight4();
@@ -255,6 +258,7 @@ void Application::update()
 	renderer->RLight4 = gui->getRLight4();
 	renderer->GLight4 = gui->getGLight4();
 	renderer->BLight4 = gui->getBLight4();
+	renderer->attLight4 = gui->getAttLight4();
 
 
 	// Autres /////////////////////////////////////////////////////////////////////////////////////

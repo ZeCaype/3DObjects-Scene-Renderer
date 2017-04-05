@@ -238,10 +238,6 @@ public:
 
 	// Lumière /////////////////////////////////////////////////////////////////////////////////////
 	ofxPanel guiLightPart1;
-	ofxToggle light1Toggle;
-	ofxIntSlider RLight1Slider;
-	ofxIntSlider GLight1Slider;
-	ofxIntSlider BLight1Slider;
 	ofxToggle light2Toggle;
 	ofxIntSlider xLight2Slider;
 	ofxIntSlider yLight2Slider;
@@ -249,20 +245,9 @@ public:
 	ofxIntSlider RLight2Slider;
 	ofxIntSlider GLight2Slider;
 	ofxIntSlider BLight2Slider;
-	ofxFloatSlider cut2Slider;
-	ofxFloatSlider conc2Slider;
-	ofxFloatSlider vectXLight2Slider;
-	ofxFloatSlider vectYLight2Slider;
-	ofxFloatSlider vectZLight2Slider;
-
-	ofxPanel guiLightPart2;
-	ofxToggle light3Toggle;
-	ofxIntSlider RLight3Slider;
-	ofxIntSlider GLight3Slider;
-	ofxIntSlider BLight3Slider;
-	ofxFloatSlider xLight3Slider;
-	ofxFloatSlider yLight3Slider;
-	ofxFloatSlider zLight3Slider;
+	ofxFloatSlider cutLight2Slider;
+	ofxFloatSlider concLight2Slider;
+	ofxFloatSlider attLight2Slider;
 	ofxToggle light4Toggle;
 	ofxIntSlider xLight4Slider;
 	ofxIntSlider yLight4Slider;
@@ -270,11 +255,28 @@ public:
 	ofxIntSlider RLight4Slider;
 	ofxIntSlider GLight4Slider;
 	ofxIntSlider BLight4Slider;
+	ofxFloatSlider attLight4Slider;
+
+	ofxPanel guiLightPart2;
+	ofxToggle light1Toggle;
+	ofxIntSlider RLight1Slider;
+	ofxIntSlider GLight1Slider;
+	ofxIntSlider BLight1Slider;
+	ofxFloatSlider attLight1Slider;
+	ofxToggle light3Toggle;
+	ofxIntSlider RLight3Slider;
+	ofxIntSlider GLight3Slider;
+	ofxIntSlider BLight3Slider;
+	ofxFloatSlider xLight3Slider;
+	ofxFloatSlider yLight3Slider;
+	ofxFloatSlider zLight3Slider;
+	ofxFloatSlider attLight3Slider;
 
 	bool getLight1();
 	int getRLight1();
 	int getGLight1();
 	int getBLight1();
+	float getAttLight1();
 
 	bool getLight2();
 	int getXLight2();
@@ -285,6 +287,7 @@ public:
 	int getBLight2();
 	float getCutLight2();
 	float getConcLight2();
+	float getAttLight2();
 
 	bool getLight3();
 	float getXLight3();
@@ -293,6 +296,7 @@ public:
 	int getRLight3();
 	int getGLight3();
 	int getBLight3();
+	float getAttLight3();
 
 	bool getLight4();
 	int getXLight4();
@@ -301,6 +305,7 @@ public:
 	int getRLight4();
 	int getGLight4();
 	int getBLight4();
+	float getAttLight4();
 
 	// Autres /////////////////////////////////////////////////////////////////////////////////////
 	int offsetX;
