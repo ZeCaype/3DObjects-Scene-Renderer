@@ -260,6 +260,7 @@ void Application::update()
 	renderer->BLight4 = gui->getBLight4();
 	renderer->attLight4 = gui->getAttLight4();
 
+	renderer->toggleMat = gui->getMat();
 	renderer->shinyMat = gui->getShinyMat();
 	renderer->hueSpeMat = gui->getHueSpeMat();
 	renderer->satSpeMat = gui->getSatSpeMat();

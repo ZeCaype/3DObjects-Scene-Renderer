@@ -253,6 +253,7 @@ public:
 	float attLight4;
 	ofLight * light4;
 
+	bool toggleMat = false;
 	int shinyMat;
 	int hueSpeMat; int satSpeMat;
 	int hueEmiMat; int satEmiMat;

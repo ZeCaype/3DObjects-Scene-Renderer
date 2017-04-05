@@ -146,13 +146,15 @@ void Renderer::draw()
 	light4->setAmbientColor(ofColor(0, 0, 0));
 	light4->setPointLight();
 	light4->setAttenuation(attLight4);
-
-	material.setShininess(shinyMat);
-	material.setSpecularColor(ofColor::fromHsb(hueSpeMat, satSpeMat, 255, 255));
-	material.setEmissiveColor(ofColor::fromHsb(hueEmiMat, satEmiMat, 255, 255));
-	material.setDiffuseColor(ofColor::fromHsb(hueDifMat, satDifMat, 255, 255));
-	material.setAmbientColor(ofColor::fromHsb(hueAmbMat, satAmbMat, 255, 255));
 	
+	if (toggleMat) {
+		material.setShininess(shinyMat);
+		material.setEmissiveColor(ofColor::fromHsb(hueEmiMat, satEmiMat, 255, 255));
+		material.setSpecularColor(ofColor::fromHsb(hueSpeMat, satSpeMat, 255, 255));
+		material.setDiffuseColor(ofColor::fromHsb(hueDifMat, satDifMat, 255, 255));
+		material.setAmbientColor(ofColor::fromHsb(hueAmbMat, satAmbMat, 255, 255));
+	}
+
 	camera->begin();
 
 	//if (light1T) light1->draw();
@@ -300,11 +302,9 @@ void Renderer::draw()
 
 
 	}
-
-	
-
 	ofPopMatrix();
 
+	if (toggleMat) material.begin();
 	if (primitive3dSphere == true)
 	{
 
@@ -443,14 +443,13 @@ void Renderer::draw()
 		}
 
 	}
+	if (toggleMat) material.end();
 
-	material.begin();
 	// Importation d'un modèle 3D
 	if (isModelLoaded == true)
 	{
 		model.drawFaces();
 	}
-	material.end();
 
 	// Nuage de points
 	if (nuageDePoint == true) {

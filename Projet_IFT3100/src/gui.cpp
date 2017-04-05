@@ -185,12 +185,13 @@ void Gui::reset() {
 	guiLightPart2.add(BLight3Slider.setup("B Dir", 255, 0, 255));
 	guiLightPart2.add(attLight3Slider.setup("Att Dir", 1.0, 0.00001, 1.99999));
 
-	guiMaterial.setup("Materiau", "", 630, 590);
-	guiMaterial.add(shinyMatSlider.setup("Shiny Mat", 0, 0, 255));
-	guiMaterial.add(hueSpeMatSlider.setup("Hue Spe Mat", 0, 0, 255));
-	guiMaterial.add(satSpeMatSlider.setup("Sat Spe Mat", 0, 0, 255));
+	guiMaterial.setup("Materiau", "", 630, 588);
+	guiMaterial.add(toggleMat.setup("Materiau", false));
+	guiMaterial.add(shinyMatSlider.setup("Shiny Mat", 0, 0, 100));
 	guiMaterial.add(hueEmiMatSlider.setup("Hue Emi Mat", 0, 0, 255));
 	guiMaterial.add(satEmiMatSlider.setup("Sat Emi Mat", 0, 0, 255));
+	guiMaterial.add(hueSpeMatSlider.setup("Hue Spe Mat", 0, 0, 255));
+	guiMaterial.add(satSpeMatSlider.setup("Sat Spe Mat", 0, 0, 255));
 	guiMaterial.add(hueDifMatSlider.setup("Hue Dif Mat", 0, 0, 255));
 	guiMaterial.add(satDifMatSlider.setup("Sat Dif Mat", 0, 0, 255));
 	guiMaterial.add(hueAmbMatSlider.setup("Hue Amb Mat", 0, 0, 255));
@@ -697,6 +698,10 @@ float Gui::getAttLight4()
 	return attLight4Slider;
 }
 
+bool Gui::getMat()
+{
+	return toggleMat;
+}
 int Gui::getShinyMat()
 {
 	return shinyMatSlider;
