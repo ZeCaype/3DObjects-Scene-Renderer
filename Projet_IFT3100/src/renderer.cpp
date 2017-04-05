@@ -109,9 +109,9 @@ void Renderer::draw()
 	if (light1T == true) light1->enable();
 	else if (!light1T == true) light1->disable();
 	light1->setPosition(xLight1, yLight1 - 250, zLight1 - 200);
-	light1->setDiffuseColor(ofColor(RLight1, GLight1, BLight1));
-	light1->setSpecularColor(ofColor(255, 255, 255));
-	light1->setAmbientColor(ofColor(0, 0, 0));
+	light1->setDiffuseColor(ofColor(RLight1, GLight1, BLight1, 255));
+	light1->setSpecularColor(ofColor(RLight1, GLight1, BLight1, 0));
+	light1->setAmbientColor(ofColor(RLight1, GLight1, BLight1, 255));
 	//light1->setAttenuation();
 
 	if (light2T == true) light2->enable();
@@ -152,9 +152,9 @@ void Renderer::draw()
 	
 	camera->begin();
 
-	if (light1T) light1->draw();
+	//if (light1T) light1->draw();
 	if (light2T) light2->draw();
-	if (light3T) light3->draw();
+	//if (light3T) light3->draw();
 	if (light4T) light4->draw();
 
 	ofFill();
