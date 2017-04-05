@@ -272,6 +272,8 @@ public:
 	ofxFloatSlider zLight3Slider;
 	ofxFloatSlider attLight3Slider;
 
+	ofxPanel guiMaterial;
+
 	bool getLight1();
 	int getRLight1();
 	int getGLight1();

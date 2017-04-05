@@ -184,6 +184,8 @@ void Gui::reset() {
 	guiLightPart2.add(GLight3Slider.setup("G Dir", 255, 0, 255));
 	guiLightPart2.add(BLight3Slider.setup("B Dir", 255, 0, 255));
 	guiLightPart2.add(attLight3Slider.setup("Att Dir", 1.0, 0.00001, 1.99999));
+
+	guiMaterial.setup("Materiau", "", 425, 686);
 }
 
 // Fonction de mise à jour du gui
@@ -205,6 +207,7 @@ void Gui::draw()
 	guiScene.draw();
 	guiLightPart1.draw();
 	guiLightPart2.draw();
+	guiMaterial.draw();
 	guiPrimitive3d.draw();
 }
 
