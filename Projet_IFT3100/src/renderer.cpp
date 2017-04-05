@@ -100,26 +100,22 @@ void Renderer::draw()
 	ofBackground(rfond, gfond, bfond);
 
 	// Activation de la lumière de fond
-	light->disable();
+	light->disable(); // Semble être une lumière inutile
 	light->setAmbientColor(ofColor(127, 127, 127));
 	light->setSpecularColor(ofColor(60, 60, 60));
 	light->setPosition(0, 0, -1000);
 
+	// Lumières
 	if (light1T == true) light1->enable();
 	else if (!light1T == true) light1->disable();
-	if (light2T == true) light2->enable();
-	else if (!light2T == true) light2->disable();
-	if (light3T == true) light3->enable();
-	else if (!light3T == true) light3->disable();
-	if (light4T == true) light4->enable();
-	else if (!light4T == true) light4->disable();
-
 	light1->setPosition(xLight1, yLight1 - 250, zLight1 - 200);
 	light1->setDiffuseColor(ofColor(RLight1, GLight1, BLight1));
 	light1->setSpecularColor(ofColor(255, 255, 255));
 	light1->setAmbientColor(ofColor(0, 0, 0));
 	//light1->setAttenuation();
 
+	if (light2T == true) light2->enable();
+	else if (!light2T == true) light2->disable();
 	light2->setPosition(xLight2, yLight2 - 250, zLight2 - 200);
 	light2->setDiffuseColor(ofColor(RLight2, GLight2, BLight2));
 	light2->setSpecularColor(ofColor(255, 255, 255));
@@ -128,6 +124,8 @@ void Renderer::draw()
 	light2->setSpotConcentration(concLight2);
 	//light2->setAttenuation();
 
+	if (light3T == true) light3->enable();
+	else if (!light3T == true) light3->disable();
 	light3->setPosition(0, 0 - 250, 0 - 200);
 	light3->setDiffuseColor(ofColor(RLight3, GLight3, BLight3));
 	light3->setSpecularColor(ofColor(255, 255, 255));
@@ -137,8 +135,14 @@ void Renderer::draw()
 	setLightOri(*light3, light3Ori);
 	//light3->setAttenuation();
 
-	light4->setPosition(xLight4, yLight4, zLight4);
-	
+	if (light4T == true) light4->enable();
+	else if (!light4T == true) light4->disable();
+	light4->setPosition(xLight4, yLight4 - 250, zLight4 - 200);
+	light4->setDiffuseColor(ofColor(RLight4, GLight4, BLight4));
+	light4->setSpecularColor(ofColor(255, 255, 255));
+	light4->setAmbientColor(ofColor(0, 0, 0));
+	//light4->setAttenuation();
+
 	material.setShininess(120);
 	material.setSpecularColor(ofColor(255, 255, 255, 255));
 	material.setEmissiveColor(ofColor(0, 0, 0, 255));
@@ -150,6 +154,7 @@ void Renderer::draw()
 	if (light1T) light1->draw();
 	if (light2T) light2->draw();
 	if (light3T) light3->draw();
+	if (light4T) light4->draw();
 
 	ofFill();
 

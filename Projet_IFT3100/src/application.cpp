@@ -247,6 +247,9 @@ void Application::update()
 	renderer->xLight4 = (gui->getXLight4());
 	renderer->yLight4 = (gui->getYLight4());
 	renderer->zLight4 = (gui->getZLight4());
+	renderer->RLight4 = gui->getRLight4();
+	renderer->GLight4 = gui->getGLight4();
+	renderer->BLight4 = gui->getBLight4();
 
 
 	// Autres /////////////////////////////////////////////////////////////////////////////////////

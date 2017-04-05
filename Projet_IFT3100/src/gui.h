@@ -270,7 +270,9 @@ public:
 	ofxIntSlider xLight4Slider;
 	ofxIntSlider yLight4Slider;
 	ofxIntSlider zLight4Slider;
-	
+	ofxIntSlider RLight4Slider;
+	ofxIntSlider GLight4Slider;
+	ofxIntSlider BLight4Slider;
 
 	bool getLight1();
 	int getXLight1();
@@ -302,7 +304,9 @@ public:
 	int getXLight4();
 	int getYLight4();
 	int getZLight4();
-
+	int getRLight4();
+	int getGLight4();
+	int getBLight4();
 
 	// Autres /////////////////////////////////////////////////////////////////////////////////////
 	int offsetX;

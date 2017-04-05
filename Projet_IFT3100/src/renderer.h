@@ -244,6 +244,9 @@ public:
 	int xLight4;
 	int yLight4;
 	int zLight4;
+	int RLight4;
+	int GLight4;
+	int BLight4;
 	ofLight * light4;
 
 	ofMaterial material;
