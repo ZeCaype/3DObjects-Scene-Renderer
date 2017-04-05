@@ -4,7 +4,6 @@
 Renderer::Renderer()
 {
 	light = nullptr;
-
 	light1 = nullptr;
 	light2 = nullptr;
 	light3 = nullptr;
@@ -25,6 +24,7 @@ void Renderer::setup()
 	ofSetFrameRate(60);
 	ofEnableDepthTest();
 	ofEnableLighting();
+	ofEnableAlphaBlending();
 
 	// Paramétrisation de la lumière (enfin de voir les modèles correctement)
 	ofSetSmoothLighting(true);
@@ -101,17 +101,20 @@ void Renderer::draw()
 
 	// Activation de la lumière de fond
 	light->disable(); // Semble être une lumière inutile
-	light->setAmbientColor(ofColor(127, 127, 127));
-	light->setSpecularColor(ofColor(60, 60, 60));
-	light->setPosition(0, 0, -1000);
 
 	// Lumières
-	if (light1T == true) light1->enable();
-	else if (!light1T == true) light1->disable();
-	light1->setPosition(xLight1, yLight1 - 250, zLight1 - 200);
-	light1->setDiffuseColor(ofColor(RLight1, GLight1, BLight1, 255));
-	light1->setSpecularColor(ofColor(RLight1, GLight1, BLight1, 0));
-	light1->setAmbientColor(ofColor(RLight1, GLight1, BLight1, 255));
+
+	if (light1T == true) { light1->enable(); light->enable(); }
+	else if (!light1T == true) { light1->disable(); light->disable(); }
+	light->setPosition(0, 3000, 0);
+	light->setAmbientColor(ofColor(RLight1, GLight1, BLight1));
+	light->setSpecularColor(ofColor(RLight1 / 2, GLight1 / 2, BLight1 / 2));
+	light->setDiffuseColor(ofColor(RLight1, GLight1, BLight1));
+	//light->setAttenuation();
+	light1->setPosition(0, -3000, 0);
+	light1->setDiffuseColor(ofColor(RLight1, GLight1, BLight1));
+	light1->setSpecularColor(ofColor(RLight1 / 2, GLight1 / 2, BLight1 / 2));
+	light1->setAmbientColor(ofColor(RLight1, GLight1, BLight1));
 	//light1->setAttenuation();
 
 	if (light2T == true) light2->enable();
@@ -664,7 +667,6 @@ void Renderer::setLightOri(ofLight &light, ofVec3f rot)
 Renderer::~Renderer()
 {
 	if (light != nullptr) delete light;
-
 	if (light1 != nullptr) delete light1;
 	if (light2 != nullptr) delete light2;
 	if (light3 != nullptr) delete light3;

@@ -226,9 +226,6 @@ void Application::update()
 	// Lumières /////////////////////////////////////////////////////////////////////////////////////
 	// Appel pour la position de la lumière
 	renderer->light1T = gui->getLight1();
-	renderer->xLight1 = gui->getXLight1();
-	renderer->yLight1 = gui->getYLight1();
-	renderer->zLight1 = gui->getZLight1();
 	renderer->RLight1 = gui->getRLight1();
 	renderer->GLight1 = gui->getGLight1();
 	renderer->BLight1 = gui->getBLight1();

@@ -151,13 +151,6 @@ void Gui::reset() {
 
 	// Lumières
 	guiLightPart1.setup("Lumiere 1", "", 425, 320);
-	guiLightPart1.add(light1Toggle.setup("Lumiere Ambiante", false));
-	guiLightPart1.add(xLight1Slider.setup("x Amb", 0, -300, 300));
-	guiLightPart1.add(yLight1Slider.setup("y Amb", 0, -300, 300));
-	guiLightPart1.add(zLight1Slider.setup("z Amb", 0, -300, 300));
-	guiLightPart1.add(RLight1Slider.setup("R Amb", 255, 0, 255));
-	guiLightPart1.add(GLight1Slider.setup("G Amb", 255, 0, 255));
-	guiLightPart1.add(BLight1Slider.setup("B Amb", 255, 0, 255));
 	guiLightPart1.add(light2Toggle.setup("Lumiere Projecteur", false));
 	guiLightPart1.add(xLight2Slider.setup("x Proj", 0, -300, 300));
 	guiLightPart1.add(yLight2Slider.setup("y Proj", 0, -300, 300));
@@ -167,8 +160,19 @@ void Gui::reset() {
 	guiLightPart1.add(BLight2Slider.setup("B Proj", 255, 0, 255));
 	guiLightPart1.add(cut2Slider.setup("CutOff Proj", 45, 0, 90));
 	guiLightPart1.add(conc2Slider.setup("Concentration Proj", 0, 0, 100));
+	guiLightPart1.add(light4Toggle.setup("Lumiere Ponctuelle", false));
+	guiLightPart1.add(xLight4Slider.setup("x Ponct", 0, -300, 300));
+	guiLightPart1.add(yLight4Slider.setup("y Ponct", 0, -300, 300));
+	guiLightPart1.add(zLight4Slider.setup("z Ponct", 0, -300, 300));
+	guiLightPart1.add(RLight4Slider.setup("R Ponct", 255, 0, 255));
+	guiLightPart1.add(GLight4Slider.setup("G Ponct", 255, 0, 255));
+	guiLightPart1.add(BLight4Slider.setup("B Ponct", 255, 0, 255));
 
 	guiLightPart2.setup("Lumiere 2", "", 630, 320);
+	guiLightPart2.add(light1Toggle.setup("Lumiere Ambiante", false));
+	guiLightPart2.add(RLight1Slider.setup("R Amb", 255, 0, 255));
+	guiLightPart2.add(GLight1Slider.setup("G Amb", 255, 0, 255));
+	guiLightPart2.add(BLight1Slider.setup("B Amb", 255, 0, 255));
 	guiLightPart2.add(light3Toggle.setup("Lumiere Directionnelle", false));
 	guiLightPart2.add(xLight3Slider.setup("x Dir", 0, -180, 180));
 	guiLightPart2.add(yLight3Slider.setup("y Dir", 0, -180, 180));
@@ -176,13 +180,6 @@ void Gui::reset() {
 	guiLightPart2.add(RLight3Slider.setup("R Dir", 255, 0, 255));
 	guiLightPart2.add(GLight3Slider.setup("G Dir", 255, 0, 255));
 	guiLightPart2.add(BLight3Slider.setup("B Dir", 255, 0, 255));
-	guiLightPart2.add(light4Toggle.setup("Lumiere Ponctuelle", false));
-	guiLightPart2.add(xLight4Slider.setup("x Ponct", 0, -300, 300));
-	guiLightPart2.add(yLight4Slider.setup("y Ponct", 0, -300, 300));
-	guiLightPart2.add(zLight4Slider.setup("z Ponct", 0, -300, 300));
-	guiLightPart2.add(RLight4Slider.setup("R Ponct", 255, 0, 255));
-	guiLightPart2.add(GLight4Slider.setup("G Ponct", 255, 0, 255));
-	guiLightPart2.add(BLight4Slider.setup("B Ponct", 255, 0, 255));
 }
 
 // Fonction de mise à jour du gui
@@ -559,18 +556,6 @@ bool Gui::getNuageDePoint() {
 bool Gui::getLight1()
 {
 	return light1Toggle;
-}
-int Gui::getXLight1()
-{
-	return xLight1Slider;
-}
-int Gui::getYLight1()
-{
-	return yLight1Slider;
-}
-int Gui::getZLight1()
-{
-	return zLight1Slider;
 }
 int Gui::getRLight1()
 {
