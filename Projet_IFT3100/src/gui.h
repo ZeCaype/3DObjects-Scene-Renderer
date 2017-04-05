@@ -273,6 +273,15 @@ public:
 	ofxFloatSlider attLight3Slider;
 
 	ofxPanel guiMaterial;
+	ofxIntSlider shinyMatSlider;
+	ofxIntSlider hueSpeMatSlider;
+	ofxIntSlider satSpeMatSlider;
+	ofxIntSlider hueEmiMatSlider;
+	ofxIntSlider satEmiMatSlider;
+	ofxIntSlider hueDifMatSlider;
+	ofxIntSlider satDifMatSlider;
+	ofxIntSlider hueAmbMatSlider;
+	ofxIntSlider satAmbMatSlider;
 
 	bool getLight1();
 	int getRLight1();
@@ -308,6 +317,16 @@ public:
 	int getGLight4();
 	int getBLight4();
 	float getAttLight4();
+
+	int getShinyMat();
+	int getHueSpeMat();
+	int getSatSpeMat();
+	int getHueEmiMat();
+	int getSatEmiMat();
+	int getHueDifMat();
+	int getSatDifMat();
+	int getHueAmbMat();
+	int getSatAmbMat();
 
 	// Autres /////////////////////////////////////////////////////////////////////////////////////
 	int offsetX;

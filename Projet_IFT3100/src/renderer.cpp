@@ -147,11 +147,11 @@ void Renderer::draw()
 	light4->setPointLight();
 	light4->setAttenuation(attLight4);
 
-	material.setShininess(120);
-	material.setSpecularColor(ofColor(255, 255, 255, 255));
-	material.setEmissiveColor(ofColor(0, 0, 0, 255));
-	material.setDiffuseColor(ofColor(255, 255, 255, 255));
-	material.setAmbientColor(ofColor(255, 255, 255, 255));
+	material.setShininess(shinyMat);
+	material.setSpecularColor(ofColor::fromHsb(hueSpeMat, satSpeMat, 255, 255));
+	material.setEmissiveColor(ofColor::fromHsb(hueEmiMat, satEmiMat, 255, 255));
+	material.setDiffuseColor(ofColor::fromHsb(hueDifMat, satDifMat, 255, 255));
+	material.setAmbientColor(ofColor::fromHsb(hueAmbMat, satAmbMat, 255, 255));
 	
 	camera->begin();
 

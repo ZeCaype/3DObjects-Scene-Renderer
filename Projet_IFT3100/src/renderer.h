@@ -253,6 +253,11 @@ public:
 	float attLight4;
 	ofLight * light4;
 
+	int shinyMat;
+	int hueSpeMat; int satSpeMat;
+	int hueEmiMat; int satEmiMat;
+	int hueDifMat; int satDifMat;
+	int hueAmbMat; int satAmbMat;
 	ofMaterial material;
 
 	//---------------------------------------------------------------------------------------------
