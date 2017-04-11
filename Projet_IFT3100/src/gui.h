@@ -284,6 +284,10 @@ public:
 	ofxIntSlider hueAmbMatSlider;
 	ofxIntSlider satAmbMatSlider;
 
+	ofxPanel guiIllumination;
+	ofxToggle toggleLambert;
+	ofxToggle togglePhong;
+
 	bool getLight1();
 	int getRLight1();
 	int getGLight1();
@@ -329,6 +333,9 @@ public:
 	int getSatDifMat();
 	int getHueAmbMat();
 	int getSatAmbMat();
+
+	bool getLambert();
+	bool getPhong();
 
 	// Autres /////////////////////////////////////////////////////////////////////////////////////
 	int offsetX;

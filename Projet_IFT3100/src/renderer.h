@@ -261,6 +261,9 @@ public:
 	int hueAmbMat; int satAmbMat;
 	ofMaterial material;
 
+	bool toggleLambert = false;
+	bool togglePhong = false;
+
 	//---------------------------------------------------------------------------------------------
 
 	Renderer();

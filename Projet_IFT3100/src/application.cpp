@@ -271,6 +271,9 @@ void Application::update()
 	renderer->hueAmbMat = gui->getHueAmbMat();
 	renderer->satAmbMat = gui->getSatAmbMat();
 
+	renderer->toggleLambert = gui->getLambert();
+	renderer->togglePhong = gui->getPhong();
+
 	// Autres /////////////////////////////////////////////////////////////////////////////////////
 	
 	

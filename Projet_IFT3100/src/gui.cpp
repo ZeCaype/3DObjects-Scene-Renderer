@@ -196,6 +196,10 @@ void Gui::reset() {
 	guiMaterial.add(satDifMatSlider.setup("Sat Dif Mat", 0, 0, 255));
 	guiMaterial.add(hueAmbMatSlider.setup("Hue Amb Mat", 0, 0, 255));
 	guiMaterial.add(satAmbMatSlider.setup("Sat Amb Mat", 0, 0, 255));
+
+	guiIllumination.setup("Illumination", "", 425, 685);
+	guiIllumination.add(toggleLambert.setup("Lambert", false));
+	guiIllumination.add(togglePhong.setup("Phong", false));
 }
 
 // Fonction de mise à jour du gui
@@ -218,6 +222,7 @@ void Gui::draw()
 	guiLightPart1.draw();
 	guiLightPart2.draw();
 	guiMaterial.draw();
+	guiIllumination.draw();
 	guiPrimitive3d.draw();
 }
 
@@ -738,6 +743,17 @@ int Gui::getSatAmbMat()
 {
 	return satAmbMatSlider;
 }
+
+bool Gui::getLambert()
+{
+	return toggleLambert;
+}
+bool Gui::getPhong()
+{
+	return togglePhong;
+}
+
+
 
 // Destructeur de la classe
 Gui::~Gui()
