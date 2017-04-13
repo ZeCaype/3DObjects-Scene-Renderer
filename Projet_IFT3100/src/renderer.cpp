@@ -1,10 +1,10 @@
 ﻿#include "renderer.h"
 
 // Constructeur de la classe Renderer
-Renderer::Renderer()
-{
-	light = nullptr;
-}
+//Renderer::Renderer()
+//{
+//	light = nullptr;
+//}
 
 // Fonction invoquée pour configurer les éléments du framebuffer
 void Renderer::setup()
@@ -23,7 +23,7 @@ void Renderer::setup()
 
 	// Paramétrisation de la lumière (enfin de voir les modèles correctement)
 	ofSetSmoothLighting(true);
-	light = new ofLight();
+	
 
 	// Paramétrisation de l'image
 	posRectangleX = 0;
@@ -599,7 +599,7 @@ void Renderer::updateCamera() {
 }
 
 // Destructeur de la classe Renderer
-Renderer::~Renderer()
-{
-	if (light != nullptr) delete light;
-}
+//Renderer::~Renderer()
+//{
+	//if (light != nullptr) delete light;
+//}

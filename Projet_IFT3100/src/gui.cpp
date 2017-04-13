@@ -115,7 +115,8 @@ void Gui::reset() {
 	guiColorPrimitives.add(sliderGStroke.setup("Stroke/Green", 50, 0, 255));
 	guiColorPrimitives.add(sliderBStroke.setup("Stroke/Blue", 50, 0, 255));
 	guiColorPrimitives.add(sliderRFill.setup("Fill/Red", 100, 0, 255));
-	guiColorPrimitives.add(sliderGFill.setup("Fill/Green", 100, 0, 255));
+	guiColorPrimitives.add(sliderGFill.setup("Fill/Green", 
+		100, 0, 255));
 	guiColorPrimitives.add(sliderBFill.setup("Fill/Blue", 100, 0, 255));
 	guiColorPrimitives.add(sliderFONDR.setup("Fond/Red", 0, 0, 255));
 	guiColorPrimitives.add(sliderFONDG.setup("Fond/Green", 0, 0, 255));
