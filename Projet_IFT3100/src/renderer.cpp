@@ -1,10 +1,14 @@
 ﻿#include "renderer.h"
 
 // Constructeur de la classe Renderer
-//Renderer::Renderer()
-//{
-//	light = nullptr;
-//}
+Renderer::Renderer()
+{
+	light = nullptr;
+	light1 = nullptr;
+	light2 = nullptr;
+	light3 = nullptr;
+	light4 = nullptr;
+}
 
 // Fonction invoquée pour configurer les éléments du framebuffer
 void Renderer::setup()
@@ -20,10 +24,15 @@ void Renderer::setup()
 	ofSetFrameRate(60);
 	ofEnableDepthTest();
 	ofEnableLighting();
+	ofEnableAlphaBlending();
 
 	// Paramétrisation de la lumière (enfin de voir les modèles correctement)
 	ofSetSmoothLighting(true);
-	
+	light = new ofLight();
+	light1 = new ofLight();
+	light2 = new ofLight();
+	light3 = new ofLight();
+	light4 = new ofLight();
 
 	// Paramétrisation de l'image
 	posRectangleX = 0;
@@ -51,11 +60,6 @@ void Renderer::setup()
 
 void Renderer::reset()
 {
-	// Initialisation de la lumière
-	light->setAmbientColor(ofColor(255, 255, 255));
-	light->setDiffuseColor(ofColor(255, 255, 255));
-	light->enable();
-
 	// initialisation des variables
 	cameraOffset = 2000;
 
@@ -90,22 +94,77 @@ void Renderer::update()
 // Fonction invoquée pour ajouter des éléments dans le framebuffer
 void Renderer::draw()
 {
-	
-
-
 	ofTranslate(ofGetWindowWidth() / 2, ofGetWindowHeight() / 2);
 
 	// Couleur de fond castée par les sliders
 	ofBackground(rfond, gfond, bfond);
 
+	// Activation de la lumière de fond
+	light->disable(); // Semble être une lumière inutile
+
+	// Lumières
+
+	if (light1T == true) { light1->enable(); light->enable(); }
+	else if (!light1T == true) { light1->disable(); light->disable(); }
+	light->setPosition(0, 3000, 0);
+	light->setAmbientColor(ofColor(RLight1, GLight1, BLight1));
+	light->setSpecularColor(ofColor(RLight1 / 2, GLight1 / 2, BLight1 / 2));
+	light->setDiffuseColor(ofColor(RLight1, GLight1, BLight1));
+	light->setAttenuation(attLight1);
+	light1->setPosition(0, -3000, 0);
+	light1->setDiffuseColor(ofColor(RLight1, GLight1, BLight1));
+	light1->setSpecularColor(ofColor(RLight1 / 2, GLight1 / 2, BLight1 / 2));
+	light1->setAmbientColor(ofColor(RLight1, GLight1, BLight1));
+	light1->setAttenuation(attLight1);
+
+	if (light2T == true) light2->enable();
+	else if (!light2T == true) light2->disable();
+	light2->setPosition(xLight2, yLight2 - 250, zLight2 - 200);
+	light2->setDiffuseColor(ofColor(RLight2, GLight2, BLight2));
+	light2->setSpecularColor(ofColor(255, 255, 255));
+	light2->setAmbientColor(ofColor(0, 0, 0));
+	light2->setSpotlightCutOff(cutLight2);
+	light2->setSpotConcentration(concLight2);
+	light2->setAttenuation(attLight2);
+
+	if (light3T == true) light3->enable();
+	else if (!light3T == true) light3->disable();
+	light3->setPosition(0, 0 - 250, 0 - 200);
+	light3Ori = ofVec3f(xLight3, yLight3, zLight3);
+	setLightOri(*light3, light3Ori);
+	light3->setDiffuseColor(ofColor(RLight3, GLight3, BLight3));
+	light3->setSpecularColor(ofColor(255, 255, 255));
+	light3->setAmbientColor(ofColor(0, 0, 0));
+	light3->setDirectional();
+	light3->setAttenuation(attLight3);
+
+	if (light4T == true) light4->enable();
+	else if (!light4T == true) light4->disable();
+	light4->setPosition(xLight4, yLight4 - 250, zLight4 - 200);
+	light4->setDiffuseColor(ofColor(RLight4, GLight4, BLight4));
+	light4->setSpecularColor(ofColor(255, 255, 255));
+	light4->setAmbientColor(ofColor(0, 0, 0));
+	light4->setPointLight();
+	light4->setAttenuation(attLight4);
+	
+	if (toggleMat) {
+		material.setShininess(shinyMat);
+		material.setEmissiveColor(ofColor::fromHsb(hueEmiMat, satEmiMat, 255, 255));
+		material.setSpecularColor(ofColor::fromHsb(hueSpeMat, satSpeMat, 255, 255));
+		material.setDiffuseColor(ofColor::fromHsb(hueDifMat, satDifMat, 255, 255));
+		material.setAmbientColor(ofColor::fromHsb(hueAmbMat, satAmbMat, 255, 255));
+	}
+
 	camera->begin();
 
-	// Activation de la lumière
-	light->setPosition(xLight, yLight, zLight);
+	//if (light1T) light1->draw();
+	if (light2T) light2->draw();
+	//if (light3T) light3->draw();
+	if (light4T) light4->draw();
 
 	ofFill();
 
-//TEMPORRAIRE J'AVAIS DE LA DIFFICULTÉ A VOIR LA CAMERA
+//TEMPORAIRE J'AVAIS DE LA DIFFICULTÉ A VOIR LA CAMERA
 	
 
 
@@ -243,11 +302,9 @@ void Renderer::draw()
 
 
 	}
-
-	
-
 	ofPopMatrix();
 
+	if (toggleMat) material.begin();
 	if (primitive3dSphere == true)
 	{
 
@@ -386,11 +443,8 @@ void Renderer::draw()
 		}
 
 	}
+	if (toggleMat) material.end();
 
-
-	
-
-	
 	// Importation d'un modèle 3D
 	if (isModelLoaded == true)
 	{
@@ -598,8 +652,22 @@ void Renderer::updateCamera() {
 	camera->setFarClip(cameraFar);
 }
 
+void Renderer::setLightOri(ofLight &light, ofVec3f rot)
+{
+	ofVec3f xax(1, 0, 0);
+	ofVec3f yax(0, 1, 0);
+	ofVec3f zax(0, 0, 1);
+	ofQuaternion q;
+	q.makeRotate(rot.x, xax, rot.y, yax, rot.z, zax);
+	light.setOrientation(q);
+}
+
 // Destructeur de la classe Renderer
-//Renderer::~Renderer()
-//{
-	//if (light != nullptr) delete light;
-//}
+Renderer::~Renderer()
+{
+	if (light != nullptr) delete light;
+	if (light1 != nullptr) delete light1;
+	if (light2 != nullptr) delete light2;
+	if (light3 != nullptr) delete light3;
+	if (light4 != nullptr) delete light4;
+}

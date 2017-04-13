@@ -24,9 +24,9 @@ Application::Application(Gui *guipam)
 
 	// Paramétrisation de la fenêtre du gui
 	ofGLFWWindowSettings settings;
-	settings.width = 720;
+	settings.width = 835;
 	settings.height = 800;
-	settings.setPosition(ofVec2f(700, 50));
+	settings.setPosition(ofVec2f(600 + 2*12 + 5, 34));
 	settings.resizable = false;
 	shared_ptr<ofAppBaseWindow> guiWindow = ofCreateWindow(settings);
 	guiWindow->setVerticalSync(false);
@@ -178,15 +178,23 @@ void Application::update()
 	// Caméra /////////////////////////////////////////////////////////////////////////////////////
 	// Appel des fonctions de la caméra
 
-
+	string str1 = "Camera " + renderer->cameraName + " Perspective 4:3 (1-6 wasdqe uhjkyi op)";
+	std::wstring widestr1 = std::wstring(str1.begin(), str1.end());
+	const wchar_t* widecstr1 = widestr1.c_str();
+	string str2 = "Camera " + renderer->cameraName + " Perspective 16:9 (1-6 wasdqe uhjkyi op)";
+	std::wstring widestr2 = std::wstring(str2.begin(), str2.end());
+	const wchar_t* widecstr2 = widestr2.c_str();
+	string str3 = "Camera " + renderer->cameraName + " Orthographique";
+	std::wstring widestr3 = std::wstring(str3.begin(), str3.end());
+	const wchar_t* widecstr3 = widestr3.c_str();
 	if (renderer->isCameraPerspective && gui->getAspectRatio()) {
-		ofSetWindowTitle("Camera " + renderer->cameraName + " Perspective 4:3 (1-6 wasdqe uhjkyi op)");
+		SetConsoleTitle(widecstr1);
 	}
 	else if (renderer->isCameraPerspective) {
-		ofSetWindowTitle("Camera " + renderer->cameraName + " Perspective 16:9 (1-6 wasdqe uhjkyi op)");
+		SetConsoleTitle(widecstr2);
 	}
 	else
-		ofSetWindowTitle("Camera " + renderer->cameraName + " Orthographique");
+		SetConsoleTitle(widecstr3);
 
 	renderer->isCameraMoveForward = isKeyPressW;
 	renderer->isCameraMoveBackward = isKeyPressS;
@@ -213,6 +221,59 @@ void Application::update()
 
 
 	renderer->aspectRatio4_3 = gui->getAspectRatio();
+
+
+	// Lumières /////////////////////////////////////////////////////////////////////////////////////
+	// Appel pour la position de la lumière
+	renderer->light1T = gui->getLight1();
+	renderer->RLight1 = gui->getRLight1();
+	renderer->GLight1 = gui->getGLight1();
+	renderer->BLight1 = gui->getBLight1();
+	renderer->attLight1 = gui->getAttLight1();
+
+	renderer->light2T = gui->getLight2();
+	renderer->xLight2 = gui->getXLight2();
+	renderer->yLight2 = gui->getYLight2();
+	renderer->zLight2 = gui->getZLight2();
+	renderer->RLight2 = gui->getRLight2();
+	renderer->GLight2 = gui->getGLight2();
+	renderer->BLight2 = gui->getBLight2();
+	renderer->cutLight2 = gui->getCutLight2();
+	renderer->concLight2 = gui->getConcLight2();
+	renderer->attLight2 = gui->getAttLight2();
+
+	renderer->light3T = gui->getLight3();
+	renderer->xLight3 = gui->getXLight3();
+	renderer->yLight3 = gui->getYLight3();
+	renderer->zLight3 = gui->getZLight3();
+	renderer->RLight3 = gui->getRLight3();
+	renderer->GLight3 = gui->getGLight3();
+	renderer->BLight3 = gui->getBLight3();
+	renderer->attLight3 = gui->getAttLight3();
+
+	renderer->light4T = gui->getLight4();
+	renderer->xLight4 = gui->getXLight4();
+	renderer->yLight4 = gui->getYLight4();
+	renderer->zLight4 = gui->getZLight4();
+	renderer->RLight4 = gui->getRLight4();
+	renderer->GLight4 = gui->getGLight4();
+	renderer->BLight4 = gui->getBLight4();
+	renderer->attLight4 = gui->getAttLight4();
+
+	renderer->toggleMat = gui->getMat();
+	renderer->shinyMat = gui->getShinyMat();
+	renderer->hueSpeMat = gui->getHueSpeMat();
+	renderer->satSpeMat = gui->getSatSpeMat();
+	renderer->hueEmiMat = gui->getHueEmiMat();
+	renderer->satEmiMat = gui->getSatEmiMat();
+	renderer->hueDifMat = gui->getHueDifMat();
+	renderer->satDifMat = gui->getSatDifMat();
+	renderer->hueAmbMat = gui->getHueAmbMat();
+	renderer->satAmbMat = gui->getSatAmbMat();
+
+	renderer->toggleLambert = gui->getLambert();
+	renderer->togglePhong = gui->getPhong();
+
 	// Autres /////////////////////////////////////////////////////////////////////////////////////
 	
 	
@@ -220,10 +281,6 @@ void Application::update()
 	renderer->rfond = (gui->getFOND_R());
 	renderer->gfond = (gui->getFOND_G());
 	renderer->bfond = (gui->getFOND_B());
-	// Appel pour la position de la lumière
-	renderer->xLight = (gui->getXLight());
-	renderer->yLight = (gui->getYLight());
-	renderer->zLight = (gui->getZLight());
 
 	// Initialisation de update() de la classe Renderer
 	renderer->update();

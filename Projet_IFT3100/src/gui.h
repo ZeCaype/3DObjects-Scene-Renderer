@@ -219,15 +219,6 @@ public:
 	bool getToggleprimitive3dStrokeSphereCouleur();
 	bool getToggleprimitive3dRotationSphereCouleur();
 
-
-
-	
-
-	
-
-
-	
-
 	// Caméra /////////////////////////////////////////////////////////////////////////////////////
 	float defaultFov;
 	int defaultCameraNear;
@@ -245,16 +236,110 @@ public:
 	int getCameraFar();
 	bool getAspectRatio();
 
+	// Lumière /////////////////////////////////////////////////////////////////////////////////////
+	ofxPanel guiLightPart1;
+	ofxToggle light2Toggle;
+	ofxIntSlider xLight2Slider;
+	ofxIntSlider yLight2Slider;
+	ofxIntSlider zLight2Slider;
+	ofxIntSlider RLight2Slider;
+	ofxIntSlider GLight2Slider;
+	ofxIntSlider BLight2Slider;
+	ofxFloatSlider cutLight2Slider;
+	ofxFloatSlider concLight2Slider;
+	ofxFloatSlider attLight2Slider;
+	ofxToggle light4Toggle;
+	ofxIntSlider xLight4Slider;
+	ofxIntSlider yLight4Slider;
+	ofxIntSlider zLight4Slider;
+	ofxIntSlider RLight4Slider;
+	ofxIntSlider GLight4Slider;
+	ofxIntSlider BLight4Slider;
+	ofxFloatSlider attLight4Slider;
+
+	ofxPanel guiLightPart2;
+	ofxToggle light1Toggle;
+	ofxIntSlider RLight1Slider;
+	ofxIntSlider GLight1Slider;
+	ofxIntSlider BLight1Slider;
+	ofxFloatSlider attLight1Slider;
+	ofxToggle light3Toggle;
+	ofxIntSlider RLight3Slider;
+	ofxIntSlider GLight3Slider;
+	ofxIntSlider BLight3Slider;
+	ofxFloatSlider xLight3Slider;
+	ofxFloatSlider yLight3Slider;
+	ofxFloatSlider zLight3Slider;
+	ofxFloatSlider attLight3Slider;
+
+	ofxPanel guiMaterial;
+	ofxToggle toggleMat;
+	ofxIntSlider shinyMatSlider;
+	ofxIntSlider hueEmiMatSlider;
+	ofxIntSlider satEmiMatSlider;
+	ofxIntSlider hueSpeMatSlider;
+	ofxIntSlider satSpeMatSlider;
+	ofxIntSlider hueDifMatSlider;
+	ofxIntSlider satDifMatSlider;
+	ofxIntSlider hueAmbMatSlider;
+	ofxIntSlider satAmbMatSlider;
+
+	ofxPanel guiIllumination;
+	ofxToggle toggleLambert;
+	ofxToggle togglePhong;
+
+	bool getLight1();
+	int getRLight1();
+	int getGLight1();
+	int getBLight1();
+	float getAttLight1();
+
+	bool getLight2();
+	int getXLight2();
+	int getYLight2();
+	int getZLight2();
+	int getRLight2();
+	int getGLight2();
+	int getBLight2();
+	float getCutLight2();
+	float getConcLight2();
+	float getAttLight2();
+
+	bool getLight3();
+	float getXLight3();
+	float getYLight3();
+	float getZLight3();
+	int getRLight3();
+	int getGLight3();
+	int getBLight3();
+	float getAttLight3();
+
+	bool getLight4();
+	int getXLight4();
+	int getYLight4();
+	int getZLight4();
+	int getRLight4();
+	int getGLight4();
+	int getBLight4();
+	float getAttLight4();
+
+	bool getMat();
+	int getShinyMat();
+	int getHueSpeMat();
+	int getSatSpeMat();
+	int getHueEmiMat();
+	int getSatEmiMat();
+	int getHueDifMat();
+	int getSatDifMat();
+	int getHueAmbMat();
+	int getSatAmbMat();
+
+	bool getLambert();
+	bool getPhong();
+
 	// Autres /////////////////////////////////////////////////////////////////////////////////////
 	int offsetX;
-	// Lumière
-	ofxPanel guiLight;
-	ofxIntSlider xLightSlider;
-	ofxIntSlider yLightSlider;
-	ofxIntSlider zLightSlider;
-	int getXLight();
-	int getYLight();
-	int getZLight();
+
 	// Éléments Autres
 	ofxPanel guiOptions;
 	ofxToggle rec;

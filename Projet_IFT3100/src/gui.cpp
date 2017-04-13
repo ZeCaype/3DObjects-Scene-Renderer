@@ -31,7 +31,7 @@ void Gui::setup()
 
 void Gui::reset() {
 	// Image
-	guiImage.setup("Image", "", offsetX, 10);
+	guiImage.setup("Image", "", offsetX - 20, 10);
 	guiImage.add(exportButton.setup("Exportation")); exportCheck = false;
 	guiImage.add(importButton.setup("Importation precedente")); importCheck = false;
 	guiImage.add(posImageX.setup("Position X de l'image", defaultPosX, 0, 600));
@@ -44,7 +44,7 @@ void Gui::reset() {
 	guiImage.add(alphaImage.setup("Alpha", defaultAlphaImage, 0, 255));
 
 	// Cercle UI
-	guiCircle.setup("Sphere", "", offsetX, 230);
+	guiCircle.setup("Sphere", "", offsetX - 20, 225);
 
 	guiCircle.add(primitive3dSphere.setup("Sphere", false));
 	guiCircle.add(primitive3dRotationSphere.setup("Rotation", false));
@@ -63,15 +63,14 @@ void Gui::reset() {
 
 
 	// Caméra
-	guiCamera.setup("Camera", "", 495, 450);
+	guiCamera.setup("Camera", "", 220, 52);
 	guiCamera.add(fovSlider.setup("Field of view", defaultFov, 0, 120));
 	guiCamera.add(cameraNearSlider.setup("Plan near", defaultCameraNear, 0, 999));
 	guiCamera.add(cameraFarSlider.setup("Plan far", defaultCameraFar, 1000, 12000));
 	guiCamera.add(aspectRatio4_3.setup("Ratio d'aspect 4:3", true));
 
-
 	// Primitive
-	guiPrimitive.setup("Primitives Vectorielles", "Primitives Vectorielles", 260, 200);
+	guiPrimitive.setup("Primitives Vectorielles", "Primitives Vectorielles", 220, 152);
 	// Rectangle
 	guiPrimitive.add(rec.setup("Rectangle", false));
 	guiPrimitive.add(posXSlider.setup("Largeur Rectangle", -600, -900, 900));
@@ -109,7 +108,7 @@ void Gui::reset() {
 	guiPrimitive.add(rotZSlider.setup("Z Rotation", 0, -1, 1));
 
 	//Couleurs Stroke + Fill
-	guiColorPrimitives.setup("Couleur Stroke-Fill", "", offsetX, 525);
+	guiColorPrimitives.setup("Couleur Stroke-Fill", "", offsetX - 20, 495);
 	guiColorPrimitives.add(sliderContour.setup("Largeur Contour", 50, 0, 100));
 	guiColorPrimitives.add(sliderRStroke.setup("Stroke/Red", 50, 0, 255));
 	guiColorPrimitives.add(sliderGStroke.setup("Stroke/Green", 50, 0, 255));
@@ -118,30 +117,21 @@ void Gui::reset() {
 	guiColorPrimitives.add(sliderGFill.setup("Fill/Green", 
 		100, 0, 255));
 	guiColorPrimitives.add(sliderBFill.setup("Fill/Blue", 100, 0, 255));
-	guiColorPrimitives.add(sliderFONDR.setup("Fond/Red", 0, 0, 255));
-	guiColorPrimitives.add(sliderFONDG.setup("Fond/Green", 0, 0, 255));
-	guiColorPrimitives.add(sliderFONDB.setup("Fond/Blue", 0, 0, 255));
+	guiColorPrimitives.add(sliderFONDR.setup("Fond/Red", 255, 0, 255));
+	guiColorPrimitives.add(sliderFONDG.setup("Fond/Green", 255, 0, 255));
+	guiColorPrimitives.add(sliderFONDB.setup("Fond/Blue", 255, 0, 255));
 
 	// Scène 3D
-	guiScene.setup("Scene 3D", "", 260, 10);
+	guiScene.setup("Scene 3D", "", 220, 10);
 	guiScene.add(modelButton.setup("Modele")); modelCheck = false;
 
-	// Lumière
-	guiLight.setup("Lumiere", "", 260, 90);
-	guiLight.add(xLightSlider.setup("x Lumiere", 0, -1000, 1000));
-	guiLight.add(yLightSlider.setup("y Lumiere", 0, -1000, 1000));
-	guiLight.add(zLightSlider.setup("z Lumiere", -1000, -1000, 1000));
-
 	// Options
-	guiOption.setup("Options", "", offsetX, 750);
+	guiOption.setup("Options", "", offsetX - 20, 750);
 	guiOption.add(exitButton.setup("Quitter l'application"));
 
 
 	//primitive 3d 
-	guiPrimitive3d.setup("Primitives 3D", "Primitive3D ", 495, 10);
-
-
-	
+	guiPrimitive3d.setup("Primitives 3D", "Primitive3D ", 425, 10);
 	guiPrimitive3d.add(primitive3dToggle.setup("Primitive 3D Cylindre" , false));
 	guiPrimitive3d.add(primitive3dStroke.setup("WireFrame cylindre", false));
 	guiPrimitive3d.add(primitive3dRotation.setup("Rotation cylindre", false));
@@ -160,9 +150,57 @@ void Gui::reset() {
 	
 	guiPrimitive3d.add(nuageDePoint.setup("Nuage de Points", false));
 
+	// Lumières
+	guiLightPart1.setup("Lumiere 1", "", 425, 320);
+	guiLightPart1.add(light2Toggle.setup("Lumiere Projecteur", false));
+	guiLightPart1.add(xLight2Slider.setup("x Proj", 0, -300, 300));
+	guiLightPart1.add(yLight2Slider.setup("y Proj", 0, -300, 300));
+	guiLightPart1.add(zLight2Slider.setup("z Proj", 0, -300, 300));
+	guiLightPart1.add(RLight2Slider.setup("R Proj", 255, 0, 255));
+	guiLightPart1.add(GLight2Slider.setup("G Proj", 255, 0, 255));
+	guiLightPart1.add(BLight2Slider.setup("B Proj", 255, 0, 255));
+	guiLightPart1.add(cutLight2Slider.setup("CutOff Proj", 45, 0, 90));
+	guiLightPart1.add(concLight2Slider.setup("Concentration Proj", 0, 0, 100));
+	guiLightPart1.add(attLight2Slider.setup("Att Proj", 1.0, 0.00001, 1.99999));
+	guiLightPart1.add(light4Toggle.setup("Lumiere Ponctuelle", false));
+	guiLightPart1.add(xLight4Slider.setup("x Ponct", 0, -300, 300));
+	guiLightPart1.add(yLight4Slider.setup("y Ponct", 0, -300, 300));
+	guiLightPart1.add(zLight4Slider.setup("z Ponct", 0, -300, 300));
+	guiLightPart1.add(RLight4Slider.setup("R Ponct", 255, 0, 255));
+	guiLightPart1.add(GLight4Slider.setup("G Ponct", 255, 0, 255));
+	guiLightPart1.add(BLight4Slider.setup("B Ponct", 255, 0, 255));
+	guiLightPart1.add(attLight4Slider.setup("Att Ponct", 1.0, 0.00001, 1.99999));
 
-	//primitive 3d 2 
+	guiLightPart2.setup("Lumiere 2", "", 630, 320);
+	guiLightPart2.add(light1Toggle.setup("Lumiere Ambiante", false));
+	guiLightPart2.add(RLight1Slider.setup("R Amb", 255, 0, 255));
+	guiLightPart2.add(GLight1Slider.setup("G Amb", 255, 0, 255));
+	guiLightPart2.add(BLight1Slider.setup("B Amb", 255, 0, 255));
+	guiLightPart2.add(attLight1Slider.setup("Att Amb", 1.0, 0.00001, 1.99999));
+	guiLightPart2.add(light3Toggle.setup("Lumiere Directionnelle", false));
+	guiLightPart2.add(xLight3Slider.setup("x Dir", 0, -180, 180));
+	guiLightPart2.add(yLight3Slider.setup("y Dir", 0, -180, 180));
+	guiLightPart2.add(zLight3Slider.setup("z Dir", 0, -180, 180));
+	guiLightPart2.add(RLight3Slider.setup("R Dir", 255, 0, 255));
+	guiLightPart2.add(GLight3Slider.setup("G Dir", 255, 0, 255));
+	guiLightPart2.add(BLight3Slider.setup("B Dir", 255, 0, 255));
+	guiLightPart2.add(attLight3Slider.setup("Att Dir", 1.0, 0.00001, 1.99999));
 
+	guiMaterial.setup("Materiau", "", 630, 588);
+	guiMaterial.add(toggleMat.setup("Materiau", false));
+	guiMaterial.add(shinyMatSlider.setup("Shiny Mat", 0, 0, 100));
+	guiMaterial.add(hueEmiMatSlider.setup("Hue Emi Mat", 0, 0, 255));
+	guiMaterial.add(satEmiMatSlider.setup("Sat Emi Mat", 0, 0, 255));
+	guiMaterial.add(hueSpeMatSlider.setup("Hue Spe Mat", 0, 0, 255));
+	guiMaterial.add(satSpeMatSlider.setup("Sat Spe Mat", 0, 0, 255));
+	guiMaterial.add(hueDifMatSlider.setup("Hue Dif Mat", 0, 0, 255));
+	guiMaterial.add(satDifMatSlider.setup("Sat Dif Mat", 0, 0, 255));
+	guiMaterial.add(hueAmbMatSlider.setup("Hue Amb Mat", 0, 0, 255));
+	guiMaterial.add(satAmbMatSlider.setup("Sat Amb Mat", 0, 0, 255));
+
+	guiIllumination.setup("Illumination", "", 425, 685);
+	guiIllumination.add(toggleLambert.setup("Lambert", false));
+	guiIllumination.add(togglePhong.setup("Phong", false));
 }
 
 // Fonction de mise à jour du gui
@@ -182,7 +220,10 @@ void Gui::draw()
 	guiOptions.draw();
 	guiColorPrimitives.draw();
 	guiScene.draw();
-	guiLight.draw();
+	guiLightPart1.draw();
+	guiLightPart2.draw();
+	guiMaterial.draw();
+	guiIllumination.draw();
 	guiPrimitive3d.draw();
 }
 
@@ -529,32 +570,189 @@ bool Gui::getToggleprimitive3dRotationSphereCouleur() {
 
 
 
-
-
-
 bool Gui::getNuageDePoint() {
 	return nuageDePoint;
 }
 
-int Gui::getXLight()
+
+// Lumières
+bool Gui::getLight1()
 {
-	return xLightSlider;
+	return light1Toggle;
+}
+int Gui::getRLight1()
+{
+	return RLight1Slider;
+}
+int Gui::getGLight1()
+{
+	return GLight1Slider;
+}
+int Gui::getBLight1()
+{
+	return BLight1Slider;
+}
+float Gui::getAttLight1()
+{
+	return attLight1Slider;
 }
 
-int Gui::getYLight()
+bool Gui::getLight2()
 {
-	return yLightSlider;
+	return light2Toggle;
+}
+int Gui::getXLight2()
+{
+	return xLight2Slider;
+}
+int Gui::getYLight2()
+{
+	return yLight2Slider;
+}
+int Gui::getZLight2()
+{
+	return zLight2Slider;
+}
+int Gui::getRLight2()
+{
+	return RLight2Slider;
+}
+int Gui::getGLight2()
+{
+	return GLight2Slider;
+}
+int Gui::getBLight2()
+{
+	return BLight2Slider;
+}
+float Gui::getCutLight2()
+{
+	return cutLight2Slider;
+}
+float Gui::getConcLight2()
+{
+	return concLight2Slider;
+}
+float Gui::getAttLight2()
+{
+	return attLight2Slider;
 }
 
-int Gui::getZLight()
+bool Gui::getLight3()
 {
-	return zLightSlider;
+	return light3Toggle;
+}
+float Gui::getXLight3()
+{
+	return xLight3Slider;
+}
+float Gui::getYLight3()
+{
+	return yLight3Slider;
+}
+float Gui::getZLight3()
+{
+	return zLight3Slider;
+}
+int Gui::getRLight3()
+{
+	return RLight3Slider;
+}
+int Gui::getGLight3()
+{
+	return GLight3Slider;
+}
+int Gui::getBLight3()
+{
+	return BLight3Slider;
+}
+float Gui::getAttLight3()
+{
+	return attLight3Slider;
 }
 
+bool Gui::getLight4()
+{
+	return light4Toggle;
+}
+int Gui::getXLight4()
+{
+	return xLight4Slider;
+}
+int Gui::getYLight4()
+{
+	return yLight4Slider;
+}
+int Gui::getZLight4()
+{
+	return zLight4Slider;
+}
+int Gui::getRLight4()
+{
+	return RLight4Slider;
+}
+int Gui::getGLight4()
+{
+	return GLight4Slider;
+}
+int Gui::getBLight4()
+{
+	return BLight4Slider;
+}
+float Gui::getAttLight4()
+{
+	return attLight4Slider;
+}
 
+bool Gui::getMat()
+{
+	return toggleMat;
+}
+int Gui::getShinyMat()
+{
+	return shinyMatSlider;
+}
+int Gui::getHueSpeMat()
+{
+	return hueSpeMatSlider;
+}
+int Gui::getSatSpeMat()
+{
+	return satSpeMatSlider;
+}
+int Gui::getHueEmiMat()
+{
+	return hueEmiMatSlider;
+}
+int Gui::getSatEmiMat()
+{
+	return satEmiMatSlider;
+}
+int Gui::getHueDifMat()
+{
+	return hueDifMatSlider;
+}
+int Gui::getSatDifMat()
+{
+	return satDifMatSlider;
+}
+int Gui::getHueAmbMat()
+{
+	return hueAmbMatSlider;
+}
+int Gui::getSatAmbMat()
+{
+	return satAmbMatSlider;
+}
 
-
-
+bool Gui::getLambert()
+{
+	return toggleLambert;
+}
+bool Gui::getPhong()
+{
+	return togglePhong;
+}
 
 
 

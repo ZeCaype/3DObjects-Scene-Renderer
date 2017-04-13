@@ -95,7 +95,6 @@ public:
 	// Géométrie //////////////////////////////////////////////////////////////////////////////////
 	ofCylinderPrimitive cylindre;
 	ofVboMesh topCap, bottomCap, body;
-	ofMaterial material;
 	ofVboMesh boxSides[ofBoxPrimitive::SIDES_TOTAL];
 	ofBoxPrimitive box;
 	ofSpherePrimitive sphere;
@@ -139,7 +138,7 @@ public:
 
 	// Modèle
 	ofxAssimpModelLoader model;
-	bool isModelLoaded;
+	bool isModelLoaded = false;
 
 	string nameModel = "model.3ds";
 
@@ -207,11 +206,63 @@ public:
 	float timeCurrent;
 	float timeLast;
 	float timeElapsed;
-	// Lumière
-	int xLight;
-	int yLight;
-	int zLight;
+	
+	// Lumière ///////////////////////////////////////////////////////////////////////////////////
 	ofLight * light;
+	
+	bool light1T = false;
+	int xLight1;
+	int yLight1;
+	int zLight1;
+	int RLight1;
+	int GLight1;
+	int BLight1;
+	float attLight1;
+	ofLight * light1;
+
+	bool light2T = false;
+	int xLight2;
+	int yLight2;
+	int zLight2;
+	int RLight2;
+	int GLight2;
+	int BLight2;
+	float cutLight2;
+	float concLight2;
+	float attLight2;
+	ofLight * light2;
+
+	bool light3T = false;
+	int RLight3;
+	int GLight3;
+	int BLight3;
+	float xLight3;
+	float yLight3;
+	float zLight3;
+	float attLight3;
+	ofVec3f light3Ori;
+	ofLight * light3;
+
+	bool light4T = false;
+	int xLight4;
+	int yLight4;
+	int zLight4;
+	int RLight4;
+	int GLight4;
+	int BLight4;
+	float attLight4;
+	ofLight * light4;
+
+	bool toggleMat = false;
+	int shinyMat;
+	int hueSpeMat; int satSpeMat;
+	int hueEmiMat; int satEmiMat;
+	int hueDifMat; int satDifMat;
+	int hueAmbMat; int satAmbMat;
+	ofMaterial material;
+
+	bool toggleLambert = false;
+	bool togglePhong = false;
 
 	//---------------------------------------------------------------------------------------------
 
@@ -233,6 +284,8 @@ public:
 	void cameraSetupParameters();
 	void setupCamera();
 	void updateCamera();
+
+	void setLightOri(ofLight & light, ofVec3f rot);
 
 	~Renderer();
 };
