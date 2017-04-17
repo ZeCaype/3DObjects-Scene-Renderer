@@ -5,6 +5,26 @@
 #include "gui.h"
 
 enum class Camera { FRONT, BACK, LEFT, RIGHT, TOP, DOWN};
+enum class Curve { BEZIER_CUBIC };
+
+inline void bezierCubic(
+	float t,
+	float p1x, float p1y, float p1z,
+	float p2x, float p2y, float p2z,
+	float p3x, float p3y, float p3z,
+	float p4x, float p4y, float p4z,
+	float&  x, float& y, float&  z)
+{
+	float u = 1 - t;
+	float uu = u * u;
+	float uuu = uu * u;
+	float tt = t * t;
+	float ttt = tt * t;
+
+	x = uuu * p1x + 3 * uu * t * p2x + 3 * u * tt * p3x + ttt * p4x;
+	y = uuu * p1y + 3 * uu * t * p2y + 3 * u * tt * p3y + ttt * p4y;
+	z = uuu * p1z + 3 * uu * t * p2z + 3 * u * tt * p3z + ttt * p4z;
+}
 
 class Renderer : public ofBaseApp {
 public:
@@ -263,6 +283,56 @@ public:
 
 	bool toggleLambert = false;
 	bool togglePhong = false;
+
+	// Topologie /////////////////////////////////////////////////////////////////////////////////
+	
+	Curve curveID;
+	string  curveName;
+
+	ofPolyline lineRenderer;
+	ofxPanel panelRenderer; 
+
+
+	ofVec3f * selectedCtrlPoint;
+
+	ofVec3f ctrlPoint1;
+	ofVec3f ctrlPoint2;
+	ofVec3f ctrlPoint3;
+	ofVec3f ctrlPoint4;
+
+	ofVec3f initialPosition1;
+	ofVec3f initialPosition2;
+	ofVec3f initialPosition3;
+	ofVec3f initialPosition4;
+	ofVec3f initialPosition5;
+
+	ofVec3f position;
+
+	float lineWidthOutline;
+	float lineWidthCurve;
+
+	float radius;
+	float scale;
+	float smooth;
+	float offset;
+
+	float xDelta;
+	float yDelta;
+
+	float motionSpeed;
+
+	int framebufferWidth;
+	int framebufferHeight;
+
+	int lineResolution;
+
+	int index;
+
+	bool courbeBezier = false; 
+
+	
+
+	
 
 	//---------------------------------------------------------------------------------------------
 

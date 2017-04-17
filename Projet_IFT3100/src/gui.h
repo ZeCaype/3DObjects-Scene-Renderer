@@ -336,7 +336,69 @@ public:
 
 	bool getLambert();
 	bool getPhong();
+	// Topologie //////////////////////////////////////////////////////////////////////////////////
+	ofxPanel topologie;
+	ofxToggle courbeBezier;
+	ofxIntSlider courbeBezierSliderX; 
+	ofxIntSlider courbeBezierSliderY;
+	ofxIntSlider courbeBezierSliderZ;
+	ofxIntSlider courbeBezierSliderPoint1X;
+	ofxIntSlider courbeBezierSliderPoint1Y;
+	ofxIntSlider courbeBezierSliderPoint1Z;
+	ofxIntSlider courbeBezierSliderPoint2X;
+	ofxIntSlider courbeBezierSliderPoint2Y;
+	ofxIntSlider courbeBezierSliderPoint2Z;
+	ofxIntSlider courbeBezierSliderPoint3X;
+	ofxIntSlider courbeBezierSliderPoint3Y;
+	ofxIntSlider courbeBezierSliderPoint3Z;
+	ofxIntSlider courbeBezierSliderPoint4X;
+	ofxIntSlider courbeBezierSliderPoint4Y;
+	ofxIntSlider courbeBezierSliderPoint4Z;
 
+	bool getToggleCourbeBezier();
+	/*
+	int getcourbeBezierSliderX();
+	int getcourbeBezierSliderY();
+	int getcourbeBezierSliderZ();
+	int getcourbeBezierSliderPoint1Y();
+	int getcourbeBezierSliderPoint1Z();
+	int getcourbeBezierSliderPoint1X();
+	int getcourbeBezierSliderPoint1Y();
+	int getcourbeBezierSliderPoint1Z();
+	int getcourbeBezierSliderPoint2X();
+	int getcourbeBezierSliderPoint2Y();
+	int getcourbeBezierSliderPoint2Z();
+	int getcourbeBezierSliderPoint3X();
+	int getcourbeBezierSliderPoint3Y();
+	int getcourbeBezierSliderPoint3Z();
+	int getcourbeBezierSliderPoint4X();
+	int getcourbeBezierSliderPoint4Y();
+	int getcourbeBezierSliderPoint4Z();*/
+
+
+
+
+	ofxToggle courbeHermite; 
+	ofxIntSlider courbeHermiteSliderX; 
+	ofxIntSlider courbeHermiteSliderY;
+	ofxIntSlider courbeHermiteSliderZ;
+	ofxIntSlider courbeHermiteSliderPoint1X;
+	ofxIntSlider courbeHermiteSliderPoint1Y;
+	ofxIntSlider courbeHermiteSliderPoint1Z;
+	ofxIntSlider courbeHermiteSliderPoint2X;
+	ofxIntSlider courbeHermiteSliderPoint2Y;
+	ofxIntSlider courbeHermiteSliderPoint2Z;
+	ofxIntSlider courbeHermiteSliderPoint3X;
+	ofxIntSlider courbeHermiteSliderPoint3Y;
+	ofxIntSlider courbeHermiteSliderPoint3Z;
+	ofxIntSlider courbeHermiteSliderPoint4X;
+	ofxIntSlider courbeHermiteSliderPoint4Y;
+	ofxIntSlider courbeHermiteSliderPoint4Z;
+
+	ofxToggle surfaceBezier; 
+	ofxIntSlider surfaceBezierX;
+	ofxIntSlider surfaceBezierY;
+	ofxIntSlider surfaceBezierZ;
 	// Autres /////////////////////////////////////////////////////////////////////////////////////
 	int offsetX;
 

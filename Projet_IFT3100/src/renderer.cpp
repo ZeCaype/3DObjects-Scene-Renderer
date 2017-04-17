@@ -56,6 +56,29 @@ void Renderer::setup()
 		zNuage.push_back(ofRandom(-intervalleNuage, intervalleNuage));
 		sizePointNuage.push_back(ofRandom(1, 4));
 	}
+	lineResolution = 100;
+
+	radius = 32.0f;
+	scale = 10.0f;
+	offset = 64.0f;
+
+	lineWidthOutline = 4.0f;
+	lineWidthCurve = 8.0f;
+
+	motionSpeed = 250.0f;
+	for (index = 0; index <= lineResolution; ++index)
+		lineRenderer.addVertex(ofPoint());
+		panelRenderer.addVertex(ofPoint());
+	
+
+	// courbe au lancement de l'application
+	curveID = Curve::BEZIER_CUBIC;
+	ctrlPoint1 = initialPosition1;
+	ctrlPoint2 = initialPosition2;
+	ctrlPoint3 = initialPosition4;
+	ctrlPoint4 = initialPosition5;
+
+	
 }
 
 void Renderer::reset()
@@ -81,7 +104,49 @@ void Renderer::reset()
 
 	// caméra par défault
 	cameraActive = Camera::FRONT;
+	framebufferWidth = ofGetWidth();
+	framebufferHeight = ofGetHeight();
 
+	//Topologie/////////////////////////////////////////////////////////////////////////////
+	// ratios de positionnement dans la fenêtre
+	float w_1_8 = framebufferWidth / 8.0f;
+	float w_1_4 = framebufferWidth / 4.0f;
+	float w_1_2 = framebufferWidth / 2.0f;
+	float w_3_4 = framebufferWidth * 3.0f / 4.0f;
+	float w_7_8 = framebufferWidth * 7.0f / 8.0f;
+	float h_1_5 = framebufferHeight / 5.0f;
+	float h_1_3 = framebufferHeight / 3.0f;
+	float h_4_5 = framebufferHeight * 4.0f / 5.0f;
+
+	initialPosition1 = { w_1_8, h_4_5, 0 };
+	initialPosition2 = { w_1_4, h_1_3, 0 };
+	initialPosition3 = { w_1_2, h_1_5, 0 };
+	initialPosition4 = { w_3_4, h_1_3, 0 };
+	initialPosition5 = { w_7_8, h_4_5, 0 };
+
+	// paramètres selon le type de courbe
+	switch (curveID)
+	{
+	
+
+	case Curve::BEZIER_CUBIC:
+
+		curveName = "Bézier cubique";
+
+		ctrlPoint1 = initialPosition1;
+		ctrlPoint2 = initialPosition2;
+		ctrlPoint3 = initialPosition4;
+		ctrlPoint4 = initialPosition5;
+
+		selectedCtrlPoint = &ctrlPoint2;
+
+		break;
+
+	default:
+		break;
+	}
+	xDelta = motionSpeed;
+	yDelta = motionSpeed;
 	ofLog() << "<reset>";
 }
 
@@ -89,6 +154,35 @@ void Renderer::reset()
 void Renderer::update()
 {
 	updateCamera();
+
+
+	//Topologie/////////////////////////////////////////////////////////////////////////////
+
+
+	for (index = 0; index <= lineResolution; ++index)
+	{
+		// paramètres selon le type de courbe
+		switch (curveID)
+		{
+		
+
+		case Curve::BEZIER_CUBIC:
+			bezierCubic(
+				index / (float)lineResolution,
+				ctrlPoint1.x, ctrlPoint1.y, ctrlPoint1.z,
+				ctrlPoint2.x, ctrlPoint2.y, ctrlPoint2.z,
+				ctrlPoint3.x, ctrlPoint3.y, ctrlPoint3.z,
+				ctrlPoint4.x, ctrlPoint4.y, ctrlPoint4.z,
+				position.x, position.y, position.z);
+			break;
+
+		default:
+			break;
+		}
+		// affecter la position du point sur la courbe
+		lineRenderer[index] = position;
+		 
+	}
 }
 
 // Fonction invoquée pour ajouter des éléments dans le framebuffer
@@ -102,7 +196,10 @@ void Renderer::draw()
 	// Activation de la lumière de fond
 	light->disable(); // Semble être une lumière inutile
 
-	// Lumières
+
+
+
+	// Lumières //////////////////////////////////////////////////////////////////////////
 
 	if (light1T == true) { light1->enable(); light->enable(); }
 	else if (!light1T == true) { light1->disable(); light->disable(); }
@@ -162,6 +259,43 @@ void Renderer::draw()
 	//if (light3T) light3->draw();
 	if (light4T) light4->draw();
 
+	
+	//Topologie/////////////////////////////////////////////////////////////////////////////
+	
+	if (courbeBezier == true) {
+		// dessiner les positions initiales
+		ofSetColor(63, 63, 63);
+
+		ofDrawEllipse(initialPosition1.x, initialPosition1.y, radius / 2, radius / 2);
+		ofDrawEllipse(initialPosition2.x, initialPosition2.y, radius / 2, radius / 2);
+		ofDrawEllipse(initialPosition3.x, initialPosition3.y, radius / 2, radius / 2);
+		ofDrawEllipse(initialPosition4.x, initialPosition4.y, radius / 2, radius / 2);
+		ofDrawEllipse(initialPosition5.x, initialPosition5.y, radius / 2, radius / 2);
+
+		// dessiner la ligne contour
+		ofSetColor(0, 0, 255);
+		ofSetLineWidth(lineWidthOutline);
+
+		ofDrawLine(ctrlPoint1.x, ctrlPoint1.y, ctrlPoint2.x, ctrlPoint2.y);
+		ofDrawLine(ctrlPoint2.x, ctrlPoint2.y, ctrlPoint3.x, ctrlPoint3.y);
+		ofDrawLine(ctrlPoint3.x, ctrlPoint3.y, ctrlPoint4.x, ctrlPoint4.y);
+		ofDrawLine(ctrlPoint4.x, ctrlPoint4.y, ctrlPoint1.x, ctrlPoint1.y);
+
+		// dessiner la courbe
+		ofSetColor(0, 255, 0);
+		ofSetLineWidth(lineWidthCurve);
+
+		lineRenderer.draw();
+
+		// dessiner les points de contrôle
+		ofSetColor(255, 0, 0);
+
+		ofDrawEllipse(ctrlPoint1.x, ctrlPoint1.y, radius, radius);
+		ofDrawEllipse(ctrlPoint2.x, ctrlPoint2.y, radius, radius);
+		ofDrawEllipse(ctrlPoint3.x, ctrlPoint3.y, radius, radius);
+		ofDrawEllipse(ctrlPoint4.x, ctrlPoint4.y, radius, radius);
+		
+		}
 	ofFill();
 
 //TEMPORAIRE J'AVAIS DE LA DIFFICULTÉ A VOIR LA CAMERA

@@ -161,6 +161,10 @@ void Application::update()
 	
 	renderer->circleRadius = gui->getRadius();
 
+
+	//Topologie ////////////////////
+		renderer->courbeBezier = gui->getToggleCourbeBezier();
+
 	// Appel de la fonction d'importation d'un modèle 3D
 	if (gui->modelButton && gui->modelCheck == false)
 	{
@@ -273,6 +277,9 @@ void Application::update()
 
 	renderer->toggleLambert = gui->getLambert();
 	renderer->togglePhong = gui->getPhong();
+
+
+	
 
 	// Autres /////////////////////////////////////////////////////////////////////////////////////
 	

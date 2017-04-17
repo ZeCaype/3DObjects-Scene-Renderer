@@ -201,7 +201,14 @@ void Gui::reset() {
 	guiIllumination.setup("Illumination", "", 425, 685);
 	guiIllumination.add(toggleLambert.setup("Lambert", false));
 	guiIllumination.add(togglePhong.setup("Phong", false));
+	// Topologie 
+	topologie.setup("Topoligie", "Topologie", 630, 10);
+	topologie.add(courbeBezier.setup("Courbe de Bezier", false));
+	topologie.add(courbeBezierSliderX.setup("Courbe Bezier X", 450, -1500, 1500));
+	topologie.add(courbeBezierSliderY.setup("Courbe Bezier Y", 450, -1500, 1500));
+	topologie.add(courbeBezierSliderZ.setup("Courbe Bezier Z", 450, -1500, 1500));
 }
+
 
 // Fonction de mise à jour du gui
 void Gui::update()
@@ -225,6 +232,7 @@ void Gui::draw()
 	guiMaterial.draw();
 	guiIllumination.draw();
 	guiPrimitive3d.draw();
+	topologie.draw();
 }
 
 int  Gui::getFOND_R() 
@@ -752,6 +760,11 @@ bool Gui::getLambert()
 bool Gui::getPhong()
 {
 	return togglePhong;
+}
+
+bool Gui::getToggleCourbeBezier()
+{
+	return courbeBezier;
 }
 
 
