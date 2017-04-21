@@ -207,6 +207,11 @@ void Gui::reset() {
 	topologie.add(courbeBezierSliderX.setup("Courbe Bezier X", 450, -1500, 1500));
 	topologie.add(courbeBezierSliderY.setup("Courbe Bezier Y", 450, -1500, 1500));
 	topologie.add(courbeBezierSliderZ.setup("Courbe Bezier Z", 450, -1500, 1500));
+
+
+	//Techniques de rendu
+	effectsPanel.setup("Technique rendu", "", 630, 200);
+	effectsPanel.add(blurEffect.setup("Blur", false));
 }
 
 
@@ -233,6 +238,7 @@ void Gui::draw()
 	guiIllumination.draw();
 	guiPrimitive3d.draw();
 	topologie.draw();
+	effectsPanel.draw();
 }
 
 int  Gui::getFOND_R() 
@@ -767,6 +773,10 @@ bool Gui::getToggleCourbeBezier()
 	return courbeBezier;
 }
 
+bool Gui::getToggleBlur()
+{
+	return blurEffect;
+}
 
 
 // Destructeur de la classe

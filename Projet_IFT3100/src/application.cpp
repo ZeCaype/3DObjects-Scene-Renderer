@@ -24,10 +24,10 @@ Application::Application(Gui *guipam)
 
 	// Paramétrisation de la fenêtre du gui
 	ofGLFWWindowSettings settings;
-	settings.width = 835;
-	settings.height = 800;
+	settings.width = 1200;
+	settings.height = 1200;
 	settings.setPosition(ofVec2f(600 + 2*12 + 5, 34));
-	settings.resizable = false;
+	settings.resizable = true;
 	shared_ptr<ofAppBaseWindow> guiWindow = ofCreateWindow(settings);
 	guiWindow->setVerticalSync(false);
 	shared_ptr<Gui> guiApp(gui);
@@ -162,8 +162,15 @@ void Application::update()
 	renderer->circleRadius = gui->getRadius();
 
 
+
+
 	//Topologie ////////////////////
 		renderer->courbeBezier = gui->getToggleCourbeBezier();
+
+	//Techniques de rendu
+		renderer->blurEffect = gui->getToggleBlur();
+
+
 
 	// Appel de la fonction d'importation d'un modèle 3D
 	if (gui->modelButton && gui->modelCheck == false)

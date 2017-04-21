@@ -330,6 +330,9 @@ public:
 
 	bool courbeBezier = false; 
 
+
+	//Technique de rendu
+	bool blurEffect;
 	
 
 	

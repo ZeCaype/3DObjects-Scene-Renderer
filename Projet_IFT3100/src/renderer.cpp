@@ -68,7 +68,7 @@ void Renderer::setup()
 	motionSpeed = 250.0f;
 	for (index = 0; index <= lineResolution; ++index)
 		lineRenderer.addVertex(ofPoint());
-		panelRenderer.addVertex(ofPoint());
+		//panelRenderer.addVertex(ofPoint());
 	
 
 	// courbe au lancement de l'application
@@ -590,6 +590,12 @@ void Renderer::draw()
 		for (int i = 0; i < xNuage.size(); i++) {
 			ofDrawSphere(xNuage[i], yNuage[i], zNuage[i], sizePointNuage[i]);
 		}
+	}
+
+	//Techniques de rendu
+	//Blur
+	if (blurEffect == true) {
+
 	}
 
 	camera->end();

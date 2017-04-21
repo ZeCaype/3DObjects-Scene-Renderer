@@ -399,6 +399,15 @@ public:
 	ofxIntSlider surfaceBezierX;
 	ofxIntSlider surfaceBezierY;
 	ofxIntSlider surfaceBezierZ;
+
+
+
+	//Blur effect
+	ofxPanel effectsPanel;
+	ofxToggle blurEffect;
+
+	bool getToggleBlur();
+
 	// Autres /////////////////////////////////////////////////////////////////////////////////////
 	int offsetX;
 
