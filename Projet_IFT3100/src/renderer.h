@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ofxAssimpModelLoader.h"
 #include "gui.h"
+#include "ofxBlurShader.h"
 
 enum class Camera { FRONT, BACK, LEFT, RIGHT, TOP, DOWN};
 enum class Curve { BEZIER_CUBIC };
@@ -334,9 +335,6 @@ public:
 	//Technique de rendu
 	bool blurEffect;
 
-
-
-	
 
 	//---------------------------------------------------------------------------------------------
 

@@ -594,10 +594,12 @@ void Renderer::draw()
 	//Techniques de rendu
 	//Blur
 	if (blurEffect == true) {
+
+
+
 	}
 
 	camera->end();
-
 
 	// Afficher l'image de fond sur toute la surface de la fenêtre seulement si isFondLoaded est true
 	if (isFondLoaded == true)
