@@ -333,7 +333,8 @@ public:
 
 	//Technique de rendu
 	bool blurEffect;
-	
+
+
 
 	
 

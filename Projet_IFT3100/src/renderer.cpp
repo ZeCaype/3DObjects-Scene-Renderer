@@ -78,7 +78,6 @@ void Renderer::setup()
 	ctrlPoint3 = initialPosition4;
 	ctrlPoint4 = initialPosition5;
 
-	
 }
 
 void Renderer::reset()
@@ -595,7 +594,6 @@ void Renderer::draw()
 	//Techniques de rendu
 	//Blur
 	if (blurEffect == true) {
-
 	}
 
 	camera->end();
