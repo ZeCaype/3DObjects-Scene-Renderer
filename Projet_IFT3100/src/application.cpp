@@ -169,6 +169,7 @@ void Application::update()
 
 	//Techniques de rendu
 		renderer->blurEffect = gui->getToggleBlur();
+		renderer->rainEffect = gui->getToggleRain();
 
 
 

@@ -333,7 +333,17 @@ public:
 
 	//Technique de rendu
 	bool blurEffect;
+	bool rainEffect;
+	int intervalleRain;
+	int rainNumber;
 
+	void makeItRain();
+	void showTheRain();
+
+	vector<float> rainX;
+	vector<float> rainY;
+	vector<float> rainSpeed;
+	vector<float> rainSize;
 
 	//---------------------------------------------------------------------------------------------
 

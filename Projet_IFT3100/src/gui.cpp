@@ -212,6 +212,7 @@ void Gui::reset() {
 	//Techniques de rendu
 	effectsPanel.setup("Technique rendu", "", 630, 200);
 	effectsPanel.add(blurEffect.setup("Blur", false));
+	effectsPanel.add(rainEffect.setup("Rain Baby", false));
 }
 
 
@@ -776,6 +777,10 @@ bool Gui::getToggleCourbeBezier()
 bool Gui::getToggleBlur()
 {
 	return blurEffect;
+}
+
+bool Gui::getToggleRain() {
+	return rainEffect;
 }
 
 
