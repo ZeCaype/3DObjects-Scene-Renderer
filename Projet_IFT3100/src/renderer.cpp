@@ -85,8 +85,13 @@ void Renderer::setup()
 	for (int i = 0; i < rainNumber; i++) {
 		rainX.push_back(ofRandom(-intervalleRain, intervalleRain));
 		rainY.push_back(ofRandom(1000, intervalleRain));
+		rainZ.push_back(ofRandom(500, -500));
 		rainSpeed.push_back(ofRandom(-20, -30));
 		rainSize.push_back(ofRandom(15, 25));
+		rainColorR.push_back(ofRandom(0, 255));
+		rainColorG.push_back(ofRandom(0, 255));
+		rainColorB.push_back(ofRandom(0, 255));
+
 	};
 
 }
@@ -818,9 +823,10 @@ void Renderer::setLightOri(ofLight &light, ofVec3f rot)
 
 void Renderer::makeItRain() {
 
-	ofSetColor(0, 0, 200);
+	
 	for (int i = 0; i < rainNumber; i++) {
-		ofDrawLine(rainX[i], rainY[i], rainX[i], rainY[i] + rainSize[i]);
+		ofSetColor(rainColorR[i], rainColorG[i], rainColorB[i]);
+		ofDrawLine(rainX[i], rainY[i], rainZ[i], rainX[i], rainY[i] + rainSize[i], rainZ[i]);
 	}
 
 

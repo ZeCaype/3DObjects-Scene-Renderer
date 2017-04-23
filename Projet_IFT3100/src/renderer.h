@@ -342,8 +342,12 @@ public:
 
 	vector<float> rainX;
 	vector<float> rainY;
+	vector<float> rainZ;
 	vector<float> rainSpeed;
 	vector<float> rainSize;
+	vector<float> rainColorR;
+	vector<float> rainColorG;
+	vector<float> rainColorB;
 
 	//---------------------------------------------------------------------------------------------
 
