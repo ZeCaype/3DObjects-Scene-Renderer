@@ -404,9 +404,11 @@ public:
 
 	//Blur effect
 	ofxPanel effectsPanel;
-	ofxToggle blurEffect;
+	ofxToggle antialiasingEffect;
+	ofxToggle rainEffect;
 
-	bool getToggleBlur();
+	bool getToggleAntialiasing();
+	bool getToggleRain();
 
 	// Autres /////////////////////////////////////////////////////////////////////////////////////
 	int offsetX;

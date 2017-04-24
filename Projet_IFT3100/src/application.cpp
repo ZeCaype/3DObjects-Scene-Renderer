@@ -37,10 +37,22 @@ Application::Application(Gui *guipam)
 // Paramétrisation de la classe Application
 void Application::setup() 
 {
+	renderer = new Renderer();
 	ofLog() << "<application::setup>";
 
+	if (ofIsGLProgrammableRenderer())
+	{
+		renderer->glVersionMajor = 3;
+		renderer->glVersionMinor = 3;
+	}
+	else
+	{
+		renderer->glVersionMajor = 2;
+		renderer->glVersionMinor = 1;
+	}
+
 	// Initialisation de la paramétrisation du rendue
-	renderer = new Renderer();
+	
 	renderer->setup();
 }
 
@@ -168,7 +180,8 @@ void Application::update()
 		renderer->courbeBezier = gui->getToggleCourbeBezier();
 
 	//Techniques de rendu
-		renderer->blurEffect = gui->getToggleBlur();
+		renderer->antialiasingEffect = gui->getToggleAntialiasing();
+		renderer->rainEffect = gui->getToggleRain();
 
 
 
@@ -395,6 +408,16 @@ void Application::keyReleased(int key) {
 		case 54:  // key 6
 			renderer->cameraActive = Camera::DOWN;
 			renderer->setupCamera();
+			break;
+
+		case 55:  // key 7
+			renderer->activeShader = Shading::COLOR_FILL;
+			ofLog() << "<shader: Color Fill>";
+			break;
+
+		case 56:  // key 8
+			renderer->activeShader = Shading::LAMBERT;
+			ofLog() << "<shader: Lambert>";
 			break;
 
 		case 97:  // key A
