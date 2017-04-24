@@ -235,7 +235,7 @@ void Gui::draw()
 	guiLightPart1.draw();
 	guiLightPart2.draw();
 	guiMaterial.draw();
-	guiIllumination.draw();
+	//guiIllumination.draw();
 	guiPrimitive3d.draw();
 	topologie.draw();
 	effectsPanel.draw();
