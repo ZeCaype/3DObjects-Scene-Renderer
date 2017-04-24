@@ -111,6 +111,22 @@ void Renderer::setup()
 	ctrlPoint3 = initialPosition4;
 	ctrlPoint4 = initialPosition5;
 
+	//technique de rendu
+	//setup rain
+	intervalleRain = 3500;
+	rainNumber = 2000;
+	for (int i = 0; i < rainNumber; i++) {
+		rainX.push_back(ofRandom(-intervalleRain, intervalleRain));
+		rainY.push_back(ofRandom(1000, intervalleRain));
+		rainZ.push_back(ofRandom(500, -500));
+		rainSpeed.push_back(ofRandom(-20, -30));
+		rainSize.push_back(ofRandom(15, 25));
+		rainColorR.push_back(ofRandom(0, 255));
+		rainColorG.push_back(ofRandom(0, 255));
+		rainColorB.push_back(ofRandom(0, 255));
+
+	};
+
 }
 
 void Renderer::reset()
@@ -659,10 +675,19 @@ void Renderer::draw()
 
 	//Techniques de rendu
 	//Blur
-	if (blurEffect == true) {
+	if (antialiasingEffect == true) {
+		ofEnableAntiAliasing();
+		ofEnableSmoothing();
+	}
+	else {
+		ofDisableAntiAliasing();
+		ofDisableSmoothing();
+	}
 
-
-
+	//Rain
+	if (rainEffect == true) {
+		makeItRain();
+		showTheRain();
 	}
 
 	camera->end();
@@ -866,6 +891,29 @@ void Renderer::setLightOri(ofLight &light, ofVec3f rot)
 	ofQuaternion q;
 	q.makeRotate(rot.x, xax, rot.y, yax, rot.z, zax);
 	light.setOrientation(q);
+}
+
+void Renderer::makeItRain() {
+
+	
+	for (int i = 0; i < rainNumber; i++) {
+		ofSetColor(rainColorR[i], rainColorG[i], rainColorB[i]);
+		ofDrawLine(rainX[i], rainY[i], rainZ[i], rainX[i], rainY[i] + rainSize[i], rainZ[i]);
+	}
+
+
+}
+
+void Renderer::showTheRain() {
+	for (int i = 0; i < rainNumber; i++) {
+		rainY[i] = rainY[i] + rainSpeed[i];
+		rainSpeed[i] = rainSpeed[i] + 0,3 * rainSpeed[i];
+		if (rainY[i] < -1500) {
+			rainY[i] = ofRandom(1000, intervalleRain);
+			rainSpeed[i] = ofRandom(-20, -30);
+		}
+	}
+
 }
 
 // Destructeur de la classe Renderer

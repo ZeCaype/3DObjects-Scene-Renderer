@@ -351,8 +351,22 @@ public:
 
 
 	//Technique de rendu
-	bool blurEffect;
+	bool antialiasingEffect;
+	bool rainEffect;
+	int intervalleRain;
+	int rainNumber;
 
+	void makeItRain();
+	void showTheRain();
+
+	vector<float> rainX;
+	vector<float> rainY;
+	vector<float> rainZ;
+	vector<float> rainSpeed;
+	vector<float> rainSize;
+	vector<float> rainColorR;
+	vector<float> rainColorG;
+	vector<float> rainColorB;
 
 	//---------------------------------------------------------------------------------------------
 

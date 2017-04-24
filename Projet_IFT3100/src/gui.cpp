@@ -211,7 +211,8 @@ void Gui::reset() {
 
 	//Techniques de rendu
 	effectsPanel.setup("Technique rendu", "", 630, 200);
-	effectsPanel.add(blurEffect.setup("Blur", false));
+	effectsPanel.add(antialiasingEffect.setup("Anti-Crenelage", false));
+	effectsPanel.add(rainEffect.setup("Rain Baby", false));
 }
 
 
@@ -773,9 +774,13 @@ bool Gui::getToggleCourbeBezier()
 	return courbeBezier;
 }
 
-bool Gui::getToggleBlur()
+bool Gui::getToggleAntialiasing()
 {
-	return blurEffect;
+	return antialiasingEffect;
+}
+
+bool Gui::getToggleRain() {
+	return rainEffect;
 }
 
 
