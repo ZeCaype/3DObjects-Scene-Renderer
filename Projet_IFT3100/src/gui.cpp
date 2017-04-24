@@ -204,9 +204,9 @@ void Gui::reset() {
 	// Topologie 
 	topologie.setup("Topoligie", "Topologie", 630, 10);
 	topologie.add(courbeBezier.setup("Courbe de Bezier", false));
-	topologie.add(courbeBezierSliderX.setup("Courbe Bezier X", 450, -1500, 1500));
-	topologie.add(courbeBezierSliderY.setup("Courbe Bezier Y", 450, -1500, 1500));
-	topologie.add(courbeBezierSliderZ.setup("Courbe Bezier Z", 450, -1500, 1500));
+	//topologie.add(courbeBezierSliderX.setup("Courbe Bezier X", 450, -1500, 1500));
+	//topologie.add(courbeBezierSliderY.setup("Courbe Bezier Y", 450, -1500, 1500));
+	//topologie.add(courbeBezierSliderZ.setup("Courbe Bezier Z", 450, -1500, 1500));
 	topologie.add(courbeHermite.setup("Courbe Hermite", false));
 	topologie.add(courbeSplin.setup("Courbe Splin", false));
 	//Techniques de rendu
