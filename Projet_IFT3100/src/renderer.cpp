@@ -323,16 +323,19 @@ void Renderer::draw()
 
 	camera->begin();
 
-	ofPushMatrix();
-	// activer le shader
-	shader->begin();
-	// passer les attributs uniformes au shader
-	shader->setUniform3f("lightPosition", light->getGlobalPosition() * ofGetCurrentMatrix(OF_MATRIX_MODELVIEW));
-	// dessiner un cube
-	ofDrawBox(0, 0, 0, scaleCube);
-	// désactiver le shader
-	shader->end();
-	ofPopMatrix();
+	if (boxShader == true)
+	{
+		ofPushMatrix();
+		// activer le shader
+		shader->begin();
+		// passer les attributs uniformes au shader
+		shader->setUniform3f("lightPosition", light->getGlobalPosition() * ofGetCurrentMatrix(OF_MATRIX_MODELVIEW));
+		// dessiner un cube
+		ofDrawBox(0, 0, 0, scaleCube);
+		// désactiver le shader
+		shader->end();
+		ofPopMatrix();
+	}
 	
 
 	//if (light1T) light1->draw();

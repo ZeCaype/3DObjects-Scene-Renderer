@@ -406,9 +406,11 @@ public:
 	ofxPanel effectsPanel;
 	ofxToggle antialiasingEffect;
 	ofxToggle rainEffect;
+	ofxToggle shaderBox;
 
 	bool getToggleAntialiasing();
 	bool getToggleRain();
+	bool getToggleBoxShader();
 
 	// Autres /////////////////////////////////////////////////////////////////////////////////////
 	int offsetX;

@@ -213,6 +213,7 @@ void Gui::reset() {
 	effectsPanel.setup("Technique rendu", "", 630, 200);
 	effectsPanel.add(antialiasingEffect.setup("Anti-Crenelage", false));
 	effectsPanel.add(rainEffect.setup("Rain Baby", false));
+	effectsPanel.add(shaderBox.setup("Box Shader", false));
 }
 
 
@@ -781,6 +782,9 @@ bool Gui::getToggleAntialiasing()
 
 bool Gui::getToggleRain() {
 	return rainEffect;
+}
+bool Gui::getToggleBoxShader() {
+	return shaderBox;
 }
 
 

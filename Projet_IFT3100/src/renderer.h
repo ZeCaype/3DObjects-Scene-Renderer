@@ -368,6 +368,8 @@ public:
 	vector<float> rainColorG;
 	vector<float> rainColorB;
 
+
+	bool boxShader;
 	//---------------------------------------------------------------------------------------------
 
 	Renderer();

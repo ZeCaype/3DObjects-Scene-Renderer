@@ -45,10 +45,15 @@ void Application::setup()
 		renderer->glVersionMajor = 3;
 		renderer->glVersionMinor = 3;
 	}
-	else
+	else if (ofIsGLProgrammableRenderer() == false)
 	{
 		renderer->glVersionMajor = 2;
 		renderer->glVersionMinor = 1;
+	}
+	else
+	{
+		renderer->glVersionMajor = 1;
+		renderer->glVersionMinor = 4;
 	}
 
 	// Initialisation de la paramétrisation du rendue
@@ -182,7 +187,7 @@ void Application::update()
 	//Techniques de rendu
 		renderer->antialiasingEffect = gui->getToggleAntialiasing();
 		renderer->rainEffect = gui->getToggleRain();
-
+		renderer->boxShader = gui->getToggleBoxShader();
 
 
 	// Appel de la fonction d'importation d'un modèle 3D
