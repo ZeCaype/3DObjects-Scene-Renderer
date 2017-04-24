@@ -73,10 +73,16 @@ void Renderer::setup()
 
 	// courbe au lancement de l'application
 	curveID = Curve::BEZIER_CUBIC;
+	curveIDH = Curve::HERMITE;
+	curveIDH = Curve::SPLIN;
 	ctrlPoint1 = initialPosition1;
 	ctrlPoint2 = initialPosition2;
 	ctrlPoint3 = initialPosition4;
 	ctrlPoint4 = initialPosition5;
+	ctrlPoint5 = initialPosition6; 
+	ctrlPoint6 = initialPosition3;
+
+
 
 }
 
@@ -122,6 +128,8 @@ void Renderer::reset()
 	initialPosition3 = { w_1_2, h_1_5, 0 };
 	initialPosition4 = { w_3_4, h_1_3, 0 };
 	initialPosition5 = { w_7_8, h_4_5, 0 };
+	initialPosition6 = { w_1_4, h_4_5, 0 };
+	//initialPosition7 = { w_3_4, h_4_5, 0 };
 
 	// paramètres selon le type de courbe
 	switch (curveID)
@@ -144,6 +152,45 @@ void Renderer::reset()
 	default:
 		break;
 	}
+	switch (curveIDH)
+	{
+	case Curve::HERMITE:
+
+		curveName = "Hermite";
+
+		ctrlPoint1 = initialPosition1;
+		ctrlPoint2 = initialPosition2;
+		ctrlPoint3 = initialPosition4;
+		ctrlPoint4 = initialPosition5;
+
+		selectedCtrlPoint = &ctrlPoint2;
+
+		break;
+
+
+	default:
+		break;
+	}
+	switch (curveIDS)
+	{
+	case Curve::SPLIN:
+
+		curveName = "Splin";
+
+		ctrlPoint1 = initialPosition1;
+		ctrlPoint2 = initialPosition2;
+		ctrlPoint3 = initialPosition4;
+		ctrlPoint4 = initialPosition5;
+		ctrlPoint5 = initialPosition6;
+
+		selectedCtrlPoint = &ctrlPoint2;
+
+		break;
+
+
+	default:
+		break;
+	}
 	xDelta = motionSpeed;
 	yDelta = motionSpeed;
 	ofLog() << "<reset>";
@@ -154,16 +201,19 @@ void Renderer::update()
 {
 	updateCamera();
 
-
 	//Topologie/////////////////////////////////////////////////////////////////////////////
+
 
 
 	for (index = 0; index <= lineResolution; ++index)
 	{
 		// paramètres selon le type de courbe
+		
+		ofVec3f tangent1 = ctrlPoint2 - ctrlPoint1;
+		ofVec3f tangent2 = ctrlPoint3 - ctrlPoint4;
 		switch (curveID)
 		{
-		
+
 
 		case Curve::BEZIER_CUBIC:
 			bezierCubic(
@@ -171,6 +221,40 @@ void Renderer::update()
 				ctrlPoint1.x, ctrlPoint1.y, ctrlPoint1.z,
 				ctrlPoint2.x, ctrlPoint2.y, ctrlPoint2.z,
 				ctrlPoint3.x, ctrlPoint3.y, ctrlPoint3.z,
+				ctrlPoint4.x, ctrlPoint4.y, ctrlPoint4.z,
+				position.x, position.y, position.z);
+			break;
+
+		default:
+			break;
+		}
+			switch (curveIDS)
+			{
+
+
+			case Curve::SPLIN:
+				splin(
+					index / (float)lineResolution,
+					ctrlPoint1.x, ctrlPoint1.y, ctrlPoint1.z,
+					ctrlPoint2.x, ctrlPoint2.y, ctrlPoint2.z,
+					ctrlPoint3.x, ctrlPoint3.y, ctrlPoint3.z,
+					ctrlPoint4.x, ctrlPoint4.y, ctrlPoint4.z,
+					ctrlPoint5.x, ctrlPoint5.y, ctrlPoint5.z,
+					position.x, position.y, position.z);
+				break;
+
+			default:
+				break;
+		}
+		switch (curveIDH)
+		{
+		case Curve::HERMITE:
+
+			hermite(
+				index / (float)lineResolution,
+				ctrlPoint1.x, ctrlPoint1.y, ctrlPoint1.z,
+				tangent1.x, tangent1.y, tangent1.z,
+				tangent2.x, tangent2.y, tangent2.z,
 				ctrlPoint4.x, ctrlPoint4.y, ctrlPoint4.z,
 				position.x, position.y, position.z);
 			break;
@@ -294,8 +378,89 @@ void Renderer::draw()
 		ofDrawEllipse(ctrlPoint3.x, ctrlPoint3.y, radius, radius);
 		ofDrawEllipse(ctrlPoint4.x, ctrlPoint4.y, radius, radius);
 		
-		}
-	ofFill();
+	}
+
+	if (courbeHermite == true){
+	ofSetColor(63, 63, 63);
+
+	ofDrawEllipse(initialPosition1.x, initialPosition1.y, radius / 2, radius / 2);
+	ofDrawEllipse(initialPosition2.x, initialPosition2.y, radius / 2, radius / 2);
+	ofDrawEllipse(initialPosition3.x, initialPosition3.y, radius / 2, radius / 2);
+	ofDrawEllipse(initialPosition4.x, initialPosition4.y, radius / 2, radius / 2);
+	ofDrawEllipse(initialPosition5.x, initialPosition5.y, radius / 2, radius / 2);
+
+
+	// dessiner la ligne contour
+	ofSetColor(0, 0, 255);
+	ofSetLineWidth(lineWidthOutline);
+
+	ofDrawLine(ctrlPoint1.x, ctrlPoint1.y, ctrlPoint2.x, ctrlPoint2.y);
+	ofDrawLine(ctrlPoint3.x, ctrlPoint3.y, ctrlPoint4.x, ctrlPoint4.y);
+	ofSetColor(0, 255, 0);
+	ofSetLineWidth(lineWidthCurve);
+
+	lineRenderer.draw();
+
+	// dessiner les points de contrôle
+	ofSetColor(255, 0, 0);
+
+	ofDrawEllipse(ctrlPoint1.x, ctrlPoint1.y, radius, radius);
+	ofDrawEllipse(ctrlPoint2.x, ctrlPoint2.y, radius, radius);
+	ofDrawEllipse(ctrlPoint3.x, ctrlPoint3.y, radius, radius);
+	ofDrawEllipse(ctrlPoint4.x, ctrlPoint4.y, radius, radius);
+	}
+
+	if (courbeSplin == true) {
+
+
+		ofSetColor(63, 63, 63);
+
+		ofDrawEllipse(initialPosition1.x, initialPosition1.y, radius / 2, radius / 2);
+		ofDrawEllipse(initialPosition2.x, initialPosition2.y, radius / 2, radius / 2);
+		ofDrawEllipse(initialPosition3.x, initialPosition3.y, radius / 2, radius / 2);
+		ofDrawEllipse(initialPosition4.x, initialPosition4.y, radius / 2, radius / 2);
+		ofDrawEllipse(initialPosition5.x, initialPosition5.y, radius / 2, radius / 2);
+
+		// dessiner la ligne contour
+		ofSetColor(0, 0, 255);
+		ofSetLineWidth(lineWidthOutline);
+
+		ofDrawLine(ctrlPoint1.x, ctrlPoint1.y, ctrlPoint2.x, ctrlPoint2.y);
+		ofDrawLine(ctrlPoint2.x, ctrlPoint2.y, ctrlPoint6.x, ctrlPoint6.y);
+		ofDrawLine(ctrlPoint3.x, ctrlPoint3.y, ctrlPoint4.x, ctrlPoint4.y);
+		ofDrawLine(ctrlPoint4.x, ctrlPoint4.y, ctrlPoint1.x, ctrlPoint5.y);
+		//ofDrawLine(ctrlPoint5.x, ctrlPoint5.y, ctrlPoint6.x, ctrlPoint6.y);
+		ofDrawLine(ctrlPoint6.x, ctrlPoint6.y, ctrlPoint3.x, ctrlPoint3.y);
+
+		// dessiner la courbe
+		ofSetColor(0, 255, 0);
+		ofSetLineWidth(lineWidthCurve);
+
+		lineRenderer.draw();
+
+		// dessiner les points de contrôle
+		ofSetColor(255, 0, 0);
+
+		ofDrawEllipse(ctrlPoint1.x, ctrlPoint1.y, radius, radius);
+		ofDrawEllipse(ctrlPoint2.x, ctrlPoint2.y, radius, radius);
+		ofDrawEllipse(ctrlPoint3.x, ctrlPoint3.y, radius, radius);
+		ofDrawEllipse(ctrlPoint4.x, ctrlPoint4.y, radius, radius);
+		ofDrawEllipse(ctrlPoint5.x, ctrlPoint5.y, radius, radius);
+		ofDrawEllipse(ctrlPoint6.x, ctrlPoint6.y, radius, radius);
+
+	}
+
+	
+
+	
+
+
+
+ofFill();
+
+
+
+
 
 //TEMPORAIRE J'AVAIS DE LA DIFFICULTÉ A VOIR LA CAMERA
 	

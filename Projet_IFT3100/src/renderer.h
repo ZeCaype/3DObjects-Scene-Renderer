@@ -5,7 +5,7 @@
 #include "gui.h"
 
 enum class Camera { FRONT, BACK, LEFT, RIGHT, TOP, DOWN};
-enum class Curve { BEZIER_CUBIC };
+enum class Curve { BEZIER_CUBIC, HERMITE,SPLIN};
 
 inline void bezierCubic(
 	float t,
@@ -25,6 +25,47 @@ inline void bezierCubic(
 	y = uuu * p1y + 3 * uu * t * p2y + 3 * u * tt * p3y + ttt * p4y;
 	z = uuu * p1z + 3 * uu * t * p2z + 3 * u * tt * p3z + ttt * p4z;
 }
+
+inline void hermite(
+	float t,
+	float p1x, float p1y, float p1z,
+	float p2x, float p2y, float p2z,
+	float p3x, float p3y, float p3z,
+	float p4x, float p4y, float p4z,
+	float&  x, float& y, float&  z)
+{
+	float u = 1 - t;
+	float uu = u * u;
+	float uuu = uu * u;
+	float tt = t * t;
+	float ttt = tt * t;
+
+	x = (2 * ttt - 3 * tt + 1) * p1x + (ttt - 2 * tt + t) * p2x + (ttt - tt) * p3x + (-2 * ttt + 3 * tt) * p4x;
+	y = (2 * ttt - 3 * tt + 1) * p1y + (ttt - 2 * tt + t) * p2y + (ttt - tt) * p3y + (-2 * ttt + 3 * tt) * p4y;
+	z = (2 * ttt - 3 * tt + 1) * p1z + (ttt - 2 * tt + t) * p2z + (ttt - tt) * p3z + (-2 * ttt + 3 * tt) * p4z;
+}
+
+inline void splin(
+	float t,
+	float p1x, float p1y, float p1z,
+	float p2x, float p2y, float p2z,
+	float p3x, float p3y, float p3z,
+	float p4x, float p4y, float p4z,
+	float p5x, float p5y, float p5z,
+	float&  x, float& y, float&  z)
+{
+	float u = 1 - t;
+	float uu = u * u;
+	float uuu = uu * u;
+
+	float tt = t * t;
+	float ttt = tt * t;
+
+	x = uuu * p1x + 3 * uu * t * p2x + 3 * u * tt * p3x + ttt * p4x + p5x;
+	y = uuu * p1y + 3 * uu * t * p2y + 3 * u * tt * p3y + ttt * p4y + p5y;
+	z = uuu * p1z + 3 * uu * t * p2z + 3 * u * tt * p3z + ttt * p4z + p5z;
+}
+
 
 class Renderer : public ofBaseApp {
 public:
@@ -287,11 +328,16 @@ public:
 	// Topologie /////////////////////////////////////////////////////////////////////////////////
 	
 	Curve curveID;
+	Curve curveIDH;
+	Curve curveIDS;
 	string  curveName;
 
 	ofPolyline lineRenderer;
 	ofxPanel panelRenderer; 
-
+	ofShader shader;
+	ofVbo sphereVbo, boxVbo, cylinderVbo;
+	ofVec3f center;
+	float radius12;
 
 	ofVec3f * selectedCtrlPoint;
 
@@ -299,12 +345,16 @@ public:
 	ofVec3f ctrlPoint2;
 	ofVec3f ctrlPoint3;
 	ofVec3f ctrlPoint4;
+	ofVec3f ctrlPoint5;
+	ofVec3f ctrlPoint6;
 
 	ofVec3f initialPosition1;
 	ofVec3f initialPosition2;
 	ofVec3f initialPosition3;
 	ofVec3f initialPosition4;
 	ofVec3f initialPosition5;
+	ofVec3f initialPosition6;
+	ofVec3f initialPosition7;
 
 	ofVec3f position;
 
@@ -329,7 +379,8 @@ public:
 	int index;
 
 	bool courbeBezier = false; 
-
+	bool courbeHermite = false;
+	bool courbeSplin = false;
 
 	//Technique de rendu
 	bool blurEffect;

@@ -14,7 +14,7 @@ int main()
 	settings.setPosition(ofVec2f(12, 35));
 	settings.resizable = true;
 	shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);
-
+	settings.setGLVersion(4, 1);
 	// Initialisation du programme
 	shared_ptr<Application> mainApp(new Application(new Gui()));
 	ofRunApp(mainWindow, mainApp);

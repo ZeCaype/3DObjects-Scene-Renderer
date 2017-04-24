@@ -395,6 +395,11 @@ public:
 	ofxIntSlider courbeHermiteSliderPoint4Y;
 	ofxIntSlider courbeHermiteSliderPoint4Z;
 
+	ofxToggle courbeSplin;
+
+	bool getToggleCourbeHermite(); 
+	bool getToggleCourbeSplin();
+
 	ofxToggle surfaceBezier; 
 	ofxIntSlider surfaceBezierX;
 	ofxIntSlider surfaceBezierY;

@@ -207,8 +207,8 @@ void Gui::reset() {
 	topologie.add(courbeBezierSliderX.setup("Courbe Bezier X", 450, -1500, 1500));
 	topologie.add(courbeBezierSliderY.setup("Courbe Bezier Y", 450, -1500, 1500));
 	topologie.add(courbeBezierSliderZ.setup("Courbe Bezier Z", 450, -1500, 1500));
-
-
+	topologie.add(courbeHermite.setup("Courbe Hermite", false));
+	topologie.add(courbeSplin.setup("Courbe Splin", false));
 	//Techniques de rendu
 	effectsPanel.setup("Technique rendu", "", 630, 200);
 	effectsPanel.add(blurEffect.setup("Blur", false));
@@ -772,6 +772,15 @@ bool Gui::getToggleCourbeBezier()
 {
 	return courbeBezier;
 }
+bool Gui::getToggleCourbeHermite()
+{
+	return courbeHermite; 
+}
+bool Gui::getToggleCourbeSplin()
+{
+	return courbeSplin;
+}
+
 
 bool Gui::getToggleBlur()
 {

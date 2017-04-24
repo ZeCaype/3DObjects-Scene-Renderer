@@ -25,6 +25,7 @@ public:
 	bool isKeyPressY;
 
 	Renderer * renderer;
+	
 
 	Application(Gui *guipam);
 

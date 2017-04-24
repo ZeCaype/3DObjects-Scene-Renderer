@@ -166,7 +166,8 @@ void Application::update()
 
 	//Topologie ////////////////////
 		renderer->courbeBezier = gui->getToggleCourbeBezier();
-
+		renderer->courbeHermite = gui->getToggleCourbeHermite();
+		renderer->courbeSplin = gui->getToggleCourbeSplin();
 	//Techniques de rendu
 		renderer->blurEffect = gui->getToggleBlur();
 
