@@ -354,7 +354,7 @@ public:
 
 	ofPolyline lineRenderer;
 	ofxPanel panelRenderer; 
-	ofShader shader;
+	//ofShader shader;
 	ofVbo sphereVbo, boxVbo, cylinderVbo;
 	ofVec3f center;
 	float radius12;
