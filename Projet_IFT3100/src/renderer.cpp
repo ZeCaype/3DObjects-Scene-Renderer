@@ -609,7 +609,13 @@ void Renderer::draw()
 
 	//Techniques de rendu
 	//Blur
-	if (blurEffect == true) {
+	if (antialiasingEffect == true) {
+		ofEnableAntiAliasing();
+		ofEnableSmoothing();
+	}
+	else {
+		ofDisableAntiAliasing();
+		ofDisableSmoothing();
 	}
 
 	//Rain

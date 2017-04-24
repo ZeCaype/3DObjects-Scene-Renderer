@@ -332,7 +332,7 @@ public:
 
 
 	//Technique de rendu
-	bool blurEffect;
+	bool antialiasingEffect;
 	bool rainEffect;
 	int intervalleRain;
 	int rainNumber;

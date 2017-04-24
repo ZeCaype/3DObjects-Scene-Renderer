@@ -168,7 +168,7 @@ void Application::update()
 		renderer->courbeBezier = gui->getToggleCourbeBezier();
 
 	//Techniques de rendu
-		renderer->blurEffect = gui->getToggleBlur();
+		renderer->antialiasingEffect = gui->getToggleAntialiasing();
 		renderer->rainEffect = gui->getToggleRain();
 
 
