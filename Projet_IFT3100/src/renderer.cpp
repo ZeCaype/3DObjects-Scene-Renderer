@@ -115,6 +115,28 @@ void Renderer::setup()
 	ctrlPoint5 = initialPosition6; 
 	ctrlPoint6 = initialPosition3;
 
+
+	#ifdef TARGET_OPENGLES
+		shader123.load("shadersES2/shader");
+	#else
+		if (ofIsGLProgrammableRenderer()) {
+			shader123.load("shadersGL3/shader");
+		}
+		else {
+			shader123.load("shadersGL2/shader");
+		}
+	#endif
+
+		float planeScale = 0.75;
+		int planeWidth = ofGetWidth() * planeScale;
+		int planeHeight = ofGetHeight() * planeScale;
+		
+		int planeGridSize = 20;
+		int planeColums = planeWidth / planeGridSize;
+		int planeRows = planeHeight / planeGridSize;
+
+		plane123.set(planeWidth, planeHeight, planeColums, planeRows);
+
 	//technique de rendu
 	//setup rain
 	intervalleRain = 3500;
@@ -531,6 +553,33 @@ void Renderer::draw()
 		ofDrawEllipse(ctrlPoint4.x, ctrlPoint4.y, radius, radius);
 		ofDrawEllipse(ctrlPoint5.x, ctrlPoint5.y, radius, radius);
 		ofDrawEllipse(ctrlPoint6.x, ctrlPoint6.y, radius, radius);
+
+	}
+
+
+	if (surfaceParamétrique == true) {
+
+		shader123.begin();
+		ofSetColor(115, 115, 155);
+		ofLog()<< "lol";
+		// a lot of the time you have to pass in variables into the shader.
+		// in this case we need to pass it the elapsed time for the sine wave animation.
+		shader123.setUniform1f("time", ofGetElapsedTimef());
+
+		// translate plane into center screen.
+		float tx = ofGetWidth() / 2;
+		float ty = ofGetHeight() / 2;
+		ofTranslate(tx, ty);
+
+		// the mouse/touch Y position changes the rotation of the plane.
+		float percentY = mouseY / (float)ofGetHeight();
+		float rotation = ofMap(percentY, 0, 1, -60, 60, true) + 60;
+		ofRotate(rotation, 1, 0, 0);
+
+		plane123.drawWireframe();
+
+		shader123.end();
+
 
 	}
 

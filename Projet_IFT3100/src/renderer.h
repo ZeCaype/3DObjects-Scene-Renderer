@@ -346,6 +346,11 @@ public:
 	bool togglePhong = false;
 
 	// Topologie /////////////////////////////////////////////////////////////////////////////////
+
+
+
+	ofShader shader123;
+	ofPlanePrimitive plane123;
 	
 	Curve curveID;
 	Curve curveIDH;
@@ -401,6 +406,7 @@ public:
 	bool courbeBezier = false; 
 	bool courbeHermite = false;
 	bool courbeSplin = false;
+	bool surfaceParamétrique = false; 
 
 	//Technique de rendu
 	bool antialiasingEffect;
