@@ -6,6 +6,8 @@
 
 enum class Camera { FRONT, BACK, LEFT, RIGHT, TOP, DOWN};
 enum class Curve { BEZIER_CUBIC };
+// énumération des types de shader
+enum class Shading {COLOR_FILL, LAMBERT };
 
 inline void bezierCubic(
 	float t,
@@ -35,6 +37,23 @@ public:
 	ofImage fond;
 
 	bool isFondLoaded;
+
+	//Shaders related
+
+	Shading activeShader;
+
+	ofShader * shader;
+
+	ofShader * shaderColorFill;
+	ofShader * shaderLambert;
+
+	ofVec3f * positionCube;
+
+	string shaderVersion;
+	string shaderName;
+	float scaleCube;
+	int glVersionMajor;
+	int glVersionMinor;
 
 	// Initialisation de l'image
 	int posImageX;

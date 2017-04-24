@@ -13,8 +13,41 @@ Renderer::Renderer()
 // Fonction invoquée pour configurer les éléments du framebuffer
 void Renderer::setup()
 {
+
 	ofLog() << "<renderer::setup>";
 	ofSetWindowTitle("Rendu");
+
+	//Instancier les 2 shaders
+	// instanciation des shaders
+	positionCube = new ofVec3f();
+	shaderColorFill = new ofShader();
+	shaderLambert = new ofShader();
+	scaleCube = 100.0f;
+
+	// paramétrer la version des shaders en GLSL
+
+	switch (glVersionMajor)
+	{
+	case 3:
+		shaderVersion = "V330";
+		break;
+	case 4:
+		shaderVersion = "V410";
+		break;
+	default:
+		shaderVersion = "V120";
+	}
+
+	// on charge les shaders comme le prof le faisait
+	shaderColorFill->load(
+		"shader/" + shaderVersion + "/ColorFillVS.glsl",
+		"shader/" + shaderVersion + "/ColorFillFS.glsl");
+
+	shaderLambert->load(
+		"shader/" + shaderVersion + "/LambertVS.glsl",
+		"shader/" + shaderVersion + "/LambertFS.glsl");
+
+	activeShader = Shading::COLOR_FILL;
 
 	// Application de la résolution
 	ofSetCircleResolution(200);
@@ -82,6 +115,9 @@ void Renderer::setup()
 
 void Renderer::reset()
 {
+
+	positionCube->set(-framebufferWidth * (1.0f / 4.0f), 0, 0);
+
 	// initialisation des variables
 	cameraOffset = 2000;
 
@@ -154,7 +190,27 @@ void Renderer::update()
 {
 	updateCamera();
 
+	//Shaders ch 6
+	// passer les attributs uniformes au shader de sommets
+	switch (activeShader)
+	{
+	case Shading::COLOR_FILL:
+		shaderName = "Color Fill";
+		shader = shaderColorFill;
+		shader->begin();
+		shader->setUniform3f("color", 1.0f, 1.0f, 0.0f);
+		shader->end();
+		break;
 
+	case Shading::LAMBERT:
+		shaderName = "Lambert";
+		shader = shaderLambert;
+		shader->begin();
+		shader->setUniform3f("colorAmbient", 0.1f, 0.1f, 0.1f);
+		shader->setUniform3f("colorDiffuse", 0.6f, 0.6f, 0.6f);
+		shader->end();
+		break;
+	}
 	//Topologie/////////////////////////////////////////////////////////////////////////////
 
 
@@ -194,8 +250,6 @@ void Renderer::draw()
 
 	// Activation de la lumière de fond
 	light->disable(); // Semble être une lumière inutile
-
-
 
 
 	// Lumières //////////////////////////////////////////////////////////////////////////
@@ -252,6 +306,18 @@ void Renderer::draw()
 	}
 
 	camera->begin();
+
+	ofPushMatrix();
+	// activer le shader
+	shader->begin();
+	// passer les attributs uniformes au shader
+	shader->setUniform3f("lightPosition", light->getGlobalPosition() * ofGetCurrentMatrix(OF_MATRIX_MODELVIEW));
+	// dessiner un cube
+	ofDrawBox(0, 0, 0, scaleCube);
+	// désactiver le shader
+	shader->end();
+	ofPopMatrix();
+	
 
 	//if (light1T) light1->draw();
 	if (light2T) light2->draw();
@@ -805,6 +871,9 @@ void Renderer::setLightOri(ofLight &light, ofVec3f rot)
 // Destructeur de la classe Renderer
 Renderer::~Renderer()
 {
+	delete shaderColorFill;
+	delete shaderLambert;
+	delete positionCube;
 	if (light != nullptr) delete light;
 	if (light1 != nullptr) delete light1;
 	if (light2 != nullptr) delete light2;
