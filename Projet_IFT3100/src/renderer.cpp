@@ -677,7 +677,7 @@ void Renderer::draw()
 	}
 
 	//Techniques de rendu
-	//Blur
+	//Antialiasing
 	if (antialiasingEffect == true) {
 		ofEnableAntiAliasing();
 		ofEnableSmoothing();
