@@ -5,6 +5,9 @@
 #include "gui.h"
 
 enum class Camera { FRONT, BACK, LEFT, RIGHT, TOP, DOWN};
+enum class Curve { BEZIER_CUBIC };
+// énumération des types de shader
+enum class Shading {COLOR_FILL, LAMBERT };
 enum class Curve { BEZIER_CUBIC, HERMITE,SPLIN};
 
 inline void bezierCubic(
@@ -76,6 +79,23 @@ public:
 	ofImage fond;
 
 	bool isFondLoaded;
+
+	//Shaders related
+
+	Shading activeShader;
+
+	ofShader * shader;
+
+	ofShader * shaderColorFill;
+	ofShader * shaderLambert;
+
+	ofVec3f * positionCube;
+
+	string shaderVersion;
+	string shaderName;
+	float scaleCube;
+	int glVersionMajor;
+	int glVersionMinor;
 
 	// Initialisation de l'image
 	int posImageX;
@@ -383,9 +403,25 @@ public:
 	bool courbeSplin = false;
 
 	//Technique de rendu
-	bool blurEffect;
+	bool antialiasingEffect;
+	bool rainEffect;
+	int intervalleRain;
+	int rainNumber;
+
+	void makeItRain();
+	void showTheRain();
+
+	vector<float> rainX;
+	vector<float> rainY;
+	vector<float> rainZ;
+	vector<float> rainSpeed;
+	vector<float> rainSize;
+	vector<float> rainColorR;
+	vector<float> rainColorG;
+	vector<float> rainColorB;
 
 
+	bool boxShader;
 	//---------------------------------------------------------------------------------------------
 
 	Renderer();

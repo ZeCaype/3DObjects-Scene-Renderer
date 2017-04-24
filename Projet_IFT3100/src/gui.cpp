@@ -211,7 +211,9 @@ void Gui::reset() {
 	topologie.add(courbeSplin.setup("Courbe Splin", false));
 	//Techniques de rendu
 	effectsPanel.setup("Technique rendu", "", 630, 200);
-	effectsPanel.add(blurEffect.setup("Blur", false));
+	effectsPanel.add(antialiasingEffect.setup("Anti-Crenelage", false));
+	effectsPanel.add(rainEffect.setup("Rain Baby", false));
+	effectsPanel.add(shaderBox.setup("Box Shader", false));
 }
 
 
@@ -235,7 +237,7 @@ void Gui::draw()
 	guiLightPart1.draw();
 	guiLightPart2.draw();
 	guiMaterial.draw();
-	guiIllumination.draw();
+	//guiIllumination.draw();
 	guiPrimitive3d.draw();
 	topologie.draw();
 	effectsPanel.draw();
@@ -782,9 +784,16 @@ bool Gui::getToggleCourbeSplin()
 }
 
 
-bool Gui::getToggleBlur()
+bool Gui::getToggleAntialiasing()
 {
-	return blurEffect;
+	return antialiasingEffect;
+}
+
+bool Gui::getToggleRain() {
+	return rainEffect;
+}
+bool Gui::getToggleBoxShader() {
+	return shaderBox;
 }
 
 

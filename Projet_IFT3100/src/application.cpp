@@ -37,10 +37,27 @@ Application::Application(Gui *guipam)
 // Paramétrisation de la classe Application
 void Application::setup() 
 {
+	renderer = new Renderer();
 	ofLog() << "<application::setup>";
 
+	if (ofIsGLProgrammableRenderer())
+	{
+		renderer->glVersionMajor = 3;
+		renderer->glVersionMinor = 3;
+	}
+	else if (ofIsGLProgrammableRenderer() == false)
+	{
+		renderer->glVersionMajor = 2;
+		renderer->glVersionMinor = 1;
+	}
+	else
+	{
+		renderer->glVersionMajor = 1;
+		renderer->glVersionMinor = 4;
+	}
+
 	// Initialisation de la paramétrisation du rendue
-	renderer = new Renderer();
+	
 	renderer->setup();
 }
 
@@ -169,8 +186,9 @@ void Application::update()
 		renderer->courbeHermite = gui->getToggleCourbeHermite();
 		renderer->courbeSplin = gui->getToggleCourbeSplin();
 	//Techniques de rendu
-		renderer->blurEffect = gui->getToggleBlur();
-
+		renderer->antialiasingEffect = gui->getToggleAntialiasing();
+		renderer->rainEffect = gui->getToggleRain();
+		renderer->boxShader = gui->getToggleBoxShader();
 
 
 	// Appel de la fonction d'importation d'un modèle 3D
@@ -396,6 +414,16 @@ void Application::keyReleased(int key) {
 		case 54:  // key 6
 			renderer->cameraActive = Camera::DOWN;
 			renderer->setupCamera();
+			break;
+
+		case 55:  // key 7
+			renderer->activeShader = Shading::COLOR_FILL;
+			ofLog() << "<shader: Color Fill>";
+			break;
+
+		case 56:  // key 8
+			renderer->activeShader = Shading::LAMBERT;
+			ofLog() << "<shader: Lambert>";
 			break;
 
 		case 97:  // key A
