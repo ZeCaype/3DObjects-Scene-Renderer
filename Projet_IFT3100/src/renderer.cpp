@@ -127,7 +127,7 @@ void Renderer::setup()
 		}
 	#endif
 
-		float planeScale = 0.75;
+		float planeScale = 6;
 		int planeWidth = ofGetWidth() * planeScale;
 		int planeHeight = ofGetHeight() * planeScale;
 		
@@ -483,7 +483,7 @@ void Renderer::draw()
 		ofDrawEllipse(ctrlPoint2.x, ctrlPoint2.y, radius, radius);
 		ofDrawEllipse(ctrlPoint3.x, ctrlPoint3.y, radius, radius);
 		ofDrawEllipse(ctrlPoint4.x, ctrlPoint4.y, radius, radius);
-		
+		ofSetLineWidth(1);
 	}
 
 	if (courbeHermite == true){
@@ -514,6 +514,7 @@ void Renderer::draw()
 	ofDrawEllipse(ctrlPoint2.x, ctrlPoint2.y, radius, radius);
 	ofDrawEllipse(ctrlPoint3.x, ctrlPoint3.y, radius, radius);
 	ofDrawEllipse(ctrlPoint4.x, ctrlPoint4.y, radius, radius);
+	ofSetLineWidth(1);
 	}
 
 	if (courbeSplin == true) {
@@ -553,11 +554,11 @@ void Renderer::draw()
 		ofDrawEllipse(ctrlPoint4.x, ctrlPoint4.y, radius, radius);
 		ofDrawEllipse(ctrlPoint5.x, ctrlPoint5.y, radius, radius);
 		ofDrawEllipse(ctrlPoint6.x, ctrlPoint6.y, radius, radius);
-
+		ofSetLineWidth(1);
 	}
 
 
-	if (surfaceParamétrique == true) {
+	/*if (surfaceParamétrique == true) { 
 
 		shader123.begin();
 		ofSetColor(115, 115, 155);
@@ -581,8 +582,8 @@ void Renderer::draw()
 		shader123.end();
 
 
-	}
-
+	}*/
+	
 	
 
 	

@@ -17,11 +17,15 @@ int main()
 	// sélection de la version de OpenGL : option #1
 	//settings.setGLVersion(2,1);
 
+	//settings.setGLVersion(3,2);
+
 	// sélection de la version de OpenGL : option #2
 	//settings.setGLVersion(3,3);
 
 	// sélection de la version de OpenGL : option #3
 	//settings.setGLVersion(4,1);
+
+
 
 	shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);
 	// Initialisation du programme
